@@ -1,0 +1,87 @@
+
+                                                Anzahl/P-Faktor/B-Faktor/Wert
+/gilden/files.chaos/obj/kreide                                    25/20/10/20
+   Kreide (Gildenladen 20x, Port Vain grosser Laden, 
+   gibts an vielen Stellen..
+
+/gilden/files.chaos/obj/strstaub                                30/65/35/4203
+   Wurzelzwerg (Zardoz, Para-Eiswueste, 1x
+
+/d/polar/mupfel/obj/zfinger                                     33/54/68/4711
+   Chaosfrosch Para-Eiswueste, 1x 
+
+/gilden/files.chaos/obj/skerze                                    1/+2/+5/230
+   schwarze Kerzen, Gildenladen 2x,Chaosfrosch 2x 
+
+/gilden/files.chaos/obj/wauge                                  1/+20/+15/1330
+   Wasserunwesenaugen Daemonenburg, Rand, 0 - 4x 
+
+/gilden/files.chaos/obj/ceis"                                   40/45/55/5900
+   farbiges Eis (Eiskoenig, Eiswueste, 1x)
+
+/gilden/files.chaos/obj/dsabber"                                35/40/61/2690
+   Drachensabber (Daemonenburg, Daemonendrache Rand 0-1 x) 
+
+/gilden/files.chaos/obj/dschleim                                 10/25/15/100
+   Daemonenschleim (Daemonenburg, Dunkeldaemonen, 
+   gibt 4 Stueck, je 33%-Chance)
+
+/gilden/files.chaos/obj/sstaub                                   28/15/25/800
+   Silberstaub (Gildenladen 2x)
+
+/gilden/files.chaos/obj/gstaub                                  12/60/40/3211
+   Goldstaub (Gildenladen, 1x)
+
+/d/wald/paracelsus/obj/cfarbe                                  
+   verschiedene Chaosfarben (Paracelsus, zb. bei         gruen   56/42/42/600 
+   zb. bei vielen Drachen von Para und im Schemen-       gelb    52/44/44/600
+   reich, meistens vergleichsweise seher grosser         blau    48/46/46/600
+   Aufwand)                                              rot     44/48/48/600
+                                                         schwarz 40/50/50/600
+
+/d/wald/paracelsus/obj/sbstift.c                                  30/25/25/70
+   schwarze Bleistifte (Drakonien, Drakonier(ober)pr., Xx)
+
+/d/wald/paracelsus/obj/bbstift                                    40/15/15/70
+   blaue Bleistifte (siehe oben, sind pro
+   Reset ungefaeeehr maximal 6-7 zu holen.)
+
+/gilden/files.chaos/obj/drablut                                 16/30/45/1405
+   Zardoz' Laden, 2x
+
+/gilden/files.chaos/obj/kmehl                                    3/25/70/4651
+   Zardoz' Laden 0x?
+
+/gilden/files.chaos/obj/sand                                    55/20/35/3400
+   feiner, schwarzer Sand (Gildenladen, 1x)
+
+Haut einer Kroete (?)
+
+/d/vland/morgoth/obj/dschleim                                   20/65/50/1000
+   Daemonenschleim (Morgoth, was weiss ich wo)
+
+/d/vland/morgoth/obj/kata/gschleim                               10/30/15/100
+   Ghoulschleim (Morgoth, Katakomben, erste Ebene, 
+   Ghouls, in der Regel 4 stueck pro Reset moeglich)
+
+/d/polar/bendeigid/obj/wirbel                                   14/37/50/1540
+   Luftwirbel (Bendeigid, (Para)-Eiswueste, Chaoswolken, 
+   einmal pro Monster, es gibt aber mehrere davon)
+
+/d/polar/bendeigid/obj/wirbkerz                                 1/+17/+20/999
+  
+
+/d/gebirge/boing/sm/obj/waberglut                               16/60/00/2500
+   Waberblasenglut (Boing, SSP, Anfang neue Feuerebene, 1x)
+
+/d/inseln/bierchen/minsel/obj/stups_ewig                          --/55/55/20
+   Bruchstueck eines Stufenpunktes (Bierchen, Magieinsel, 
+   nichtverbrauchend, 1x)
+
+/d/inseln/bierchen/minsel/obj/kreide                              25/20/10/20
+
+/d/inseln/bierchen/minsel/obj/kreide_ewig                         --/20/10/20
+   Besondere magische Kreide (Bierchen, Magieinsel, 
+   Steinscheisser, 1x)
+
+

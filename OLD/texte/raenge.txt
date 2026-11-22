@@ -1,0 +1,46 @@
+    ___________________________________________________________________
+   / \                                                                  \
+  | 0 |              DIE RAENGE INNERHALB DER CHAOS-GILDE                |
+   \_/               ------------------------------------                |
+     |                                                                   |
+     | Es gibt innerhalb der Gilde 'Krieger des Chaos' elf unter-        |
+     | schiedliche Raenge. In jedem Rang lernt man neue Zauber und ab    |
+     | einem gewissen Rang auch Daemonen.                                |
+     | Zum Erlangen eines neuen Gildenlevels muss man seine Faehigkeiten |
+     | auf einem bestimmten Stand haben und auch das Beschwoeren der     |
+     | Daemonen beherrschen. Naeher Auskuenfte dazu gibt Kruuolq.        |
+     |                                                                   |
+     | Sprueche und Daemonen lernt man bei Kruuolq und Hutschat mit dem  |
+     | Befehl <lerne spruch> und <lerne daemon>.                         |
+     |                                                                   |
+     | Abgesehen von den unterschiedlichen Faehigkeiten muss man zum     |
+     | Erhoehen des Ranges einen Kampf in der gildeneigenen Arena gegen  |
+     | Yruruu beziehungsweise Ziumtu gewinnen. Und ab Gilden-Level 8     |
+     | muessen zudem noch zwei Aufgaben geloest werden um auf Level 9    |
+     | beziehungsweise 10 kommen zu koennen. Auch hier wendet man sich   |
+     | am besten an Kruuolq.                                             |
+     |                                                                   |
+     | Ab Gilden-Level 9 gibt es eine sehr schoene und feine Sache, die  |
+     | allerdings selbst herausgefunden werden sollte. Es sei nur soviel |
+     | gesagt, das sie jedem, der mit offenen Augen durch die Welt       |
+     | laeuft, auffallen sollte. :)                                      |
+     |                                                                   |
+     | Hier nun die einzelnen Raenge:                                    |
+     |                                                                   |
+     |   1.  Kleiner Chaot                  Kleine Chaotin               |
+     |   2.  Chaot                          Chaotin                      |
+     |   3.  Wahnwitziger                   Wahnwitzige                  |
+     |   4.  Kaempfer des Chaos             Kaempferin des Chaos         |
+     |   5.  finsterer Chaos-Kaempfer       finstere Chaos-Kaempferin    |
+     |   6.  Krieger des Chaos              Amazone des Chaos            | 
+     |   7.  finsterer Chaos-Krieger        finstere Chaos-Amazone       |
+     |   8.  Daemonen-Beschwoerer           Daemonen-Beschwoererin       |
+     |   9.  Dunkelmagier des Chaos         Dunkelmagierin des Chaos     |
+     |   10. Schwarzmagier des Chaos        Schwarzmagierin des Chaos    |
+     |   11. zur Zeit nicht benannt         zur Zeit nicht benannt       |
+     |                                                                   |
+     | ( 12. Erzmeister des Chaos          Erzmeisterin des Chaos      ) |
+    _|                                                                   |
+   / \                                                                   |
+  | / |                                                                  |
+   \_/__________________________________________________________________/

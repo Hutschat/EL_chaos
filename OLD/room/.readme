@@ -1,0 +1,6 @@
+
+In einigen Raeumen wurde ein inherit auf std_chaos gemacht. 
+Falls es zu Bugs kommen sollte, reicht es, dass entsprechende _old.c - File 
+umzukopieren.
+
+

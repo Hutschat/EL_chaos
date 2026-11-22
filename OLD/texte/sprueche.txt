@@ -1,0 +1,140 @@
+
+    ___________________________________________________________________
+   / \                                                                  \
+  | 0 |                    DIE SPRUECHE DES CHAOS                        |
+   \_/                     ----------------------                        |
+     |                                                                   |
+     |  Den Kriegern des Chaos stehen neben den Daemonen noch viele      |
+     | andere Sprueche zur Verfuegung, dank derer sie sich gut schuetzen |
+     | und verteidigen koennen. Die meisten Sprueche stehen in           |
+     | unmittelbarem Zusammenhang zur Chaosruestung, ohne die ein Chaot  |
+     | eigentlich gar kein richtiger Chaot ist und demzufolge auch viele |
+     | Sprueche gar nicht anwenden kann.                                 |
+     |                                                                   |
+     | Fuer alle Sprueche und Zauber gilt: Misslingt er, so ist es immer |
+     | moeglich, dass die beabsichtigte Wirkung auf einen selber zurueck-|
+     | schlaegt und man echte Probleme bekommt.                          |
+     |                                                                   |
+     | Folgende Sprueche koennen erlernt und angewandt werden:           |
+     |                                                                   |
+     | Nachtsicht :    Ab Gildenstufe 1  (KPs: 10)                       |
+     | Dunkelheit :    Ab Gildenstufe 2  (KPs: 10)                       |
+     | Chaosruestung : Ab Gildenstufe 3  (KPs: 95)                       |
+     | Kontrolle :     Ab Gildenstufe 3  (KPs: 20)                       |
+     | Bannzauber :    Ab Gildenstufe 4  (KPs: 10)                       |
+     | Schutz :        Ab Gildenstufe 4  (KPs: 25)                       |
+     | Chaosball :     Ab Gildenstufe 5  (KPs: 20)                       |
+     | Chaosschaden :  Ab Gildenstufe 6  (KPs: 20)                       |
+     | Verbanne :      Ab Gildenstufe 7  (KPs: 30)                       |
+     | Finsternis :    Ab Gildenstufe 8  (KPs: 100)                      |
+     | Binde :         Ab Gildenstufe 9  (KPs: 40)                       |
+     | Chaoskontrolle: Ab Gildenstufe 11 (KPs: 30)                       |
+     |                                                                   |
+     | Sprueche und Daemonen lernt man bei Kruuolq und Hutschat mit dem  |
+     | Befehl <lerne spruch> und <lerne daemon>.                         |
+     |                                                                   |
+     |                     x-x-x-x-x-x-x-x-x-x-x                         |
+     |                                                                   |
+     | Nachtsicht:                                                       |
+     | Die Wirkung dieses Spruches sollte eigentlich jedem klar sein,    |
+     | der schonmal in einer dunklen Hoehle oder aehnlichem sass und     |
+     | dankbar fuer die Moeglichkeit war, seine Augen magisch zu         |
+     | veraendern. Nach Abklingen der Nachtsicht sind die Augen fuer     |
+     | eine gewisse Zeit nachtblind, die Zeit jedoch verkuerzt sich je   |
+     | besser man den Spruch beherrscht und je hoeher der Gildenlevel    |
+     | ist.                                                              |
+     |                                                                   |
+     | Dunkelheit:                                                       |
+     | Verdunkelt den Raum in dem man sich befindet fuer kurze Zeit.     |
+     | Abhaengig vom Gilden-Level kann der Raum auch ueber eine einfache |
+     | Dunkelheit hinaus verdunkelt werden. Besonders sinnvoll ist       |
+     | dieser Zauber beim Kampf gegen Monster, die im Zeichen des Lichts |
+     | stehen und in der Dunkelheit verwundbarer sind. Wie verbloedet    |
+     | einem Krieger des Chaos diese Vorstellung auch vorkommen mag,     |
+     | sollte er nicht zoegern, dies auszunutzen ;).                     |
+     |                                                                   |
+     | Chaosruestung:                                                    |
+     | Die Chaosruestung ist wohl das wichtigste und maechtigste Werk-   |
+     | zeug des Boesen, das einem Krieger des Chaos zur Verfuegung       |
+     | steht. Erst mit ihr sind die meisten Sprueche ueberhaupt          |
+     | durchzufuehren.                                                   |
+     | Man beschwoert einen Daemonen in seine Haut, die dadurch viel     |
+     | widerstandsfaehiger wird und auch noch besondere Eigenschaften    |
+     | besitzen kann. Die Chaosruestung ist so umfassend, dass an        |
+     | anderer Stelle ausfuehrlicher darauf eingegangen wird.            |
+     |                                                                   |
+     | Kontrolle:                                                        |
+     | Dieser Spruch dient der Kontrolle des Chaosdaemonen, den man      |
+     | durch die Chaosruestung in seine Haut beschworen hat, sollte      |
+     | dieser auf die Idee kommen, sich zu befreien.                     |
+     |                                                                   |
+     | Bannzauber:                                                       |
+     | Verbessert den Bannkreis, der fuer die Beschwoerung hoeherer      |
+     | Daemonen aeusserst wichtig ist. Im Prinzip verringert der Spruch  |
+     | die Wahrscheinlichkeit, dass der Daemon aggressiv wird, oder      |
+     | seine Aufgaben falsch ausfuehrt.                                  |
+     |                                                                   |
+     | Schutz:                                                           |
+     | Dieser Spruch ist aeusserst sinnvoll fuer einen Krieger des Chaos |
+     | bei der Verbreitung des Boesen im MorgenGrauen und der Heim-      |
+     | suchung ekelhaft guter Wesen. Vor dem Kampf angewandt             |
+     | verstaerkt er den Schutz der Chaosruestung fuer eine gewisse      |
+     | Zeit.                                                             |
+     |                                                                   |
+     | Chaosball:                                                        |
+     | Der Chaosball besteht aus purem Chaos und macht so immer          |
+     | unterschiedlichen Schaden. Der Spruch wird mit steigendem Level   |
+     | immer besser. In Verbindung mit dem Spruch Chaosschaden kann man  |
+     | den Schadenstyp der naechsten Chaosbaelle bestimmen. Der          |
+     | Chaosball wird auf den Koerper des Feindes geworfen. Man braucht  |
+     | keine speziellen Zutaten dafuer. Sei klug bei der Wahl deiner     |
+     | Waffe wenn Du einen bestimmten Chaosschaden waehlst.              |
+     |                                                                   |
+     | Chaosschaden:                                                     |
+     | Bestimmt den Schadenstyp der naechsten Chaosbaelle. Selbst diese  |
+     | Bestimmung ist nicht sehr zuverlaessig und so kann immer mal      |
+     | wieder ein falscher Schadenstyp auftreten. Sehr sinnvoll ist      |
+     | dieser Spruch beim Kampf gegen Monster, deren Empfindlichkeiten   |
+     | bekannt sind. Zur Zeit gibt es folgende Schadenstypen:            |
+     |                                                                   |
+     |          Feuer              Eis                  Sturm            |
+     |          Magie              Krach                Wasser           |
+     |          Blitz              Pfeil                Messer           |
+     |          Felsen             Boese                Saeure           |
+     |          Terror             Gift                 Peitsche         |
+     |          Explosion          Quetschen            Widerhaken       |
+     |                                                                   |
+     | Verbanne:                                                         |
+     | Die Bedeutung dieses Zaubers sollte auch bekannt sein, wem        |
+     | die Beschwoerung eines Daemonen schonmal missglueckt ist. Mit     |
+     | verbanne <daemon> schickt man den Daemon wieder in seine          |
+     | Dimension zurueck, aber Vorsicht, sollte der Spruch misslingen    |
+     | darf man sich nicht wundern, wenn dem Daemonen dies nicht         |
+     | gefaellt und er entsprechend reagiert.                            |
+     |                                                                   |
+     | Finsternis:                                                       |
+     | Die Wolke der Finsternis ist ein sehr maechtiger Zauber. Man      |
+     | huellt den Gegner in eine Wolke der absoluten Finsternis, sodass  |
+     | er fuer eine gewisse Zeit nicht kaempfen kann und nutzt diese     |
+     | selber, um ihm den Rest zu geben ;).                              |
+     | Bei Misslingen kann natuerlich die beabsichtigte Wirkung auf      |
+     | einen selbst zurueckschlagen.                                     |
+     |                                                                   |
+     | Binde:                                                            |
+     | Beschworene Daemonen koennen mit diesem Spruch eingeschuechtert   |
+     | werden mit der Folge, dass sie dem Beschwoerer laengere Zeit      |
+     | folgen. Abhaengig vom Gildenlevel und dem Koennen des Spruches    |
+     | kann dies ganz kurz, etwas, einige Zeit, laengere Zeit, eine sehr |
+     | lange Zeit und eine ueberaus lange Zeit sein.                     |
+     |                                                                   |
+     | Chaoskontrolle:                                                   |
+     | Dieser Spruch ist wohl einer der maechtigsten, die den Kriegern   |
+     | des Chaos zur Verfuegung stehen.                                  |
+     | Mit <chaoskontrolle schaden1 und schaden2> koennen mechanische    |
+     | Chaosschaeden mit den uebrigen kombiniert werden. Den Wert dieses |
+    _| Zaubers wisst hier hoffentlich zu schaetzen.                      |
+   / \                                                                   |
+  | / |                                                                  |
+   \_/__________________________________________________________________/
+
+

@@ -1,0 +1,85 @@
+    ___________________________________________________________________
+   / \                                                                  \
+  | 0 |                        DAS PENTAGRAMM                            |
+   \_/                         --------------                            |
+     |                .... und was so noch dazu gehoert                  |
+     |                                                                   |
+     |                                                                   |
+     | Als Krieger des Chaos hat man die unwiederbringliche Moeglichkeit |
+     | und Pflicht, diese schnoede Welt mit Daemonen aus einer anderen   |
+     | Dimension zu bevoelkern.                                          |
+     | Das dies nicht so ohneweiteres geht wird wohl jeder verstehen.    |
+     | So eine Beschwoerung eines Daemons will gut vorbereitet und       |
+     | gruendlich durchgefuehrt werden. Dies ist fuer alle Beteiligten   |
+     | und vor allem fuer den Beschwoerer so gut wie eine Lebens-        |
+     | Versicherung.                                                     |
+     |                                                                   |
+     | Es sind schon mehr als genug hoffnungsvolle Chaoten durch miss-   |
+     | glueckte Beschwoerungen und die daraufhin erscheinenden Daemonen  |
+     | ums Leben gekommen.                                               |
+     |                                                                   |
+     | Nun aber zum Wesen des Pentagramms.                               |
+     | Ein Pentagramm ist eigentlich nichts weiteres als ein regel-      |
+     | maessiges Sternfuenfeck, dass durch die Verbindung seiner Diago-  |
+     | nalen entsteht. Aber durch die Macht des Chaos kann daraus ein    |
+     | wahrhaft unheiliges Instrument werden.                            |
+     | Fuer kleinere Mitglieder unserer Reihen sollte zum Zeichnen eines |
+     | solchen einfache Kreide ausreichen, da die zu beschwoerenden      |
+     | Daemonen noch nicht allzu maechtig sind.                          |
+     | Zuallererst wird eine schoene Stelle fuer das Pentagramm gesucht. |
+     | Besonders gut eignen sich unheilige Orte, an einigen Stellen in   |
+     | dieser Welt koennen keine Pentagramme gezeichnet werden. Die      |
+     | verantwortlichen Magier haben wohl zuviel Angst um ihre Leben.    |
+     |                                                                   |
+     | Dies geht mit <zeichne pentagramm mit 'zutat'>.                   |
+     |                                                                   | 
+     | Wurde erfolgreich ein Pentagramm gezeichnet, so muss darum noch   |
+     | ein Bannkreis gemalt werden. Dieser soll verhindern, dass der     |
+     | Daemon seinen Beschwoerer anfaellt, vorzeitig wieder verschwindet |
+     | oder nicht den Befehlen gehorcht. Wie gut ein Bannkreis ist,      |
+     | haengt von den Zutaten ab und von dem Bannzauber, den man an-     |
+     | schliessend darauf spricht.                                       |
+     |                                                                   |
+     | Das wird mit <zeichne bannkreis mit 'zutat'> gemacht.             |
+     |                                                                   |
+     | Der Bannzauber wird auf das fertige Pentagramm gesprochen. Er     |
+     | verbessert den Schutz des Bannkreises, wenn er gut gelingt.       |
+     | Sollte er voellig misslingen, dann wischt man am besten den Bann- |
+     | kreis weg und zeichnet einen neuen.                               |
+     |                                                                   |
+     | Dies geht einzeln oder auch auf einmal. Auf die Syntax wird jetzt |
+     | nicht genauer eingegangen, da die Krieger des Chaos im            |
+     | Allgemeinen ja nicht auf den Kopf gefallen sind.                  |
+     |                                                                   |
+     | Wurden diese drei grundlegenden Dinge erfolgreich erledigt, kann  |
+     | der eigentliche Beschwoerungszauberspruch gesprochen werden.      |
+     | Hierbei wird angegeben, was fuer einen Daemonen man beschwoeren   |
+     | will.                                                             |
+     | Es gibt allerdings keine Garantie dafuer, dass auch wirklich der  |
+     | gewuenschte Daemon erscheint. Die Maechte des Boesen sind unvor-  |
+     | hersehbar, auch fuer so hartgesottene Krieger wie die des Chaos.  |
+     |                                                                   |
+     | Kommt ein falscher Daemon, so sinkt die Wahrscheinlichkeit, dass  |
+     | der Bannzauber schuetzt. Soll heissen, dass sich der Daemon gegen |
+     | seinen Beschwoerer richtet und diesen angreift. Dies gilt         |
+     | insbesondere, wenn sehr maechtige Daemonen beschworen werden.     |
+     |                                                                   |
+     | Wenn allerdings die Beschwoerungszeremonie geklappt hat, ist man  |
+     | nun in der Lage, den beschworenen Daemonen verschiedenste Hand-   |
+     | lungen ausfuehren zu lassen. Je maechtiger, und das heisst auch   |
+     | schwieriger, ein Daemon ist, desto maechtiger natuerlich auch die |
+     | Handlungen die er ausfuehren kann.                                |
+     | Diese Handlungen gehen vom einfachen Identifizieren und Ein-      |
+     | schaetzen von Objekten und Gegnern bis hin zu kampfunterstuetzen- |
+     | den Metzel-Daemonen, deren Blutgier die seiner Beschwoerer meist  |
+     | um einiges uebertrifft.                                           |
+     |                                                                   |
+     | Um einen beschworenen Daemonen loszuwerden, reicht es nicht aus,  |
+     | das Pentagramm weg zu wischen, da sich dies ohnehin in den        |
+     | meisten Faellen von selbst wieder aufloest. Nein, der Daemon      |
+     | muss verbannt oder weggeschickt werden.                           |
+     | Der Verbanne-Spruch wird an anderer Stelle ausfuehrlicher be-     |
+    _| handelt, hier geht es um Pentagramme.                             |
+   / \                                                                   |
+  | / |                                                                  |
+   \_/__________________________________________________________________/

@@ -1,0 +1,104 @@
+achtarch
+
+ "Hmm, Drachensabber kann man nur an einer einzigen Stelle im "
+  "Efferdland bekommen, naemlich beim Nagadrachen.","sagt: ");
+
+   "Geruechten zufolge soll es in der Galerie einen Zugang zu ihm "
+  "geben.","fluestert: 
+
+  AddInfo(({"daemonenschleim"}),
+  "Das spucken die Schwarzwasserdaemonen aus, wenn man sie genug "
+  "reizt.","kichert: ");
+
+----------------------------------
+
+  AddInfo(({"waberblasenglut","vieh"}),
+  "Die Waberblase ist so ein ziemlich heisses Vieh im Zugangsbereich "
+  "der neuen Feuerebene...","sagt: ");
+(erstmal steichen)
+---------------------
+  AddInfo(({"wasserunwesenaugen","augen"}),
+  "Die Augen des Wasserunwesens sind eigentlich keine Komponente "
+  "zum Zeichnen eines Pentagramms oder Bannkreises, sondern zum "
+  "nachtraeglichen Verstaerken ebendieser.","sagt: ");
+
+  AddInfo(({"wasserunwesen"}),
+   "Ebenso wie die Dunkeldaemonen beim Daemonendrachen zu "
+   "finden.","sagt: ");
+-----------------------
+  AddInfo(({"chaosfarben","chaosfarbe","farben","farbe"}),
+  "Die Chaosfarben... Es gibt viele unterschiedliche davon... "
+  "Jedoch sind sie nicht alle gleichermassen gut geeignet fuer unsere "
+  "daemonischen Pentagramme und Bannkreise. Die meisten hat man jedoch "
+  "im drakonischen Gebiet gesichtet, wie mir vom Geist eines kuerzlich "
+  "dort verstorbenen Chaoskriegers berichtet wurde.","sagt: ");
+
+  AddInfo(({"gebiet","drakonier"}),
+  "Das Gebiet der Drakonier sollte man vorsichtig anschauen...","sagt: ");
+(zu den draks packen)
+----------------------
+
+   AddInfo(({"mittelfinger","finger","kerzen","schwarze kerzen"}),
+  "Zardoz' Mittelfinger und die schwarzen Kerzen... Zuletzt wurden "
+  "diese Komponenten in einer seltsamen Paralellweltdimension nahe "
+  "der Weissfroesche gesichtet... Doch es heisst ein gefaehrliches "
+  "Tier bewacht sie!","sagt: ");
+
+(in den Hypercube packen)
+
+-----------------------------
+
+  AddInfo(({"luftwirbel"}),
+   "Chaotische Luftwirbel... Man fraegt sich, wie man so etwas "
+   "ueberhaupt nehmen kann... Jedoch ist es durchaus moeglich, und "
+   "derjenige der es schafft, darf sich gluecklich schaetzen, eine "
+   "wirklich gute Chaoskomponente zu besitzen. Doch die Gefahren, "
+   "die am Chaosberg, dem Fundort dieser Luftwirbel auf einen warten, "
+   "der nahe des Neskaja-Passes liegt, sind nicht zu "
+   "unterschaetzen!","sagt: ");
+
+( in die Eiszinne packen, ebene 1)
+---------------------------
+  AddInfo(({"stufenpunktbruchstueck","bruchstueck","stufenpunkt"}),
+   "Das Bruchstueck eines Stufenpunkts? Nun, das hoert sich wie Du "
+   "sicher auch schon denkst, ziemlich merkwuerdig an :) Solch eine "
+   "seltsame, jedoch SEHR maechtige Komponente findet man nur an einem "
+   "Ort von aeusserst konzentrierter Magie, der angeblich eine Insel "
+   "sein soll.","sagt: ");
+
+  AddInfo(({"ort","magie","insel"}),
+   "Eine Insel aus konzentrierter Magie soll es sein.","sagt: ");
+(Todo!)
+
+  AddInfo(({"ghoulschleim"}),
+  "Ghoulschleim, kommt wie man schon hoert, von Ghouls. Und eben diese "
+  "Ghouls findet man nur in den duestersten Winkeln der Katakomben vom "
+  "'Verlorenen Land'. Dahin sollten sich jedoch wirklich nur die "
+  "tapfersten Leute trauen, und ob es sich fuer diese minderwertige "
+  "Komponente ueberhaupt lohnt, sollte man sich sowieso "
+  "fragen!","sagt: ");
+
+  AddInfo(({"ghouls"}),
+   "Man findet sie hauptsaechlich in den Katakomben des Verlorenen "
+   "Landes.","sagt: ");
+
+  AddInfo(({"katakomben","verlorenes land"}),
+   "Wenn du diese besuchen willst, so geh am besten mit mehreren "
+   "Leuten dahin...","sagt: ");
+
+  AddInfo(({"schleim"}),
+   "Welchen Schleim meinst du ? Daemonen- oder Ghoulschleim?","fragt: ");
+
+(Katakomben im Gebirge)
+---------------------------------------
+ AddInfo(({"saeure-ynagzet","saeure-ynagzet-geruch","geruch"}),
+  "Den Saeure-Ynagzet findet man in der Daemonen-Dimension.","sagt: ");
+
+  AddInfo(({"daemonendimension"}),
+  "Auch wieder was fuer mehrere Leute.","grinst: ");
+
+  AddInfo(({"eigenschaft"}),
+  "Das solltest Du selbst herausfinden.","grinst: ");
+
+(TODO)
+-----------------------------------------------------+

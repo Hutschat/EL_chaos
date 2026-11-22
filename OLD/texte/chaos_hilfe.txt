@@ -1,0 +1,196 @@
+
+Die Gilde "Krieger des Chaos"
+
+Die Krieger des Chaos sind eine Gilde, die sich darauf versteht das 
+Chaos zu manipulieren. Dabei ist Chaos als ein ungeformtes Element 
+zu betrachten, was alle Elemente beinhaltet. Deshalb ist auch der 
+Schadenstyp z.B. eines Chaosballs zufaellig.
+Die Krieger des Chaos verstehen sich zusaetzlich in der Beherrschung
+und Beschwoerung von Daemonen (was, schon wieder Daemonen?... :-) ).
+Die Gilde verfolgt boese und gemeine Absichten, sie ist somit in der
+Bevoelkerung nicht gerade angesehen. (Wer hat schon gerne Leute als
+Nachbarn, bei denen Daemonen ein- und ausgehen).
+Das Beschwoeren von Daemonen ist natuerlich nicht einfach und auch
+nicht ungefaehrlich, denn es gelingt den Daemonen immer wieder sich
+dem Bann zu entziehen und so ihren Beschwoerer anzugreifen.
+Man kann Daemonen beschwoeren um Informationen von ihnen zu erhalten
+( ersetzt schaetz und identifiziere), oder man kann sie fuer kurze
+Zeit dazu bringen, einem zu folgen und im Kampf zu unterstuetzen,
+wobei der Daemon natuerlich keine Gelegenheit auslaesst sich der
+fuer ihn nicht gerade angenehmen Bannung zu entziehen.
+Die Gilde wird nichts fuer Spieler, die jedem Erfahrungpunkt 
+hinterher trauern, denn die Beherrschung des Chaos und der Daemonen
+ist extrem gefaehrlich und fuehrt leicht ins Verderben.
+
+Es wird 11 Gilden-Stufen geben, die von den Stats und dem Level des Gilden-
+Mitgliedes abhaengen. Zusaetzlich wird es fuer hoehere Gilden-Level
+Aufgaben geben, die es zu bewaeltigen gilt, ausserdem muss man die 
+Sprueche der niedrigeren Stufen bis zu einem gewissen Grade beherrschen.
+Von den Gildenstufen haengt wiederum ab, welche Zaubersprueche man 
+benutzen kann. 
+
+
+Die Zaubersprueche:
+
+Chaosball:
+Der Chaosball besteht aus Chaos und macht so immer unterschiedlichen
+Schaden. Der Spruch wird mit steigendem Level immer besser, ist aber
+erst mit Level 20 so gut wie ein Feuerball. Dafuer kann man mit
+Chaosschaden den Schadenstyp des naechsten Chaosball bestimmen.
+
+Chaosschaden:
+Bestimmt den Schadenstyp des naechsten Chaosballs. Selbst diese 
+Bestimmung ist nicht sehr zuverlaessig und so kann immer mal wieder
+ein falscher Schadenstyp auftreten...
+
+Dunkelheit:
+Verdunkelt den Raum fuer kurze Zeit.
+
+Bannzauber:
+Verbessert den Bannkreis, der fuer die Beschwoerung hoeherer Daemonen
+aeusserst wichtig ist. Im Prinzip verringert der Spruch die 
+Wahrscheinlichkeit, dass der
+Daemon aggressiv wird, oder seine Aufgaben falsch ausfuehrt (z.B. nicht
+dem Caster folgt).
+
+Wolke der Finsternis:
+Man erschafft eine Wolke der Finsternis um seinen Gegner, der fuer
+kurze Zeit nicht kaempfen kann. Mit anderen Worten: Setzt
+P_DISABLE_ATTACK wie die Parasteine aus der SSP. Gelingt der Spruch 
+nicht, so kann es passieren, dass man sich selber kampfunfaehig macht :-)
+
+Chaosruestung:
+Man bannt einen Daemonen in seine Haut ein. Je maechtiger der Daemon
+umso besser die Ruestung aber auch umso gefaehrlicher der Spruch,
+denn sollte irgendetwas falsch laufen, so hat man keine Kontrolle
+ueber den Daemon und er zwingt einen zu ungewollten Handlungen.
+Selbst wenn alles gelingt verliert man Lebenspunkte und zufaellige
+Ereignisse treten auf. So laeuft der Caster zufaellig durch die Gegend,
+greift willkuerlich Monster an, wird Blind, verwandelt sich in einen
+Frosch, wird unfaehig zu kaempfen, wird vergiftet, zieht seine Kleidung
+aus und/oder wirft alle Sachen weg. Dies passiert solange, bis der
+Daemon sich befreit hat und den Caster angreift, oder dem Caster der
+Kontrolle-Spruch geglueckt ist (den man aber nur alle 20 Sekunden
+versuchen kann). Diese Gefahren wiederholen sich in regelmaessigen
+Abstaenden und so kann es vorkommen, dass man an dieser Chaosruestung
+stirbt. Dafuer sollte sie natuerlich recht gut sein... 
+Wem diese Gefahren zu hoch sind, der sollte besser aus der Gilde
+austreten, denn die Chaosruestung gehoert einfach zum Auftreten
+der Krieger des Chaos dazu. Um das den Spielern deutlich zu machen
+koennen sie ohne Ruestung keine Angriffzaubersprueche anwenden
+(Chaosball und Finsternis). :-)
+Die Ruestung wiegt nichts und hat eine AC von 29 + guild_level. 
+Den Kontrolle-Spruch muss man jeden Reset wiederholen.
+
+Kontrolle:
+Mit diesem Spruch kann man den Daemon der Chaosruestung kontrollieren,
+sollte er versuchen sich aus der Haut zu befreien.
+
+Beschwoerung von Daemonen:
+Dies ist besonders kompliziert. Zunaechst muss man ein Pentagramm zeichnen.
+Man kann dazu verschiedene Sachen benutzen, von einfacher Kreide bis
+zum Blut eines Drachen. Je nachdem wird das Pentagramm maechtiger. Darum
+herum zeichnet man einen Bannkreis. Zusaetzlich kann man noch z.B. Kerzen 
+aufstellen. Es werden daraus zwei Faktoren berechnet, in denen auch noch
+der Skill fuer das Zeichnen von Pentagrammen eingeht. Dann wird der
+Bannkreis mit einem Zauber aktiviert, erst jetzt schuetzt er. Wie gut
+er schuetzt haengt davon ab, woraus der Bannkreis gemacht wurde,
+wie gut der Skill des Spielers ist und wie gut der Spruch geklappt hat.
+Nun kann man die eigentliche Beschwoerung versuchen. Man spricht den
+Beschwoerungszauberspruch wobei man angibt, was fuer einen Daemonen
+man beschwoeren will. Gelingt der Spruch, so heisst dies noch nicht, dass
+auch wirklich der gewuenschte Daemon erscheint. Dies haengt auch davon ab,
+wie gut das Pentagramm gezeichnet wurde. Kommt ein falscher Daemon,
+so sinkt die Wahrscheinlichkeit, dass der Bannzauber schuetzt. Dies gilt 
+besonders, wenn maechtigere Daemonen erscheinen als man eigentlich
+beschwoeren wollte. Sollte der Daemon jetzt noch nicht ueber einen
+hergefallen sein, so kann man ihn nun mit einem weiteren Zauberspruch
+dazu bringen, eine Handlung auszufuehren. Je maechtiger der Daemon,
+desto maechtiger die Handlung. Dafuer wird aber auch die Wahrscheinlichkeit
+groesser, dass sich der Daemon diesem Zauberspruch widersetzt.
+Selbst wenn wirklich alles wie vorgesehen funktioniert hat und der
+Daemon im Banne des Spielers steht, so ist nicht ausgeschlossen,
+dass der Daemon ploetzlich anders als erwartet reagiert.
+Beschwoert man nur einen kleinen Daemon um einen Gegenstand identifizieren
+zu lassen, so sind die Gefahren sehr gering. Will man aber einen
+Daemon als Kampfgefaehrten (wenn sowas denn erlaubt wird) haben, so kann 
+es ganz leicht passieren, dass der Daemon sich gegen den Spieler wendet 
+(vielleicht hilft er auch erst, bis der Spieler geschwaecht ist, um dann 
+erbarmungslos zuzuschlagen.) Es sollte also gerade bei unerfahrenen 
+Gildenmitgliedern haeufiger mal vorkommen, dass diese Opfer der Daemonen 
+werden und bei der Beschwoerung sterben oder zumindest nur knapp dem Tode 
+entkommen.
+
+
+Es gibt folgende Daemonen:
+
+Xoluni:   Ein winziges Irrlicht, das fuer Licht sorgt. Allerdings vertragen
+		  sie sich nicht untereinander und so koennen sich nie sehr viele
+		  Xoluni in einem Raum aufhalten ohne sich gegenseitig umzubringen.
+Intarbir: Ein Daemon, der Gegner abschaetzt. Ersetzt den "schaetz".
+Kruftur:  Dieser Daemon ist in der Lage Besonderheiten in Gegenstaenden
+		  zu erkennen. Ersetzt sozusagen den "identifiziere".
+Ombatis:  Ein fuerchterlicher Daemon, der mit seinem schauerlichen Geheul
+		  und Gebruell einen tierisch auf die Nerven gehen kann. Mit anderen
+		  Worten: Ein Nervmonster, dass man anderen Spielern anhaengen kann.
+Irkitis:  Ein Daemon, der einem folgt und mitkaempft. Er greift aber nur an
+	  und lenkt alle Schlaege auf die anderen enemies und den caster um,
+	  so dass er im Prinzip wie ein Schnellspruch wirkt. Allerdings nur
+          mit WC 150. Er kaempft bis zu 30 Schlaege lang.
+Harkuhu:  Daemon, der mit WC -200 angreift. Dafuer faengt er aber 
+	  1/20-guild_level Schlaege ab, der Rest wird auf die enemies 
+          des Gegners verteilt (meistens der Caster).
+Graiop:   Kaempft bis zu 50 Schlaege lang mit WC 150. Verteidigt 
+          1/10-guild_level/2 aller Schlaege
+Flaxtri:  Folgt ca. 6 Minuten und kaempft solange. Verteidigt mit
+	  1/8-level/2. WC 170.
+Tutszt:   Folgt bis zu 20 Minuten, und kaempft recht gut. Ist der beste 
+          Daemon, den nur Meister des Chaos beschwoeren koennen. Meister
+          wird man mit Stufe 27 und 1800 Abenteuerpunkten (gibt z.Z. ca. 8
+          Spieler, die diese Bedingungen erfuellen).
+Die Staerke der Daemonen ist noch nicht getestet und kann sich aendern, je
+nachdem ob die Gilde sonst zu stark oder zu schwach wird... wohl eher zu
+stark :-)
+
+
+Den Daemonen werden verschiedene Eigenschaften zugeordnet, die ihr
+Verhalten moeglichst vielseitig gestalten soll:
+- Wahrscheinlichkeit, dass ein anderer Daemon erscheint (WD)
+- Wahrscheinlichkeit, dass der Daemon vorzeitig verschwindet (DD)
+- Wert fuer die Aggressivitaet des Daemonen (DA)
+- Wert, der festlegt, wie genau der Daemon den Befehlen gehorcht (DF)
+
+Weitere Werte sind:
+- Die Zeit, die der Daemon dem Beschwoerer folgt.
+- Eine Variable, die festlegt, ob der Daemon beim Reset automatisch
+  verschwindet (normalerweise ist dies der Fall um die Anzahl der 
+  Daemonen nicht zu gross werden zu lassen, wenn sich z.B. der 
+  Beschwoerer ausgeloggt hat).
+- Ein Wert, der die Anzahl der Attacken des Daemons festlegt. So 
+  kann man entweder Daemonen beschwoeren, die z.B. einem 5 Minuten
+  folgen, oder Daemonen, die erst nach der 50 Attacke in einem Kampf
+  verschwinden.
+- Ein Wert fuer die defensive Leistung des Daemons. Der Daemon lenkt
+  so 1/Wert Angriffe gegen ihn auf einen andern Feind des Gegners um.
+
+Diese Werte gehen zunaechst in den Zauberspruch zur Beschwoerung des 
+Daemonen ein. Sie werden mit der Qualitaet des Pentagramms und des
+Bannkreises + Zutaten und dem Wert von SpellSuccess verrechnet. Daraus
+wird dann die Grundeinstellung des Daemonen festgelegt und direkt beim
+Clonen uebertragen und koennen folgende Aktionen zur Folge haben:
+- Der Daemon greift unverzueglich seinen Beschwoerer an.
+- Der Daemon greift mit DA % alle Spieler im Raum an, wird also aggressiv.
+- Der Daemon verschwindet vorzeitig. Also kurze Zeit nach Beschwoerung, 
+  egal ob er seinen Auftrag ausgefuehrt hat...
+- Der Daemon greift waehrend eines Kampfes einen beliebigen Feind
+  seines Gegners an.
+- Der Daemon hoert auf mit dem Gegner zu kaempfen und greift dafuer
+  seinen Beschwoerer an, aber erst, wenn dieser nur noch 1/3 seiner
+  Lebenspunkte besitzt.
+- Zusaetzlich koennen diese Werte auch noch fuer andere Aktionen ver-
+  wendet werden, z.B. kann es vorkommen, dass Intarbir den Gegner
+  voellig falsch abschaetzt, oder Ombatis nicht das Opfer sondern
+  seinen Beschwoerer nervt.
+
+
+Die Gilde ist uebrigens schon fast fertig :-)

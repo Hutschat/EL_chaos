@@ -1,0 +1,136 @@
+    ___________________________________________________________________
+   / \                                                                  \
+  | 0 |                        DIE DAEMONEN                              |
+   \_/                         ------------                              |
+     |                                                                   |
+     |    Die Krieger des Chaos haben die einzigartige Moeglichkeit,     |
+     |   Daemonen aus einer anderen Dimension zu holen und diese fuer    |
+     |   bestimmte Zwecke einzusetzen. Grundlage einer jeden Daemonen-   |
+     |   beschwoerung ist das Zeichnen eines Pentagrammes, Bannkreises   |
+     |   und das Sprechen eines Bannzaubers.                             |
+     |   Je besser die verwendeten Zuaten sind, desto mehr wird der      |
+     |   einem auch erzaehlen koennen.                                   |
+     |                                                                   |
+     |   Folgende Daemonen koennen beschwoert werden:                    |
+     |                                                                   |
+     |   Intarbir : Ab Gildenstufe 4  (KPs: 5)                           |
+     |   Kruftur  : Ab Gildenstufe 5  (KPs: 10)                          |
+     |   Ombatis  : Ab Gildenstufe 6  (KPs: 80)                          |
+     |   Bhuturih : Ab Gildenlevel 6  (KPs: 15)                          |
+     |   Irkitis  : Ab Gildenstufe 7  (KPs: 50)                          |
+     |   Tyoorthok: Ab Gildenstufe 7  (KPs: 20)                          |
+     |   Harkuhu  : Ab Gildenstufe 8  (KPs: 50)                          |
+     |   Graiop   : Ab Gildenstufe 9  (KPs: 90)                          |
+     |   Flaxtri  : Ab Gildenstufe 10 (KPs: 120)                         |
+     |   Tutszt   : Ab Gildenstufe 11 (KPs: 140)                         |
+     |   Yrintri  : Nur fuer den Erzmeister (KPs: 180)                   |
+     |                                                                   |
+     |                                                                   |
+     |   Natuerlich haben all diese Daemonen unterschiedliche Eigen-     |
+     |   schaften, die im Folgenden erklaert werden.                     |
+     |                                                                   |
+     | Sprueche und Daemonen lernt man bei Kruuolq und Hutschat mit dem  |
+     | Befehl <lerne spruch> und <lerne daemon>.                         |
+     |                                                                   |
+     |                     x-x-x-x-x-x-x-x-x-x-x-x                       |
+     |                                                                   |
+     | Intarbir:                                                         |
+     | Der Daemon Intarbir hat ein besonderes Gespuer fuer die Kraft     |
+     | und Kampffaehigkeit von Monstern. Er kann nuetzliche              |
+     | Informationen ueber einen Gegner geben.                           |
+     | Syntax: 'befehle intarbir schaetze <monster> ein'.                |
+     |                                                                   |
+     | Kruftur:                                                          |
+     | Kruftur ist der Denkdaemon. Er kann bei Gegenstaenden, Waffen     |
+     | oder Ruestungen magische Faehigkeiten erkennen. Man muss ihm      |
+     | nur den Gegenstand geben. Er kann natuerlich auch Monster         |
+     | identifizieren. Mit steigendem Gilden-Level ist es ihm auch       |
+     | moeglich, Gewicht und Wert von Objekten einzuschaetzen oder zu    |
+     | sagen, ob das entsprechende Objekt verflucht oder beschaedigt ist.|
+     | Syntax: 'befehle kruftur identifiziere <name>'.                   |
+     |                                                                   |
+     | Ombatis:                                                          |
+     | Der fette Daemon Ombatis ist eine ganz schlimme Nervensaege. Die  |
+     | Krieger des Chaos benutzen ihn, um ihre Feinde um Sinn und        |
+     | Verstand zu bringen. Man kann ihn einem anderen Spieler hinterher |
+     | schicken, er wird ihn dann anbruellen, belabern und belaestigen.  |
+     | Syntax: 'befehle ombatis folge <name>'.                           |
+     |                                                                   |
+     | Bhuturih:                                                         |
+     | Diese suesse, kleine Daemonin ist sehr sehr neugierig und kann    |
+     | bestimmt sehr nuetzlich sein, um jemanden zu finden.              |
+     | Syntax: 'befehle bhuturih finde <spieler>'.                       |
+     | Selbstverstaendlich geschieht das auf diskrete Art und Weise, der |
+     | zu findende Spieler bekommt davon nichts mit. Angemerkt sei noch, |
+     | dass diese suesse Daemonin gern Geschenke bekommt und ohne so     |
+     | gut wie keinen Finger ruehrt.                                     |
+     |                                                                   |
+     | Irkitis:                                                          |
+     | Der wilde Halbdunkeldaemon mit dem Namen Irkitis ist ein flinker  |
+     | und hinterhaeltiger Kaempfer. Er ist so schnell, dass kaum ein    |
+     | Gegner ihn zu treffen vermag.                                     |
+     |                                                                   |
+     | Tyoorthok:                                                        |
+     | Dieser alte und ergraute Daemon ist die Weisheit des Chaos. Er    |
+     | hilft den Kriegern des Chaos etwas mehr ueber ihren eigenen       |
+     | Koerper, oder den eines Freundes, und dessen Aufnahmefaehigkeit   |
+     | zu erfahren. Auch kann er fiese und gemeine Krankheiten heilen    |
+     | (dies jedoch nich ohne Gegenleistung) und ist somit von immensem  |
+     | Nutzen fuer die Kampfkraft des Chaos.                             |
+     | Syntax: 'befehle tyoorthok untersuche <spieler>'.                 |
+     |                                                                   | 
+     | Harkuhu:                                                          |
+     | Der etwas seltsam aussehende Lichtdaemon ist zwar kein guter      |
+     | Kaempfer, aber er kann einiges Einstecken ehe er wieder           |
+     | verschwindet.                                                     |
+     |                                                                   |
+     | Graiop:                                                           |
+     | So heisst ein recht starker Feuerdaemon. Er ist ein ganz          |
+     | brauchbarer Kaempfer, der natuerlich aufgrund seiner Art im       |
+     | Dunkeln leuchtet.                                                 |
+     |                                                                   |
+     | Flaxtri:                                                          |
+     | Das ist ein aeusserst gefaehrlicher Saeuredaemon, dessen aetzende |
+     | Schleimhaut schwere Verletzungen bei Beruehrung hervorruft. Er    |
+     | ist ein ganz besonders wilder Kampfdaemon.                        |
+     |                                                                   |
+     | Tutszt:                                                           |
+     | Tutszt ist ein Blutdaemon was schon genug sagen sollte. Er ist    |
+     | wirklich sehr wild und gefaehrlich. Seine Blutgier ist ueberall   |
+     | gefuerchtet, deshalb duerfen ihn auch nur die allerbesten Krieger |
+     | des Chaos beschwoeren.                                            |
+     |                                                                   |
+     |                                                                   |
+     | Yrintri:                                                          |
+     | Werd Erzmeister! :)                                               |
+     |                        x-x-x-x-x-x-x-x-x                          |
+     |                                                                   |
+     | Man kann seinem Daemon verschiedene Sachen befehlen. Dies geht    |
+     | immer mit 'befehle <daemonenname> <befehl>.                       |
+     | Als Befehle stehen folgende Kommandos zur Verfuegung:             |
+     |                                                                   |
+     | folge, stop, folge leise, toete <name>, verschwinde, schweig,     |
+     | sprich, wirf <objekt> weg                                         |
+     | <objekt> kann dabei 'waffe', 'ruestungen' oder 'alles' sein       |
+     |                                                                   |
+     | Bei 'toete' greift der Kampfdaemon den Gegner an, man selbst      |
+     | aber auch!                                                        |
+     |                                                                   |
+     |                        x-x-x-x-x-x-x-x-x                          |
+     |                                                                   |
+     | Es gibt auch noch einige kleinere Daemonen die bei Misslingen     |
+     | einer Beschwoerung oder auch nur einfach mal so ihren Weg aus     |
+     | der Daemonendimension finden, um die Krieger des Chaos zu aergern.|
+     | Diese Daemonen sind im Allgemeinen recht einfach wieder los       |
+     | zu werden. Bei ihnen handelt es sich insbesondere um:             |
+     |                                                                   |
+     | Uebmatu, Hothrog, Daedhel, Chochos, Rythoth und Anthukt           |
+     |                                                                   |
+     | In letzter Zeit wurde auch vermehrt ueber den Schutz der Daemonen |
+     | nachgedacht und man munkelt, dass es jetzt Ruestungen und sogar   |
+     | Waffen fuer sie geben soll. Wo diese allerdings zu finden sind,   |
+     | konnte nicht herausgefunden werden.                               |
+    _| Zum Schluss sei noch angemerkt, dass Daemonen Uebelwein sehr      |
+   / \  gerne moegen.                                                    |
+  | / |                                                                  |
+   \_/__________________________________________________________________/

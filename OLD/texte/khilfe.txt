@@ -1,0 +1,28 @@
+
+    * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+    *                                                                     *
+    *   Diese Korkwand ist fuer Ideen bezueglich unserer Gilde gedacht.   *
+    *                                                                     *
+    * Da nicht immer alle Gilden-Magier zeitgleich eingeloggt sind und    *
+    * auch Mails an sie nicht optimal sind, koennen Spieler hier ihre     *
+    * Ideen notieren und an die Korkwand pinnen. So brauchen die Magier   *
+    * nur noch schauen was so dran steht. Da die Bibliothek nur von       *
+    * wahren Kriegern des Chaos betreten werden kann, ist auch Spionage   *
+    * unterbunden. Zudem kann man auch schauen, was fuer Ideen bereits    *
+    * vorgeschlagen wurden und man nicht alles doppelt oder dreifach      *
+    * erhaelt. Natuerlich koennen und duerfen hier auch andere Notizen    *
+    * geschrieben werden.                                                 *
+    *                                                                     * 
+    * Zur Zeit stehen folgende Kommandos zur Verfuegung:                  *
+    *                                                                     *
+    * <notier|notiere> <titel>: Erklaert sich wohl von selbst. Sie        * 
+    *                           beziehen sich immer nur auf Deine eigenen *
+    *                           Zettel.                                   *
+    *                                                                     *
+    * <lies|les|lese> notizen von <name>: Damit kannst Du die Notizen     *
+    *                                     eines anderen lesen.            *
+    *                                                                     *
+    * <liste>: Du bekommst eine Liste aller, die hier einen Zettel ge-    *
+    *          schrieben haben.                                           *
+    *                                                                     *
+    * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *

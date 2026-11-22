@@ -1,0 +1,192 @@
+Searching ./players/patryn/npc/zauberer
+basil.c:     explode(file_name(ob),"#")[0]=="/players/zardoz/gilde/obj/gstaub"){
+cfrosch.c:  clone_object(OBJ("skerze"))->move(ME, M_NOCHECK);   // dito.
+cfrosch.c:  clone_object(OBJ("skerze"))->move(ME, M_NOCHECK);   // dito.
+cfrosch.c:  clone_object(OBJ("zfinger"))->move(ME, M_NOCHECK);  // Fuer Pentagramm und Bannkreis
+jalla.c:  if(ob->id("gatsbyheimer wirbelwind") &&
+
+Searching ./players/schrumpfi/room
+polarstore.c: AddItem("/players/zardoz/gilde/obj/kreide", REFRESH_REMOVE);
+
+Searching ./players/zardoz/seher
+pwinz.c:  clone_object( "/players/zardoz/gilde/obj/strstaub")->move(this_object());
+
+// lass ich mal so drin, als nette erinnerung, hoehoe :)
+
+Searching ./d/ebene/koomi/katzja/mon
+mioua.c:#define CHAOS_BELOHNUNG	({"/gilden/files.chaos/obj/drablut", \
+mioua.c:			  "/gilden/files.chaos/obj/dschleim", \
+mioua.c:			  "/gilden/files.chaos/obj/khaut", \
+mioua.c:			  "/gilden/files.chaos/obj/kreide", \
+mioua.c:			  "/gilden/files.chaos/obj/skerze", \
+mioua.c:			  "/gilden/files.chaos/obj/sstaub", \
+mioua.c:			  "/gilden/files.chaos/obj/wauge" }) 
+mioua.c:			  "/d/wald/paracelsus/obj/bbstift", \
+mioua.c:			  "/d/wald/paracelsus/obj/sbstift", \
+
+Searching ./d/ebene/mon
+raeuber_chaot.c:  clone_object("/players/zardoz/gilde/obj/drablut")->move(ME);
+raeuber_chaot.c:  clone_object("/players/zardoz/gilde/obj/skerze")->move(ME);
+raeuber_chaot.c:  clone_object("/d/polar/mupfel/obj/skerze")->move(ME);
+muecke.c:	  "Es ist.... *Trommelwirbel* ...\n"+
+
+Searching ./d/ebene/room/PortVain
+b_store.c:  AddItem("/players/zardoz/gilde/obj/kreide",REFRESH_REMOVE);
+b_store.c:  AddItem("/players/zardoz/gilde/obj/kreide",REFRESH_REMOVE);
+store.c:  AddItem("/players/zardoz/gilde/obj/kreide",REFRESH_REMOVE);
+b_store.c:  AddItem("/players/zardoz/gilde/obj/sand",REFRESH_REMOVE);
+
+Searching ./d/ebene/zardoz/mon
+ddrache.c:    clone_object( "/players/zardoz/gilde/obj/dsabber")->move(environment());
+dwache3.c:    clone_object( "/players/zardoz/gilde/obj/dschleim")->move(environment());
+wwesen.c:clone_object( "/players/zardoz/gilde/obj/wauge")->move(this_object());
+wwesen2.c:	clone_object( "/players/zardoz/gilde/obj/wauge")->move(this_object());
+
+p_mon_drakonier.c:    MAKE(OBJ("sbstift"));
+
+Searching ./d/wald/paracelsus/obj
+
+bbstift.c:inherit "/players/zardoz/gilde/obj/std_krei";
+cfarbe.c:inherit "/players/zardoz/gilde/obj/std_krei";
+sbstift.c:inherit "/players/zardoz/gilde/obj/std_krei";
+
+
+Searching ./d/wald/paracelsus/tempel
+
+subb5.c:    AddItem( OBJ("cfarbe"),REFRESH_REMOVE);
+
+Searching ./d/wald/paracelsus/tmon
+
+drakpri2.c:    MAKE(OBJ("bbstift"));
+drakpris.c:    MAKE(OBJ("bbstift"));
+naga1.c:    MAKE(OBJ("cfarbe"));
+drakopri.c:        MAKE(OBJ("sbstift"));
+drakopri.c:        MAKE(OBJ("sbstift"));
+
+
+Searching ./d/gebirge/boing/sm/mon
+nazzat.c:   clone_object(OBJ("hassgeraeusch"))->move(this_object());
+waberblase.c:  SetProp(P_CORPSE, OBJ("waberglut"));
+
+Searching ./d/gebirge/boing/sm/obj
+hassgeraeusch.c:inherit "/players/zardoz/gilde/obj/std_krei";
+waberglut.c:inherit "/players/zardoz/gilde/obj/std_krei";
+
+
+Searching ./d/gebirge/paracelsus/dzwerge
+stadt_st.c:/* Fuer Chaoten: (Nicht suchen, Boing, das bbstift-File liegt im Wald ;) */
+stadt_st.c:    AddItem(OBJ("bbstift"),REFRESH_REMOVE);
+stadt_st.c:    AddItem(OBJ("bbstift"),REFRESH_REMOVE);
+
+
+Searching ./d/gebirge/room
+zstore.c:  AddItem("/players/zardoz/gilde/obj/kreide", REFRESH_REMOVE);
+zstore2.c:  AddItem("/players/zardoz/gilde/obj/kreide", REFRESH_REMOVE);
+
+Searching ./d/gebirge/wim/eliza/obj
+kerne.c:inherit CHAOS_GILDEN_OBJ("std_krei");
+
+Searching ./d/unterwelt/raeume
+laden.c:  AddFixedObject(OBJECT("kreide"));
+mine36.c:  AddItem(OBJECT("kreide"), REFRESH_DESTRUCT) ;
+speicher.c:  AddItem(OBJECT("kreide"), REFRESH_REMOVE) ;
+speicher.c:  AddItem(OBJECT("kreide"), REFRESH_REMOVE) ;
+speicher.c:  AddItem(OBJECT("kreide"), REFRESH_REMOVE) ;
+speicher.c:  AddItem(OBJECT("kreide"), REFRESH_REMOVE) ;
+
+
+Searching ./d/inseln/bierchen/minsel/obj
+kreide.c:    "@@kreide_anzahl@@."));
+kreide.c:  AddId(({"stuecke kreide","stueck","kreide"}));
+kreide_ewig.c:    "@@kreide_anzahl@@."));
+kreide_ewig.c:  AddId(({"stuecke kreide","stueck","kreide"}));
+kreide.c:inherit CHAOS_GILDEN_OBJ("std_krei");
+kreide_ewig.c:inherit CHAOS_GILDEN_OBJ("std_krei");
+stups_ewig.c:inherit CHAOS_GILDEN_OBJ("std_krei");
+
+Searching ./d/inseln/bierchen/minsel/mon
+steinscheisser.c:  clone_object(MOBJ("kreide_ewig"))->move(this_object());
+steinscheisser.c:  if(obj=present("\nchaos_gilden_kreide")){
+stups.c:    if(obj=!present("\nchaos_gilden_kreide")){
+steinscheisser.c:  clone_object(MOBJ("kreide_ewig"))->move(this_object());
+stups.c:      obj=clone_object(MOBJ("stups_ewig"));
+
+Searching ./d/inseln/elbyte/room
+wstore.c:  AddItem("/players/zardoz/gilde/obj/kreide", REFRESH_REMOVE);
+
+
+
+
+Searching ./d/inseln/toeter/room/wald
+store.c: //AddItem("/players/zardoz/gilde/obj/kreide", REFRESH_REMOVE);
+
+
+Searching ./d/polar/alle/room
+xmasstore.c:  AddItem( "/players/zardoz/gilde/obj/drablut", REFRESH_REMOVE);
+xmasstore.c:  AddItem( "/players/zardoz/gilde/obj/kreide", REFRESH_REMOVE);
+xmasstore.c:  AddItem( "/players/zardoz/gilde/obj/skerze", REFRESH_REMOVE);
+xmasstore.c:  AddItem( "/players/zardoz/gilde/obj/skerze", REFRESH_REMOVE);
+xmasstore.c:  AddItem( "/players/zardoz/gilde/obj/sstaub", REFRESH_REMOVE);
+
+Searching ./d/polar/alle/room/Moulokin
+mk_laden_store.c:  AddItem( "/gilden/files.chaos/obj/khaut", REFRESH_REMOVE );
+mk_kolonial_store.c:  AddItem( "/players/zardoz/gilde/obj/kmehl", REFRESH_REMOVE );
+mk_laden_store.c:  AddItem( "/gilden/files.chaos/obj/kreide", REFRESH_REMOVE );
+mk_kolonial_store.c:  AddItem( "/players/zardoz/gilde/obj/sand", REFRESH_REMOVE );
+
+Searching ./d/polar/zardoz/mon
+eiskoenig.c:  clone_object( "/players/zardoz/gilde/obj/ceis")->move(this_object());
+
+Searching ./d/polar/mupfel
+
+Searching ./d/polar/mupfel/npc
+cfrosch.c:  clone_object(OBJ("skerze"))->move(ME, M_NOCHECK);   // dito.
+cfrosch.c:  clone_object(OBJ("skerze"))->move(ME, M_NOCHECK);   // dito.
+cfrosch.c:  clone_object(OBJ("zfinger"))->move(ME, M_NOCHECK);  // Fuer Pentagramm und Bannkreis
+
+Searching ./d/polar/mupfel/obj
+zfinger.c:    "Egal, er ist guuuut, und er reicht noch fuer @@kreide_anzahl@@.\n");
+sand.c:// /d/polar/mupfel/obj/sand.c  Eine Handvoll Streusand
+sand.c:  SetProp(P_LONG, "Eine Handvoll Streusand, frisch aus der Wueste.\n");
+sand.c:  AddId(({"sand", "etwas sand", "SAND"}));
+zfinger.c:inherit CHAOS_GILDEN_OBJ("std_krei");
+zfinger.c:// /d/polar/mupfel/obj/zfinger.c   Zardoz' Mittelfinger   :-)
+
+
+Searching ./d/polar/bendeigid/mon
+chwolke.c:   ob->SetProp( "chaos_kreide_anzahl", 9-i); // wenn weniger Chaoskugeln, dann
+chwolke.c:   ob=clone_object("/d/polar/bendeigid/obj/wirbel");
+chwolke2.c:   clone_object("/d/polar/bendeigid/obj/wirbkerz")->move(this_object());
+
+Searching ./d/polar/bendeigid/obj
+wirbel.c:   +"machen. Dann reicht er noch fuer @@kreide_anzahl@@.\n"); 
+wirbel.c:inherit "/players/zardoz/gilde/obj/std_krei";
+wirbel.c:   SetProp(P_SHORT, "Ein chaotisch schillernder Luftwirbel");
+wirbel.c:    "Dies ist ein kleiner Luftwirbel, der ueberraschende Festigkeit besitzt. Daher\n"
+wirbel.c:   SetProp( CHAOS_PENTAGRAMM_ART, "aus schillernden Luftwirbeln gebildetes");
+wirbel.c:   SetProp( P_NAME, "Luftwirbel");
+wirbel.c:   AddId(({"luftwirbel","wirbel"}));
+
+Searching ./d/polar/tsunami/eismine/anschluss
+marktstand.c:  AddItem("/players/zardoz/gilde/obj/kreide",REFRESH_REMOVE);
+
+Searching ./d/dschungel/azzuro/dbuch/room
+store.c://AddItem("/players/zardoz/gilde/obj/kreide",REFRESH_REMOVE);
+
+Searching ./d/vland/morgoth/npc
+pwork.c:  CloneAndMove("/players/zardoz/gilde/obj/sand");
+pwork.c:  if((ob=present("sand")) && ob!=environment()) {
+pwork.old.c:  CloneAndMove("/players/zardoz/gilde/obj/sand");
+ghoul.c:  clone_object(KOBJ("gschleim"))->move(environment());
+
+Searching ./d/vland/morgoth/obj
+dschleim.c:		       "Der Schleim reicht fuer @@kreide_anzahl@@",78));
+dschleim.c:inherit "/players/zardoz/gilde/obj/std_krei";
+
+Searching ./d/vland/morgoth/obj/kata
+gschleim.c:		       "Der Schleim reicht fuer @@kreide_anzahl@@",78,0,1));
+gschleim.c:inherit "/players/zardoz/gilde/obj/std_krei";
+
+Searching ./d/vland/morgoth/room/city
+c0606^1.c:    clone_object(OBJ("dschleim"))->move(this_object());
+

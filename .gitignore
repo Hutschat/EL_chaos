@@ -1,0 +1,30 @@
+# ==========================================
+# ABSOLUTE AUSSCHLUSSLISTE
+# ==========================================
+
+# Dateitypen & Kompiliertes
+*.sav
+*.save
+*.log
+*.logs
+*.bak
+*.o
+*.pyc
+*~
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.bzip2
+*_old
+*_OLD
+*_new
+*_NEW
+*.orig
+*_orig
+*.ORIG
+*_ORIG
+*.pdf
+*.xls
+*.doc
+DEADJOE

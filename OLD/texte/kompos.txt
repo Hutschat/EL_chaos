@@ -1,0 +1,151 @@
+
+Searching ./gilden/files.chaos/obj
+ceis.c:  SetProp(CHAOS_PENTAGRAMM_FAKTOR,45);
+ceis.c:  SetProp(CHAOS_PENTAGRAMM_ART,"mit farbigem Eis gemaltes");
+ctanz.c:  faktor += penta->QueryProp( CHAOS_PENTAGRAMM_FAKTOR);
+drablut.c:  SetProp(CHAOS_PENTAGRAMM_FAKTOR,30);
+drablut.c:  SetProp(CHAOS_PENTAGRAMM_ART,"mit Drachenblut blutruenstig gemaltes");
+dsabber.c:  SetProp(CHAOS_PENTAGRAMM_FAKTOR,40);
+dsabber.c:  SetProp(CHAOS_PENTAGRAMM_ART,"mit Drachensabber hingeschleimtes");
+dschleim.c:  SetProp(CHAOS_PENTAGRAMM_FAKTOR,25);
+dschleim.c:  SetProp(CHAOS_PENTAGRAMM_ART,"mit Daemonenschleim hingesabbertes");
+gstaub.c:  SetProp(CHAOS_PENTAGRAMM_FAKTOR,60);
+gstaub.c:  SetProp(CHAOS_PENTAGRAMM_ART,"mit feinem Goldstaub gezogenes");
+khaut.c:  SetProp(CHAOS_PENTAGRAMM_FAKTOR,10);
+kmehl.c:  SetProp(CHAOS_PENTAGRAMM_FAKTOR,25);
+kmehl.c:  SetProp(CHAOS_PENTAGRAMM_ART,"mit Knochenmehl kunstvoll gemaltes");
+kreide.c:  SetProp(CHAOS_PENTAGRAMM_FAKTOR,20);
+kreide.c:  SetProp(CHAOS_PENTAGRAMM_ART,"mit Kreide hingeschmiertes");
+penta.c:  if (QueryProp( CHAOS_PENTAGRAMM_ZEICHNER_NAME ))
+penta.c:  return " von "+capitalize(QueryProp( CHAOS_PENTAGRAMM_ZEICHNER_NAME ))+
+penta.c:  return " von "+capitalize(QueryProp( CHAOS_PENTAGRAMM_ZEICHNER ))+
+penta.c:  s += "Dies ist ein "+QueryProp( CHAOS_PENTAGRAMM_ART )+" Pentagramm. ";
+penta.c:  if(getuid( this_player()) != QueryProp(CHAOS_PENTAGRAMM_ZEICHNER)){
+penta.c:  if(!ob->QueryProp( CHAOS_PENTAGRAMM_FAKTOR)){
+penta.c:    SetProp(CHAOS_PENTAGRAMM_FAKTOR,QueryProp(CHAOS_PENTAGRAMM_FAKTOR)
+penta.c:    SetProp( CHAOS_PENTAGRAMM_FAKTOR, QueryProp( CHAOS_PENTAGRAMM_FAKTOR)
+penta.c:      + ob->QueryProp( CHAOS_PENTAGRAMM_FAKTOR)); 
+penta.c:  if(QueryProp( CHAOS_PENTAGRAMM_ZEICHNER) != getuid(this_player())){
+penta_erz.c:  SetProp(CHAOS_PENTAGRAMM_FAKTOR,155);
+penta_erz.c:  return capitalize(QueryProp(CHAOS_PENTAGRAMM_ZEICHNER));
+penta_erz.c:  SetProp(CHAOS_PENTAGRAMM_ZEICHNER,
+penta_erz.c:  if(QueryProp(CHAOS_PENTAGRAMM_ZEICHNER) != getuid(this_player())){
+sand.c:  SetProp(CHAOS_PENTAGRAMM_FAKTOR,20);
+sand.c:  SetProp(CHAOS_PENTAGRAMM_ART, "mit schwarzem Sand ausgestreutes");
+skerze.c:  SetProp(CHAOS_PENTAGRAMM_FAKTOR,1);
+skerze.c:  SetProp(CHAOS_PENTAGRAMM_FAKTOR, 2);
+skerze.c:  SetProp(CHAOS_PENTAGRAMM_FAKTOR, 1);
+sstaub.c:  SetProp(CHAOS_PENTAGRAMM_FAKTOR,15);
+sstaub.c:  SetProp(CHAOS_PENTAGRAMM_ART,"mit glaenzendem Silberstaub gezogenes");
+std_krei.c:  SetProp(CHAOS_PENTAGRAMM_FAKTOR,10);
+std_krei.c:  SetProp(CHAOS_PENTAGRAMM_ART,"mit Kreide gezeichneter");
+std_krei.c:    f = this_object()->QueryProp(CHAOS_PENTAGRAMM_FAKTOR);
+std_krei.c:    kreis->SetProp(CHAOS_PENTAGRAMM_FAKTOR, f);
+std_krei.c:    kreis->SetProp(CHAOS_PENTAGRAMM_ART, 
+std_krei.c:      this_object()->QueryProp( CHAOS_PENTAGRAMM_ART));
+std_krei.c:    kreis->SetProp( CHAOS_PENTAGRAMM_ZEICHNER, getuid(this_player()));
+std_krei.c:      kreis->SetProp( CHAOS_PENTAGRAMM_ZEICHNER_NAME, this_player()->name(WEM));
+std_krei.c:      kreis->SetProp( CHAOS_PENTAGRAMM_ZEICHNER_NAME, getuid(this_player()));
+std_krei.c:  pentf = this_object()->QueryProp(CHAOS_PENTAGRAMM_FAKTOR);
+strstaub.c:  SetProp(CHAOS_PENTAGRAMM_FAKTOR,65);
+strstaub.c:  SetProp(CHAOS_PENTAGRAMM_ART,"mit Streitkolbenstaub gemaltes");
+wauge.c:  SetProp(CHAOS_PENTAGRAMM_FAKTOR,20);
+
+
+
+Searching ./players/zardoz/gilde/obj
+ceis.c:SetProp( CHAOS_PENTAGRAMM_FAKTOR, 45);
+ceis.c:SetProp( CHAOS_PENTAGRAMM_ART, "mit farbigem Eis gemaltes");
+ctanz.c:  faktor += penta->QueryProp( CHAOS_PENTAGRAMM_FAKTOR);
+drablut.c:SetProp( CHAOS_PENTAGRAMM_FAKTOR, 30);
+drablut.c:SetProp( CHAOS_PENTAGRAMM_ART, "mit Drachenblut blutruenstig gemaltes");
+dsabber.c:SetProp( CHAOS_PENTAGRAMM_FAKTOR, 40);
+dsabber.c:SetProp( CHAOS_PENTAGRAMM_ART, "mit Drachensabber hingeschleimtes");
+dschleim.c:SetProp( CHAOS_PENTAGRAMM_FAKTOR, 25);
+dschleim.c:SetProp( CHAOS_PENTAGRAMM_ART, "mit Daemonenschleim hingesabbertes");
+gstaub.c:SetProp( CHAOS_PENTAGRAMM_FAKTOR, 60);
+gstaub.c:SetProp( CHAOS_PENTAGRAMM_ART, "mit feinem Goldstaub gezogenes");
+khaut.c:SetProp( CHAOS_PENTAGRAMM_FAKTOR, 10);
+kmehl.c:SetProp( CHAOS_PENTAGRAMM_FAKTOR, 25);
+kmehl.c:SetProp( CHAOS_PENTAGRAMM_ART, "mit Knochenmehl kunstvoll gemaltes");
+kreide.c:SetProp( CHAOS_PENTAGRAMM_FAKTOR, 20);
+kreide.c:SetProp( CHAOS_PENTAGRAMM_ART, "mit Kreide hingeschmiertes");
+penta.c:return " von "+capitalize(QueryProp( CHAOS_PENTAGRAMM_ZEICHNER ))+
+penta.c:s += "Dies ist ein "+QueryProp( CHAOS_PENTAGRAMM_ART )+" Pentagramm. ";
+penta.c:if( getuid( this_player()) != QueryProp( CHAOS_PENTAGRAMM_ZEICHNER))
+penta.c:if( !ob->QueryProp( CHAOS_PENTAGRAMM_FAKTOR))
+penta.c:	SetProp( CHAOS_PENTAGRAMM_FAKTOR, QueryProp( CHAOS_PENTAGRAMM_FAKTOR)
+penta.c:	SetProp( CHAOS_PENTAGRAMM_FAKTOR, QueryProp( CHAOS_PENTAGRAMM_FAKTOR)
+penta.c:	   + ob->QueryProp( CHAOS_PENTAGRAMM_FAKTOR)); 
+penta.c:if( QueryProp( CHAOS_PENTAGRAMM_ZEICHNER) != getuid(this_player()))
+sand.c:SetProp( CHAOS_PENTAGRAMM_FAKTOR, 20);
+sand.c:SetProp( CHAOS_PENTAGRAMM_ART, "mit schwarzem Sand ausgestreutes");
+skerze.c:SetProp( CHAOS_PENTAGRAMM_FAKTOR, 1);
+skerze.c:SetProp( CHAOS_PENTAGRAMM_FAKTOR, 2);
+skerze.c:SetProp( CHAOS_PENTAGRAMM_FAKTOR, 1);
+sstaub.c:SetProp( CHAOS_PENTAGRAMM_FAKTOR, 15);
+sstaub.c:SetProp( CHAOS_PENTAGRAMM_ART, "mit glaenzendem Silberstaub gezogenes");
+std_krei.c:SetProp( CHAOS_PENTAGRAMM_FAKTOR, 10 );
+std_krei.c:SetProp( CHAOS_PENTAGRAMM_ART, "mit Kreide gezeichneter" );
+std_krei.c:	f = this_object()->QueryProp( CHAOS_PENTAGRAMM_FAKTOR);
+std_krei.c:	kreis->SetProp( CHAOS_PENTAGRAMM_FAKTOR, f);
+std_krei.c:	kreis->SetProp( CHAOS_PENTAGRAMM_ART, 
+std_krei.c:		this_object()->QueryProp( CHAOS_PENTAGRAMM_ART));
+std_krei.c:	kreis->SetProp( CHAOS_PENTAGRAMM_ZEICHNER, getuid(this_player()));
+std_krei.c:pentf = this_object()->QueryProp( CHAOS_PENTAGRAMM_FAKTOR);
+strstaub.c:SetProp( CHAOS_PENTAGRAMM_FAKTOR, 65);
+strstaub.c:SetProp( CHAOS_PENTAGRAMM_ART, "mit Streitkolbenstaub gemaltes");
+wauge.c:SetProp( CHAOS_PENTAGRAMM_FAKTOR, 20);
+
+Searching ./d/wald/paracelsus/obj
+bbstift.c:    SetProp(CHAOS_PENTAGRAMM_FAKTOR,15);
+bbstift.c:    SetProp(CHAOS_PENTAGRAMM_ART, "mit einem blauen Bleistift gezeichnetes");
+cfarbe.c:    SetProp(CHAOS_PENTAGRAMM_FAKTOR,40+(2*(i+1))); // 42 44 46 48 50
+cfarbe.c:    SetProp(CHAOS_PENTAGRAMM_ART, "mit "+COLS[i]+"er Chaosfarbe gemaltes");
+sbstift.c:    SetProp(CHAOS_PENTAGRAMM_FAKTOR,25);
+sbstift.c:    SetProp(CHAOS_PENTAGRAMM_ART, "mit einem schwarzen Bleistift gezeichnetes");
+
+Searching ./d/gebirge/boing/sm/obj
+hassgeraeusch.c:   SetProp(CHAOS_PENTAGRAMM_FAKTOR, 70);
+hassgeraeusch.c:   SetProp(CHAOS_PENTAGRAMM_ART, "heulendes und kreischendes");
+waberglut.c:   SetProp(CHAOS_PENTAGRAMM_FAKTOR, 60);
+waberglut.c:   SetProp(CHAOS_PENTAGRAMM_ART, "feurig gluehendes");
+
+Searching ./d/gebirge/wim/eliza/obj
+kerne.c:  SetProp(CHAOS_PENTAGRAMM_FAKTOR,46);
+kerne.c:  SetProp(CHAOS_PENTAGRAMM_ART,"mit daemonischen Kuerbiskernen gelegtes");
+
+
+Searching ./d/unterwelt/semmel/obj
+kreide_ewig.c:  SetProp(CHAOS_PENTAGRAMM_FAKTOR,50);
+kreide_ewig.c:  SetProp(CHAOS_PENTAGRAMM_ART,"mit einem leuchtenden Stift gemaltes");
+
+Searching ./d/inseln/bierchen/minsel/obj
+kreide.c:  SetProp(CHAOS_PENTAGRAMM_FAKTOR,20);
+kreide.c:  SetProp(CHAOS_PENTAGRAMM_ART,"mit Kreide hingeschmiertes");
+kreide_ewig.c:  SetProp(CHAOS_PENTAGRAMM_FAKTOR,20);
+kreide_ewig.c:  SetProp(CHAOS_PENTAGRAMM_ART,"mit magischer Kreide hingeschmiertes");
+stups_ewig.c:  SetProp(CHAOS_PENTAGRAMM_FAKTOR,55);
+stups_ewig.c:  SetProp(CHAOS_PENTAGRAMM_ART,"mit etwas Magischem gezeichnetes");
+
+Searching ./d/polar/mupfel/obj
+skerze.c:SetProp( CHAOS_PENTAGRAMM_FAKTOR, 1);
+skerze.c:SetProp( CHAOS_PENTAGRAMM_FAKTOR, 13);
+skerze.c:SetProp( CHAOS_PENTAGRAMM_FAKTOR, 1);
+zfinger.c:  SetProp(CHAOS_PENTAGRAMM_FAKTOR, 54); 
+zfinger.c:  SetProp(CHAOS_PENTAGRAMM_ART, "mit Zardoz' Mittelfinger gezogenes");
+
+Searching ./d/polar/bendeigid/obj
+wirbel.c:   SetProp( CHAOS_PENTAGRAMM_FAKTOR, 37);
+wirbel.c:   SetProp( CHAOS_PENTAGRAMM_ART, "aus schillernden Luftwirbeln gebildetes");
+wirbkerz.c:  SetProp( CHAOS_PENTAGRAMM_FAKTOR, 12+random(5));
+
+
+Searching ./d/vland/morgoth/obj
+dschleim.c:  SetProp(CHAOS_PENTAGRAMM_FAKTOR,65);
+dschleim.c:  SetProp(CHAOS_PENTAGRAMM_ART, "mit Daemonenschleim gegossenes");
+
+Searching ./d/vland/morgoth/obj/kata
+gschleim.c:  SetProp(CHAOS_PENTAGRAMM_FAKTOR,30);
+gschleim.c:  SetProp(CHAOS_PENTAGRAMM_ART, "mit Ghoulschleim gegossenes");
+

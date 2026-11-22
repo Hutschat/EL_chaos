@@ -1,0 +1,398 @@
+29/09/98 
+  
+  Moin moin,
+  Im Zuge der Alignaenderung wird es auch den Voidstein nichtmehr lange 
+  geben. Wollts Euch nur schonmal sagen, damit es keine Beschwerden gibt.
+
+  - Tilly -
+
+21/09/98
+
+  Tach!
+  
+  Man soll ja nich sagen, wir wuerden euch Spieler vergessen, nur weil
+  wir dauernd abgefahrene Parties feiern und ihr keinerlei Spass habt.
+  *huestel* OK, also, auf bitten eines einzelnen Chaoten habe ich den
+  Dimensionsspalt in der Chaoskneipe ueberarbeitet. Have Fun.
+
+  - Feuerwehr -
+  
+  P.S. bruelle KAEMPFER IN DIE KLERIKERGILDE in spalt
+
+07/08/98
+
+  Moin auch,
+  Tyoorthok ist endlich da. Zum einen sagt er etwas ueber Eure
+  koerperliche Verfassung und kann dies auch bei anderen Spielern aus 
+  anderen Gilden machen. Als kleines Feature entsorgt er gegen Bezahlung
+  die Krankheiten, die einmal die Chaoshaut abgewehrt hat.
+  Syntaxen: "befehle tyoorthok hilf <mir||name>", oder "gib <was> an 
+  tyoorthok". 
+
+  - Tilly -
+
+03/08/98
+
+  Moin moin,
+  vielleicht ist einigen von Euch schon aufgefallen, mit was fuer
+  mordluesternen Blicken Euch die Daemonen betrachtet haben, wenn
+  Ihr froehlich metzelnd durch die Katakomben gezogen seit und sie
+  elendig an dem Virus krepiert sind. Die Zeiten sind vorbei!
+  Gebt ihnen ein entsprechendes Objekt und befehlt ihnen dazu was 
+  feines, Ihr werdet sehen, eine neue Aera der Beziehungen zu den 
+  Daemonen hat begonnen. Dank an Sting :)
+
+  - Tilly -
+
+06/07/98
+
+  Die Korkwand wurde etwas debuggt. Den inhalt bekommt man nun mit
+  'liste', bei 'lies' sollte die passende syntax 
+  erscheinen :)
+  Wie ihr sicherlich dann sehen werdet, nichts im Chaos geht verloren :)
+  
+  - Tilly -
+
+-----------------------------------------------------------------------------
+
+03:07:98
+
+  Auch ein boesartiger Chaosmagier kann keine Teddys weinen sehen.
+  Deshalb kann man jetzt auf ganz speziellen Wunsch seine Daemonen
+  'leise' beschwoeren (intarbir leise). Nichtsdestotrotz sollte man
+  uns natuerlich fuer absolut boesartig und fies halten.
+
+- anonymous -
+-----------------------------------------------------------------------------
+
+25/06/98
+
+  Nach naechtelangen Nachhilfestunden und unter Einsatz des ganzen Charmes
+  eines hier nicht genannten Gilden-Magiers hat Bhuturih doch noch ein
+  bisschen was dazugelernt und kann fuer alle ab GL 11 auch bestimmte NPC
+  finden.
+
+ - Tilly -
+-----------------------------------------------------------------------------
+21.06.98
+
+  'chaoswer' wurde etwas erweitert. Natuerlich merkt man dies erst bei einer
+  neuen Chaosruestung.
+
+  - Bierchen -
+
+  Ooops. Fast vergessen: Intarbir schaetzt die Schwaechen und
+  Staerken Eurer Gegner jetzt etwas genauer ein. Nun ja.. bei einigen
+  Npcs duerftet Ihr keinen Unterschied feststellen...
+
+---------------------------------------------------------------------------
+
+18/06/98
+
+  Der Raum westlich der Einsatzzentrale ist nun fuer die Gilden-Magier
+  und den Erzmeister zugaenglich. Man will ja auch mal ungestoert sein ...
+
+ - Tilly -
+----------------------------------------------------------------------------
+14/06/98
+
+  In der Bibliothek steht eine Korkwand zur allgemeinen Verfuegung. Gedacht
+  ist sie zum Sammeln von Euren Ideen. Mails an die Gilden-Magier kommen 
+  manchmal doppelt, dreifach oder gar nicht an und oft wird vergessen ein 
+  Cc an die anderen Gilden-Mags zu machen. So kann man also prima sehen, was
+  fuer Vorschlaege bereits gemacht wurden und erleichtert uns (den Magiern)
+  auch die Absprache untereinander. Also nutzt sie bitte rege!
+
+ - Tilly -
+---------------------------------------------------------------------------
+13.06.98
+
+  Intarbir ist nun etwas genauer beim Aufspueren von Staerken und 
+  Schaechen der Gegner.
+
+- Bierchen -
+
+---------------------------------------------------------------------------
+09.06.98
+
+  Chaoten sollten einsame, boesartige Kreaturen sein. Fuer alle
+  Weicheier unter uns, die ein wenig mehr Scroll vertragen 
+  koennen, gibt es nun den Befehl "erwarte chaoten". Moege das
+  Chaos regieren.
+
+- Bierchen -
+
+---------------------------------------------------------------------------
+
+07.06.98
+
+  Nach der naechsten Chaoshaut kommen bei Chaoswer die Chaoten
+  nach Gildenlevel geordnet, denn so gehoert sich das.
+
+- Bierchen -
+
+---------------------------------------------------------------------------
+
+07.06.98
+
+  Die Kaempfdaemonen haben ein paar neue Befehle gelernt, nach 
+  stundenlanger Folter, versteht sich.
+  Sie verstehen nun:
+   wirf waffe weg
+   wirf ruestungen weg
+   wirf alles weg
+  Natuerlich funktioniert das nur bei Ruestungen die angezogen und
+  Waffen, die gezueckt sind. Zu Lasteneseln wollten sie sich 
+  nicht machen lassen.
+
+- Bierchen -
+
+---------------------------------------------------------------------
+06.06.98
+
+..und noch ein neuer Chaosschaden, der sich geschickt versteckt hatte:
+   'widerhaken' nennt sich das Biest.
+
+- Bierchen -
+
+---------------------------------------------------------------------
+02.06.98
+
+Kruftur erkennt, sollte man Level >8 sein, nun auch, ob Waffen
+oder Ruestungen beschaedigt oder verflucht sind.
+
+- Bierchen -
+
+---------------------------------------------------------------------
+01.06.98
+
+Da einige Monster der Gilden-Quests in den unbefristeten Streik
+getreten sind, hat Tilly mal bei einigen anderen nachgefragt, ob 
+sie nicht Lust haetten, auch mal von Chaoten gekillt zu werden.
+Erfreulicherweise stiess er dabei auf keinen Widerspruch.
+
+- Bierchen -
+
+---------------------------------------------------------------------
+29.5.98
+
+Nun, nachdem Bierchen voll genug war :) hat er eine neue Topliste
+ausgegraben. Diese beruecksichtigt allerdings nur Chaoten, die auch
+im MG anwesend sind, dafuer liefert sie als kleinen Bonus eine prozentuale
+Einschaetzung Eurer Faehigkeiten.
+
+- Bierchen -
+
+---------------------------------------------------------------------
+29.5.98
+
+Das Opfern von ein paar Dutzen Kaempfern und Klerikerinnen hat einigen
+unserer Daemonen neue Macht gegeben. Richtig gut beschworen (auf einem
+guten Pentagramm, nicht auf so einem Kreidedreck), werden sie Dir jetzt
+etwas mehr erzaehlen.
+Fuer die Chaoten, die lieber leise toeten, gibt es die Daemonen-Befehle
+schweig und sprich.
+
+- Bierchen -
+
+---------------------------------------------------------------------
+
+27.5.98
+
+Chaoshistory wurde etwas kompakter gestaltet.
+Ausserdem zeigt Chaoshistory <anzahl> eben <anzahl> Nachrichten an.
+Dieses Feature gibts nach der naechsten Chaoshaut.
+
+- Bierchen -
+
+---------------------------------------------------------------------
+25.5.98
+-------
+
+Es gibt jetzt zwei neue, mechanische Chaosschaeden:
+  explosion und quetschen
+Als Nebenefekt erkennt nun auch Intarbir derartige Anfaelligkeiten 
+bei Npcs besser.
+Ausserdem benutzt chaoshistory auf mehrfachem Wunsch jetzt den 'more'.
+
+- Bierchen -
+
+---------------------------------------------------------------------
+20.5.98
+-------
+
+Fuer 'chaossag' gibt es jetzt eine einfache History. Jaja, ich weiss,
+sie ist nicht perfekt, aber fuer mehr war vorerst keine Zeit und sie
+ist auch nur von der Art: Quick & Dirty
+Man kann, wenn man eine neue Haut besitzt, dieses mit:
+ chaoshist/chaoshistory aufrufen.
+Natuerlich werden nur die Sachen von Chaoten darin zu finden sein, die
+auch eine neue Haut besitzen.
+
+ - Bierchen -
+
+---------------------------------------------------------------------
+
+18.5.98
+-------
+
+'chaoswer' zeigt jetzt zusaetzlich die Idle-Zeit der Chaoten
+an.
+
+ - Bierchen -
+
+---------------------------------------------------------------------
+
+17_5_98
+-------
+
+Es sieht so aus, als habe eine neuer Daemon den Weg in diese 
+Dimension gefunden. Ach, was sage ich da, es ist eine Daemonin, die von
+Tilly naechtelang beschworen wurde (oder so ;). Naja, Seher duerften an ihr 
+kaum ein Interesse haben..es sei denn, sie benutzen den ungewollten bug und
+suchen jemanden, den sie normalerweise nicht finden koennen :)
+
+ - Bierchen -
+
+---------------------------------------------------------------------
+
+12.5.98
+-------
+
+Nun gut, ueberredet. Die neuen Infos stehen nun oben.
+Nun, Bierchen sucht noch immer nach Krankheiten! Wenn ihr welche
+kennt/findet, bitte eine Mail an mich. Dabei waeren folgende 
+Infos recht nuetzlich: In welcher Gegend habt ihr Euch das eingefangen
+(eine Kopie der Langbeschreibung des Raumes waere zumindest hilfreich),
+ein 'ungewoehlicher' Begriff bei der Krankheit waere nuetzlich, oder wisst 
+ihr sogar, welcher Magier diese verzapft hat? Nur zu, es geht um
+Euren Vorteil! Selbst ein Verdacht kann weiter helfen...
+
+Gruss,
+
+ - Bierchen -
+
+---------------------------------------------------------------------
+
+11.5.98
+-------
+
+Kruftur hat sich soeben entschieden, so wie Intarbir, etwas laenger
+zu bleiben, natuerlich nur, wenn der Gildenlevel hoch genug ist.
+
+Cu,
+  
+ - Bierchen -
+
+---------------------------------------------------------------------
+
+11.5.98
+-------
+
+Intarbir bleibt jetzt, je nach Gildenlevel etwas laenger bei seinem
+Beschwoerer. Will man ihn loswerden, hilft ein Verbanne, wenn man 
+seine Hilfe noch nicht in Anspruch genommen haben sollte. Hat man dies
+jedoch mind. einmal getan, wird man ihn mit : befehle intarbir verschwinde
+recht simpel los. Falls es dabei Bugs geben sollte, bitte sofort eine
+Mail an Bierchen absetzen.. und nicht -debug zumuellen :)
+
+Gruss,
+
+  - Bierchen -
+
+---------------------------------------------------------------------
+
+3.5.98
+------
+
+Und nochmals wurde der Wirt verpruegelt. Der Schuldige ist schon am neuen
+Angebot erkennbar...
+Die Arena ist das mindeste, was dieser Chaot verdient hat, auch einen 
+pk koennte ich mit Muehe und Not bei den Behoerden als Chaos-Bug
+entschuldigen ... :)
+
+Diesmal chaotisch winkend,
+
+  - Bierchen -
+
+---------------------------------------------------------------------
+
+3.5.98
+------
+
+Die faule Sau von Wirt in der Chaoskneipe hat sich entschieden, seinen
+Kundenstamm zu verkleinern, da Tilly sich erfolgreich weigerte, sein
+Gehalt zu erhoehen :)
+
+Gruss,
+
+  - Bierchen -
+
+---------------------------------------------------------------------
+
+2.5.98
+------
+
+Moin Moin,
+
+Wer was damit anfangen kann: Die Gruft ist wieder als Ziel dran, wer 
+nicht... auch gut :)
+
+Ausserdem hat der Wirt in der Chaoskneipe sein Angebot leicht erweitert, 
+nachdem Sting sich ueber den Frass beschwerte und ihn danach brutal 
+verpruegelt hat :)
+
+Bis denne,
+
+  - Bierchen -
+
+---------------------------------------------------------------------
+
+2.5.98
+------
+
+Nachtrag:
+
+Es geht das Geruecht um, dass nun auch 'ewige'-Chaos-Zutaten moeglich sind.
+Ewige Kreide und son Kram, erzaehlt man sich unter vorgehaltener Hand....
+Wo es welche gibt? Keine Ahnung... Man munkelt aber, dass derartige Dinge
+nicht leicht zu bekommen sind. Zudem sollen sie noch recht rar sein.
+
+Aus der Geruechtekueche,
+
+  - Bierchen -
+
+---------------------------------------------------------------------
+
+28.4.98
+-------
+
+Hiho,
+
+falls jemand von Euch mit Taubheit bestraft sein sollte, kann er jetzt
+Wuqour danach fragen. Dummerweise hat der Daemon der Chaoshaut dies
+spitz bekommen und hat sich darauf eingestellt.. er scheint so seine 
+Informanten zu haben...
+
+Cu,
+
+  - Bierchen -
+
+---------------------------------------------------------------------
+
+27.4.98
+-------
+
+Moin,
+
+mal was Neues, aber nur als Test gedacht:
+
+Wer >= Gildenlevel 8 ist, darf, wenn er/sie denn eine neue Chaoshaut
+besitzen sollte, chaoswer, chaoslausche ein/aus, chaossag *irgendwas*
+probieren.
+
+Bugs, Ideen, Verbesserungen, an...
+
+    - Bierchen - :)
+
+---------------------------------------------------------------------

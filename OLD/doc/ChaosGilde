@@ -1,0 +1,87 @@
+
+Aenderungen, Verbesserungen, Neuerungen. Eine Ideensammlung.
+------------------------------------------------------------
+
+Die Ideen kommen zum groessten Teil von Spielern. Es steht also noch laengst
+nicht fest, was davon ueberhaupt realisiert wird. Die Briefe der Spieler
+sind unter c_idee gesammelt.
+
+
+1) Aenderungen schon bestehender Objekte
+
+   - Fumble ins Spellbook einbauen.
+   - Erfolg eines Spruches von P_ALIGN abhaengig machen. Aber keinen
+     zusaetzlichen Lerneffekt.
+   X Irgendwo Hinweise auf die Teleportmoeglichkeiten in der Gilde.
+   X Harkuhu aendern. (leuchtend machen, da er ein Lichtdaemon ist)
+     Etwas mehr LPs geben, damit er laenger da bleibt.
+   - Den Chaosschadenzauber fuer Meister billiger machen (15 MP)
+   - Kruuolq soll Hinweise auf Fern-Abfrage von Faehigkeiten und
+     erhoehen geben.
+   - Daemonen werden lebendiger. Sie reagieren auf Treten und Knuddeln,
+     machen vielleicht auch selbststaendig irgendwelche Aktionen.
+   X Daemon befehlen koennen, dass er angreift (wegen Finsternis)
+
+2) Neue Zaubersprueche (mit Rochus abklaeren)
+
+   - Daemonentanz zum Boese werden.
+   - Daemonendimensionstor, aus dem zufaellig Daemonen herauskommen, die
+     die unterschiedlichsten Eigenschaften haben und zusaetzlich zum 
+     normalen Daemon wirken koennen.
+     Das Tor ist ein richtiges Objekt, was einige Zeit im Raum verbleibt.
+     So koennen auch noch nach einiger Zeit ungeliebte Daemonen herraus-
+     kriechen. Oder ein Spieler kann selber hineingehen und so in
+     irgendeiner Daemonendimension herauskommen. Allerdings gibts da wohl
+     Probleme, denn man koennte es als Fluchtmoeglichkeit benutzen...
+   - Grosser Chaosball (nur zufaellige Schadenstypen, kein Chaosschaden!)
+   - Chaoswaffe: Eine Waffe (man kann immer nur eine Waffe verzaubern)
+     bekommt eine zusaetzliche Faehigkeit (P_HIT_FUNC). Entweder einen
+     OB, einen zusaetzlichen Schadensstyp oder eine besondere Faehigkeit
+     (Blutsaugen/Vampirismus, Magiepunktespeicher, irgendsowas, steht 
+     steht noch nicht fest, Gegner verwandelt sich z.B. nach seinem Tod
+     in einen Daemon, oder so...).
+
+3) Neue Daemonen
+   - Ein Spionage-Daemon, der die Langbeschreibung benachbarter Raeume 
+     anzeigt. (wohl eher nicht, dafuer gibts schon genug Tools)
+   - Ein Daemon, der MPs speichert.
+   - Ein Daemon, der Gegenstaende bewacht, z.B. in sie eindringt und 
+     bei dem Versuch, ein Objekt zu nehmen nach einer Warnung herauskommt.
+   - Daemon der Ausruestung einsammelt, oder sie nur traegt.
+   - "Alien"-Daemon (siehe Vanirs Brief)
+   - Ein Daemon, der Sachen traegt. Machen zwar schon die Haustiere, daber
+     das sollte eh nicht Sinn der Sache sein.
+   Daemonen aus dem Dimensionstor:
+   - Daemon, der bei zu grossem Schaden zerplatzt und alle Gegner im 
+     Raum dabei trifft.
+   - Daemon, der einfach herumlaeuft und alle NPCs angreift. Laesst sich
+     nicht steuern, kann aber ziemlich nett sein.
+   - Ganz selten (vielleicht einmal pro Woche): Eine Daemonenhorde, die das 
+     Gebiet fuer Spieler unsicher macht (kleine Spieler werden allerdings 
+     nicht angegriffen).
+   - Daemon, der den Gegner verlangsamt.
+   - Daemon, der fast alle Angriffe auf sich zieht, dadurch aber auch recht
+     schnell stirbt...
+    
+
+4) Andere, zusaetzliche Aenderungen
+   
+   - Eine Daemonen- oder Chaotensprache vielleicht in Zusammenhang mit 
+     einer Miniquest
+   
+5) Die neuen Level
+   
+   - 5 neue Level ueber Erzmeister! Man muss Erzmeister sein, um in diesen
+     elitaeren Club aufgenommen werden zu koennen! Wenn man einmal die neue
+     Stufe erreicht hat, braucht man nicht mehr Erzmeister zu werden. Dies
+     ist nur noetig, wenn man Yrintri will (der wirklich einmalig bleiben 
+     soll.)
+   - Die erweiterte Gilde befindet sich in der Daemonendimension!
+   
+   
+6) Zur "neuen Gilde" in der Daemonendimension:
+
+Gegruendet wurde sie von Krolkr'Bratruu, einem sehr hohen und maechtigen
+Daemon, der das MG beherrschen will. Doch Daemonen koennen nicht so einfach
+in die Welt der sterblichen eindringen, und so benutzt er die Chaoten
+um mit ihrer Hilfe das Boese ins MG zu bringen. 

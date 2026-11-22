@@ -1,0 +1,95 @@
+    ___________________________________________________________________
+   / \                                                                  \
+  | 0 |                   UEBER DIE GILDE DES CHAOS                      |
+   \_/                    -------------------------                      |
+     |                                                                   |
+     | 'Die Gilde der Krieger des Chaos', so wird sie liebevoll und      |
+     | nicht ohne Stolz von ihren Mitgliedern genannt.                   |
+     | Ziel unserer Gilde ist die Verbreitung des Boesen und des Chaos   |
+     | in dieser allzu guten Welt. Um diese Ziele zu erreichen stehen    |
+     | den Chaoskriegern viele maechtige Zauber und Daemonen zur         |
+     | Verfuegung.                                                       |
+     |                                                                   |
+     | Die Feste des Chaos, der Hauptsitz, befindet sich in der un-      |
+     | wirtlichen Eiswueste. Schon der Weg dorthin ist nicht ohne        |
+     | Gefahr und soll unangemeldeten Besuch verhindern, denn, soviel    |
+     | ist wohl klar, die Verbreitung des Boesen ist eine Sache, die die |
+     | anderen Bewohner dieser Welt nicht ohne Argwohn und Gegenwehr     |
+     | mit ansehen.                                                      |
+     |                                                                   |
+     | Um in die Gilde aufgenommen zu werden, muessen bestimmte Voraus-  |
+     | setzungen erfuellt werden. So muss man mehr als nur eine normale  |
+     | boese Grundeinstellung mitbringen, mindestens Spielerlevel 5 sein |
+     | und darf auch kein Hobbit sein. Die boese Grundeinstellung ist    |
+     | auch Voraussetzung fuer das boese Gelingen der Zauber und das     |
+     | Beschwoeren der Daemonen.                                         |
+     |                                                                   |
+     | Diese Daemonen haben die unterschiedlichsten Eigenschaften und    |
+     | koennen ihrem Beschwoerer gute Dienste leisten, vorausgesetzt, er |
+     | hat sie auch unter Kontrolle. Mit steigendem Gildenlevel stehen   |
+     | den Kriegern des Chaos immer maechtigere Daemonen aus einer       |
+     | anderen Dimension zur Verfuegung.                                 |
+     |                                                                   |
+     | Es gibt momentan 11 Gildenlevel und einen zwoelften fuer den      |
+     | Erzmeister des Chaos. Dieser ist der oberste Chaot der Gilde und  |
+     | wird Aufgrund seiner ueberragenden Fertigkeiten von den anderen   |
+     | Kriegern des Chaos mit Respekt und Wuerde behandelt.              |
+     | Bevor man seinen Gildenlevel erhoehen kann, muss man in der       |
+     | gildeneigenen Arena einen Kampf auf Leben und Tod mit einem       |
+     | Daemonen fuehren, um seine Fertigkeiten und das Anrecht auf       |
+     | einen hoeheren Rang zu beweisen.                                  |
+     | Je nach Stufe kann man neue Zauber und Daemonen erlernen, wobei   |
+     | in den hoeheren Leveln nahezu ausschliesslich die Beschwoerung    |
+     | der Daemonen ansteht, da sie wirklich eine hohe Kunst bildet.     |
+     |                                                                   |
+     | Gefuehrt wird die Gilde von Hutschat und Kruuolq. Weitere         |
+     | Mitarbeiter sind Wuqour, Achtarch und einige verbloedete Magier.  |
+     | Hutschat ist der Verwalter des Chaos und somit sehr wichtig fuer  |
+     | den Fortbestand der Gilde. Kruuolq ist der Meister des Chaos und  |
+     | lehrt seine Faehigkeiten den Kriegern des Chaos und kann auch     |
+     | viel Wissenswertes ueber die Zauber und Daemonen erzaehlen.       |
+     | Wuqour ist der Meister der Rituale und Beschwoerungen innerhalb   |
+     | der Gilde und hilft den Kriegern gern bei eigenen Beschwoerungen. |
+     | Achtarch ist der Inhaber des Ladens 'Nuetzliche Zutaten fuer      |
+     | boese Beschwoerungen', wo die Krieger des Chaos Zutaten zu den    |
+     | verschiedensten Beschwoerungsritualen erlangen koennen.           |
+     |                                                                   |
+     | Die Meister des Chaos haben innerhalb der Gilde einen besonderen  |
+     | Rang. Ihnen obliegt am staerksten die Verbreitung des Chaos in    |
+     | dieser Welt. Um sich konzentriert darauf vorzubereiten haben sie  |
+     | einen eigenen Raum, die 'Einsatzzentrale der Meister des Chaos'.  |
+     | Diese wenigen Meister streiten in regelmaessigen Abstaenden um    |
+     | den hoechsten Rang in der Gilde, den immer nur einer bekleiden    |
+     | kann. Dazu treffen sie sich in einer speziellen Arena und         |
+     | kaempfen bis auf Blut und Tod. Nur der maechtigste und beste      |
+     | Chaot hat die Wuerde verdient, sich 'Erzmeister des Chaos' nennen |
+     | zu duerfen und die Verguenstigungen und Vorteile, die mit diesem  |
+     | Rang verbunden sind, fuer sich zu beanspruchen.                   | 
+     |                                                                   |
+     | Selbstverstaendlich haben die Krieger des Chaos ihre eigene       |
+     | Rubrik in der von der MorgengrauenPresseAgentur (MPA) herausge-   |
+     | gebenen Zeitung, naemlich 21.                                     |
+     | Um jederzeit feststellen zu koennen, welche Gesinnungs-Chaoten    |
+     | anwesend sind, reicht der Befehl <kwer gilde chaos>.              |
+     | Auch haben die Chaoten ihre eigene Ebene, auf der sie fiese       |
+     | Plaene schmieden oder sich auch einfach nur austauschen koennen.  |
+     | Mit -cha+ oder -Cha+ betritt man diese. -cha- und -Cha- duerften  |
+     | dann klar sein, mit -cha? oder -Cha? erhaelt man eine Liste aller,|
+     | die auf dem Chaos-Kanal mithoeren. Leider koennen dies auch       |
+     | Mitglieder anderer Gilden, also vorsicht bei abwertigen Aeusser-  |
+     | ungen ;).                                                         |
+     | Um solche Aeusserungen zu umgehen, kann man ab Gilden-Level 8 den |
+     | internen Chaos-Kanal benutzen. Dazu muss man jedoch eine Chaos-   |
+     | haut tragen. Mehr Infos darueber gibt es in dem entsprechenden    |
+     | Schriftstueck.                                                    |
+     | Auch haben die Chaoten die Moeglichkeit, Gildenmitglieder zu      |
+     | erwarten. Auch dazu muss Chaoshaut getragen werden.               |
+     | Wenn man gerade erst diese Welt betreten hat, und wissen moechte, |
+     | was so auf dem Chaos-Kanal passiert ist, kann man sich die        |
+     | Historie ansehen, ganz einfach mit -cha*10 oder -Cha*10. Die 10   |
+     | ist hier Platzhalter fuer die Zeilen, die angezeigt werden sollen.|
+    _|                                                                   |
+   / \                                                                   |
+  | / |                                                                  |
+   \_/__________________________________________________________________/
+

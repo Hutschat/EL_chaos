@@ -1,0 +1,75 @@
+ [/gilden/files.chaos/obj/std_drue.c]
+
+ Mit diesem Programm lassen sich einfache Daemonen-Ruestungen generieren.
+ Diese Ruestungen werden von Chaosdaemonen automatisch angezogen und
+ koennen nur von diesen getragen werden.
+
+ Wobei fuer faule Leute gedacht:
+  - Die zulaessigen Ruestungswerte nicht ueberschritten werden koennen.
+  - Die Preise beim Verkauf angepasst werden.
+  - Ein Default-Gewicht ermittelt wird. 
+  - Man natuerlich auch eigene Werte dafuer eintragen darf.
+ 
+Dabei sind momentan zulaessige Ruestungstypen:
+   ruestung, helm, amulett, ring, handschuhe, umhang, schuhe,
+   schild, hose, misc
+ 
+ Die Funktion wird wie folgt aufgerufen:
+   CREATE_DEFAULT_ARMOUR( string ARMOUR_TYPE,
+                          int    AC,
+                          int    GENDER,
+                          mixed  IDS,
+                          int    WEIGHT)
+ 
+ Dabei bedeutet:
+  
+ ARMOUR_TYPE  : Welche Ruestung solls denn sein?
+                (ruestung, helm, amulett, ring, handschuhe, umhang, schuhe,
+                schild, hose, misc) als String uebergeben, oder 
+                wahlweise die entspechenden Defines, also AT_SHIELD etc.
+ AC           : Die Ruestungsklasse. Bei Ueberschreitung der zulaessigen
+                Werte werden die maximal erlaubten Werte eingesetzt.
+ GENDER       : Das Geschlecht der Ruestung. NEUTER, MALE oder FEMALE,
+                btw. die entsprechenden int-Werte
+ IDS          : Die Id der Ruestung btw. ein Array mit Ids 
+ WEIGHT       : Das Gewicht. Wird generiert, falls nicht angegeben
+------------------------------------------------------------------------------
+
+ Beispiel :
+
+   ...
+   #include "/gilden/files.chaos/gilde.h"
+   inherit "/gilden/files.chaos/obj/std_drue";
+   
+   void create(){
+       ...
+     ::create();
+     CREATE_DEFAULT_ARMOUR("helm",7,MALE,({"helm","daemonenhelm"}),400);
+     SetProp(P_SHORT,"Ein Daemonenhelm");
+     SetProp(P_LONG,"Ein richtig schoen daemonischer Helm.\n");
+     SetProp(P_NAME,"Helm");
+   }
+
+   Dieses Beispiel erzeugt einen Helm, Ruestungsklasse 7, Gender Male,
+   Ids werden gesetzt, Gewicht 400g.
+   Anstelle von :
+    CREATE_DEFAULT_ARMOUR("helm",7,MALE,({"helm","daemonenhelm"}),400);
+   Liesse sich auch schreiben:
+    CREATE_DEFAULT_ARMOUR(AT_HELMET,7,MALE,({"helm","daemonenhelm"}),400);
+
+--------------------------------------------------------------------------
+Ausserdem sind in /gilden/files.chaos/gilde.h folgende Props definiert,
+die benutzt werden koennen:
+
+DRUE_DEFEND_BONUS : entspricht AC in CREATE_DEFAULT_ARMOUR() und kann 
+                    hiermit nachtraeglich manipuliert werden, wobei
+                    allerdings die Grenzen der Balance zu beruecksichtigen
+                    sind.
+
+DRUE_WEAR_TXT     : Der Text den ein Spieler bekommt, wenn er versucht,
+                    diese Ruestung anzuziehen.
+
+Zum Schluss sei darauf hingewiesen, dass Daemonenruestungen fuer 
+Chaosdaemonen keine eigentliche WC besitzen, sondern per random 
+einen Defend von DRUE_DEFEND_BONUS zurueckgeben. 
+--------------------------------------------------------------------------

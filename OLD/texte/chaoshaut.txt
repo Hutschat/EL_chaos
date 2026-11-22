@@ -1,0 +1,104 @@
+    ___________________________________________________________________
+   / \                                                                  \
+  | 0 |                         DIE CHAOSHAUT                            |
+   \_/                          -------------                            |
+     |                                                                   |
+     |                                                                   |
+     | Die Chaoshaut ist unverzichtbares Element im Leben eines jeden    |
+     | Kriegers des Chaos.                                               |
+     | Ohne seine chaotisch mutierte Haut ist ein Chaot kein Chaot und   |
+     | hat eigentlich in den Reihen dieser stolzen Gilde nichts zu       |
+     | suchen. Auch sind ohne eine Chaosruestung die Angriffszauber      |
+     | nicht durchfuehrbar. Wer also zu den Bluemchenpflueckern gehoert, |
+     | mag sich damit abfinden koennen, fuer alle anderen jedoch ist es  |
+     | nicht hinnehmbar.                                                 |
+     |                                                                   |
+     | Die chaotisch mutierte Haut ist schon fuer geringere Raenge in    |
+     | dieser Gilde verfuegbar.                                          |
+     | Um an eine Chaosruestung zu kommen, ist es notwendig, den er-     |
+     | lernten Zauber zu sprechen und so einen kleinen aber sehr         |
+     | maechtigen und mitunter auch boesen Daemon in seine Haut zu       |
+     | beschwoeren.                                                      |
+     |                                                                   |
+     | Dies ist natuerlich, wie bei allen Daemonen, nicht gerade unge-   |
+     | faehrlich fuer den Beschwoerer. Daemonen sind widerspenstige und  |
+     | ernstzunehmenden Kreaturen.                                       |
+     |                                                                   |
+     | So wird der Chaosdaemon in der Folgezeit der Beschwoerung         |
+     | versuchen, sich seinem Beschwoerer zu widersetzen. Einfach gesagt,|
+     | man verliert die Kontrolle.                                       |
+     | Der Daemon kann einen zu den aberwitzigsten Sachen zwingen, die   |
+     | schlimmer werden, je laenger der Beschwoerer die Kontrolle nicht  |
+     | zurueckerlangt.                                                   |
+     |                                                                   |
+     | Der Verlust von Lebenspunkten ist hierbei noch hinnehmbar, unan-  |
+     | genehm wird es bei anderen Ereignissen.                           |
+     | So ist es durchaus moeglich, dass der Daemon einen zwingt,        |
+     | unkontrolliert durch die Gegend zu laufen, Monster anzugreifen,   |
+     | die Kleidung auszuziehen und diese eventuell auch wegzuwerfen.    |
+     | In einigen Faellen soll es schon vorgekommen sein, dass der       |
+     | Daemon seinen Beschwoerer erblinden liess, diesen vergiftete, in  |
+     | einen Frosch verwandelte oder ertauben liess.                     |
+     |                                                                   |
+     | Diese Szenarien sind jedoch noch harmlos, denn der Daemon hat     |
+     | sich immer noch nicht befreit. Sollte dies eintreffen, so wird er |
+     | nicht zoegern, sich gegen seinen Beschwoerer zu wenden und all    |
+     | seine Wut an diesem auszulassen. Wie dies enden kann, verfolge    |
+     | man am Besten auf der eigens dafuer eingefuehrten Ebene -T.       |
+     |                                                                   |
+     | Gluecklicherweise kommt es jedoch selten bis zum Aeussersten da   |
+     | der Kontrolle-Spruch in demselben Gilden-Level gelernt werden     |
+     | kann.                                                             |
+     | Gelingt der Kontrolle-Spruch und beruhigt sich der Chaosdaemon    |
+     | wieder, sollte man sich nicht in Sicherheit wiegen. Er wird es    |
+     | immer wieder versuchen, sich seinem Beschwoerer entgegenzustellen |
+     | und diesen in Unannehmlichkeiten zu bringen.                      |
+     |                                                                   |
+     | Deshalb sind die Zauber Chaosruestung und Kontrolle die wohl      |
+     | wichtigsten im Leben eines Chaoten.                               |
+     |                                                                   |
+     | Doch genug des Schreckens.                                        |
+     |                                                                   |
+     | Die Chaosruestung ist im Prinzip die chaotisch mutierte Haut.     |
+     | Durch sie wird die Beweglichkeit des Traegers nicht im Geringsten |
+     | beeintraechtigt, nein, sie birgt auch noch einige spezielle       |
+     | Vorteile.                                                         |
+     | Abhaengig vom Gelingen, kann die Chaosruestung ein klein wenig    |
+     | schlechter als erwartet, etwas besser als erwartet, viel besser   |
+     | als erwartet und absolut genial werden.                           |
+     |                                                                   |
+     | Unabhaengig von diesen Kleinigkeiten birgt die Chaosruestung noch |
+     | einen gewaltigen Nutzen fuer ihren Traeger.                       |
+     | Sie kann den natuerlichen Schutz der Haut verstaerken und         |
+     | schuetzt zudem auch noch, wieder abhaengig vom Gelingen, vor      |
+     | einigen in dieser Welt typischen Schadensarten.                   |
+     |                                                                   |
+     | Alles in allem ist die Chaosruestung also gar keine so nervige    |
+     | Sache, an der zig Krieger ihr Leben lassen, sondern eine          |
+     | beachtenswerte Faehigkeit dieser Gilde, um die uns andere mehr    |
+     | als nur beneiden.                                                 |
+     | Erwaehnt sei noch kurz, dass der Erzmeister des Chaos natuerlich  |
+     | nie Probleme mit seiner chaotisch mutierten Haut hat. Nicht       |
+     | umsonst hat er den schweren Weg bis in den obersten Gildenrang    |
+     | bewaeltigt.                                                       |
+     |                                                                   |
+     | Als ganz besonderes Feature gibt es mit der Chaoshaut einige ganz |
+     | tolle Befehle fuer alle Kaempfer des Chaos ab Gilden-Level 8.     |
+     | Dabei handelt es sich um die Optionen <chaoslausche> <ein/aus>    |
+     | und <erwarte chaoten>.                                            |
+     | Bei <erwarte chaoten> wird man immer darueber informiert, welcher |
+     | Krieger des Chaos gerade die Welt betritt oder sie verlaesst.     |
+     | Mit <chaossag text> kann man nun eine Nachricht an alle schicken, |
+     | die mit einem auf diesem internen Kanal lauschen und bekommt na-  |
+     | tuerlich auch deren Antworten.                                    |
+     | <chaoswer> gibt eine Liste aller lauschenden Chaoten aus, als     |
+     | Zusatz auch noch deren Level und Idle-Zeit. Auch unsichtbare      |
+     | Gilden-Magier erscheinen dort, wenn sie denn lauschen.            |
+     | Selbstverstaendlich gibt es dafuer auch eine History, aehnlich    |
+     | wie den Ebenen.                                                   |
+     | Der Befehl lautet <chaoshist/chaoshistory> <anzahl>. Was <anzahl> |
+    _| liefert, sollte eigentlich jedem klar sein.                       |
+   / \                                                                   |
+  | / |                                                                  |
+   \_/__________________________________________________________________/
+
