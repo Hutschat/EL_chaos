@@ -1,0 +1,58 @@
+Offene Punkte der Chaosgilde
+============================
+
+Stand: 27.11.2026
+
+Diese Liste sammelt, was beim Wiederbeleben der Gilde noch entschieden
+oder gebaut werden muss.
+
+
+1. Arena
+--------
+Die Kampfarena entfällt. Davon hängen ab:
+
+- Die Aufstiegsprüfungen (Kampf in der Arena) für alle Gildenstufen.
+  Sie sind über CHAOS_ARENA_PRUEFUNG (sys/chaosmisc.h) abgeschaltet.
+  Ersatz offen.
+- Der Erzmeisterkampf ("melde kampf an", Stufe 11 -> 12). Der Befehl
+  ist in gilde.c abgeschaltet. Ersatz offen.
+
+
+2. Dämonen
+----------
+- Kampfdämonen bekommen Typen und Namen aus master/namen.c (Schritt 2):
+    Irkitis   -> Schattendämon
+    Harkuhu   -> Lichtdämon
+    Graiop    -> Feuerdämon
+    Flaxtri   -> Säuredämon
+    Tutszt    -> Blutdämon
+    Yrintri   -> Wandler
+- Hilfsdämonen: noch nicht entschieden, ob sie Typen werden oder ihre
+  festen Namen behalten:
+    Intarbir  (schätzt Monster ein)
+    Kruftur   (identifiziert Gegenstände)
+    Tyoorthok (erzählt über die eigene Konstitution)
+    Bhuturih  (findet Spieler)
+- Bhuturih hat keinen NPC mehr (auch nicht in OLD/).
+- Tyoorthok, Bhuturih und Chaoskontrolle stehen im Spellbook, aber
+  nicht in gilde.c (AddSpell) und sind damit nicht lernbar.
+- Ombatis ist entfernt.
+
+
+3. Räume
+--------
+- Die alten Räume bleiben in OLD/ und werden nicht wieder benutzt.
+- Die Gilde zieht in die Burg Zwielichtstein östlich der Menagerie im
+  Schattental (EL_schattental). gilde.c hat bis dahin keine Ausgänge,
+  der Langtext ist noch der alte.
+
+
+4. Sonstiges
+------------
+- std/gilden_funcs.c: angefangene Aufteilung von gilde.c (2021). Wird
+  nicht benutzt und kompiliert nicht.
+- Aufgaben für Stufe 9 (Chaoshandschuhe) und 10 (Metzel-Master-Quest):
+  noch gültig?
+- Die Chaosmaske ist im Spellbook auskommentiert, obj/masken/ fehlt.
+- Der Gildenmaster speichert nach master/save/. Das Verzeichnis muss es
+  im MUD geben, die Gilde braucht dort Schreibrechte.

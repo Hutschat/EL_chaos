@@ -4,6 +4,7 @@
 //
 // xx.xx.xxxx Zardoz                   neu
 // 11.03.2019 It@Efferdland            ueberarbeitet
+// 27.11.2026 It@Efferdland            Fehler für neuen Driver behoben
 
 #pragma no_inherit
 
@@ -24,7 +25,7 @@ static int check_erzie(object pl)
   if((pl->QueryProp(P_GUILD)=="chaos") &&
      (pl->QueryProp(P_GUILD_LEVEL)==12))
   {
-    if((int)(CHAOS_GILDENMASTER->ist_erz(pl)) == 1)
+    if((CHAOS_GILDENMASTER->ist_erz(pl)) == 1)
     {
       tell_object(pl,break_string("Der Daemon in Deiner Haut "
       "unterwirft sich fluchend Deiner Macht!"));
@@ -105,6 +106,7 @@ static int check_hautdaemon()
                     "daran! Wahrscheinlich will er Dich noch etwas quaelen!"));
      return 1;
   }
+  return 0;
 }
 
 static int check_prev(object obj)
@@ -199,7 +201,7 @@ string short()
     return "Eine chaotisch mutierte Haut.\n";
 }
 
-void init()
+varargs void init()
 {
   object env;
   ::init();
@@ -812,7 +814,7 @@ void random_effekt()
     tell_object(pl,"Wie wild schmeisst Du alles von Dir!\n");
 
     tell_room(environment(pl),
-              pl->Name(WER.1)+" schmeisst ploetzlich alles von "
+              pl->Name(WER,1)+" schmeisst ploetzlich alles von "
               "sich.\n",({pl}));
 
     pl->command_me("wirf alles weg");

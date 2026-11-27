@@ -4,6 +4,7 @@
 //
 // xx.xx.xxxx Zardoz                   neu
 // 11.03.2019 It@Efferdland            ueberarbeitet
+// 27.11.2026 It@Efferdland            UTF-8, Fehler für neuen Driver behoben
 
 #pragma no_inherit
  
@@ -18,7 +19,6 @@ inherit "std/player/moneyhandler";
 #define P_DUELLANT "_lets_go_have_fun_"  // ganz wichtig fuers Attack() !!
 #define DEFAULT_QUEST_FAIL "Davon weiss ich nichts."
 
-#define BS break_string
 
 static int beurteilung(object pl);
 string erhoehen();
@@ -535,7 +535,7 @@ static string erzikampf_info()
      "durch den Befehl 'melde Erzmeisterkampf an' einen Kampf anmelden. Der "
      "naechste ";
 
- ezeit = (int)(CHAOS_GILDENMASTER->query_duellzeit());
+ ezeit = (CHAOS_GILDENMASTER->query_duellzeit());
 
  if(ezeit > time())
    s += "kann erst nach "+dtime(ezeit)+" stattfinden!";
@@ -559,10 +559,10 @@ static string special_yrintri()
   return "Halts Maul! Das geht Dich gar nix an!!!";
 }
 
-void init()
+public varargs void init(object origin)
 {
   string mags;
-  ::init();
+  ::init(origin);
   
   mags = getuid(PL);
   
@@ -839,7 +839,7 @@ Wenn Kruuolq kaempft gibt es keine Informationen und aehnliches:
       call_out("tell_player",0,s,pl);
       return;
     }
-    if((zeit=(int)(CHAOS_GILDENMASTER->query_duellzeit())) > time())
+    if((zeit=CHAOS_GILDENMASTER->query_duellzeit()) > time())
     {
       s=break_string("Der naechste Kampf kann fruehstens am "+
         dtime(zeit)+" stattfinden. Erst danach kannst Du dich erneut "+
@@ -1463,7 +1463,7 @@ void lernen_sag(string was)
   if (was[0] == '#')
     tell_room(environment(),was[1..]);
 
-  else if((i=strstr(was,"�"))>-1)
+  else if((i=strstr(was,"§"))>-1)
   {
     write(was[0..i-1]);
     tell_room(environment(),was[i+1..],({PL}));

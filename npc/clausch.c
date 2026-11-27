@@ -5,6 +5,7 @@
 // xx.xx.xxxx Zardoz
 // 17.05.1998 Bierchen@MorgenGrauen    ueberarbeitet
 // 10.12.2018 It@Efferdland            ueberarbeitet
+// 27.11.2026 It@Efferdland            Tippfehler P_NO_ATTACK
 
 #include "def.h"
 
@@ -37,7 +38,7 @@ protected void create()
   SetProp(P_RACE,CL_HUMAN);
   SetProp(P_NAME_ADJ,"unfair");
   SetProp(P_NAME, "Schiedsrichter");
-  SetProp(P_NO_ATTACK. " sagt: Sooo unfair bin ich auch wieder nicht!\n");
+  SetProp(P_NO_ATTACK, " sagt: Sooo unfair bin ich auch wieder nicht!\n");
   SetProp(P_GENDER,MALE);
   AddId(({"schiedsrichter","mann","richter","unfairer schiedsrichter",
   	  "unfairen schiedsrichter" }));

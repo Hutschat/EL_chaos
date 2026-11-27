@@ -5,6 +5,7 @@
 // xx.xx.xxxx Zardoz
 // 17.05.1998 Bierchen@MorgenGrauen    ueberarbeitet
 // 10.12.2018 It@Efferdland            ueberarbeitet
+// 27.11.2026 It@Efferdland            UTF-8, init() für neuen Driver
 
 #include "def.h"
 #include "wuqour.h"
@@ -1325,9 +1326,9 @@ void lernen(int wen, int index)
 
 /* ----------- DER KAMPF - TEIL VON WUQOUR ------------------------------ */           
 
-void init()
+public varargs void init(object origin)
 {
-  ::init();
+  ::init(origin);
   if(PL->id( "zurkur"))
   {
     tell_room(environment(),Name(WER)+" stuerzt sich auf den widerlichen "
@@ -1797,7 +1798,7 @@ void sequence(object wer,int flag,int index)
       else          PL->SetProp("chaos_frog",0);
       break;
    }
-   if ((i=strstr(zeile,"�",0))>-1)
+   if ((i=strstr(zeile,"§",0))>-1)
    {
      if (wer->Query(P_GENDER)==1)
        zeile = zeile[0..i-1];

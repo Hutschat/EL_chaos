@@ -5,6 +5,7 @@
 // xx.xx.xxxx Zardoz
 // 17.05.1998 Bierchen@MorgenGrauen    ueberarbeitet
 // 10.12.2018 It@Efferdland             ueberarbeitet
+// 27.11.2026 It@Efferdland             wieder lauffähig, ohne Arena
 
 #include "def.h"
 
@@ -212,8 +213,6 @@ protected void create()
   AddSpell( "verbanne" );
   AddSpell( "binde" );
   AddSpell( "kruftur" );
-  AddSpell( "ombatis" );
-  AddSpell( "balal");
   AddSpell( "irkitis" );
   AddSpell( "finsternis" );
   AddSpell( "harkuhu" );
@@ -225,10 +224,11 @@ protected void create()
   AddCmd(({"tritt","trete"}),"bei_oder_aus_treten");
   AddCmd(({"lerne", "lern" }), "OwnLearnSpell" );
   AddCmd(({"gruess", "gruesse" }), "argl" );
-  AddCmd(({"melde", "meld" }), "melde_duell" );
+  // Erzmeisterkampf in der Arena: Die Arena entfällt, Ersatz offen
+  // AddCmd(({"melde", "meld" }), "melde_duell" );
   AddItem( CHAOS_GILDEN_MON( "kruuolq"), REFRESH_REMOVE );
   AddItem( CHAOS_GILDEN_MON( "hutschat"),  REFRESH_REMOVE);
-  AddExit("osten", CHAOS_GILDEN_ROOM( "challe" ));
+  // Ausgänge kommen mit den neuen Räumen der Burg
 }
 
 string my_liste(){ return CHAOS_GILDENMASTER->Liste(); }
@@ -242,7 +242,7 @@ string my_top_list()
 
 string my_zettel()
 {
-  PL->more( "/players/zardoz/texte/g_news" );
+  PL->more( CHAOS_GILDEN_TXT("g_news") );
   return "";
 }
 
@@ -457,7 +457,6 @@ int OwnLearnSpell(string str)
     write(" Du kannst folgende Daemonen beschwoeren:\n"+
     "   Intarbir       : Ab Gildenstufe 4.\n"+
     "   Kruftur        : Ab Gildenstufe 5.\n"+
-    "   Ombatis        : Ab Gildenstufe 6.\n"+
     "   Irkitis        : Ab Gildenstufe 7.\n"+
     "   Harkuhu        : Ab Gildenstufe 8.\n"+
     "   Graiop         : Ab Gildenstufe 9.\n"+
@@ -473,8 +472,11 @@ int OwnLearnSpell(string str)
 
 static mixed test_fight(object pl,int nr)
 {
+  if(!CHAOS_ARENA_PRUEFUNG)
+    return 0;
+
   if(pl->QueryProp(P_FROG))
-    return FROSCH_TEXT,
+    return FROSCH_TEXT;
 
   pl->SetProp(CHAOS_PRUEFUNG, 1);
 
@@ -491,7 +493,7 @@ string LevelTestFun1( object pl)
   if(pl->QueryProp(P_FROG))
     return FROSCH_TEXT;
 
-  if(!pl->QueryProp(CHAOS_KAMPF_BESTANDEN))
+  if(CHAOS_ARENA_PRUEFUNG && !pl->QueryProp(CHAOS_KAMPF_BESTANDEN))
   {
     pl->SetProp(CHAOS_PRUEFUNG, 1);
     return KAMPF_TEXT;
@@ -690,7 +692,8 @@ string LevelTestFun11(object pl)
     return test;
 
   pl->SetProp(CHAOS_PRUEFUNG,1);
-  if(!CHAOS_GILDENMASTER->QueryPruefung( getuid(PL), 11))
+  if(CHAOS_ARENA_PRUEFUNG &&
+     !CHAOS_GILDENMASTER->QueryPruefung( getuid(PL), 11))
   return "Du musst erst noch einen Kampf in der Kampfarena gewinnen.\n";
 
   return 0;
@@ -769,7 +772,7 @@ static int melde_duell(string str)
     return 1;
   }
 
-  zeit = (int) (CHAOS_GILDENMASTER->query_duellzeit());
+  zeit = (CHAOS_GILDENMASTER->query_duellzeit());
 
   if(!sizeof(CHAOS_GILDENMASTER->query_duellier()))
   {

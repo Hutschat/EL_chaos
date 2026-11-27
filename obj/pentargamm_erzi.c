@@ -3,6 +3,7 @@
 // Letzte Aenderung:
 //
 // 11.03.2019 It@Efferdland            ueberarbeitet
+// 27.11.2026 It@Efferdland            init() für neuen Driver
  
 #pragma no_inherit
 
@@ -70,7 +71,7 @@ protected void create() {
   AddCmd(({"wische","wisch","loesche","loesch"}),"loesche_pentagramm");
 }
 
-void init() {
+varargs void init() {
   string erz;
   ::init();
 
