@@ -32,6 +32,7 @@
 #define CHAOS_BURGTOR      (CHAOS_GILDEN_ROOM("[+007+051+08]"))
 #define CHAOS_SCHAENKE     (CHAOS_GILDEN_ROOM("[+008+053+08]"))
 #define CHAOS_RITTERSAAL   (CHAOS_GILDEN_ROOM("[+015+051+08]"))
+#define CHAOS_LADEN        (CHAOS_GILDEN_ROOM("[+009+049+08]"))
   // Der Pfad im Schattental, der zum Burgtor hinaufführt
 #define CHAOS_BURGPFAD     "/d/nordland/schattental/room/[+006+051+08:O]"
 

@@ -13,12 +13,15 @@
 // 27.11.2026 It@Efferdland            neu
 // 27.11.2026 It@Efferdland            ausgebaut
 // 27.11.2026 It@Efferdland            neuer Grundriss
+// 27.11.2026 It@Efferdland            Bewohner, Achtarchs Laden
 
 #pragma strong_types
 #pragma no_clone
 #pragma no_inherit
 
 #include "def.h"
+#include <laden.h>
+#include <kneipe.h>
 
 inherit "/std/virtual/it_compiler_dmaker";
 
@@ -47,7 +50,8 @@ static void platz(object o) {
   o->AddDetail(({"burgplatz","platz"}),
      "Der Burgplatz liegt zwischen dem Torhaus im Westen und dem "
      "Hauptgebäude im Osten. Rundherum stehen Gesindehaus, Ställe, "
-     "Schmiede, Werkstatt und Kapelle, manche davon nur noch als Ruine. "
+     "Schmiede, Achtarchs Laden und Kapelle, manche davon nur noch als "
+     "Ruine. "
      "Im Nordosten ragt der Turm auf.");
 
   o->AddDetail(({"feuerstelle","feuerstellen","asche"}),
@@ -88,7 +92,7 @@ static void platz(object o) {
      "Mitten auf dem Platz steht der alte Brunnen.");
 
   o->AddDetail(({"nebengebaeude","nebengebäude"}),
-     "Gesindehaus, Ställe, Schmiede, Werkstatt und Kapelle.");
+     "Gesindehaus, Ställe, Schmiede, Laden und Kapelle.");
 
   o->AddDetail(({"gesindehaus"}),
      "Das Gesindehaus im Nordwesten ist jetzt die Schänke.");
@@ -99,8 +103,9 @@ static void platz(object o) {
   o->AddDetail(({"schmiede"}),
      "Die Schmiede im Südwesten ist noch in Betrieb.");
 
-  o->AddDetail(({"werkstatt"}),
-     "Von der Werkstatt im Süden stehen nur noch die Grundmauern.");
+  o->AddDetail(({"werkstatt","laden","achtarch"}),
+     "In der Ruine der alten Werkstatt im Süden hat Achtarch seinen Laden "
+     "eingerichtet.");
 
   o->AddDetail(({"kapelle"}),
      "Die alte Kapelle im Südosten ist eine Ruine ohne Dach.");
@@ -522,7 +527,7 @@ public varargs void create_room(string file, object o) {
        "Der Burgplatz ist grob rechteckig und ziemlich verwahrlost.");
 
     o->AddDetail(({"nebengebaeude","nebengebäude"}),
-       "Gesindehaus, Ställe, Schmiede, Werkstatt und Kapelle.");
+       "Gesindehaus, Ställe, Schmiede, Laden und Kapelle.");
 
     o->AddDetail(({"chaoten","chaot"}),
        "Gerade ist keiner zu sehen. Gehört hört man sie trotzdem.");
@@ -582,6 +587,11 @@ public varargs void create_room(string file, object o) {
 
     o->AddDetail(({"heisses","heißes"}),
        "Irgendein heißer Dämon vielleicht.");
+
+    o->AddDetail(({"chaoslehrling","lehrling","lehrlinge"}),
+       "Lehrlinge laufen hier ständig herum.");
+
+    o->AddItem(CHAOS_GILDEN_MON("lehrling"),REFRESH_DESTRUCT);
 
     o->AddExit("norden",     R("[+009+052+08]"));
     o->AddExit("westen",     R("[+008+051+08]"));
@@ -684,18 +694,28 @@ public varargs void create_room(string file, object o) {
     platz(o);
     o->SetProp(P_INT_SHORT,"Im Süden des Burgplatzes");
     o->chaos_long(
-       "Du stehst im Süden des Burgplatzes. Im Süden liegt die Ruine "
-       "einer Werkstatt, von der nur die Grundmauern übrig sind. Hier "
-       "hängt Wäsche zwischen zwei Pfählen, und ein umgedrehter Kessel "
-       "dient als Tisch für ein angefangenes Würfelspiel.");
+       "Du stehst im Süden des Burgplatzes. Im Süden liegt die Ruine der "
+       "alten Werkstatt, die jemand mit Brettern und Planen zu einem Laden "
+       "umgebaut hat. Über dem Eingang hängt ein Schild. Hier hängt Wäsche "
+       "zwischen zwei Pfählen, und ein umgedrehter Kessel dient als Tisch "
+       "für ein angefangenes Würfelspiel.");
 
     o->SetProp(P_CHAOS_VARIANTEN,({
        "Die Würfel auf dem Kessel zeigen alle eine Sieben.",
        "Die Wäsche flattert, obwohl kein Wind geht.",
     }));
 
-    o->AddDetail(({"werkstatt","grundmauern"}),
-       "Die Werkstatt im Süden ist eine Ruine.");
+    o->AddDetail(({"werkstatt","ruine","laden","brettern","bretter",
+                   "planen","eingang"}),
+       "Die alte Werkstatt im Süden ist eine Ruine, aber Achtarch hat sie "
+       "mit Brettern und Planen zu seinem Laden gemacht.");
+
+    o->AddDetail(({"schild"}),
+       "»Achtarchs Laden. Nützliches für böse Zaubersprüche. Und Fackeln.«");
+
+    o->AddReadDetail(({"schild"}),
+       "»Achtarchs Laden. Nützliches für böse Zaubersprüche. Und "
+       "Fackeln.«\n");
 
     o->AddDetail(({"waesche","wäsche","pfaehle","pfähle","pfahl"}),
        "Socken, Hemden und eine Robe mit einem großen Loch auf dem "
@@ -711,6 +731,9 @@ public varargs void create_room(string file, object o) {
                    "sieben"}),
        "Drei Würfel liegen auf dem Kessel. Wer gerade dran war, ist nicht "
        "zu erkennen.");
+
+    o->AddDetail(({"fackeln","zaubersprueche","zaubersprüche"}),
+       "Das steht auf dem Schild.");
 
     o->AddExit("sueden",     R("[+009+049+08]"));
     o->AddExit("norden",     R("[+009+051+08]"));
@@ -874,6 +897,12 @@ public varargs void create_room(string file, object o) {
     o->AddDetail(({"stuhl"}),
        "Kein Stuhl gleicht dem anderen.");
 
+    o->SetProp(P_PUB_KEEPER,CHAOS_ID_WIRT);
+    o->AddDetail(({"wirt","krummbart"}),
+       "Krummbart, der Wirt, steht meistens hinter dem Tresen.");
+
+    o->AddItem(CHAOS_GILDEN_MON("wirt"),REFRESH_DESTRUCT);
+
     o->AddExit("sueden",     R("[+008+052+08]"));
     break;
 
@@ -968,8 +997,8 @@ public varargs void create_room(string file, object o) {
        "Lang, verbogen, mit zwei Griffen und einer Mulde. Was es werden "
        "soll, weiß vermutlich nicht einmal der Schmied.");
 
-    o->AddDetail(({"schmied","mulde","griffe"}),
-       "Der Schmied ist gerade nicht da.");
+    o->AddDetail(({"mulde","griffe"}),
+       "Was das soll, weiß nur Klonk.");
 
     o->AddDetail(({"werkzeuge","werkzeug","zangen","haemmer","hämmer"}),
        "Zangen und Hämmer, achtlos hingeworfen.");
@@ -989,45 +1018,106 @@ public varargs void create_room(string file, object o) {
     o->AddDetail(({"hammerschlaege","hammerschläge"}),
        "Du hörst sie, aber niemand schlägt.");
 
+    o->AddDetail(({"schmied","klonk"}),
+       "Klonk, der Schmied, ist meistens hier.");
+
+    o->AddItem(CHAOS_GILDEN_MON("schmied"),REFRESH_DESTRUCT);
+
     o->AddExit("norden",     R("[+008+050+08]"));
     break;
 
     case "[+009+049+08]":
-    o->SetProp(P_INT_SHORT,"In der Ruine der Werkstatt");
+    o->SetProp(P_INT_SHORT,"In Achtarchs Laden");
     o->chaos_long(
-       "Von der alten Werkstatt sind nur die Grundmauern übrig. Zwischen "
-       "den Steinen wächst Unkraut, und in einer Ecke steht noch eine "
-       "Hobelbank, der zwei Beine fehlen. Das Werkzeug hat längst jemand "
-       "mitgenommen, nur ein Sägeblatt steckt noch in einem Balken. Im "
-       "Norden geht es zurück auf den Burgplatz.");
+       "Achtarch hat die Ruine der alten Werkstatt zu seinem Laden "
+       "gemacht. Über den Grundmauern spannen sich Planen und Bretter als "
+       "Dach, durch die Lücken tropft es. Hinter einem Tresen aus einer "
+       "alten Hobelbank stehen Regale mit Kreide, Kerzen, Fackeln und "
+       "allerlei Kram. Über dem Tresen hängt eine Medaille, die Achtarch "
+       "jedem zeigt, ob er will oder nicht. Im Norden geht es zurück auf "
+       "den Burgplatz.");
 
     o->SetProp(P_CHAOS_VARIANTEN,({
-       "Die Hobelbank steht heute auf drei Beinen. Wo das dritte "
-       "herkommt, weiß niemand.",
-       "Im Unkraut liegt ein Hobel, der sich langsam von selbst bewegt.",
+       "Durch eine Lücke im Dach tropft es genau auf den Tresen. Achtarch "
+       "hat einen Eimer daruntergestellt.",
+       "Ein Stück Kreide wandert von selbst über das Regal.",
     }));
 
-    o->AddDetail(({"werkstatt","grundmauern","ruine"}),
-       "Nur noch Grundmauern.");
+    o->SetProp(P_SHOP_STORE_ITEMS,({
+       ({POOL_KOMPOS "CHAOS_kreide",          8}),
+       ({POOL_KOMPOS "CHAOS_kreide_schwarz",  4}),
+       ({POOL_KOMPOS "CHAOS_kohle",           4}),
+       ({POOL_KOMPOS "CHAOS_kerze_schwarz",   4}),
+       ({POOL_KOMPOS "CHAOS_silberstaub",     2}),
+       ({"/obj/fackel",                       6}),
+       ({"/obj/seil",                         3}),
+       ({"/obj/schaufel",                     2}),
+       ({POOL_CONTAINER "beutel",             3}),
+       ({POOL_MISC "eimer",                   2}),
+       ({POOL_FOOD "apfel",                   6}),
+       ({POOL_FOOD "steak",                   4}),
+    }));
+    o->SetProp(P_SHOP_KEEPER,CHAOS_ID_ACHTARCH);
 
-    o->AddDetail(({"unkraut"}),
-       "Dornig und grau.");
+    o->AddDetail(({"laden","werkstatt","ruine","grundmauern"}),
+       "Die alte Werkstatt, notdürftig wieder überdacht.");
 
-    o->AddDetail(({"hobelbank","beine","hobel"}),
-       "Die Beine sind wohl in einer Feuerstelle gelandet.");
+    o->AddDetail(({"planen","bretter","dach","luecken","lücken"}),
+       "Planen und Bretter, schief festgenagelt. Durch die Lücken tropft "
+       "es.");
 
-    o->AddDetail(({"saegeblatt","sägeblatt","balken"}),
-       "Ein rostiges Sägeblatt, tief in einen verkohlten Balken "
-       "geschlagen.");
+    o->AddDetail(({"tresen","hobelbank"}),
+       "Die alte Hobelbank dient als Tresen. Zwei Beine sind durch "
+       "Kisten ersetzt.");
 
-    o->AddDetail(({"werkzeug"}),
-       "Weg.");
+    o->AddDetail(({"kisten","beine"}),
+       "Hält. Gerade so.");
+
+    o->AddDetail(({"regale","regal","kreide","kerzen","fackeln","kram"}),
+       "In den Regalen liegt, was Achtarch verkauft. Was genau, zeigt dir "
+       "die Liste ('liste').");
+
+    o->AddDetail(({"medaille"}),
+       "Eine Medaille der Ladenbesitzer-Vereinigung für herausragende "
+       "Leistungen. Achtarch putzt sie jeden Tag.");
+
+    o->AddDetail(({"eimer"}),
+       "Er ist halb voll.");
 
     o->AddDetail(({"burgplatz","platz"}),
        "Im Norden liegt der Burgplatz.");
 
-    o->AddDetail(({"feuerstelle"}),
-       "Dort, wo die Beine gelandet sind.");
+    o->AddDetail(({"boden"}),
+       "Gestampfte Erde, voller Sägespäne.");
+
+    o->AddDetail(({"saegespaene","sägespäne","erde"}),
+       "Reste aus der Zeit, als hier noch eine Werkstatt war.");
+
+    o->AddDetail(({"wand","waende","wände","mauern"}),
+       "Alte Grundmauern, mit Brettern ausgebessert.");
+
+    o->AddSound(({DEFAULT_SOUND,"tropfen"}),
+       "Tropf. Tropf.");
+
+    o->AddDetail(({"achtarch","haendler","händler"}),
+       "Achtarch steht meistens hinter seinem Tresen.");
+
+    o->AddDetail(({"liste"}),
+       "Mit 'liste' siehst du, was Achtarch verkauft.");
+
+    o->AddDetail(({"vereinigung","ladenbesitzer","ladenbesitzer-vereinigung","leistungen","tag"}),
+       "Er ist sehr stolz darauf.");
+
+    o->AddDetail(({"decke"}),
+       "Statt einer Decke gibt es Planen und Bretter.");
+
+    o->AddDetail(({"fussboden","fußboden"}),
+       "Gestampfte Erde.");
+
+    o->AddDetail(({"muelleimer","mülleimer","zeit"}),
+       "Was Achtarch nicht ankauft, wirft er weg.");
+
+    o->AddItem(CHAOS_GILDEN_MON("achtarch"),REFRESH_DESTRUCT);
 
     o->AddExit("norden",     R("[+009+050+08]"));
     break;
@@ -1411,6 +1501,11 @@ public varargs void create_room(string file, object o) {
     o->AddDetail(({"mittelgang","gang"}),
        "Im Osten beginnt der Mittelgang.");
 
+    o->AddDetail(({"chaoslehrling","lehrling","lehrlinge"}),
+       "Lehrlinge laufen hier ständig herum.");
+
+    o->AddItem(CHAOS_GILDEN_MON("lehrling"),REFRESH_DESTRUCT);
+
     o->AddExit("westen",     R("[+010+051+08]"));
     o->AddExit("osten",      R("[+012+051+08]"));
     break;
@@ -1608,6 +1703,11 @@ public varargs void create_room(string file, object o) {
     o->AddSmell(({"zwiebeln","zwiebel"}),
        "Scharf.");
 
+    o->AddDetail(({"koch","schmorbold"}),
+       "Schmorbold, der Koch, steht meistens am Kessel.");
+
+    o->AddItem(CHAOS_GILDEN_MON("koch"),REFRESH_DESTRUCT);
+
     o->AddExit("sueden",     R("[+012+051+08]"));
     break;
 
@@ -1770,6 +1870,11 @@ public varargs void create_room(string file, object o) {
     o->AddDetail(({"wer"}),
        "Lies die Liste.");
 
+    o->AddDetail(({"schreiber","kritzel"}),
+       "Kritzel, der Schreiber, sitzt meistens am Pult.");
+
+    o->AddItem(CHAOS_GILDEN_MON("schreiber"),REFRESH_DESTRUCT);
+
     o->AddExit("norden",     R("[+013+051+08]"));
     break;
 
@@ -1927,6 +2032,11 @@ public varargs void create_room(string file, object o) {
 
     o->AddDetail(({"mitte"}),
        "In der Mitte steht die Tafel.");
+
+    o->AddDetail(({"chaoslehrling","lehrling","lehrlinge"}),
+       "Lehrlinge laufen hier ständig herum.");
+
+    o->AddItem(CHAOS_GILDEN_MON("lehrling"),REFRESH_DESTRUCT);
 
     o->AddExit("westen",     R("[+014+051+08]"));
     o->AddExit("osten",      CHAOS_GILDENROOM);
@@ -2875,6 +2985,9 @@ public varargs void create_room(string file, object o) {
     o->AddSmell(({"moder"}),
        "Feucht und modrig.");
 
+    o->AddItem(CHAOS_GILDEN_MON("kerkerdaemon"),REFRESH_DESTRUCT);
+    o->AddItem(CHAOS_GILDEN_MON("kerkerdaemon"),REFRESH_DESTRUCT);
+
     o->AddExit("norden",     R("[+013+051+07]"));
     break;
 
@@ -2921,6 +3034,11 @@ public varargs void create_room(string file, object o) {
 
     o->AddDetail(({"bund"}),
        "Ein dicker Bund rostiger Schlüssel.");
+
+    o->AddDetail(({"wache","gaehnulf","gähnulf"}),
+       "Gähnulf soll hier Wache halten. Meistens schläft er.");
+
+    o->AddItem(CHAOS_GILDEN_MON("wache"),REFRESH_DESTRUCT);
 
     o->AddExit("norden",     R("[+012+051+07]"));
     break;
@@ -2982,6 +3100,11 @@ public varargs void create_room(string file, object o) {
 
     o->AddDetail(({"ritual"}),
        "Für ein gutes Ritual braucht man eben Knochen.");
+
+    o->AddDetail(({"totengraeber","totengräber","modrich"}),
+       "Modrich sortiert hier die Knochen.");
+
+    o->AddItem(CHAOS_GILDEN_MON("totengraeber"),REFRESH_DESTRUCT);
 
     versperrt(o,file,"westen",
        "Im Westen ist die Gruft eingestürzt. Zwischen den Steinen ragen "
