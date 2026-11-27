@@ -23,6 +23,13 @@ static string *chaos_erlaubt;
 // Urgs, extra-abfrage fuer den erzmeister, das hat wohl vorher
 // gebuggt.
 
+// Prototypen für Closures
+void GuteRuestung();
+void chaos_chaos_chaos(int count_up);
+void random_effekt();
+void remove_it();
+static void warte_schleife(int zahl);
+
 static int check_erzie(object pl)
 {
   if((pl->QueryProp(P_GUILD)=="chaos") &&
@@ -103,7 +110,7 @@ protected void create()
 
 static int check_hautdaemon()
 {
-  if(find_call_out("chaos_chaos_chaos")!=-1 &&!(PL->InFight()))
+  if(find_call_out(#'chaos_chaos_chaos)!=-1 &&!(PL->InFight()))
   {
      tell_object(PL,break_string("Der Daemon in Deiner Haut hindert Dich "
                     "daran! Wahrscheinlich will er Dich noch etwas quaelen!"));
@@ -190,7 +197,7 @@ static int verbanne_haut(string str)
 
   PL->SetProp(P_C_LAUSCHEN,0);
 
-  call_out("remove_it",0);
+  call_out(#'remove_it,0);
 
   return 1;
 }  
@@ -213,11 +220,11 @@ varargs void init()
 
   if(!living(env) || env->QueryProp(P_GHOST))
   {
-    call_out( "remove_it", 0);
+    call_out( #'remove_it, 0);
     return;
   }
-  if(QueryProp(DAEM_FALSE) && find_call_out("chaos_chaos_chaos")==-1)
-    call_out("chaos_chaos_chaos",1,0); 
+  if(QueryProp(DAEM_FALSE) && find_call_out(#'chaos_chaos_chaos)==-1)
+    call_out(#'chaos_chaos_chaos,1,0); 
 }
 
 void remove_it()
@@ -252,7 +259,7 @@ void reset()
 
   if(!QueryProp(P_WORN))
   {
-    call_out("remove_it",0);
+    call_out(#'remove_it,0);
     return;
   }     
     // Der Erzmeister hat keine Probleme mit der Chaoshaut,
@@ -273,8 +280,8 @@ void reset()
 
   SetProp(DAEM_FALSE,1);
 
-  if(find_call_out("chaos_chaos_chaos")==-1)
-    call_out("chaos_chaos_chaos",40,0);
+  if(find_call_out(#'chaos_chaos_chaos)==-1)
+    call_out(#'chaos_chaos_chaos,40,0);
 }
 
 int RemoveFunc()
@@ -300,7 +307,7 @@ void starte_anziehen(int suc)
 
   if(!QueryProp(P_WORN))
   {
-    call_out("remove_it",0);
+    call_out(#'remove_it,0);
     return;
   }
   level = QueryProp(RUEST_CASTER_LEVEL);
@@ -313,8 +320,8 @@ void starte_anziehen(int suc)
   pl->reduce_hit_point(4*(3+level-suc/1000));
 
   if(!(CHAOS_GILDENMASTER->ist_erz(pl)) &&
-     find_call_out("chaos_chaos_chaos")==-1)
-    call_out("chaos_chaos_chaos",10,0);
+     find_call_out(#'chaos_chaos_chaos)==-1)
+    call_out(#'chaos_chaos_chaos,10,0);
 
   if(level<6)
     return;
@@ -343,15 +350,15 @@ void starte_anziehen(int suc)
     case 4..6:
       tell_object(pl,"Die Chaosruestung ist etwas besser als erwartet.\n");
       SetProp(RUEST_ZUSATZ,10);
-      call_out("GuteRuestung",0);
+      call_out(#'GuteRuestung,0);
       break;
     case 7..8:
-      call_out("GuteRuestung",0);
+      call_out(#'GuteRuestung,0);
       SetProp(RUEST_ZUSATZ,20);
       tell_object(pl,"Die Chaosruestung ist viel besser als erwartet!\n");
       break;
     default:
-      call_out("GuteRuestung",0);
+      call_out(#'GuteRuestung,0);
       SetProp(RUEST_ZUSATZ,30);
       tell_object(pl,"Die Chaosruestung ist absolut genial geworden!\n");
   }
@@ -406,7 +413,7 @@ void kontrolle_erfolgreich(int suc)
 
   if(!QueryProp(P_WORN))
   {
-    call_out("remove_it",0);
+    call_out(#'remove_it,0);
     return;
   }
   level = QueryProp(RUEST_CASTER_LEVEL);
@@ -474,12 +481,12 @@ void chaos_chaos_chaos(int count_up)
 
   if(!interactive(pl))
   {
-    call_out("warte_schleife",20,0);
+    call_out(#'warte_schleife,20,0);
     return;
   }
   if(!QueryProp(P_WORN) || pl->QueryProp(P_GHOST))
   {
-    call_out("remove_it",0);
+    call_out(#'remove_it,0);
     return;
   }
   if(count_up==0 && query_idle(pl)>41)
@@ -487,8 +494,8 @@ void chaos_chaos_chaos(int count_up)
 
   if(query_idle(pl)>30)
   {
-    if(find_call_out("warte_schleife")==-1)
-      call_out("warte_schleife",10,1);
+    if(find_call_out(#'warte_schleife)==-1)
+      call_out(#'warte_schleife,10,1);
 
     return;
   }
@@ -504,8 +511,8 @@ void chaos_chaos_chaos(int count_up)
       "TOBEN!!\n\n");
       if(check_erzie(pl))
       {
-        if(find_call_out("chaos_chaos_chaos")!=-1)
-          while (remove_call_out("chaos_chaos_chaos")!=-1);
+        if(find_call_out(#'chaos_chaos_chaos)!=-1)
+          while (remove_call_out(#'chaos_chaos_chaos)!=-1);
 
         return;
       }
@@ -516,7 +523,7 @@ void chaos_chaos_chaos(int count_up)
       break;
 
     case 1:
-      call_out("random_effekt",0);
+      call_out(#'random_effekt,0);
       time = 12;
       break;
 
@@ -536,12 +543,12 @@ void chaos_chaos_chaos(int count_up)
       break;
 
     case 3:
-      call_out("random_effekt",0);
+      call_out(#'random_effekt,0);
       time = 10;
       break;
 
     case 4:
-      call_out("random_effekt",0);
+      call_out(#'random_effekt,0);
       time = 15;
       break;
 
@@ -560,12 +567,12 @@ void chaos_chaos_chaos(int count_up)
       break;
 
     case 6:
-      call_out("random_effekt",0);
+      call_out(#'random_effekt,0);
       time = 10;
       break;
 
     case 7:
-      call_out("random_effekt",0);
+      call_out(#'random_effekt,0);
       time = 9;
       break;
 
@@ -586,12 +593,12 @@ void chaos_chaos_chaos(int count_up)
       break;
 
    case 9:
-     call_out("random_effekt",0);
+     call_out(#'random_effekt,0);
      time = 9;
      break;
 
    case 10:
-     call_out("random_effekt",0);
+     call_out(#'random_effekt,0);
      time = 11;
      break;
 
@@ -609,12 +616,12 @@ void chaos_chaos_chaos(int count_up)
      break;
 
    case 12:
-     call_out("random_effekt",0);
+     call_out(#'random_effekt,0);
      time = 12;
      break;
 
    case 13:
-     call_out("random_effekt",0);
+     call_out(#'random_effekt,0);
      time = 9;
      break;
 
@@ -634,12 +641,12 @@ void chaos_chaos_chaos(int count_up)
      break;
 
    case 15:
-     call_out("random_effekt",0);
+     call_out(#'random_effekt,0);
      time = 9;
      break;
 
    case 16:
-     call_out("random_effekt",0);
+     call_out(#'random_effekt,0);
      time = 14;
      break;
 
@@ -653,7 +660,7 @@ void chaos_chaos_chaos(int count_up)
      break;
 
    case 18:
-     call_out("random_effekt",0);
+     call_out(#'random_effekt,0);
      time = 10;
      break;
 
@@ -671,12 +678,12 @@ void chaos_chaos_chaos(int count_up)
      break;
 
    case 20:
-     call_out( "random_effekt",0);
+     call_out( #'random_effekt,0);
      time = 10;
      break;
 
    case 21:
-     call_out("random_effekt",0);
+     call_out(#'random_effekt,0);
      time = 11;
      break;
 
@@ -693,17 +700,17 @@ void chaos_chaos_chaos(int count_up)
      break;
  
    case 23:
-     call_out("random_effekt",0);
+     call_out(#'random_effekt,0);
      time = 11;
      break;
 
    case 24:
-     call_out("random_effekt",0);
+     call_out(#'random_effekt,0);
      time = 14;
      break;
 
    case 25:
-     call_out("random_effekt",0);
+     call_out(#'random_effekt,0);
      time = 17;
      break;
 
@@ -729,12 +736,12 @@ void chaos_chaos_chaos(int count_up)
      daem->SetProp(P_MMSGOUT,"hetzt "+pl->name(WEN,1)+" hinterher");
      daem->move(environment(pl),M_TPORT );
      daem->Kill(pl);
-     call_out("remove_it",0);
+     call_out(#'remove_it,0);
      return;
   }
   count_up++;
   SetProp("chaos_count_up",count_up);
-  call_out("chaos_chaos_chaos",time, count_up);
+  call_out(#'chaos_chaos_chaos,time, count_up);
 }
 
 void random_effekt()
@@ -752,7 +759,7 @@ void random_effekt()
   
   if(!QueryProp(P_WORN)||pl->QueryProp(P_GHOST))
   {
-    call_out("remove_it",0);
+    call_out(#'remove_it,0);
     return;
   }
   if(!(prev=previous_object()) || !check_prev(prev) ||
@@ -892,17 +899,17 @@ static void warte_schleife(int zahl)
     if(query_idle(environment())>30)
     {
       zahl ++;
-      call_out("warte_schleife",30,zahl);
+      call_out(#'warte_schleife,30,zahl);
       return;
     }
-    call_out("chaos_chaos_chaos",0,QueryProp("chaos_count_up"));
+    call_out(#'chaos_chaos_chaos,0,QueryProp("chaos_count_up"));
     return;
   }
   if(zahl>20)
     return;
 
   zahl++;
-  call_out("warte_schleife",60,zahl);
+  call_out(#'warte_schleife,60,zahl);
 }
 
 void verbessere_ruestung(int ac, int zeit)
@@ -912,21 +919,15 @@ void verbessere_ruestung(int ac, int zeit)
 
   SetProp(RUEST_SCHUTZ,ac);
   SetProp(RUEST_ZUSATZ,QueryProp(RUEST_ZUSATZ)+ac);
-  call_out("verschlechtere_ruestung",zeit);
-}
+  // Nach Ablauf verschwindet der Schutz wieder
+  call_out(function void() {
+    SetProp(RUEST_ZUSATZ,QueryProp(RUEST_ZUSATZ)-QueryProp(RUEST_SCHUTZ));
+    SetProp(RUEST_SCHUTZ,0);
 
-void verschlechtere_ruestung()
-{
-  int ac;
-
-  ac  = QueryProp(RUEST_ZUSATZ);
-  ac -= QueryProp(RUEST_SCHUTZ);
-  SetProp(RUEST_ZUSATZ,ac);
-  SetProp(RUEST_SCHUTZ,0);
-  
-  if(living(environment(ME)))
-    tell_object(environment(ME),
-    "Der magische Schutz der Chaoshaut verschwindet.\n");
+    if(living(environment(ME)))
+      tell_object(environment(ME),
+      "Der magische Schutz der Chaoshaut verschwindet.\n");
+  },zeit);
 }
 
 void NotifyPlayerDeath(object player, object killer, int le )

@@ -23,6 +23,12 @@ inherit  "/std/gilden_ob";
 #define FROSCH_TEXT\
 "Igitt! Ein Frosch! Hau bloss ab!\n"
 
+// Prototypen für Closures
+string my_liste();
+string my_top_list();
+string my_zettel();
+void count_down(int zahl);
+
 protected void create()
 {
   ::create();
@@ -81,8 +87,8 @@ protected void create()
   AddDetail(({"zettel","neuigkeiten"}),
   "Auf dem Zettel stehen die Neuigkeiten der Gilde.");
 
-  AddReadDetail( "zettel", "@@my_zettel@@" );
-  AddReadDetail( "liste", "@@my_liste@@" );
+  AddReadDetail( "zettel", #'my_zettel );
+  AddReadDetail( "liste", #'my_liste );
 
   AddDetail(({"boden","steinboden","fussboden","fußboden"}),
   "Du stehst auf einem rissigen Steinboden und teilweise auf einer "
@@ -96,7 +102,7 @@ protected void create()
   "Kaum einer schaut sie an.");
 
   AddReadDetail(({"top-liste","topliste"}),
-  "@@my_top_list@@" );
+  #'my_top_list );
 
   AddDetail(({"theke"}),
   "Hinter der langen, wurmstichigen Theke im Osten steht "
@@ -825,7 +831,7 @@ static int melde_duell(string str)
            "einer Stunde. Wer mitmachen will, meldet sich bitte in der "
            "Gilde an.",0, "Kruuolq an alle Meister: " ));
 
-    call_out("count_down", 600, 0);
+    call_out(#'count_down, 600, 0);
 
     return 1;
   }
@@ -881,7 +887,7 @@ void count_down(int zahl)
 
   zahl ++;
 
-  call_out("count_down",600,zahl);
+  call_out(#'count_down,600,zahl);
 }
 
 int GuildRating(object pl)

@@ -61,13 +61,9 @@ public varargs void init(object origin)
     return;
 
   if(this_player()->id( "\nchaos_irrlicht") && !random(10))
-    call_out( "irrlicht_attack", 0, this_player());
+    call_out(function void(object mon) {
+      if(mon)
+        Kill(mon);
+    }, 0, this_player());
 }
-
-void irrlicht_attack( object mon)
-{	
-  if(!mon) return;
-    ME->Kill(mon);
-}
-
 

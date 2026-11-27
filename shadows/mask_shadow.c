@@ -58,7 +58,7 @@ public varargs void maske_aus(int silent) {
         "Plötzlich steht "+player->name(WER,1)+" vor dir."),({player}));
     }
   }
-  while(remove_call_out("maske_aus") != -1);
+  while(remove_call_out(#'maske_aus) != -1);
   destruct_shadow();
 }
 
@@ -80,7 +80,7 @@ public void maske_an(object pl, mapping map, int dauer, int erfolg) {
     haende = ({daten[P_HANDS][0],wc,daten[P_HANDS][2]});
   }
   (CHAOS_GILDEN_MASTER("shadow_master"))->RegisterShadow(ME);
-  call_out("maske_aus",max(dauer,10));
+  call_out(#'maske_aus,max(dauer,10));
 }
 
 // Die Gildendämonen erkennen damit einen verwandelten Chaoten

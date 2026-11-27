@@ -122,7 +122,7 @@ void setze_stats(int level, object pl)
       DT_DARKNESS: -0.3
     ]));
   if(level > 6) 
-    SetAttackChats( level * 2, ({ "@@aua@@" }));
+    SetAttackChats( level * 2, ({ #'aua }));
 
   if(level > 8)
     SetProp(P_RESISTANCE,QueryProp(P_RESISTANCE)+

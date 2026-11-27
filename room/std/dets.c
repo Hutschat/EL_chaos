@@ -84,20 +84,6 @@ public int versperrt(string verb, object pl) {
   return 0;
 }
 
-// Ein Chaosblitz, aus dem ein Chaoswicht entsteht
-static void chaos_ausbruch() {
-  object w;
-
-  if(present_clone(CHAOS_GILDEN_MON("chaoswicht"),ME)) {
-    return;
-  }
-  tell_room(ME,break_string("Ein violetter Blitz schlägt mit einem "
-    "trockenen Knall mitten im Raum ein! Als sich der Rauch verzieht, "
-    "hockt dort ein kleines, kicherndes Wesen."));
-  w = clone_object(CHAOS_GILDEN_MON("chaoswicht"));
-  w->move(ME,M_NOCHECK|M_SILENT);
-}
-
 // Etwas Seltsames, aber Harmloses passiert dem Spieler
 static void chaos_effekt(object pl) {
   object *obs;
@@ -168,10 +154,22 @@ public void chaos_init() {
     ausbruch = CHAOS_RISS_AUSBRUCH;
   }
   if(random(100) < ausbruch) {
-    call_out("chaos_ausbruch",2);
+    // Ein Chaosblitz, aus dem ein Chaoswicht entsteht
+    call_out(function void() {
+      object w;
+
+      if(present_clone(CHAOS_GILDEN_MON("chaoswicht"),ME)) {
+        return;
+      }
+      tell_room(ME,break_string("Ein violetter Blitz schlägt mit einem "
+        "trockenen Knall mitten im Raum ein! Als sich der Rauch verzieht, "
+        "hockt dort ein kleines, kicherndes Wesen."));
+      w = clone_object(CHAOS_GILDEN_MON("chaoswicht"));
+      w->move(ME,M_NOCHECK|M_SILENT);
+    },2);
   }
   else if(random(100) < effekt) {
-    call_out("chaos_effekt",1,this_player());
+    call_out(#'chaos_effekt,1,this_player());
   }
 }
 
@@ -281,5 +279,5 @@ protected void create() {
     "vorwaerts.\n",
   }),90);
 
-  call_out("chaos_reset",0);
+  call_out(#'chaos_reset,0);
 }

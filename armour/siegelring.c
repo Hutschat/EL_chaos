@@ -91,7 +91,7 @@ protected void create()
   AddDetail(({"leute"}),
   "Mit diesem Ring kannst Du gut andere Leute schlagen.");
 
-  AddReadDetail("gravur","@@det_gravur@@");
+  AddReadDetail("gravur",#'det_gravur);
 
   AddCmd(({"schlag","schlage"}),"hit_him");
 }

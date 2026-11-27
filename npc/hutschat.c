@@ -21,6 +21,11 @@ int last_call;
 
 // Chaosrattenquest
 
+// Prototypen für Closures
+string anforderung();
+string stufen();
+void make_notes_and_disappear(object wer);
+
 static int check_pl(object pl){
 #ifndef JENANDRA_QUEST
   if(pl->QueryProp("jenandra:testquest")) return 1;
@@ -188,7 +193,7 @@ protected void create()
             "eintreten", "beitreten", "beitritt", "erhoehe", "aufnahmebedinung",  
             "aufnahmebedingungen", "aufnahme", "antrag", "gildenerhoehen",  
             "gildenerhoehung", "aufsteigen", "aufstieg", "eintritt" }),
-  "@@anforderung@@", "sagt: ");
+  #'anforderung, "sagt: ");
 
   AddInfo(({"bedingung", "bedingungen", "vorraussetzung" }),
   "Du musst z.B. boese genug sein um aufgenommen zu werden. Ausserdem nehmen "
@@ -218,7 +223,7 @@ protected void create()
 
   AddInfo(({"gildenstufe", "gildenstufen", "gildentitel", "gildenlevel", 
             "stufenbezeichnungen", "stufenbezeichnung", "titel" }),
-  "@@stufen@@" );
+  #'stufen );
 
   AddInfo( "magier",
   "Magier sind doof und stinken!", "sagt: ");
@@ -364,7 +369,8 @@ protected void create()
 
 string anforderung()
 {
-  string s, level;
+  string s;
+  int level;
   if(PL->QueryProp( P_GUILD) != "chaos" )
    return "Um in die Gilde aufgenommen zu werden musst Du mindestens "
           "Stufe 5 in der Abenteurergilde besitzen und 120 Abenteuerpunkte "
@@ -442,8 +448,8 @@ string stufen()
 
 void make_notes(object wer)
 {
-  if (find_call_out("make_notes_and_disappear") == -1)
-    call_out("make_notes_and_disappear",2,wer);
+  if (find_call_out(#'make_notes_and_disappear) == -1)
+    call_out(#'make_notes_and_disappear,2,wer);
 }
 
 void make_notes_and_disappear(object wer)

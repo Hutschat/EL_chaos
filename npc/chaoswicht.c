@@ -17,15 +17,6 @@
 
 inherit "/std/npc";
 
-static void verschwinde() {
-  if(environment()) {
-    tell_room(environment(),break_string(Name(WER,1)+" kichert ein "
-      "letztes Mal, dreht sich einmal um sich selbst und löst sich in "
-      "violetten Funken auf."));
-  }
-  remove();
-}
-
 protected void create() {
   if(!clonep()) {
     set_next_reset(-1);
@@ -86,5 +77,13 @@ protected void create() {
     "Chaos! Chaos! Hihihi!",
   }),"kichert: ");
 
-  call_out("verschwinde",120+random(180));
+  // Nach ein paar Minuten löst er sich wieder auf
+  call_out(function void() {
+    if(environment()) {
+      tell_room(environment(),break_string(Name(WER,1)+" kichert ein "
+        "letztes Mal, dreht sich einmal um sich selbst und löst sich in "
+        "violetten Funken auf."));
+    }
+    remove();
+  },120+random(180));
 }

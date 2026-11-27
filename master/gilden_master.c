@@ -599,9 +599,12 @@ void BerechneTopWert(object pl)
 
   if(IS_LEARNER(pl) || pl->QueryProp(P_TESTPLAYER))
   {
-    call_out( "LoescheMagier", 0, wer);
+    call_out( #'LoescheMagier, 0, wer);
     return;
   }
+  // Noch nicht im Gildenmaster eingetragen (z.B. Gilde von Hand gesetzt)
+  if(!member(mitglieder,wer))
+    return;
 
   mitglieder[wer][STUFE] = pl->QueryProp( P_GUILD_LEVEL );
   skill                  = pl->QueryProp( P_SKILLS );

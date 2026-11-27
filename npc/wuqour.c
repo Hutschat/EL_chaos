@@ -31,15 +31,20 @@ int blutmagie;
 /* Boeser machen, Entblinden, entgiften, enttauben nur alle 10 Min. */
 static int last_boese,last_blind,last_gift,last_taub;
 
+// Prototypen für Closures
+string feste_drauf();
+int boeser_machen(object ob);
+void lernen(int wen, int index);
+void spreche_kreiszauber(object p);
+
 static int beschaeftigt()
 {
   if(PL && PL->QueryProp(P_GUILD) != "chaos")
     return 1;
 
-  return (find_call_out("sequence")>-1 ||
-          find_call_out("boeser_machen")>-1 ||
-          find_call_out("lernen")>-1 ||
-          find_call_out("bridge_repair")>-1);
+  return (find_call_out(#'sequence)>-1 ||
+          find_call_out(#'boeser_machen)>-1 ||
+          find_call_out(#'lernen)>-1);
 }
 
 static string boese_inf()
@@ -54,7 +59,7 @@ static string boese_inf()
     return "Du bist schon boese genug! :-)";
 
   last_boese = time();
-  call_out("boeser_machen",0,PL);
+  call_out(#'boeser_machen,0,PL);
   return "OK, dann beiss mal kraeftig die Zaehne zusammen.";
 }
 
@@ -205,8 +210,8 @@ static string kreiszauber_inf()
   if(!p->QueryProp(CHAOS_BANNKREIS))
     return "Zeichne erstmal einen Bannkreis um das Pentagramm.";
 
-  if(find_call_out("spreche_kreiszauber") == -1)
-    call_out( "spreche_kreiszauber", 4, p );
+  if(find_call_out(#'spreche_kreiszauber) == -1)
+    call_out( #'spreche_kreiszauber, 4, p );
 
   kreis += ({getuid(PL)});
   
@@ -407,7 +412,7 @@ protected void create()
   SetProp(P_RACE, "Elf");
   SetProp( P_SIZE, 214);
   SetProp( P_DEFAULT_INFO, "runzelt nur mit der Stirn.\n");
-  SetAttackChats( 35, ({ "@@feste_drauf@@" }));
+  SetAttackChats( 35, ({ #'feste_drauf }));
   set_living_name( "wuqour" );
   AddId(({"meister","ritualmeister","wuqour","mann","elf"}));
   
@@ -755,7 +760,7 @@ int learnSomeDaemon(string wen)
  
   tell_room(environment(),Name(WER)+" sagt: So lass uns beginnen.\n");
  
-  call_out("lernen",4,i,0);
+  call_out(#'lernen,4,i,0);
 
   return 1;
 }
@@ -861,7 +866,7 @@ void lernen(int wen, int index)
     else 
       lernen_sag(str);
 
-    call_out("lernen",wait,wen,index+1);
+    call_out(#'lernen,wait,wen,index+1);
     return;
   }
   /* --------------------- BHUTURIH --------------------------------------- */
@@ -897,7 +902,7 @@ void lernen(int wen, int index)
       break;
     }
     if ((index-8) < sizeof(BHUTURIH_ARRAY))
-      call_out("lernen",10,wen,index+1);
+      call_out(#'lernen,10,wen,index+1);
     else
       return (CHAOS_GILDENROOM)->LearnSpell(DEAMONS[wen]);
   }
@@ -947,7 +952,7 @@ void lernen(int wen, int index)
          break;
     }
     if ((index-8) < sizeof(FLAXTRI_ARRAY))
-      call_out("lernen",10,wen,index+1);
+      call_out(#'lernen,10,wen,index+1);
     
     else
       return (CHAOS_GILDENROOM)->LearnSpell(DEAMONS[wen]);
@@ -963,7 +968,7 @@ void lernen(int wen, int index)
        
        case 13:
        lernen_sag(GRAIOP_ARRAY[index-9]);
-       call_out("lernen",20,wen,index+1);
+       call_out(#'lernen,20,wen,index+1);
        return;
        
        case 16:
@@ -990,7 +995,7 @@ void lernen(int wen, int index)
        break;
     }
     if ((index-8) < sizeof(GRAIOP_ARRAY))
-      call_out("lernen",10,wen,index+1);
+      call_out(#'lernen,10,wen,index+1);
     else
       return (CHAOS_GILDENROOM)->LearnSpell(DEAMONS[wen]);
   }
@@ -1031,7 +1036,7 @@ void lernen(int wen, int index)
        break;
     }
     if ((index-8) < sizeof(HARKUHU_ARRAY))
-      call_out("lernen",10,wen,index+1);
+      call_out(#'lernen,10,wen,index+1);
     else
       return (CHAOS_GILDENROOM)->LearnSpell(DEAMONS[wen]);
   }
@@ -1060,7 +1065,7 @@ void lernen(int wen, int index)
        if(daem)
          daem->remove();
        lernen_sag(INTARBIR_ARRAY[index-9]);
-       call_out("lernen",0,wen,index+1);
+       call_out(#'lernen,0,wen,index+1);
        return;
        
        default:
@@ -1068,7 +1073,7 @@ void lernen(int wen, int index)
        break;
     }
     if ((index-8) < sizeof(INTARBIR_ARRAY))
-      call_out("lernen",10,wen,index+1);
+      call_out(#'lernen,10,wen,index+1);
     else
       return (CHAOS_GILDENROOM)->LearnSpell(DEAMONS[wen]);
   }
@@ -1121,7 +1126,7 @@ void lernen(int wen, int index)
          break;
     }
     if ((index-8) < sizeof(IRKITIS_ARRAY))
-      call_out("lernen",10,wen,index+1);
+      call_out(#'lernen,10,wen,index+1);
     else
       return (CHAOS_GILDENROOM)->LearnSpell(DEAMONS[wen]);
   }
@@ -1166,7 +1171,7 @@ void lernen(int wen, int index)
        break;
     }
     if ((index-8) < sizeof(KRUFTUR_ARRAY))
-      call_out("lernen",10,wen,index+1);
+      call_out(#'lernen,10,wen,index+1);
     else
       return (CHAOS_GILDENROOM)->LearnSpell(DEAMONS[wen]);
   }
@@ -1191,7 +1196,7 @@ void lernen(int wen, int index)
        break;
     }
     if ((index-8) < sizeof(OMBATIS_ARRAY))
-      call_out("lernen",10,wen,index+1);
+      call_out(#'lernen,10,wen,index+1);
     else
       return (CHAOS_GILDENROOM)->LearnSpell(DEAMONS[wen]);
   }
@@ -1221,7 +1226,7 @@ void lernen(int wen, int index)
        break;
     }
     if ((index-8) < sizeof(TUTSZT_ARRAY))
-      call_out("lernen",10,wen,index+1);
+      call_out(#'lernen,10,wen,index+1);
     else
       return (CHAOS_GILDENROOM)->LearnSpell(DEAMONS[wen]);
   }
@@ -1263,7 +1268,7 @@ void lernen(int wen, int index)
        break;
     }
     if ((index-8) < sizeof(TYOORTHOK_ARRAY))
-      call_out("lernen",10,wen,index+1);
+      call_out(#'lernen,10,wen,index+1);
     else
       return (CHAOS_GILDENROOM)->LearnSpell(DEAMONS[wen]);
   }
@@ -1321,7 +1326,7 @@ void lernen(int wen, int index)
        break;
     }
     if ((index-8) < sizeof(YRINTRI_ARRAY))
-      call_out("lernen",10,wen,index+1);
+      call_out(#'lernen,10,wen,index+1);
     else
       return (CHAOS_GILDENROOM)->LearnSpell(DEAMONS[wen]);
   }
@@ -1664,7 +1669,7 @@ int boeser_machen(object ob)
    SetProp(P_KILL_NAME,0);
    SetProp(P_KILL_MSG,0);
   }
-  call_out("boeser_machen",random(4),ob);
+  call_out(#'boeser_machen,random(4),ob);
   
   return 1;
 }
@@ -1821,7 +1826,7 @@ void sequence(object wer,int flag,int index)
 
    if (index < get_size(flag)-1)
    {
-     call_out("sequence",get_line(flag,index+1),wer,flag,index+2);
+     call_out(#'sequence,get_line(flag,index+1),wer,flag,index+2);
      return;
    }
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

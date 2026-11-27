@@ -46,13 +46,17 @@ static string *CLD=({ "zuckt unter Schmerzen zusammen",
                "seufzt: Rummelmupf Bruchk",
                "flucht laut und unanstaendig" });
 
+// Prototypen für Closures
+varargs void daemon_verschwinde(string spieler);
+static void setze_long();
+
 static varargs void wech(object|string pl,int tm)
 { 
   if(objectp(pl))
     pl = getuid(pl);
   
-  if(find_call_out("daemon_verschwinde") == -1)
-    call_out("daemon_verschwinde",tm,pl);
+  if(find_call_out(#'daemon_verschwinde) == -1)
+    call_out(#'daemon_verschwinde,tm,pl);
 }
 
 static string killmsg()
@@ -101,7 +105,7 @@ protected void create()
   AddCmd(({"befehl","befehle"}),"befehle_daemon" );
   AddCmd(({"ende"}),"entzoegere_ende");
   
-  call_out("setze_long",5);
+  call_out(#'setze_long,5);
 
   lasthp    = lastwarn = 0;
   intervall = 10;
@@ -232,7 +236,7 @@ int submit_disease(int i)
   if(i)
   {
     tell_room(en,Name(WER,1)+" "+CLD[random(sizeof(CLD))]+".\n");        
-    call_out("submit_disease",5,i-1);
+    call_out(#'submit_disease,5,i-1);
     return 1;
   }
   else
@@ -298,7 +302,7 @@ public varargs void init(object origin)
   }
   if (id("\nkampfdaemon") && caster && !QueryProp("kill_all")) 
     if (caster->TeamPrefix() != "" && caster->PresentPosition()>1)
-      call_out("team_is_doof",0,caster);
+      call_out(#'team_is_doof,0,caster);
   
   if(PL->QueryProp(CHAOS_DAEM_BESCHWOERER) == 
      QueryProp(CHAOS_DAEM_BESCHWOERER) && 
@@ -408,8 +412,8 @@ varargs void die(int bla)
      QueryProp(CHAOS_DAEM_BESCHWOERER),environment(ME))) 
     penta->starte_entfernen(4);
 
-  if(find_call_out("submit_disease")>0)
-    remove_call_out("submit_disease");
+  if(find_call_out(#'submit_disease)>0)
+    remove_call_out(#'submit_disease);
 
   ::die(bla);
 }
@@ -798,7 +802,7 @@ int Defend(int dam, mixed dam_type, int spell, object enemy)
   }
   if (id("\nkampfdaemon") && caster && !QueryProp("kill_all")) 
     if (caster->TeamPrefix() != "" && caster->PresentPosition()>1)
-      call_out("team_is_doof",0,caster);
+      call_out(#'team_is_doof,0,caster);
 
   if(random(100)>def)
     return::Defend(dam, dam_type,spell, enemy);
@@ -862,10 +866,10 @@ int PreventInsert(object ob)
     tell_room(environment(),Name(WER,1)+" flucht lautstark und "
               "faengt an zu zucken.\n");
 
-    if(find_call_out("submit_disease")==-1)
+    if(find_call_out(#'submit_disease)==-1)
     {
       int i = ((100-(QueryProp(P_DAEMON_QUALITY)))/10);
-      call_out("submit_disease",3,i+1);
+      call_out(#'submit_disease,3,i+1);
     }
     return 0;
   }

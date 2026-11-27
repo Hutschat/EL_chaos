@@ -13,30 +13,23 @@
 
 inherit CHAOS_GILDEN_MON("std/std_daem");  
 
-static void kill_all()
-{
-  object tmp;
-  object *en = filter(all_inventory(environment()),#'living);
-  
-  foreach(tmp:en)
-  {
-    if(tmp->QueryProp(P_OBJECT_TYPE) == OT_NPC)
-      if(!(tmp->is_class_member(CL_DEMON)))
-        Kill(tmp);
-  }
-}
-
-static void msg()
-{
-  tell_room(environment(),Name(WER)+" nimmt die Spur seiner Beute auf!\n");
-}
-
 varargs void enter(status silent)
 {
-  call_out("kill_all",2);
+  call_out(function void() {
+    object *en = filter(all_inventory(environment()),#'living);
+
+    foreach(object tmp : en)
+    {
+      if(tmp->QueryProp(P_OBJECT_TYPE) == OT_NPC)
+        if(!(tmp->is_class_member(CL_DEMON)))
+          Kill(tmp);
+    }
+  },2);
   
   if(!silent)
-    call_out("msg",1);
+    call_out(function void() {
+      tell_room(environment(),Name(WER)+" nimmt die Spur seiner Beute auf!\n");
+    },1);
 }
 
 protected void create()
@@ -73,5 +66,5 @@ protected void create()
   SetProp(P_DIE_MSG," verlaesst diese Welt.\n");
   AddId(({"balal"}));
   RemoveId("\nkampfdaemon");
-  call_out("enter",2,1);
+  call_out(#'enter,2,1);
 }

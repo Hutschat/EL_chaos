@@ -23,6 +23,9 @@ inherit CHAOS_GILDEN_MON("std/std_chaot");
 
 static int counter1 = 0;
 
+// Prototypen für Closures
+static void ritual (object pl);
+
 static string plan_inf()
 {
   if(PL->QueryProp(P_GUILD)!="chaos")
@@ -221,11 +224,11 @@ static string ratte()
     return "Noch mal erzaehl ich Dir das nicht, haettest eben besser "
            "aufpassen sollen!";
 
-  if(find_call_out("ritual")==-1)
+  if(find_call_out(#'ritual)==-1)
   {
     ME->SetProp("jenandra:listener",geteuid(pl));
 
-    call_out("ritual",5,pl);
+    call_out(#'ritual,5,pl);
 
     return "Na gut.";
   }
@@ -338,8 +341,8 @@ static void ritual (object pl)
                 "zu.\n",({pl}));
       counter1++;
 
-      if(find_call_out("ritual")==-1)
-        call_out("ritual",3,pl);
+      if(find_call_out(#'ritual)==-1)
+        call_out(#'ritual,3,pl);
       
       return;
     }
@@ -350,8 +353,8 @@ static void ritual (object pl)
       "Haut einfach ab, waehrend ich mir den Mund fusselig rede, "
       "sowas...",0,Name(WER)+" grummelt: "));
 
-      if(find_call_out("ritual")!=-1)
-        while(remove_call_out("ritual")!=-1);
+      if(find_call_out(#'ritual)!=-1)
+        while(remove_call_out(#'ritual)!=-1);
     }
   }
   if(counter1 >= sizeof(txt))
@@ -382,8 +385,8 @@ static void ritual (object pl)
     }
     counter1 = 0;
 
-    if(find_call_out("ritual")!=-1)
-      while(remove_call_out("ritual")!=-1);
+    if(find_call_out(#'ritual)!=-1)
+      while(remove_call_out(#'ritual)!=-1);
 
     return;
   }	

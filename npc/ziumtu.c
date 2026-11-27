@@ -100,4 +100,4 @@ varargs void die()
   ::die();
 }
 
-void verschwinde() { call_out( "remove", 1); }
+void verschwinde() { call_out( #'remove, 1); }

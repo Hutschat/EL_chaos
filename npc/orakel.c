@@ -1236,8 +1236,8 @@ static void frage_monster(object pl, object mon) {
   tell_object(mon,Name(WER,1)+" schaut dich abschaetzend an und grinst "
               "fies.\n");
 
-  if(find_call_out("schaetze_monster") == -1) {
-    call_out("schaetze_monster",2,pl,mon);
+  if(find_call_out(#'schaetze_monster) == -1) {
+    call_out(#'schaetze_monster,2,pl,mon);
   }
 }
 
@@ -1323,7 +1323,7 @@ int frage(string str) {
       sag(pl,zu_niedrig(STUFE_GEGENSTAND));
     }
     else {
-      call_out("beurteilung",2);
+      call_out(#'beurteilung,2);
       tell_room(environment(),Name(WER,1)+" grinst nickend.\n");
     }
     return 1;
