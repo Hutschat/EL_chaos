@@ -48,21 +48,25 @@ Menagerie im Schattental (Plan in sys/chaosburg.h). Der Ausgang aus der
 Menagerie zur Burg ist vorerst nur für Magier offen (EL_schattental,
 nur_magier() in room/std/lab_std.c).
 
-Die Burg hat 30 Räume: Torhaus, Vorburg, Zwinger, Burghof, Bergfried mit
-Riss an der Spitze, Kapelle, Palas mit Galerie, Bibliothek und Keller
-(Schänke, Kerker, Brunnenkammer). Eingestürzte Gänge sind sichtbare
-Ausgänge mit EX_FUNC "versperrt" (P_CHAOS_VERSPERRT). Chaosmagie in
-room/std/dets.c: wechselnde Zeilen im Langtext bei jedem Reset
-(P_CHAOS_VARIANTEN), harmlose Effekte beim Betreten und ab und zu ein
-Chaoswicht (npc/chaoswicht.c). Am Riss (P_CHAOS_RISS) ist alles häufiger
-und Beschwörungen gelingen leichter (CHAOS_RISS_BONUS im spellbook).
+Die Burg hat 56 Räume (Plan in sys/chaosburg.h): Torhaus mit Wehrgang,
+Burgplatz (3x3) mit Schänke im Gesindehaus, Ställen, Schmiede, Werkstatt,
+alter Kapelle und frei stehendem Turm (Riss an der Spitze). Hauptgebäude
+mit Mittelgang zum Rittersaal, Chaoskapelle und Gildenhalle, oben Söller,
+Gemächer und Galerie, unten Weinkeller, Waffen- und Rüstungskammer,
+Folterraum, Verlies, Wachraum und Gruft mit Grabkammer. Nur 7 Ausgänge
+sind eingestürzt (EX_FUNC "versperrt", P_CHAOS_VERSPERRT). Die Burg ist
+eine Ruine, in der sich die Chaoten eingenistet haben.
+Chaosmagie in room/std/dets.c: wechselnde Zeilen im Langtext bei jedem
+Reset (P_CHAOS_VARIANTEN), harmlose Effekte beim Betreten und ab und zu
+ein Chaoswicht (npc/chaoswicht.c). Am Riss (P_CHAOS_RISS) ist alles
+häufiger und Beschwörungen gelingen leichter (CHAOS_RISS_BONUS).
 
 Offen:
 - Achtarch (Händler, früher claden) und Wuqour (Rituale, früher
   critual) haben keinen Raum mehr. Wuqour verweist noch auf critual.
 - Der Erzmeisterkampf startete in a_start (gilde.c, count_down()).
 - Achtarch und Wuqour könnten in die Burg ziehen (z.B. Schmiede bzw.
-  Kapelle oder Turmspitze am Riss).
+  Chaoskapelle oder Turmspitze am Riss).
 - Der Kerker ist absichtlich dunkel (Nachtsicht hilft).
 - Die alten Räume bleiben in OLD/ und werden nicht wieder benutzt.
 
