@@ -5,6 +5,7 @@
 // xx.xx.xxxx Zardoz
 // 10.12.2018 It@Efferdland            ueberarbeitet
 // 27.11.2026 It@Efferdland            init() für neuen Driver
+// 27.11.2026 It@Efferdland            GUILD_HELPER statt VERBOTENE_RAEUME
 
 #pragma no_clone
 
@@ -68,7 +69,7 @@ public varargs void init(object origin)
   ::init(origin);
 
   if(QueryProp( "kill_all") && 
-     member( VERBOTENE_RAEUME,object_name(environment(ME)))!=-1 &&
+     GUILD_HELPER->GH_get_npc_forbidden_rooms(environment(ME)) &&
      this_player()->QueryProp( P_LEVEL) > 8 &&
      interactive(PL) && PL ->QueryProp( P_HP ) > 70 &&
      !IS_LEARNER(PL))

@@ -5,6 +5,7 @@
 // xx.xx.xxxx Zardoz
 // 17.05.1998 Bierchen@MorgenGrauen     ueberarbeitet
 // 10.12.2018 It@Efferdland             ueberarbeitet
+// 27.11.2026 It@Efferdland            Schänke der Burg
 
 #include "def.h"
 
@@ -159,7 +160,7 @@ static string belohnung_inf()
 
 static int LetsGoDrink()
 {
-  ME->move(CHAOS_GILDEN_ROOM("ckneipe"),M_GO|M_NOCHECK);
+  ME->move(CHAOS_SCHAENKE,M_GO|M_NOCHECK);
 
   command_me("werfe rubel weg");
 

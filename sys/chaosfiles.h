@@ -3,6 +3,7 @@
 // Letzte Aenderung:
 //
 // 11.03.2019 It@Efferdland            SHADOWS, ARMOURS, ARENA
+// 27.11.2026 It@Efferdland            Burg Zwielichtstein
 
 #ifndef CHAOS___FILES
 #define CHAOS___FILES
@@ -25,6 +26,14 @@
 #define CHAOS_HAUTMASTER   (CHAOS_GILDEN_MASTER("haut_master"))
 #define CHAOS_GILDENROOM   (CHAOS_GILDE("gilde"))
 #define CHAOS_CHAOSHAUT    (CHAOS_GILDEN_ARMOUR("chaosruestung"))
+
+// Burg Zwielichtstein (VC in room/, Liste in sys/chaosburg.h)
+#define CHAOS_BURG_STD(x)  CHAOS_GILDEN_ROOM("std/")+x
+#define CHAOS_BURGTOR      (CHAOS_GILDEN_ROOM("[+007+051+08]"))
+#define CHAOS_SCHAENKE     (CHAOS_GILDEN_ROOM("[+009+051+07]"))
+#define CHAOS_RITTERSAAL   (CHAOS_GILDEN_ROOM("[+009+051+08]"))
+  // Der Pfad im Schattental, der zum Burgtor hinaufführt
+#define CHAOS_BURGPFAD     "/d/nordland/schattental/room/[+006+051+08:O]"
 
 // Misc
 #define CHAOS_DEATHMARK "/room/death/death_mark"

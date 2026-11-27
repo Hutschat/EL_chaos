@@ -3,18 +3,13 @@
 // Letzte Aenderung
 //
 // 11.03.2019 It@AnderLand             FOLGEN_VERBOTEN raus
+// 27.11.2026 It@Efferdland            VERBOTENE_RAEUME raus
 
 #ifndef CHAOS___NPC
 #define CHAOS___NPC
 
-#define VERBOTENE_RAEUME ({\
-"/gilden/abenteurer",\
-"/gilden/karate",\
-"/d/gebirge/room/stadt/zkapelle",\
-"/gilden/chaos/gilde",\
-"/gilden/zauberer",\
-"/gilden/klerus",\
-})
+// Die Räume, in denen keine Dämonen beschworen werden dürfen, verwaltet
+// die Mudlib: GUILD_HELPER->GH_get_npc_forbidden_rooms()
 
 // Return-Werte fuer den Daemonen-Check:
 

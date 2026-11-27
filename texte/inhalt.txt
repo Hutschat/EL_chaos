@@ -17,8 +17,6 @@
      |                                                                   |
      |           m2        Der Verwalter des Chaos: Hutschat             |
      |                                                                   |
-     |           a1        Die Kampfarena und ihre Bedeutung             |
-     |                                                                   |
      |           q1        Gilden-Quests, beliebte Schikaneien           |
      |                                                                   |
      |           m3        Der oberste Meister des Chaos: Kruuolq        |
@@ -38,8 +36,7 @@
      |           n2        Lose Notizen der Gilden-Magier II             |
      |                                                                   |
      |           z2        Unwichtig                                     |
-     |                                                                   |
-    _|           e1        Der Erzmeister und wie werd ich einer?        |
+    _|                                                                   |
    / \                                                                   |
   | / |                                                                  |
    \_/__________________________________________________________________/

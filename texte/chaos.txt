@@ -34,10 +34,8 @@
      | Erzmeister des Chaos. Dieser ist der oberste Chaot der Gilde und  |
      | wird Aufgrund seiner ueberragenden Fertigkeiten von den anderen   |
      | Kriegern des Chaos mit Respekt und Wuerde behandelt.              |
-     | Bevor man seinen Gildenlevel erhoehen kann, muss man in der       |
-     | gildeneigenen Arena einen Kampf auf Leben und Tod mit einem       |
-     | Daemonen fuehren, um seine Fertigkeiten und das Anrecht auf       |
-     | einen hoeheren Rang zu beweisen.                                  |
+     | Bevor man seinen Gildenlevel erhoehen kann, muss man seine        |
+     | Fertigkeiten in den Spruechen und Beschwoerungen beweisen.        |
      | Je nach Stufe kann man neue Zauber und Daemonen erlernen, wobei   |
      | in den hoeheren Leveln nahezu ausschliesslich die Beschwoerung    |
      | der Daemonen ansteht, da sie wirklich eine hohe Kunst bildet.     |
@@ -60,7 +58,7 @@
      | einen eigenen Raum, die 'Einsatzzentrale der Meister des Chaos'.  |
      | Diese wenigen Meister streiten in regelmaessigen Abstaenden um    |
      | den hoechsten Rang in der Gilde, den immer nur einer bekleiden    |
-     | kann. Dazu treffen sie sich in einer speziellen Arena und         |
+     | kann. Dazu treffen sie sich an einem geheimen Ort und             |
      | kaempfen bis auf Blut und Tod. Nur der maechtigste und beste      |
      | Chaot hat die Wuerde verdient, sich 'Erzmeister des Chaos' nennen |
      | zu duerfen und die Verguenstigungen und Vorteile, die mit diesem  |
