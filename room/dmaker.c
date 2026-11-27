@@ -18,6 +18,9 @@
 #pragma strong_types
 #pragma no_clone
 #pragma no_inherit
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
 
 #include "def.h"
 #include <laden.h>
@@ -808,7 +811,8 @@ public varargs void create_room(string file, object o) {
     o->AddDetail(({"speisekarte","karte"}),
        "Die Speisekarte hängt über dem Tresen. Lies sie doch.");
 
-    o->AddReadDetail(({"speisekarte","karte"}),"@@menue_text@@");
+    o->AddReadDetail(({"speisekarte","karte"}),
+                     symbol_function("menue_text",o));
 
     o->AddDetail(({"kamin","feuer","flammen"}),
        "Im Kamin prasselt ein Feuer, dessen Flammen manchmal violett "

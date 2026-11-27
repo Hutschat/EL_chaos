@@ -1,5 +1,9 @@
 #pragma no_clone
 #pragma no_inherit
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
 
 #include "def.h"
 
@@ -26,7 +30,7 @@ mixed restore_me()
 
 protected void create()
 {
-  seteuid(getuid(this_object()));
+  seteuid(getuid(ME));
   if(!restore_me())
   {
     mitglieder     = ([]);
@@ -385,7 +389,7 @@ int set_kruuolq_erzi(object spieler)
   write_file(CHAOS_GILDEN_LOG("erzmeister"),
     "Kruuolq setzt "+capitalize(getuid(spieler))+" ab: "+dtime(time())+".\n");
 
-  call_other(CHAOS_GILDENROOM,"sach_was",txt);
+  (CHAOS_GILDENROOM)->sach_was(txt);
 
 //!!!!!!!!!!!!!!!!!!!!!!  call_other(C_SWIFT_ROOM("cl2_hutschatraum"),"add_erzmeister",erzmeister);
   save_me();
@@ -447,7 +451,7 @@ Verkuenden wer neuer Erzi ist:
         "Chaos nennen. Erzittert vor "+
        (spieler->QueryProp(P_GENDER)==1?"seiner":"ihrer")+" Macht!";
 
-  call_other(CHAOS_GILDENROOM,"sach_was",txt);
+  (CHAOS_GILDENROOM)->sach_was(txt);
 
   msg = break_string( capitalize(erzmeister)+" ist "+
        (spieler->QueryProp(P_GENDER)==1?"der neue Erzmeister":
@@ -554,7 +558,7 @@ int LoescheKaempfer( object spieler)
 
 void let_him_die(object ob)
 {
-  call_other(CHAOS_GILDENROOM,"let_him_die",ob);
+  (CHAOS_GILDENROOM)->let_him_die(ob);
 }
 
 int IstKampf()
@@ -595,9 +599,12 @@ void BerechneTopWert(object pl)
 
   if(IS_LEARNER(pl) || pl->QueryProp(P_TESTPLAYER))
   {
-    call_out( "LoescheMagier", 0, wer);
+    call_out( #'LoescheMagier, 0, wer);
     return;
   }
+  // Noch nicht im Gildenmaster eingetragen (z.B. Gilde von Hand gesetzt)
+  if(!member(mitglieder,wer))
+    return;
 
   mitglieder[wer][STUFE] = pl->QueryProp( P_GUILD_LEVEL );
   skill                  = pl->QueryProp( P_SKILLS );

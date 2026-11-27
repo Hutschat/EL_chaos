@@ -7,6 +7,10 @@
 // 27.11.2026 It@Efferdland            UTF-8, Fehler für neuen Driver behoben
 
 #pragma no_inherit
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
  
 #include "def.h"
 
@@ -26,6 +30,20 @@ string erhoehen();
 int blutmagie; // feuerwehr 11.04.99. siehe raum cl3_cerz3
 
 // Chaosrattenquest
+
+// Prototypen für Closures
+static string erzikampf_info();
+static string gib_ring();
+static string gib_seherring();
+string metzel_quest_done();
+string sag_beurteilung();
+static string special_yrintri();
+static string unser_aller_erzmeister();
+static int boese(object pl);
+static int gildenmags(object pl);
+void lernen(int spell, int index);
+void my_mistake();
+static int raum_test();
 
 static int check_pl(object pl){
 #ifndef JENANDRA_QUEST
@@ -240,7 +258,7 @@ protected void create()
 
  AddInfo(({"faehigkeiten", "faehigkeit", "zauberfaehigkeit", "koennen",
            "zauberfaehigkeiten", "beurteilung", "beurteilen", "status",
-           "beherrschung" }),"@@sag_beurteilung@@");
+           "beherrschung" }),#'sag_beurteilung);
  
  AddInfo(({"anforderungen", "anforderung", "eintritt", "aufnahme", "antrag",
            "eintreten", "beitreten", "beitritt", "stufe", "stufen", "level",
@@ -252,7 +270,7 @@ protected void create()
  AddInfo(({"erhoehung", "erhoehen", "erhoehe", "stufenerhoehung", 
            "gildenerhoehung", "gildenstufenerhoehung", "aufsteigen", "aufstieg", 
            "eignung", "erfordernis", "erfordernissen" }), 
-   "@@erhoehen@@", "sagt: ");
+   #'erhoehen, "sagt: ");
 
  AddInfo(({"aufgabe","aufgaben"}),
  "Um eine Stufe zu erhoehen muss jedes Mitglied eine Pruefung (und in "
@@ -466,18 +484,19 @@ protected void create()
  "spaeter abliefern.", "sagt: ");
  
  AddInfo(({"teil","teile","beweis","beweise"}),
+ function string() { return
  "Also, bringe mir folgende Teile als Beweis, dass Du das Monster getoetet "
  "hast: Eine Schuppe des Schlammdrachen, das Un vom Untier, den Skalp der "
  "Leronis, das Deodorant von Lofwyr, die Orange vom orangenen Drachen, "
  "Wasser vom Wassertroll-Schamanen, ein Auge von Kruuolq und Etwas vom "
  "Etwas. Um zu erfahren, welche Teile Du mir schon brachtest, frage mich "
- "nach erledigte teile. @@gib_ring@@","sagt: ");
+ "nach erledigte teile. "+gib_ring(); },"sagt: ");
  
  AddInfo(({"erledigte beweise","erledigte teile"}),
- "@@metzel_quest_done@@","sagt: ");
+ #'metzel_quest_done,"sagt: ");
  
  AddInfo(({"ring","chaos-ring","chaosring"}),
- "@@gib_ring@@", "sagt: ");
+ #'gib_ring, "sagt: ");
  
  AddInfo("ebene",
  "Du weisst nicht wo die Ebene ist???", "fragt: ");
@@ -488,12 +507,12 @@ protected void create()
  AddInfo( "parallelwelt",
  "Wie man dahin kommt weiss ich leider nicht.", "sagt: ");
  
- AddInfo(({"seher-ring","seherring"}),"@@gib_seherring@@","sagt: ");
+ AddInfo(({"seher-ring","seherring"}),#'gib_seherring,"sagt: ");
 
  AddInfo(({ "erzmeister", "erzmeisterin" }),
-  "@@unser_aller_erzmeister@@", "sagt: ");
- AddInfo( "yrintri", "@@special_yrintri@@", "sagt: ");
- AddInfo(({"erzmeisterkampf","meisterkampf"}),"@@erzikampf_info@@","sagt: ");
+  #'unser_aller_erzmeister, "sagt: ");
+ AddInfo( "yrintri", #'special_yrintri, "sagt: ");
+ AddInfo(({"erzmeisterkampf","meisterkampf"}),#'erzikampf_info,"sagt: ");
  
  // Chaosrattenquest
  
@@ -506,7 +525,7 @@ protected void create()
  // Ende Chaosrattenquest                  
    
  enable_commands();
-// call_out("raum_test",0);
+// call_out(#'raum_test,0);
  AddCmd(({"lern","lerne"}),"learnSomeSpell");
  
 }           
@@ -567,21 +586,31 @@ public varargs void init(object origin)
   mags = getuid(PL);
   
   if(interactive(PL) && CHAOS_GILDENMASTER->ist_erz(PL))
-    call_out("begruesse_den_erzmeister",0,PL);
+    call_out(function void(object pl) {
+      if(present(pl,environment(ME)))
+      {
+        tell_room(environment(),Name(WER)+" verneigt sich vor "+
+                  (pl->QueryProp(P_GENDER)==1?"dem Erzmeister ":
+                  "der Erzmeisterin ")+capitalize(getuid(pl))+".\n",({pl}));
+
+        tell_object(pl,Name(WER)+" verneigt sich vor Dir mit dem Dir "
+                       "gebuehrenden Respekt.\n");
+      }
+    },0,PL);
 
   if(mags=="it")
   {
     switch(random(10))
     {
       case 0..2:
-        call_out("gildenmags",0,PL);
+        call_out(#'gildenmags,0,PL);
         break;
       default:
         break;
     }
   }
   if(interactive(PL) && PL->QueryProp(P_GUILD)=="klerus")
-     call_out("boese",3,PL);
+     call_out(#'boese,3,PL);
 }
 
 static int gildenmags(object pl)
@@ -651,19 +680,6 @@ static int boese(object pl)
   return 1;
 }
 
-void begruesse_den_erzmeister(object pl)
-{
-  if(present(pl,environment(ME)))
-  {
-    tell_room(environment(),Name(WER)+" verneigt sich vor "+
-              (pl->QueryProp(P_GENDER)==1?"dem Erzmeister ":
-              "der Erzmeisterin ")+capitalize(getuid(pl))+".\n",({pl}));
-    
-    tell_object(pl,Name(WER)+" verneigt sich vor Dir mit dem Dir "
-                   "gebuehrenden Respekt.\n");
-  }
-}          
-
 static string unser_aller_erzmeister()
 {
   string erzi;
@@ -713,7 +729,7 @@ static string gib_ring()
 
   if(present_clone(CHAOS_GILDEN_OBJ("cring"), PL))
   { 
-    call_out("my_mistake",0,PL);
+    call_out(#'my_mistake,0,PL);
     return "Denk daran, dass Du den Chaos-Ring waehrend der Quest "+
            "tragen musst!";
    } 
@@ -725,7 +741,7 @@ static string gib_ring()
 
   ob->do_wear("ring",1);
 
-  call_out("my_mistake",0,PL);
+  call_out(#'my_mistake,0,PL);
 
   return "Ich gebe Dir einen Chaos-Ring, den Du waehrend der Quest tragen "
          "musst!!";
@@ -749,7 +765,7 @@ static string gib_seherring()
            "noch toeten musst!";
   }
 /*
-  if( call_other(C_112_OBJ("c_smmq_master"),"sget_zeit",getuid(PL))>0)
+  if( (C_112_OBJ("c_smmq_master"))->sget_zeit(getuid(PL))>0)
     return "Du hast die Quest schon bestanden. Ich bin stolz auf Dich.";
   ob=clone_object(C_112_OBJ("c_seher_ring"));
   if (ob->move(PL,M_GET) != 1)
@@ -805,38 +821,38 @@ Wenn Kruuolq kaempft gibt es keine Informationen und aehnliches:
   {
 
     tell_object(pl,Name(WER)+" teilt Dir mit:\n");
-    call_out("beurteilung",0,pl);
+    call_out(#'beurteilung,0,pl);
   }
   if(was=="erhoehen"||was=="erhoehung"||was=="aufsteigen"|| 
      was=="stufenerhoehung"||was=="anforderung")
   {
     s=break_string(erhoehen(),0,Name(WER)+" teilt Dir mit: ");
-    call_out("tell_player",0,s,pl);
+    call_out(#'tell_player,0,s,pl);
   }
   if(sscanf(was,"%smeld%s",bla,blub)==2)
   {
     if(PL->QueryProp(P_GUILD)!="chaos")
     {
       s=Name(WER)+" teilt Dir mit: Du bist kein Chaot!\n";
-      call_out("tell_player",0,s,pl);
+      call_out(#'tell_player,0,s,pl);
       return;
     }
     if(PL->QueryProp(P_GUILD_LEVEL)<11)
     {
       s=Name(WER)+" teilt Dir mit: Du bist kein Meister des Chaos!\n";
-      call_out("tell_player",0,s,pl);
+      call_out(#'tell_player,0,s,pl);
       return;
     }
     if(CHAOS_GILDENMASTER->IstKampf())
     {
       s=Name(WER)+" teilt Dir mit: Es laeuft schon ein Kampf!\n";
-      call_out("tell_player",0,s,pl);
+      call_out(#'tell_player,0,s,pl);
       return;
     }
     if(member(CHAOS_GILDENMASTER->query_duellier(),getuid(PL))!=-1)
     {
       s=Name(WER)+" teilt Dir mit: Du bist doch schon angemeldet!\n";
-      call_out("tell_player",0,s,pl);
+      call_out(#'tell_player,0,s,pl);
       return;
     }
     if((zeit=CHAOS_GILDENMASTER->query_duellzeit()) > time())
@@ -844,7 +860,7 @@ Wenn Kruuolq kaempft gibt es keine Informationen und aehnliches:
       s=break_string("Der naechste Kampf kann fruehstens am "+
         dtime(zeit)+" stattfinden. Erst danach kannst Du dich erneut "+
         "anmelden!",0,Name(WER)+" teilt Dir mit: ");
-        call_out("tell_player",0,s,pl);
+        call_out(#'tell_player,0,s,pl);
     }
     CHAOS_GILDENMASTER->AddKaempfer(PL);
   }
@@ -860,7 +876,7 @@ bei Klerus oder Zaubis >:)
     if(PL->QueryProp(P_GUILD)!="chaos")
     {
       s=Name(WER)+" teilt Dir mit: Halts Maul!\n";
-      call_out("tell_player",0,s,pl);
+      call_out(#'tell_player,0,s,pl);
       return;
     }
     if(present(PL,environment(ME)))
@@ -874,7 +890,7 @@ bei Klerus oder Zaubis >:)
     if( (time()-ct) <= 45 && llp <= 45 )
     {
       s = Name(WER)+" teilt Dir mit: DAS HAST DU NUN DAVON!!!\n";
-      call_out("tell_player",0,s,pl);
+      call_out(#'tell_player,0,s,pl);
       SetProp(P_KILL_NAME,Name(WESSEN)+" langer Arm der Ungerechtigkeit");
  //   SetProp(P_KILL_MSG,({"findet Dich ueberall!",MSG_EMOTE,SINGULAR}));
  //     SetProp(P_ENEMY_DEATH_SEQUENCE,"/gilden/files.chaos/texte/ehrentod.seq");
@@ -889,7 +905,7 @@ bei Klerus oder Zaubis >:)
       s = Name(WER)+" deutet aus der Ferne mit einem Finger auf Dich und "
           "sagt: LEIDE!\n";  
 
-      call_out("tell_player",0,s,pl);
+      call_out(#'tell_player,0,s,pl);
 
       PL->reduce_hit_points(10+random(10));
     } 
@@ -1009,7 +1025,7 @@ string metzel_quest_done()
   return str;
 }
 
-metzel_quest_check( object pl)
+int metzel_quest_check(object pl)
 {
   mixed ids;
   int stufe;
@@ -1045,7 +1061,7 @@ Damits auch alle mitkriegen:
 
     object ob;
 
-    if(ob = present_clone(GILDEN_CHAOS_OBJ("cring"), pl))
+    if(ob = present_clone(CHAOS_GILDEN_ARMOUR("chaosring"), pl))
     {
       tell_object(pl,Name(WER)+" sagt: Den Ring brauchst Du nicht mehr.\n"+
                      Name(WER)+" nimmt Dir den Chaos-Ring ab.\n");
@@ -1170,7 +1186,7 @@ void Attack(object enemy)
    SetProp(P_KILL_MSG,"Es war ein fairer Kampf, da gibts nichts! >:)");
 }
 
-enhance(int stufe,int rating,object ob)
+void enhance(int stufe,int rating,object ob)
 {
    if(stufe>50)
      stufe = 50;
@@ -1213,7 +1229,7 @@ void NotifyPlayerDeath(object player)
 
     ME->heal_self();
 
-    call_other(CHAOS_GILDEN_ROOM("duell"),"aufraeumen",0);
+    (CHAOS_GILDEN_ROOM("duell"))->aufraeumen(0);
 
     ME->move(CHAOS_GILDENROOM,M_GO);
   }
@@ -1338,7 +1354,7 @@ string erhoehen()
 
 string sag_beurteilung()
 {
-  call_out("beurteilung",0,PL);
+  call_out(#'beurteilung,0,PL);
   return "grinst breit.\n";
 }
 
@@ -1427,7 +1443,7 @@ static int _set_disable_attack(int val)
 
 int beschaeftigt() 
 {
-  return (InFight() || find_call_out("lernen")>-1);
+  return (InFight() || find_call_out(#'lernen)>-1);
 }
 
 int learnSomeSpell(string wen)
@@ -1436,10 +1452,10 @@ int learnSomeSpell(string wen)
   if (PL->QueryProp(P_GUILD) != "chaos")
     return 0;
 
-  if ((i = member_array(wen,SPELLS )) == -1)
+  if ((i = member(SPELLS,wen)) == -1)
      return 0;
-   if (!call_other("/gilden/chaos/gilde","MayLearnSpell",wen))
-    return call_other("/gilden/chaos/gilde","LearnSpell",wen);
+   if (!(CHAOS_GILDENROOM)->MayLearnSpell(wen))
+    return (CHAOS_GILDENROOM)->LearnSpell(wen);
 
   if (beschaeftigt())
     return write(Name(WER)+" sagt: Jetzt nicht.\n"),1;
@@ -1452,7 +1468,7 @@ int learnSomeSpell(string wen)
               "ich erklaere ihn Dir ein weiteres mal. So lass uns beginnen.",
               0,Name(WER)+" sagt: "));
 
-  call_out("lernen",4,i,0);
+  call_out(#'lernen,4,i,0);
   return 1;
 }
 
@@ -1611,7 +1627,7 @@ void lernen(int spell, int index)
      case 6: 
        lernen_sag(str);
        present(CHAOS_ID_TUTSZT+"_kruuolq",environment())->die();
-       call_out("lernen",wait+4,spell,index+1);return;
+       call_out(#'lernen,wait+4,spell,index+1);return;
      
      case 8: 
      case 9:
@@ -1647,8 +1663,8 @@ void lernen(int spell, int index)
   // tell_room(environment(),index+":\n");
   lernen_sag(str);
   if (index < lernen_max(spell))
-     call_out("lernen",wait,spell,index+1);
+     call_out(#'lernen,wait,spell,index+1);
   else 
-     call_other(CHAOS_GILDENROOM,"LearnSpell",SPELLS[spell]);
+     (CHAOS_GILDENROOM)->LearnSpell(SPELLS[spell]);
   return;
 }

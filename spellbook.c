@@ -160,6 +160,11 @@ mit dem Gegner verbuenden und gemeinsam alle Enemies angreifen...
 suc : SpellSuccess
 */
 
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
+
 #include <properties.h>
 #include <language.h>
 #include <attributes.h>
@@ -177,6 +182,9 @@ int get_pf(object p);
 int get_kf(object p);
 
 inherit "/std/spellbook";
+
+// Prototypen für Closures
+void falscher_daemon(object caster, int wd);
 
 protected void create() {
   ::create();
@@ -1287,7 +1295,7 @@ int chaosruestung( object caster, mapping sinfo){
   level=caster->QueryProp(P_GUILD_LEVEL);
   suc=SpellSuccess(caster,sinfo);
   if(suc<-2000){
-    call_out("falscher_daemon",0,caster,-(suc/1000)*level/3);
+    call_out(#'falscher_daemon,0,caster,-(suc/1000)*level/3);
     return MISSERFOLG;
   }
   if(suc<=0) return MISSERFOLG;
@@ -1413,13 +1421,12 @@ int bannzauber(object caster, mapping sinfo){
 
 object FindeEigenenDaemonen(string daemon, object caster){
   object *inv;
-  int i;
   if(!daemon) return 0;
   inv=filter(all_inventory(environment(caster)), (: living($1) :));
   inv=filter_objects(inv,"id",daemon);
-  for(i=sizeof(inv)-1;i>=0;i--){
-    if(inv[i]->QueryProp(CHAOS_DAEM_BESCHWOERER)==getuid(caster))
-      return inv[i];
+  foreach(object ob : inv){
+    if(ob->QueryProp(CHAOS_DAEM_BESCHWOERER)==getuid(caster))
+      return ob;
   }
   return 0;
 }
@@ -1707,7 +1714,7 @@ static int beschwoere_typ(object caster, mapping sinfo, string typ) {
     result = DA;
   }
   if(result == WD) {
-    call_out("falscher_daemon",0,caster,daemon[typ][WRONG_DAEM]);
+    call_out(#'falscher_daemon,0,caster,daemon[typ][WRONG_DAEM]);
 
     if(p && !CHAOS_MAGIER(caster)) {
       p->starte_entfernen(10);

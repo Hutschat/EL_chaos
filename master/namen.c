@@ -8,6 +8,11 @@
 // 27.11.2026 It@Efferdland            mehr Namen, Geschlecht zurückgeben,
 //                                     Titel in master/daemonen.c
 
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
+
 #include "def.h"
 
 static mapping namen = ([

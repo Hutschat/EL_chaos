@@ -8,12 +8,19 @@
 // 27.11.2026 It@Efferdland            GUILD_HELPER statt VERBOTENE_RAEUME
 
 #pragma no_clone
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
 
 #include "def.h"
 
 inherit "std/npc";
 
 static int z;
+
+// Prototypen für Closures
+void folge_caster(string agg);
 
 protected void create()
 {
@@ -85,8 +92,8 @@ public varargs void init(object origin)
     if(!random(100) < ME->QueryProp( AGG_CHANCE )) 
       SetProp("kill_all", 1);
 
-    if(find_call_out( "folge_caster") == -1) 
-      call_out( "folge_caster", 5, agg );
+    if(find_call_out( #'folge_caster) == -1) 
+      call_out( #'folge_caster, 5, agg );
   }
 }
 
@@ -101,7 +108,7 @@ void folge_caster(string agg)
 
   if(!pl || !objectp(pl))
   {
-    this_object()->SetProp( "kill_all", 1);
+    ME->SetProp( "kill_all", 1);
     z ++;
   }
   if( z > 20 )
@@ -121,7 +128,7 @@ void folge_caster(string agg)
       ME->move(environment(pl),M_TPORT);
   }
   SetProp(P_MSGOUT,"verfolgt "+capitalize(agg));
-  call_out("folge_caster", random( QueryProp(DAEM_HUNTING_TIME) ), agg);
+  call_out(#'folge_caster, random( QueryProp(DAEM_HUNTING_TIME) ), agg);
 }
 
 

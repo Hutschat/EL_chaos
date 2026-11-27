@@ -5,6 +5,10 @@
 // 11.03.2019 It@Efferdland            ueberarbeitet
 
 #pragma no_inherit
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
 
 #include "def.h"
 

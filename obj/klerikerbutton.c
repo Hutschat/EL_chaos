@@ -6,6 +6,10 @@
 // 11.03.2019 It@Efferdland            ueberarbeitet
 
 #pragma no_inherit
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
 
 #include "def.h"
 
@@ -45,7 +49,7 @@ protected void create() {
    AddCmd(({"druecke","drueck"}),"druecken_act");
 }
 
-static druecken_act(string str) {
+static int druecken_act(string str) {
   if(environment(ME) != PL) {
     return 0;
   }

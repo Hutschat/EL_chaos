@@ -6,9 +6,17 @@
 // 17.05.1998 Bierchen@MorgenGrauen    ueberarbeitet
 // 10.12.2018 It@Efferdland            ueberarbeitet
 
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
+
 #include "def.h"
 
 inherit CHAOS_GILDEN_MON("std/std_daem");  
+
+// Prototypen für Closures
+static void remove_krankheiten();
 
 static string query_bloedsinn(object pl, int mon)
 {
@@ -460,7 +468,7 @@ void give_notify(object ob)
 
     ob->remove();
 
-    call_out("remove_krankheiten",0);
+    call_out(#'remove_krankheiten,0);
   }
 }
 

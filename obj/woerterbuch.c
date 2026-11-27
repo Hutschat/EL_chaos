@@ -7,6 +7,10 @@
 // 27.11.2026 It@Efferdland            Kaputte Tabellenzeilen repariert
 
 #pragma no_inherit
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
 
 #include "def.h"
 
@@ -41,7 +45,7 @@ static int read(string str)
 {
   notify_fail("Was willst Du denn lesen ?\n");
   if (!str) return 0;
-  if (this_object() == present(str,this_player()))
+  if (ME == present(str,this_player()))
     return write("Du musst dieses Buch seitenweise lesen!\n"),1;
   switch (str)
   {

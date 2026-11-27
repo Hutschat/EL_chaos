@@ -8,6 +8,11 @@
 // 12.03.2019 It@Efferdland            neu
 
 
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
+
 #include "def.h"
 
 

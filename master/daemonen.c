@@ -11,6 +11,9 @@
 #pragma strong_types
 #pragma no_clone
 #pragma no_inherit
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
 
 #include "def.h"
 

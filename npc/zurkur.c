@@ -5,6 +5,11 @@
 // xx.xx.xxxx Zardoz                   neu
 // 12.03.2019 It@Efferdland            ueberarbeitet
 
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
+
 #include "def.h"
 
 inherit CHAOS_GILDEN_MON("std/aggdaem");  
@@ -117,7 +122,7 @@ void setze_stats(int level, object pl)
       DT_DARKNESS: -0.3
     ]));
   if(level > 6) 
-    SetAttackChats( level * 2, ({ "@@aua@@" }));
+    SetAttackChats( level * 2, ({ #'aua }));
 
   if(level > 8)
     SetProp(P_RESISTANCE,QueryProp(P_RESISTANCE)+

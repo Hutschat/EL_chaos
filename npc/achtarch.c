@@ -8,6 +8,11 @@
 // 27.11.2026 It@Efferdland            Schänke der Burg
 // 27.11.2026 It@Efferdland            Laden in der Burg Zwielichtstein
 
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
+
 #include "def.h"
 
 inherit CHAOS_GILDEN_MON("std/std_chaot");
@@ -17,6 +22,9 @@ inherit CHAOS_GILDEN_MON("std/std_chaot");
 #define SAMMLER            "Chaos-Gilde:Sammler"
 
 static int counter1 = 0;
+
+// Prototypen für Closures
+static void ritual (object pl);
 
 static string plan_inf()
 {
@@ -128,8 +136,8 @@ static string sammelaktion_inf(){
                    "sammele. Es ist zu unser beider Vorteil.",
                    0,Name(WER)+" sagt: "));
     
-    if(call_other((SSQMASTER),"CheckSammler",getuid(PL))<=0)
-      call_other((SSQMASTER),"SetzeSammler",getuid(PL),1);
+    if((SSQMASTER)->CheckSammler(getuid(PL))<=0)
+      (SSQMASTER)->SetzeSammler(getuid(PL),1);
    }
   return 0;
 }
@@ -216,11 +224,11 @@ static string ratte()
     return "Noch mal erzaehl ich Dir das nicht, haettest eben besser "
            "aufpassen sollen!";
 
-  if(find_call_out("ritual")==-1)
+  if(find_call_out(#'ritual)==-1)
   {
     ME->SetProp("jenandra:listener",geteuid(pl));
 
-    call_out("ritual",5,pl);
+    call_out(#'ritual,5,pl);
 
     return "Na gut.";
   }
@@ -333,8 +341,8 @@ static void ritual (object pl)
                 "zu.\n",({pl}));
       counter1++;
 
-      if(find_call_out("ritual")==-1)
-        call_out("ritual",3,pl);
+      if(find_call_out(#'ritual)==-1)
+        call_out(#'ritual,3,pl);
       
       return;
     }
@@ -345,8 +353,8 @@ static void ritual (object pl)
       "Haut einfach ab, waehrend ich mir den Mund fusselig rede, "
       "sowas...",0,Name(WER)+" grummelt: "));
 
-      if(find_call_out("ritual")!=-1)
-        while(remove_call_out("ritual")!=-1);
+      if(find_call_out(#'ritual)!=-1)
+        while(remove_call_out(#'ritual)!=-1);
     }
   }
   if(counter1 >= sizeof(txt))
@@ -377,8 +385,8 @@ static void ritual (object pl)
     }
     counter1 = 0;
 
-    if(find_call_out("ritual")!=-1)
-      while(remove_call_out("ritual")!=-1);
+    if(find_call_out(#'ritual)!=-1)
+      while(remove_call_out(#'ritual)!=-1);
 
     return;
   }	
@@ -855,7 +863,7 @@ varargs void die()
   ::die();
 }
 
-give_notify(ob)
+void give_notify(object ob)
 {
   object env,sh;
   string wen;
@@ -882,12 +890,12 @@ give_notify(ob)
         if(sh->QueryProp(SAMMLER)==getuid(PL))
           sh->remove();
       }
-      if(call_other((SSQMASTER),"CheckAufgabe",getuid(PL)) < 1)
+      if((SSQMASTER)->CheckAufgabe(getuid(PL)) < 1)
       {
-        call_other((SSQMASTER),"SetzeAufgabe",getuid(PL),
+        (SSQMASTER)->SetzeAufgabe(getuid(PL),
            PL->name(),PL->QueryProp(P_GENDER));
         
-        call_other((SSQMASTER),"SetzeSpender",getuid(PL),i);
+        (SSQMASTER)->SetzeSpender(getuid(PL),i);
         
         write(break_string("Wow, "+PL->name(WER)+"! Ich bin "
               "restlos begeistert, Du hast es tatsaechlich geschafft, alle "
@@ -895,9 +903,9 @@ give_notify(ob)
               "Gratulation nochmal!!!",0,Name(WER)+" sagt: "));
       }
     }
-    if(call_other((SSQMASTER),"CheckSpender",getuid(PL)) < i)
+    if((SSQMASTER)->CheckSpender(getuid(PL)) < i)
     {
-      call_other((SSQMASTER),"SetzeSpender",getuid(PL),i);
+      (SSQMASTER)->SetzeSpender(getuid(PL),i);
     
       write(break_string("Respekt, Du hast Deine alte Bestmarke "
              "tataechlich noch uebertreffen koennen. Huih!",0,
@@ -911,7 +919,7 @@ give_notify(ob)
     
     LetsGoDrink();
     
-    if(call_other((SSQMASTER),"CheckAufgabe",getuid(PL)) >= 1)
+    if((SSQMASTER)->CheckAufgabe(getuid(PL)) >= 1)
     {
       if(!present("\ntilly:chaut_obj",PL))
       {

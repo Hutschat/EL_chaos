@@ -4,6 +4,11 @@
 //
 // 12.03.2019 It@Efferdland            ueberarbeitet
 
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
+
 #include "def.h"
 
 inherit "std/armour";
@@ -86,7 +91,7 @@ protected void create()
   AddDetail(({"leute"}),
   "Mit diesem Ring kannst Du gut andere Leute schlagen.");
 
-  AddReadDetail("gravur","@@det_gravur@@");
+  AddReadDetail("gravur",#'det_gravur);
 
   AddCmd(({"schlag","schlage"}),"hit_him");
 }

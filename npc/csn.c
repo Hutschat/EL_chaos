@@ -6,6 +6,11 @@
 // 17.05.1998 Bierchen@MorgenGrauen    ueberarbeitet
 // 10.12.2018 It@Efferdland            ueberarbeitet
 
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
+
 #include "def.h"
 
 inherit "/std/npc";

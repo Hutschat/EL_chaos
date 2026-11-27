@@ -5,6 +5,10 @@
 // 17.03.2019 It@Efferdland            neu
 
 #pragma no_inherit
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
 
 #include "def.h"
 
@@ -14,7 +18,7 @@ static int my_time = 0;
 
 public int _query_light() {
   if(my_time < time()) {
-    call_out("remove",0);
+    call_out(#'remove,0);
     return 0;
   }
   return Query(P_LIGHT);
@@ -31,7 +35,7 @@ public int my_light(int val) {
 
 static int _query_short() {
   if(my_time < time())  {
-    call_out("remove",0);
+    call_out(#'remove,0);
     SetProp(P_LIGHT,0);
   }
   return 0;

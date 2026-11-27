@@ -5,6 +5,11 @@
 // xx.xx.xxxx Zardoz                   neu
 // 12.03.2019 It@Efferdland            ueberarbeitet
 
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
+
 #include "def.h"
 
 inherit "std/npc";
@@ -72,7 +77,7 @@ string spells()
     case 1..9:
      tell_object( en, "Ziumtu wirft einen Chaosball nach Dir.\n");
      say( "Ziumtu wirft einen Chaosball nach "+en->name()+".\n", en);
-     en->Defend( 100 + random(300), DT_ACID, 1, this_object());
+     en->Defend( 100 + random(300), DT_ACID, 1, ME);
      break;
   }
   return "";
@@ -95,4 +100,4 @@ varargs void die()
   ::die();
 }
 
-void verschwinde() { call_out( "remove", 1); }
+void verschwinde() { call_out( #'remove, 1); }
