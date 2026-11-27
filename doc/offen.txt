@@ -9,13 +9,9 @@ oder gebaut werden muss.
 
 1. Arena
 --------
-Die Kampfarena entfällt. Davon hängen ab:
-
-- Die Aufstiegsprüfungen (Kampf in der Arena) für alle Gildenstufen.
-  Sie sind über CHAOS_ARENA_PRUEFUNG (sys/chaosmisc.h) abgeschaltet.
-  Ersatz offen.
-- Der Erzmeisterkampf ("melde kampf an", Stufe 11 -> 12). Der Befehl
-  ist in gilde.c abgeschaltet. Ersatz offen.
+Die Kampfarena entfällt. Bis Stufe 11 gibt es keine Kampfprüfung mehr.
+Nur der Erzmeisterkampf um Stufe 12 ("melde kampf an") brauchte die
+Arena. Der Befehl ist in gilde.c abgeschaltet, Ersatz offen.
 
 
 2. Dämonen
@@ -27,15 +23,16 @@ Die Kampfarena entfällt. Davon hängen ab:
     Flaxtri   -> Säuredämon
     Tutszt    -> Blutdämon
     Yrintri   -> Wandler
-- Hilfsdämonen: noch nicht entschieden, ob sie Typen werden oder ihre
-  festen Namen behalten:
-    Intarbir  (schätzt Monster ein)
-    Kruftur   (identifiziert Gegenstände)
-    Tyoorthok (erzählt über die eigene Konstitution)
-    Bhuturih  (findet Spieler)
-- Bhuturih hat keinen NPC mehr (auch nicht in OLD/).
-- Tyoorthok, Bhuturih und Chaoskontrolle stehen im Spellbook, aber
-  nicht in gilde.c (AddSpell) und sind damit nicht lernbar.
+- Intarbir, Kruftur und Tyoorthok werden zum Orakeldämon
+  ("beschwöre orakeldämon", Name aus der Namensliste). Lernbar ab
+  Gildenstufe 4, die Fähigkeiten werden nach und nach freigeschaltet:
+    ab Stufe 4: Monster einschätzen (Intarbir)
+    ab Stufe 5: Gegenstände identifizieren (Kruftur)
+    ab Stufe 7: über die eigene Konstitution erzählen (Tyoorthok)
+- Bhuturih (findet Spieler): noch nicht entschieden. Er hat keinen NPC
+  mehr (auch nicht in OLD/) und ist nicht lernbar.
+- Chaoskontrolle steht im Spellbook, aber nicht in gilde.c (AddSpell)
+  und ist damit nicht lernbar.
 - Ombatis ist entfernt.
 
 
