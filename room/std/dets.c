@@ -18,6 +18,7 @@
 //
 // 27.11.2026 It@Efferdland            neu
 // 27.11.2026 It@Efferdland            Chaosmagie
+// 27.11.2026 It@Efferdland            Chaoten wohnen hier
 
 #pragma strong_types
 #pragma no_clone
@@ -37,6 +38,13 @@ static string *chaos_allgemein = ({
   "Irgendwo tropft es, aber die Tropfen fallen nach oben.",
   "Die Steine sind heute warm, als hätten sie Fieber.",
   "Ein schwacher Geruch nach Gewitter liegt in der Luft.",
+  "Auf dem Boden hat jemand mit Kreide ein Pentagramm gezeichnet und "
+  "dann mit dem Fuß halb wieder weggewischt.",
+  "An der Wand klebt ein Zettel: »Wer hat meinen Dämon gesehen? Klein, "
+  "rot, beißt. Belohnung!«",
+  "In einer Ecke liegt eine angekokelte Robe, die niemand vermisst.",
+  "Frische Kratzspuren ziehen sich über den Boden, als hätte hier etwas "
+  "mit Krallen gespielt.",
 });
 
 // Setzt den Langtext. Die wechselnde Zeile wird bei jedem Reset
@@ -172,9 +180,39 @@ protected void create() {
                        "_query_int_long");
 
   ME->AddDetail(({"burg","zwielichtstein","burg zwielichtstein","ruine"}),
-  "Die Burg Zwielichtstein ist alt und halb verfallen. Chaotische Magie "
-  "durchzieht jeden Stein, und nichts ist hier so, wie es auf den ersten "
-  "Blick scheint.");
+  "Die Burg Zwielichtstein ist alt und halb verfallen. Schon lange "
+  "haben sich die Chaoten darin eingenistet. Repariert haben sie nichts, "
+  "aber sie wohnen darin, und das sieht man. Chaotische Magie durchzieht "
+  "jeden Stein, und nichts ist hier so, wie es auf den ersten Blick "
+  "scheint.");
+
+  ME->AddDetail(({"chaoten","chaot","bewohner"}),
+  "Die Chaoten wohnen hier, wie Chaoten eben wohnen: laut, unordentlich "
+  "und mit vielen Brandflecken.");
+
+  ME->AddDetail(({"brandflecken","brandfleck"}),
+  "Schwarz und verkohlt. Hier ist wohl öfter etwas schiefgegangen.");
+
+  ME->AddDetail(({"kreide","pentagramm"}),
+  "Kreidestriche auf dem Boden, halb verwischt.");
+
+  ME->AddDetail(({"striche","kreidestriche","fuss","fuß"}),
+  "Verwischt. Hoffentlich hat das Pentagramm niemand mehr gebraucht.");
+
+  ME->AddDetail(({"zettel"}),
+  "Ein Zettel, eilig gekritzelt und schief angeklebt.");
+
+  ME->AddDetail(({"daemon","dämon","belohnung"}),
+  "Klein, rot, beißt. Mehr steht da nicht.");
+
+  ME->AddDetail(({"robe","ecke"}),
+  "Eine angekokelte, schwarze Robe. Sie riecht nach Schwefel.");
+
+  ME->AddDetail(({"schwefel"}),
+  "Gelb und stinkend. In der Burg riecht alles ein wenig danach.");
+
+  ME->AddDetail(({"kratzspuren","kratzspur","krallen"}),
+  "Kratzspuren, frisch und tief. Irgendetwas mit Krallen war hier.");
 
   ME->AddDetail(({"mauer","mauern","stein","steine","gemäuer","gemaeuer"}),
   "Die Mauern sind aus schwarzem Stein, rissig und an vielen Stellen "
@@ -229,6 +267,11 @@ protected void create() {
     "Ein kalter Hauch streicht an dir vorbei, obwohl kein Wind geht.\n",
     "Fuer einen Moment scheint ein Stein in der Mauer zu atmen.\n",
     "Irgendwo in der Burg lacht jemand, hoch und schrill.\n",
+    "Aus einem anderen Teil der Burg ist ein dumpfer Knall zu hoeren, "
+    "dann ein lauter Fluch.\n",
+    "Jemand ruft in der Ferne: \"Wer hat schon wieder meinen Daemon "
+    "losgelassen?\"\n",
+    "Irgendwo poltert etwas eine Treppe hinunter, gefolgt von Gekicher.\n",
     "Ein Stein loest sich aus der Mauer, schwebt kurz und faellt dann "
     "polternd zu Boden.\n",
     "Fuer einen Herzschlag laeuft die Zeit rueckwaerts. Dann wieder "

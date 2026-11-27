@@ -32,8 +32,8 @@ protected void create()
   ]));
   SetProp(P_INT_SHORT, "Die Gildenhalle der Krieger des Chaos");
   SetProp(P_INT_LONG,
-  "Die Gildenhalle ist der einzige Raum der Burg Zwielichtstein, der "
-  "halbwegs bewohnbar ist. Im Osten steht eine lange, wurmstichige "
+  "Die Gildenhalle ist der aufgeräumteste Raum der Burg Zwielichtstein, "
+  "was nicht viel heißt. Im Osten steht eine lange, wurmstichige "
   "Theke, hinter der die Anträge bearbeitet werden. An der Nordwand hängen eine Liste und ein Zettel, auf dem "
   "Boden liegt eine schäbige Top-Liste. Durch einen Riss in der Südwand "
   "sickert violettes Licht. Im Westen geht es zurück in den Rittersaal.");
