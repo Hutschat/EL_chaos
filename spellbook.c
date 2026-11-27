@@ -57,6 +57,8 @@
                           Intarbir, Kruftur, Tyoorthok, Bhuturih,
                           Irkitis, Harkuhu, Graiop, Flaxtri, Tutszt
                           und Yrintri
+               27.11.26   It@Efferdland GUILD_HELPER statt
+                          VERBOTENE_RAEUME
 Nachtsicht:
   Man kann im Dunklen sehen. Da die Krieger des Chaos sich gerne
   in dunklen Festungen verborgen halten, koennen sie diesen Spruch
@@ -501,60 +503,44 @@ string CheckRuestung(object caster, mapping sinfo){
    (z.B. Abenteurergilde etc.) Das array ist in /gilden/files.chaos/gilde.h
    definiert */
    
-string CheckKleinerDaemon( object caster, mapping sinfo){
-  int i,si;
-  string *v, f;
-  f = file_name(environment(caster));
-  v = VERBOTENE_RAEUME;
-  if(member(v,f)!=-1)
-    return "Die Umgebung ist fuer das Beschwoeren von Daemonen ungeeignet.\n";
-  si=sizeof(v);
-  for(i=0;i<si;i++){
-    if(v[i]==f[0..strlen(v[i])-1]){
-      return ("Die Umgebung ist fuer das Beschwoeren von Daemonen "
-      "ungeeignet.\n");
-    }
+// Darf hier beschworen werden? Die verbotenen Räume verwaltet die
+// Mudlib (GUILD_HELPER).
+static string CheckRaum(object caster) {
+  if(GUILD_HELPER->GH_get_npc_forbidden_rooms(environment(caster))) {
+    return "Die Umgebung ist fuer das Beschwoeren von Daemonen "
+           "ungeeignet.\n";
   }
-  if(caster->QueryProp(P_FROG)){
-    return ("Du willst doch wohl nicht als Frosch einen Daemonen "
-    "beschwoeren?\n");
-  } 
+  if(caster->QueryProp(P_FROG)) {
+    return "Du willst doch wohl nicht als Frosch einen Daemonen "
+           "beschwoeren?\n";
+  }
   return 0;
 }
 
+string CheckKleinerDaemon(object caster, mapping sinfo) {
+  return CheckRaum(caster);
+}
 
-string DaemonenTest(object caster, mapping sinfo){
-  int i, si;
-  string *v, f;
-  object rue;
-  f = file_name(environment(caster));
-  v = VERBOTENE_RAEUME;
-  if(!rue=present("\nchaos_ruestung",caster))
+string DaemonenTest(object caster, mapping sinfo) {
+  string ret;
+
+  if(!present("\nchaos_ruestung",caster)) {
     return "Du musst fuer diesen Spruch eine Chaos-Ruestung tragen.\n";
-  if(member(v,f)!=-1)
-    return "Die Umgebung ist fuer das Beschwoeren von Daemonen ungeeignet.\n";
-  si=sizeof(v);
-  for(i=0;i<si;i++){
-    if(v[i]==f[0..strlen(v[i])-1]){ 
-      return ("Die Umgebung ist fuer das Beschwoeren von Daemonen "
-      "ungeeignet.\n");
-    }
   }
-  if(caster->QueryProp(P_FROG)){
-    return ("Du willst doch wohl nicht als Frosch einen Daemonen "
-    "beschwoeren?\n");
+  if(ret = CheckRaum(caster)) {
+    return ret;
   }
-  if(caster->QueryProp(P_GENDER)==0){
-    return ("Ueber dich wuerden die Daemonen doch nur lachen!\n");
+  if(caster->QueryProp(P_GENDER) == 0) {
+    return "Ueber dich wuerden die Daemonen doch nur lachen!\n";
   }
   return 0;
 }
-                                
+
 
 int dunkelheit(object caster, mapping sinfo){
   int zeit, light, suc;
   suc=SpellSuccess(caster,sinfo);
-  if(member(VERBOTENE_RAEUME,file_name(environment(caster)))!=-1){
+  if(GUILD_HELPER->GH_get_npc_forbidden_rooms(environment(caster))){
     printf("Dieser Ort laesst sich nicht verdunkeln.\n");
     return 0;
   }

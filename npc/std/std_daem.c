@@ -5,6 +5,7 @@
 // xx.xx.xxxx Zardoz
 // 10.12.2018 It@Efferdland            ueberarbeitet
 // 27.11.2026 It@Efferdland            Fehler für neuen Driver behoben
+// 27.11.2026 It@Efferdland            Schänke der Burg
 
 #pragma no_clone
 
@@ -340,7 +341,7 @@ public varargs void init(object origin)
   if(PL == caster &&
      PL->QueryProp(P_CHAOS_MASKE) &&
      id("\nkampfdaemon") &&
-     object_name(environment()) != CHAOS_GILDEN_ROOM("ckneipe") )
+     object_name(environment()) != CHAOS_SCHAENKE )
   {
     gemeiner_daemon(caster);
     return;
@@ -967,6 +968,6 @@ static void CheckWimpyAndFlee()
 
 int move_kneipe()
 {
-  ME->move(CHAOS_GILDEN_ROOM("ckneipe"),M_GO,"was trinken");
+  ME->move(CHAOS_SCHAENKE,M_GO,"was trinken");
   return 1;
 }

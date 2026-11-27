@@ -13,10 +13,8 @@
      | Sprueche und Daemonen lernt man bei Kruuolq und Hutschat mit dem  |
      | Befehl <lerne spruch> und <lerne daemon>.                         |
      |                                                                   |
-     | Abgesehen von den unterschiedlichen Faehigkeiten muss man zum     |
-     | Erhoehen des Ranges einen Kampf in der gildeneigenen Arena gegen  |
-     | Yruruu beziehungsweise Ziumtu gewinnen. Und ab Gilden-Level 8     |
-     | muessen zudem noch zwei Aufgaben geloest werden um auf Level 9    |
+     | Abgesehen von den unterschiedlichen Faehigkeiten muessen ab       |
+     | Gilden-Level 8 zwei Aufgaben geloest werden, um auf Level 9       |
      | beziehungsweise 10 kommen zu koennen. Auch hier wendet man sich   |
      | am besten an Kruuolq.                                             |
      |                                                                   |

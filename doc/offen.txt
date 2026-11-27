@@ -43,10 +43,17 @@ Offen:
 
 3. Räume
 --------
+Erledigt: Die Gilde liegt in der Burg Zwielichtstein östlich der
+Menagerie im Schattental (Plan in sys/chaosburg.h). Der Ausgang aus der
+Menagerie zur Burg ist vorerst nur für Magier offen (EL_schattental,
+nur_magier() in room/std/lab_std.c).
+
+Offen:
+- Achtarch (Händler, früher claden) und Wuqour (Rituale, früher
+  critual) haben keinen Raum mehr. Wuqour verweist noch auf critual.
+- Der Erzmeisterkampf startete in a_start (gilde.c, count_down()).
+- Der Kerker ist absichtlich dunkel (Nachtsicht hilft).
 - Die alten Räume bleiben in OLD/ und werden nicht wieder benutzt.
-- Die Gilde zieht in die Burg Zwielichtstein östlich der Menagerie im
-  Schattental (EL_schattental). gilde.c hat bis dahin keine Ausgänge,
-  der Langtext ist noch der alte.
 
 
 4. Sonstiges
@@ -60,5 +67,8 @@ Offen:
   erben armour/std/maske.c und setzen P_CHAOS_MASKE_DATEN.
 - Mudlib: _set_mmsgin() in std/living/moving.c setzt P_MSGIN statt
   P_MMSGIN. npc/daemon.c umgeht das mit Set().
+- Orakeldämon: Statt des kopierten Codes aus Intarbir und Kruftur die
+  Funktionen aus GUILD_HELPER (GH_hp_to_text, GH_resist_to_text,
+  GH_damtype_to_text, GH_size_to_text, GH_weight_to_text ...) benutzen.
 - Der Gildenmaster speichert nach master/save/. Das Verzeichnis muss es
   im MUD geben, die Gilde braucht dort Schreibrechte.

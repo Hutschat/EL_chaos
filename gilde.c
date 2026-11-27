@@ -8,6 +8,7 @@
 // 27.11.2026 It@Efferdland             wieder lauffähig, ohne Arena
 // 27.11.2026 It@Efferdland             keine Kampfprüfung bis Stufe 11
 // 27.11.2026 It@Efferdland             Dämonentypen
+// 27.11.2026 It@Efferdland             Gildenhalle der Burg Zwielichtstein
 
 #include "def.h"
 
@@ -22,61 +23,95 @@ protected void create()
   ::create();
   SetProp(P_LIGHT, 1);
   SetProp(P_INDOORS, 1);
-  SetProp(P_INT_SHORT, "Die Gilde der Krieger des Chaos");
+  SetProp(P_LIGHT_TYPE, LT_MAGIC);
+  SetProp(P_TERRAIN, T_BUILDING|T_MOUNTAIN);
+  SetProp(P_ENVIRONMENT,
+  ([
+    ENV_ALTITUDE:    CHAOS_BURG_HOEHE,
+    ENV_TEMPERATURE: 12,
+  ]));
+  SetProp(P_INT_SHORT, "Die Gildenhalle der Krieger des Chaos");
   SetProp(P_INT_LONG,
-  "Dies ist der Verwaltungsraum der Gilde. Hier werden die Antraege auf "
-  "Aufnahme in die Gilde bearbeitet oder das Lernen der Zaubersprueche "
-  "ueberwacht. Der Raum ist recht schlicht gehalten. Die lange Theke "
-  "gegenueber dem Eingang ist das einzige Moebelstueck. Auf dem Boden "
-  "liegt eine schaebige Top-Liste.");
+  "Die Gildenhalle ist der einzige Raum der Burg Zwielichtstein, der "
+  "halbwegs bewohnbar ist. Im Osten steht eine lange, wurmstichige "
+  "Theke, hinter der die Anträge bearbeitet werden. An der Nordwand hängen eine Liste und ein Zettel, auf dem "
+  "Boden liegt eine schäbige Top-Liste. Durch einen Riss in der Südwand "
+  "sickert violettes Licht. Im Westen geht es zurück in den Rittersaal.");
 
-  AddDetail(({"antrag","antraege"}),
-  "Frag einfach mal Hutschat aus, er bearbeitet diese Antraege.");
+  AddDetail(({"antrag","antraege","anträge"}),
+  "Frag einfach mal Hutschat aus, er bearbeitet diese Anträge.");
 
-  AddDetail(({"raum","verwaltungsraum"}),
-  "Dies ist der wichtigste Raum der Gilde.");
+  AddDetail(({"raum","halle","gildenhalle"}),
+  "Dies ist der wichtigste Raum der Gilde. Hier tritt man bei, steigt "
+  "auf und lernt.");
 
   AddDetail("gilde",
-  "Diese Gilde ist wohl eine der besten Gilden im Efferdland!");
+  "Eine der finstersten Gilden überhaupt!");
 
-  AddDetail(({"moebelstueck","moebel"}),
-  "Der Raum ist bis auf die lange Theke voellig leer.");
+  AddDetail(({"burg","zwielichtstein","burg zwielichtstein"}),
+  "Die alte Burg ist verfallen und von chaotischer Magie durchzogen. "
+  "Wie geschaffen für diese Gilde.");
 
-  AddDetail(({"wand","waende"}),
-  "An den kahlen Waenden haengt eine Liste aller Mitglieder der Gilde. "
-  "Ausserdem haengt dort ein Zettel.");
+  AddDetail(({"wand","waende","wände","nordwand"}),
+  "An der Nordwand hängen eine Liste der Gilde und ein Zettel mit den "
+  "Neuigkeiten.");
+
+  AddDetail(({"suedwand","südwand","riss"}),
+  "Durch den Riss in der Südwand sickert violettes Licht. Manchmal "
+  "flüstert es daraus.");
+
+  AddDetail(({"licht"}),
+  "Das violette Licht kommt aus dem Riss in der Südwand. Es ist das "
+  "Licht der Chaosmagie, die die ganze Burg durchzieht.");
+
+  AddDetail(({"magie","chaosmagie"}),
+  "Die Chaosmagie durchzieht die ganze Burg.");
+
+  AddDetail(({"rittersaal"}),
+  "Der Rittersaal liegt im Westen.");
 
   AddDetail("liste",
   "Du kannst die Liste lesen.");
 
-  AddDetail("zettel",
-  "Auf dem Zettel stehen die neusten Aenderungen, die in der Gilde "
-  "vorgenommen worden sind.");
+  AddDetail(({"zettel","neuigkeiten"}),
+  "Auf dem Zettel stehen die Neuigkeiten der Gilde.");
 
   AddReadDetail( "zettel", "@@my_zettel@@" );
   AddReadDetail( "liste", "@@my_liste@@" );
 
-  AddDetail(({"boden","steinboden"}),
-  "Du stehst auf einem schlichten Steinboden und teilweise noch auf einer "
-  "schaebigen und dreckigen Top-Liste.");
+  AddDetail(({"boden","steinboden","fussboden","fußboden"}),
+  "Du stehst auf einem rissigen Steinboden und teilweise auf einer "
+  "schäbigen, dreckigen Top-Liste.");
 
-  AddDetail(({"topliste","top-liste"}),
-  "Ueber diese Top-Liste sind schon viele Leute gelaufen. Sie scheint wenig "
+  AddDetail(({"topliste","top-liste","top"}),
+  "Über diese Top-Liste sind schon viele gelaufen. Sie scheint wenig "
   "Beachtung zu finden.");
+
+  AddDetail(({"beachtung"}),
+  "Kaum einer schaut sie an.");
 
   AddReadDetail(({"top-liste","topliste"}),
   "@@my_top_list@@" );
 
-  AddDetail(({"gestein","stein"}),
-  "Der Boden, die Decke und die Waende bestehen aus einem glatten, hellen "
-  "Gestein.");
+  AddDetail(({"theke"}),
+  "Hinter der langen, wurmstichigen Theke im Osten steht "
+  "normalerweise Hutschat.");
 
-  AddDetail("decke",
-  "Die schlichte Decke besteht aus einem hellen Gestein.");
+  AddDetail(({"decke"}),
+  "Die Decke ist rußgeschwärzt, hält aber.");
 
-  AddDetail("theke",
-  "Hinter der langen Theke verrichtet normalerweise Hutschat seine "
-  "Arbeit.");
+  AddDetail(({"hutschat","verwalter"}),
+  "Hutschat, der Verwalter der Gilde, steht normalerweise hinter der "
+  "Theke.");
+
+  AddDetail(({"ostwand"}),
+  "Vor der Ostwand steht die lange Theke.");
+
+  AddSmell(({DEFAULT_SMELL}),
+  "Alt, muffig und ein wenig schweflig.");
+
+  AddSound(({DEFAULT_SOUND,"fluestern","flüstern"}),
+  "Leise und unverständlich.");
 
 //  SetProp(P_GUILD_DEFAULT_SPELLBOOK,"chaos/spellbook");
 
@@ -226,7 +261,7 @@ protected void create()
   // AddCmd(({"melde", "meld" }), "melde_duell" );
   AddItem( CHAOS_GILDEN_MON( "kruuolq"), REFRESH_REMOVE );
   AddItem( CHAOS_GILDEN_MON( "hutschat"),  REFRESH_REMOVE);
-  // Ausgänge kommen mit den neuen Räumen der Burg
+  AddExit("westen", CHAOS_RITTERSAAL);
 }
 
 string my_liste(){ return CHAOS_GILDENMASTER->Liste(); }
