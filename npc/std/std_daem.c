@@ -338,7 +338,7 @@ public varargs void init(object origin)
     return;
   }
   if(PL == caster &&
-     present("\nChaosMaske",PL) &&
+     PL->QueryProp(P_CHAOS_MASKE) &&
      id("\nkampfdaemon") &&
      object_name(environment()) != CHAOS_GILDEN_ROOM("ckneipe") )
   {
@@ -485,7 +485,7 @@ static int befehle_daemon(string str)
     case "folge":
     case "folg":
     case "folge mir":
-      if(present("\nChaosMaske",PL))
+      if(PL->QueryProp(P_CHAOS_MASKE))
       {
         write(Name(WER)+" lacht Dich aus.\n");
         break;
@@ -511,7 +511,7 @@ static int befehle_daemon(string str)
     
     case "folge leise":
     case "folg leise":
-      if(present("\nChaosMaske",PL))
+      if(PL->QueryProp(P_CHAOS_MASKE))
       {
         write(Name(WER,1)+" lacht Dich aus.\n");
         break;

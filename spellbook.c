@@ -278,14 +278,13 @@ protected void create() {
        SI_NOMAGIC:100,
        SI_SPELLFATIGUE:10
        ]));
-/*    AddSpell( "chaosmaske", 40,
+  AddSpell( "chaosmaske", 40,
        ([ SI_SKILLRESTR_LEARN:([P_GUILD_LEVEL:11]),
        SI_SKILLRESTR_USE:([
        SR_GOOD:-200,P_GUILD_LEVEL:11 ]),
        SI_DIFFICULTY:30,
        SI_SPELLFATIGUE:20
        ]));
-*/
   AddSpell( "intarbir",5,
        ([SI_SKILLRESTR_LEARN:([P_GUILD_LEVEL:4,
        SR_GOOD:200]),
@@ -653,11 +652,11 @@ int dunkelheit(object caster, mapping sinfo){
   if(suc<-2000){
     printf("Mist, der Spruch ging daneben! Es wird ploetzlich heller!\n");
     light=light+2;
-    "/obj/tmp_prop_master"->SetTmpProp(environment(caster),P_LIGHT,
+    TMP_PROP_MASTER->SetTmpProp(environment(caster),P_LIGHT,
       light, zeit);
     return MISSERFOLG;
   }
-  "/obj/tmp_prop_master"->SetTmpProp(environment(caster),P_LIGHT,light,zeit);
+  TMP_PROP_MASTER->SetTmpProp(environment(caster),P_LIGHT,light,zeit);
   printf("Du verdunkelst Deine Umgebung.\n");
   return ERFOLG;
 }
@@ -1629,52 +1628,99 @@ int binde( object caster, mapping sinfo){
   if(suc>3000) caster->AddPursuer(daem);
   return ERFOLG;
 }
-/*
-int chaosmaske( object caster, mapping sinfo){
-  object maske;                                                         
+// Verwandlungen bei einem völlig missglückten Chaosmasken-Spruch
+static mapping *masken_pech = ({
+  ([
+    P_NAME:   "Häschen",
+    P_GENDER: NEUTER,
+    P_RACE:   "Hase",
+    P_SHORT:  "@WER1, verwandelt in ein flauschiges Häschen",
+    P_LONG:   "@WER1 wollte wohl ein Dämon werden. Herausgekommen ist "
+              "ein kleines, flauschiges Häschen mit langen Ohren und "
+              "einem zuckenden Näschen.",
+    P_MSGIN:  "hoppelt herein",
+    P_MSGOUT: "hoppelt",
+    P_HANDS:  ({" mit kleinen Hasenpfoten",10,({DT_BLUDGEON})}),
+    P_IDS:    ({"häschen","hase"}),
+  ]),
+  ([
+    P_NAME:   ({"Teddybär","Teddybären","Teddybären","Teddybären"}),
+    P_GENDER: MALE,
+    P_RACE:   "Teddybär",
+    P_SHORT:  "@WER1, verwandelt in einen knuddeligen Teddybären",
+    P_LONG:   "@WER1 wollte wohl ein Dämon werden. Herausgekommen ist "
+              "ein knuddeliger Teddybär mit Knopfaugen und einer roten "
+              "Schleife um den Hals.",
+    P_MSGIN:  "tapst herein",
+    P_MSGOUT: "tapst",
+    P_HANDS:  ({" mit weichen Plüschtatzen",10,({DT_BLUDGEON})}),
+    P_IDS:    ({"teddybär","teddy","bär"}),
+  ]),
+});
+
+// Dauer der Verwandlung in Sekunden
+static int masken_dauer(object caster, int suc) {
+  int dauer = 60 + max(suc,0)/40;
+
+  if(IS_SEER(caster)) {
+    dauer += 60;
+  }
+  return dauer;
+}
+
+int chaosmaske(object caster, mapping sinfo) {
+  object maske, sh;
   int suc;
-  suc=SpellSuccess(caster,sinfo);
-  maske = (filter_objects(this_player()->QueryProp(P_ARMOURS)||({}),
-                          "id",AT_HELMET)+({0}))[0];
-  if(present("\nChaosMaske",caster)) {
-    printf("Du bist doch schon verwandelt. Verschwende deine Macht nicht so!\n");
+
+  if(caster->QueryProp(P_CHAOS_MASKE)) {
+    write("Du bist doch schon verwandelt. Verschwende deine Macht nicht "
+          "so!\n");
     return 0;
   }
+  maske = (filter_objects(caster->QueryProp(P_ARMOURS)||({}),
+                          "id",CHAOS_MASKE_ID)+({0}))[0];
   if(!maske) {
-    printf("Also, eine Chaosmaske solltest Du dafuer schon tragen.\n");
+    write("Also, eine Dämonenmaske solltest du dafür schon tragen.\n");
     return 0;
   }
-  if (environment(caster)->_query_total_light()>0 && !IS_LEARNER(caster)) {
-    printf("Es ist viel zu hell hier.\n");
+  if(environment(caster)->QueryProp(P_TOTAL_LIGHT) > 0 &&
+     !IS_LEARNER(caster)) {
+    write("Es ist viel zu hell hier.\n");
     return 0;
   }
-  if (sizeof(caster->QueryProp(P_TMP_ATTACK_HOOK))==3)
-     if (caster->QueryProp(P_TMP_ATTACK_HOOK)[0]<=time()) {
-       printf("Irgend etwas .... irgend etwas stimmt mit deinen Haenden nicht!\n");
-       return 1;
-  }
-  if (!maske->is_chaosmaske()) {
-    printf("Du versuchst die Magie "+maske->Name(WESSEN)+" zu aktivieren. Vergeblich.\n");
-    return ERFOLG;
-  }
-  if(suc<=-4000) {   //gaaaanz schlecht...
-    maske=clone_object(
-    ({CHAOS_GILDEN_OBJ("masken/hase_maske"),
-      CHAOS_GILDEN_OBJ("masken/baer_maske")
-    })[random(2)]);
-    maske->move(this_player(),M_NOCHECK);
-    maske->DoWear(1);
-    if (member_array(maske,caster->QueryProp(P_ARMOURS))>-1)
-      maske->activate(-suc);
+  suc = SpellSuccess(caster,sinfo);
+
+  sh = clone_object(CHAOS_MASKE_SHADOW);
+
+  if(suc <= -4000) {
+    // Gaaaanz schlecht...
+    write(break_string("Du rufst die Kraft des Chaos in deine Maske. "
+      "Irgendetwas läuft dabei gründlich schief!"));
+    sh->maske_an(caster,masken_pech[random(sizeof(masken_pech))],
+                 masken_dauer(caster,-suc),0);
+    say(break_string(caster->Name(WER,1)+" verwandelt sich unter "
+      "lautem Puffen in "+caster->name(WEN)+"."),caster);
     Learn(caster,"chaosmaske",sinfo);
     return 0;
   }
-  if (suc<=0)
+  if(suc <= 0) {
+    destruct(sh);
     return MISSERFOLG;
-  maske->activate(suc);
+  }
+  write(break_string("Du rufst die Kraft des Chaos in deine Maske. Sie "
+    "verschmilzt mit deinem Gesicht, und dein Körper verwandelt sich!"));
+  say(break_string(caster->Name(WER,1)+" murmelt finstere Worte und "
+    "verwandelt sich vor deinen Augen."),caster);
+
+  sh->maske_an(caster,maske->QueryProp(P_CHAOS_MASKE_DATEN),
+               masken_dauer(caster,suc),suc);
+
+  if(objectp(sh)) {
+    tell_room(environment(caster),"Vor dir steht jetzt "+
+      caster->name(WER)+".\n",({caster}));
+  }
   return ERFOLG;
 }
-*/
 int intarbir(object caster, mapping sinfo){
   object daem, p;
   int result, suc;

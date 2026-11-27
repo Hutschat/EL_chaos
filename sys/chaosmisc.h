@@ -19,4 +19,14 @@
 #define CHAOS_TRANK "\nchaos_trank"
 #define CHAOS_TRANK_TRINKEN "_trinke_dummen_chaos_trank"
 
+// Chaosmaske
+  // Id jeder Dämonenmaske
+#define CHAOS_MASKE_ID       "\nchaos_maske"
+  // Der Shadow, der die Verwandlung macht
+#define CHAOS_MASKE_SHADOW   (CHAOS_GILDEN_SHADOWS("mask_shadow"))
+  // Verwandlung einer Maske, siehe shadows/mask_shadow.c
+#define P_CHAOS_MASKE_DATEN  "chaos_maske_daten"
+  // Liefert 1, solange ein Chaot verwandelt ist
+#define P_CHAOS_MASKE        "chaos_maske"
+
 #endif

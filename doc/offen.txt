@@ -50,6 +50,8 @@ Arena. Der Befehl ist in gilde.c abgeschaltet, Ersatz offen.
   nicht benutzt und kompiliert nicht.
 - Aufgaben für Stufe 9 (Chaoshandschuhe) und 10 (Metzel-Master-Quest):
   noch gültig?
-- Die Chaosmaske ist im Spellbook auskommentiert, obj/masken/ fehlt.
+- Chaosmaske (ab Stufe 11): Bisher gibt es nur die Feuermaske
+  (armour/feuermaske.c), und sie ist nirgends erhältlich. Weitere Masken
+  erben armour/std/maske.c und setzen P_CHAOS_MASKE_DATEN.
 - Der Gildenmaster speichert nach master/save/. Das Verzeichnis muss es
   im MUD geben, die Gilde braucht dort Schreibrechte.

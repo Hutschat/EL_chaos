@@ -211,6 +211,7 @@ protected void create()
   AddSpell( "chaosschaden" );
   AddSpell( "verbanne" );
   AddSpell( "binde" );
+  AddSpell( "chaosmaske" );
   AddSpell( "kruftur" );
   AddSpell( "irkitis" );
   AddSpell( "finsternis" );
@@ -446,7 +447,8 @@ int OwnLearnSpell(string str)
     "   Chaosschaden   : Ab Gildenstufe 6.\n"+
     "   Verbanne       : Ab Gildenstufe 7.\n"+
     "   Finsternis     : Ab Gildenstufe 8.\n"+
-    "   Binde          : Ab Gildenstufe 9.\n\n"+
+    "   Binde          : Ab Gildenstufe 9.\n"+
+    "   Chaosmaske     : Ab Gildenstufe 11.\n\n"+
     "Du kannst ja mal Kruuolq nach den einzelnen Zauberspruechen befragen.\n");
 
     return 1;
