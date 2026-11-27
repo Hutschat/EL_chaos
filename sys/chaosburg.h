@@ -7,14 +7,14 @@
 // Erdgeschoss (+08), x nach Osten, y nach Norden:
 //
 //              k r T              k Schänke im Gesindehaus
-//              | | |              r Ruine (Ställe, Werkstatt, Kapelle)
+//              | | |              r Ruine (Ställe, Kapelle)
 //              o-o-o   h h h C    T Turm (frei stehend, bis +12)
-//              | | |   | | | |    o Burgplatz
+//              | | |   | | | |    o Burgplatz, l Laden (Werkstatt)
 //          o-h-o-o-o-h-h-h-h-h-g  g Gildenhalle (gilde.c)
 //              | | |   | | | |    C Chaoskapelle
 //              o-o-o   h h h R    R Treppe in den Keller
 //              | | |
-//              h r r
+//              h l r
 //
 //   Torhaus +007, Burgplatz +008..+010, Hauptgebäude: Eingangshalle
 //   +011, Mittelgang +012..+014 (Norden: Küche, Bibliothek, Treppe;
@@ -53,7 +53,7 @@
   "[+008+053+08]": CHAOS_BURG_STD("schaenke"),    /* Schänke        */\
   "[+009+053+08]": CHAOS_BURG_STD("draussen"),    /* Ställe         */\
   "[+008+049+08]": CHAOS_BURG_STD("drinnen"),     /* Schmiede       */\
-  "[+009+049+08]": CHAOS_BURG_STD("draussen"),    /* Werkstatt      */\
+  "[+009+049+08]": CHAOS_BURG_STD("laden"),       /* Achtarchs Laden*/\
   "[+010+049+08]": CHAOS_BURG_STD("draussen"),    /* Kapelle        */\
   "[+010+053+08]": CHAOS_BURG_STD("drinnen"),     /* Turm           */\
   "[+010+053+09]": CHAOS_BURG_STD("drinnen"),     /* Turm 1         */\

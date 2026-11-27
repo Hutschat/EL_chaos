@@ -6,6 +6,7 @@
 // 17.05.1998 Bierchen@MorgenGrauen     ueberarbeitet
 // 10.12.2018 It@Efferdland             ueberarbeitet
 // 27.11.2026 It@Efferdland            Schänke der Burg
+// 27.11.2026 It@Efferdland            Laden in der Burg Zwielichtstein
 
 #include "def.h"
 
@@ -167,7 +168,7 @@ static int LetsGoDrink()
   tell_room(environment(ME),Name(WER)+" grinst breit.\n"+
             Name(WER)+" sagt: Trinkt einen auf mich mit!\n");
   
-  ME->move(CHAOS_GILDEN_ROOM("claden"),M_GO|M_NOCHECK);
+  ME->move(CHAOS_LADEN,M_GO|M_NOCHECK);
   
   return 1;
 }
@@ -440,30 +441,34 @@ protected void create()
   "Du fragst ihn.","sagt: ");
   
   AddInfo(({"wuqour","ritualmeister"}),
-  "Wuqour ist der Ritualmeister der Gilde. Er verrichtet seine Arbeit im "
-  "Ritual- und Beschwoerungsraum.","sagt: ");
+  "Wuqour ist der Ritualmeister der Gilde. Frag ihn nach Ritualen, wenn "
+  "du ihn findest. Er treibt sich gern in der Chaoskapelle neben dem "
+  "Rittersaal herum.","sagt: ");
   
   AddInfo(({"ritualraum","beschwoerungsraum"}),
-  "Der Ritualraum befindet sich direkt suedlich von hier. Er ist aber "
-  "nur fuer Gildenmitglieder zu betreten.","sagt: ");
+  "Am besten beschwoert es sich oben im Turm, am Riss. Geuebt wird in "
+  "der alten Kapelle, gleich nebenan.","sagt: ");
   
   AddInfo("gilde",
-  "Die Gilde befindet sich westlich der grossen Halle.","sagt: ");
+  "Die Gildenhalle ist im Hauptgebaeude, hinter dem Rittersaal. Einfach "
+  "durch das Portal und immer nach Osten.","sagt: ");
   
-  AddInfo("halle",
-  "Die grosse Halle ist noerdlich des grossen Platzes.","sagt: ");
+  AddInfo(({"halle","gildenhalle","rittersaal"}),
+  "Durch das Portal am Platz, dann den Mittelgang entlang nach Osten.",
+  "sagt: ");
   
   AddInfo("platz",
-  "Du bist sicher schon dran vorbeigekommen. Spikey steht da immer "
-  "rum.","sagt: ");
+  "Der Burgplatz liegt direkt vor meinem Laden. Feuerstellen, Geruempel, "
+  "Lehrlinge, die ihre Daemonen suchen. Wie immer.","sagt: ");
   
-  AddInfo("spikey",
-  "Der steht steht immer auf dem grossen Platz rum.","sagt: ");
+  AddInfo(({"werkstatt","ruine"}),
+  "Die alte Werkstatt war eine Ruine. Ich hab ein Dach draufgemacht, "
+  "einen Tresen reingestellt, fertig ist der Laden.","sagt stolz: ");
   
   AddInfo(({"kneipe","gaststaette"}),
-  "Hi hi :-) Die schaebige Kneipe ist nicht gerade eine besonders "
-  "gepflegte Gaststaette. Sie verkaufen dort nur Schund zu ueberhoehten "
-  "Preisen.","sagt: ");
+  "Hi hi :-) Krummbarts Schaenke im Gesindehaus ist nicht gerade eine "
+  "besonders gepflegte Gaststaette. Er verkauft dort nur Schund zu "
+  "ueberhoehten Preisen. Im Gegensatz zu mir.","sagt: ");
   
   AddInfo("zubehoer",
   "Beim Zubehoer zum Zeichnen von Pentagrammen und Bannkreisen unterscheidet "
@@ -516,9 +521,9 @@ protected void create()
   "Das bin ich, du Trottel!","schreit: ");
   
   AddInfo(({"gildenladen"}),
-  "Du stehst mitten drin. Ich biete hier momentan nur Komponenten zum "
-  "Zeichnen von Pentagrammen und Bannkreisen an, aber Du kannst mir auch "
-  "welche verkaufen. Ich weiss aber auch einiges ueber spezielle, magische "
+  "Du stehst mitten drin. Ich biete hier Komponenten zum Zeichnen von "
+  "Pentagrammen und Bannkreisen an, dazu Fackeln, Seile und was man "
+  "sonst so braucht. Du kannst mir auch was verkaufen. Ich weiss aber auch einiges ueber spezielle, magische "
   "Ruestungen fuer Daemonen...","sagt: ");
   
   AddInfo(({"hutschat", "verwalter"}),
@@ -535,26 +540,26 @@ protected void create()
   "Dazu gehste am besten mal zu Hutschat.","sagt: ");
   
   AddInfo(({"kaempfer","untoter","diener"}),
-  "Ja, hier treibt sich irgendwo ein Untoter Kaempfer rum, der "
-  "aufgrund eines Fluches in unsere Dienste gebannt wurde :)","sagt: ");
+  "Frueher hatten wir einen untoten Kaempfer als Diener. Der ist beim "
+  "Umzug verloren gegangen. Wie so vieles.","seufzt: ");
   
   AddInfo(({"fluch"}),
   "Da frag mal besser den Kaempfer.","sagt: ");
   
   AddInfo(({"galerie"}),
-  "Ja, die 'Daemonische Galerie', die gibts hier auch irgendwo, "
-  "aber Du musst schon selber gucken.","sagt: ");
+  "Die Galerie ist oben im Hauptgebaeude, ueber dem Rittersaal. Gut zum "
+  "Nuesse werfen.","grinst: ");
 
   AddInfo(({"waffenlager","waffenarsenal"}),
-  "Jo, ein Waffenlager haben wir auch. Dafuer haben wir sogar "
-  "einen Diener, einen Kaempfer, hehe.","kichert: ");
+  "Die Waffenkammer ist im Keller. Viel ist nicht mehr drin. Wenn du "
+  "was Ordentliches willst, frag Klonk in der Schmiede.","sagt: ");
   
   AddInfo(({"diener"}),
   "Da frag mal besser den Kaempfer.","sagt: ");
   
   AddInfo(({"burg"}),
-  "Diese daemonische Burg ist der Hauptsitz unserer Chaosgilde",
-  "sagt stolz: ");
+  "Burg Zwielichtstein ist der Sitz unserer Gilde. Sie faellt "
+  "auseinander, aber sie gehoert uns.","sagt stolz: ");
   
   AddInfo(({"hauptsitz"}),
   "Der ist hier.","sagt: ");
