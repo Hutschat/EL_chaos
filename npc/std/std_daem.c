@@ -4,6 +4,7 @@
 //
 // xx.xx.xxxx Zardoz
 // 10.12.2018 It@Efferdland            ueberarbeitet
+// 27.11.2026 It@Efferdland            Fehler für neuen Driver behoben
 
 #pragma no_clone
 
@@ -57,6 +58,7 @@ static string killmsg()
 
  if(getuid(PL)==QueryProp(CHAOS_DAEM_BESCHWOERER))
    return spots;
+  return 0;
 }
 
 static int ichsehwennsdunkelist()
@@ -273,10 +275,10 @@ void team_is_doof(object caster)
     SetProp("kill_all",1);
 }
 
-void init()
+public varargs void init(object origin)
 {
   mapping daem_map;
-  ::init();
+  ::init(origin);
 
   object caster = find_player(QueryProp(CHAOS_DAEM_BESCHWOERER)); 
 
@@ -954,9 +956,8 @@ Alle >= 4 Sec, es sei denn er ist fast auf Schwelle...
   return 1;
 }
 
-varargs void Flee(object oldenv)
-{
-  return;
+public varargs int Flee(object oldenv, int force) {
+  return 0;
 }
 
 static void CheckWimpyAndFlee()

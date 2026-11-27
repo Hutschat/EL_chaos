@@ -3,6 +3,7 @@
 // Letzte Aenderung:
 //
 // 12.03.2019 It@Efferdland                      ueberarbeitet
+// 27.11.2026 It@Efferdland            UTF-8
 
 #ifndef __CHAOS_WUQOUR_H__
 #define __CHAOS_WUQOUR_H__
@@ -20,7 +21,7 @@
 "lachen.\n",8, \
 "Wuqour lacht: Eine Heilung willst du ?? Du bist ein Krieger des Chaos, Du\n"+ \
 "Wuqour lacht: brauchst solche Kinkerlitzchen nicht! Im Gegenteil, Dir taete\n"+ \
-"Wuqour lacht: mal eine rechte Bestrafung gut!!!\n§"+ \
+"Wuqour lacht: mal eine rechte Bestrafung gut!!!\nÂ§"+ \
 "Wuqour lacht: Eine Heilung willst du ?? Du bist eine Kriegerin des Chaos, Du\n"+ \
 "Wuqour lacht: brauchst solche Kinkerlitzchen nicht! Im Gegenteil, Dir taete\n"+ \
 "Wuqour lacht: mal eine rechte Bestrafung gut!!!\n", 14, \
@@ -51,7 +52,7 @@
 "Wuqour starrt Dich an, und bruellt: Was, Dein Gift willst Du loswerden ???\n"+ \
 "Eigentlich solltest Du dich ueber so etwas freuen, als ein echter\n"+ \
 "Chaoskrieger!! Aber nagut, ich bin gutgelaunt, also werde ich Deinem Wunsch\n"+ \
-"entsprechen.\n§"+ \
+"entsprechen.\nÂ§"+ \
 "Wuqour starrt Dich an, und bruellt: Was, Dein Gift willst Du loswerden ???\n"+ \
 "Eigentlich solltest Du Dich ueber so etwas freuen, als eine echte\n"+ \
 "Chaoskriegerin!! Aber nagut, ich bin gutgelaunt, also werde ich Deinem Wunsch\n"+ \
@@ -61,7 +62,7 @@
 "Wuqour grinst und scheint einen imaginaeren Hebel zu betaetigen.\n", 4,\
 "Etwas presst Dich zusammen. Du fuehlst Dich wie in eine Presse eingeklemmt.\n", 8,\
 "#Die Presse quetscht und drueckt Dich total zusammen.\n", 6,\
-"#Du ertraegst den Schmerz wie ein waschechter Krieger des Chaos.\n§"+ \
+"#Du ertraegst den Schmerz wie ein waschechter Krieger des Chaos.\nÂ§"+ \
 "Du ertraegst den Schmerz wie eine waschechte Kriegerin des Chaos.\n", 8, \
 "*Endlich ist es vorbei, und Wuqour zeigt Dir einen Behaelter mit dem ganzen\n"+ \
 "herausgepressten Gift von Dir.\n", 8,\
@@ -71,7 +72,7 @@
 #define FROG_ARRAY ({\
 "Wuqour sagt: Argl, ein fieser Krieger des Chaos als Frosch?? Das kann nicht\n"+ \
 "Wuqour sagt: angehen, ich kann zwar leider keinen entfrosche-Spruch, aber das\n"+ \
-"Wuqour sagt: geht auch anders.\n§"+ \
+"Wuqour sagt: geht auch anders.\nÂ§"+ \
 "Wuqour sagt: Argl, eine fiese Kriegerin des Chaos als Frosch?? Das kann nicht\n"+ \
 "Wuqour sagt: angehen, ich kann zwar leider keinen entfrosche-Spruch, aber das\n"+ \
 "Wuqour sagt: geht auch anders.\n",14, \
@@ -79,16 +80,16 @@
 "Wuqour schnallt Dich auf der Streckbank fest.\n",10, \
 "%Dann drueckt er einen bisher unscheinbaren Knopf, und ploetzlich erscheint\n"+ \
 "vor dir eine wunderhuebsche (Igitt!) Prinzessin(WAAH!), die sich Dir mit\n"+ \
-"geschmeidigen Bewegungen naehert.\n§"+ \
+"geschmeidigen Bewegungen naehert.\nÂ§"+ \
 "%Dann drueckt er einen bisher unscheinbaren Knopf, und ploetzlich erscheint\n"+ \
 "vor dir ein wunderhuebscher (Igitt!) Prinz(WAAH!), der sich Dir mit\n"+ \
 "geschmeidigen Bewegungen naehert.\n",18, \
-"Kurz vor Dir bleibt sie stehen, und beugt sich herab, um Dich zu kuessen.\n§"+ \
-"Kurz vor Dir bleibt er stehen, und beugt sich herab, um Dich zu kuessen.\n§",8, \
+"Kurz vor Dir bleibt sie stehen, und beugt sich herab, um Dich zu kuessen.\nÂ§"+ \
+"Kurz vor Dir bleibt er stehen, und beugt sich herab, um Dich zu kuessen.\nÂ§",8, \
 "#Du bekommst die schiere Panik, der kalte Schweiss laeuft Dir den Ruecken\n"+ \
 "runter.\n",10, \
 "Sie beugt sich immer tiefer und tiefer, bis sie kurz vor deinem Froschmund\n"+ \
-"ist.\n§"+ \
+"ist.\nÂ§"+ \
 "Er beugt sich immer tiefer und tiefer, bis er kurz vor deinem Froschmund\n"+ \
 "ist.\n",10, \
 "*Du haelst das nicht laenger aus, mit einem irren Schrei bruellst du Deinen\n"+ \

@@ -19,4 +19,8 @@
 #define CHAOS_TRANK "\nchaos_trank"
 #define CHAOS_TRANK_TRINKEN "_trinke_dummen_chaos_trank"
 
+// Kämpfe in der Kampfarena als Aufstiegsbedingung. Die Arena entfällt,
+// solange es keinen Ersatz gibt, bleibt die Prüfung abgeschaltet.
+#define CHAOS_ARENA_PRUEFUNG 0
+
 #endif

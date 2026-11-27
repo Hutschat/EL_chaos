@@ -3,6 +3,7 @@
 // Letzte Aenderung:
 //
 // 09.08.2019 It@Efferdland            neu
+// 27.11.2026 It@Efferdland            Fehlendes return
 
 #pragma no_clone
 
@@ -244,5 +245,6 @@ public int Funcs_TestPentagramm(mapping daem,object caster,int pentaf,
       daem[DAEM_FALSE]) {
     return DF;
   }
+  return 0;
 }
 

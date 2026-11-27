@@ -5,6 +5,7 @@
 // xx.xx.xxxx Zardoz
 // 17.05.1998 Bierchen@MorgenGrauen    ueberarbeitet
 // 10.12.2018 It@Efferdland            ueberarbeitet
+// 27.11.2026 It@Efferdland            Fehlendes return
 
 #include "def.h"
 
@@ -272,6 +273,7 @@ int daemon_befehl(string str)
       return 1;
     }
   }
+  return 0;
 }
 string schaetze_resistenzen(float wert)
 {

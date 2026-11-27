@@ -4,6 +4,7 @@
 // Letzte Aenderung:
 //
 // 16.08.2021 It@Efferdland            neu
+// 27.11.2026 It@Efferdland            Tippfehler MALE
 
 #include "def.h"
 
@@ -66,7 +67,7 @@ static mapping namen = ([
   "dre"           : FEMALE,
   "druij"         : FEMALE,
   "eskates"       : MALE,
-  "finrik"        : MAKE,
+  "finrik"        : MALE,
   "flaga"         : FEMALE,
   "furfur"        : MALE,
   "ganga"         : FEMALE,

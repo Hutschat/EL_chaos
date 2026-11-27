@@ -49,7 +49,7 @@
 "groesser und schwaerzer als jeder Schatten den Du bisher je gesehen hast \n"+ \
 "ueber den Raum, und Du kannst absolut nichts mehr erkennen. Doch so schnell \n"+ \
 "wie der Schatten kam, ist er auch schon wieder weg, und Du spuerst, eine \n"+ \
-"neue Faehigkeit erlernt zu haben!\n§Kruuolq tut etwas merkwuerdiges.\n"})
+"neue Faehigkeit erlernt zu haben!\nÂ§Kruuolq tut etwas merkwuerdiges.\n"})
                            
 #define KONTROLLE_ARRAY\
 ({\
@@ -69,7 +69,7 @@
 "Kruuolq macht beschwoerende Gesten ueber deinem Kopf. Du spuerst eine tiefe,\n"+ \
 "innere Ruhe in Dir, die Dich durchdringt, spuerst wie sich Dein ganzer\n"+ \
 "Koerper entspannt. Du hast nun die Kontrolle!\n"+ \
-"§Kruuolq tut merkwuerdige Dinge.\n"})
+"Â§Kruuolq tut merkwuerdige Dinge.\n"})
 
 #define BANNZAUBER_ARRAY\
 ({\
@@ -96,7 +96,7 @@
 "laesst den Bannkreis schaurig aufleuchten.\n", \
 "Im gleichen Atemzug kommt erneut ein blutroter Strahl herab, der allerdings\n"+ \
 "diesmal direkt in deinen Kopf faehrt! Du spuerst deutlich wie du dunkles\n"+ \
-"Wissen dazugewonnen hast.\n§Etwas merkwuerdiges geschieht.\n", \
+"Wissen dazugewonnen hast.\nÂ§Etwas merkwuerdiges geschieht.\n", \
 "#Kruuolq sagt: Du beherrschst nun den Bannzauber, setze ihn immer sinnvoll ein!\n"+ \
 "Kruuolq verwischt sein Pentagramm.\n"})
 
@@ -120,7 +120,7 @@
 "Du fuchtelst wie wild mit einer Hand herum (keiner weiss, warum\n"+ \
 "man das bei diesem Spruch so machen muss).\n"+ \
 "Du verstaerkst den Schutz der Chaoshaut.\n"+ \
-"§%s fuchtelt wie bescheuert mit einer Hand herum. Hat er einen Schaden?\n", \
+"Â§%s fuchtelt wie bescheuert mit einer Hand herum. Hat er einen Schaden?\n", \
 "#Kruuolq sagt: Siehst Du, das war doch gar nicht so schwer. Der Schutzzauber \n"+ \
 "Kruuolq sagt: ist uebrigens sehr flexibel, wie alles in unserer Gilde. Falls \n"+ \
 "Kruuolq sagt: du mal in sehr starke Bedraengnis geraten solltest, bei \n"+ \
@@ -166,12 +166,12 @@
 "Erneut bildet sich eine Chaos-Kugel in seiner Hand.\n", \
 "Kruuolq macht beschwoerende, mysterioese Gesten ueber der Kugel.\n"+ \
 "Kruuolq wirft den Chaosball nach Dir.\n"+ \
-"§Kruuolq macht beschwoerende, mysterioese Gesten ueber der Kugel.\n"+ \
+"Â§Kruuolq macht beschwoerende, mysterioese Gesten ueber der Kugel.\n"+ \
 "Kruuolq wirft den Chaosball nach %s.\n", \
 "Du versuchst auszuweichen, aber er ist zu schnell, er dringt direkt in Dein \n"+ \
 "Gehirn ein, fuer einen Sekundenbruchteil durchfaehrt dich ein schrecklicher\n"+ \
 "Schmerz. Dann jedoch spuerst Du Wogen der Macht durch Deinen Koerper wallen.\n"+ \
-"§Der Chaosball trifft voll ins Schwarze.\n", \
+"Â§Der Chaosball trifft voll ins Schwarze.\n", \
 "#Kruuolq sagt: Nun denn, es ist getan, bringe deiner Gilde Ehre, setze den \n"+ \
 "Chaosball immer zum Angriff ein, denn Angriff ist die beste Verteidigung!\n"})
 
@@ -216,7 +216,7 @@
 "Kruuolq zieht das Messer aus der Tasche, wirft es blitzschnell nach Dir, es\n"+ \
 "durchdringt dich komplett, jedoch verspuerst Du keinerlei Schmerz, aber eine \n"+ \
 "tiefe und maechtige Erkenntnis:\n"+ \
-"§Kruuolq wirft das Messer auf %s\n", \
+"Â§Kruuolq wirft das Messer auf %s\n", \
 "Du kannst nun den Chaosschaden zaubern!\n"})
 
 
@@ -233,7 +233,7 @@
 "Kruuolq murmelt magische Worte, fuchtelt wild mit den Armen herum.\n"+ \
 "Seine Augen blitzen kurz schwarz auf.\n"+ \
 "Du spuerst wie Dich ein stechender Schmerz durchdringt.\n"+ \
-"§Kruuolq murmelt magische Worte, fuchtelt wild mit den Armen herum.\n"+ \
+"Â§Kruuolq murmelt magische Worte, fuchtelt wild mit den Armen herum.\n"+ \
 "Seine Augen blitzen kurz schwarz auf.\n", \
 "#Kruuolq sagt: Das war noetig, aber Schmerzen sind fuer einen Chaoten ja nichts\n"+ \
 "Kruuolq sagt: schlimmes. Dafuer kannst Du jetzt aber auch den Binde-Spruch, \n"+ \
@@ -259,7 +259,7 @@
 "Geraeusch verschluckt.\n", \
 "Kruuolq fasst Dir mit den Haenden an die Stirn, drueckt kurz, aber sehr \n"+ \
 "schmerzhaft zu, und uebertraegt seine Faehigkeiten an Dich.\n"+ \
-"§Kruuolq fasst %s mit den Haenden an die Stirn.\n", \
+"Â§Kruuolq fasst %s mit den Haenden an die Stirn.\n", \
 "#Kruuolq grinst und sagt: Nun, Du kannst die Chaoskontrolle jetzt fuer Deine \n"+ \
 "Kruuolq grinst und sagt: hoffentlich boesen Zwecke einsetzen!\n"})
 
@@ -295,10 +295,10 @@
 "Kruuolq meint: Daemon einschuechtern oder gar vertreiben koennen. In diese \n"+ \
 "Kruuolq meint: geheimen Worte werde ich Dich nun einweihen...\n", \
 "Kruuolq kommt ganz nahe zu dir her.\n"+ \
-"§Kruuolq kommt ganz nahe zu %s.\n", \
+"Â§Kruuolq kommt ganz nahe zu %s.\n", \
 "Kruuolq fluestert Dir Worte zu, von denen Du nicht einmal im Traum gedacht \n"+ \
 "haettest dass es sie gibt. Du laeufst knallrot an, so unglaublich erscheinen \n"+ \
-"Dir diese Dinge, die Dir Kruuolq da zufluestert...\n§Kruuolq fluestert %s etwas ins Ohr.\n", \
+"Dir diese Dinge, die Dir Kruuolq da zufluestert...\nÂ§Kruuolq fluestert %s etwas ins Ohr.\n", \
 "#Kruuolq meint abschliessend: So vergiss diese Worte nie, nur mit ihnen ist \n"+ \
 "Kruuolq meint abschliessend: es moeglich Daemonen zu verbannen. Niemand\n"+ \
 "Kruuolq meint abschliessend: anderes als ein waschechter Krieger des Chaos\n"+ \
@@ -326,7 +326,7 @@
 "#Dann wird es wieder heller, und neben Kruuolq steht ein boesartig\n"+ \
 "aussehendes Wesen, ein Teufelsdaemon.\n", \
 "Kruuolq blickt den Teufelsdaemon an.\n"+ \
-"Kruuolq grinst Dich an.\n§Kruuolq grinst %s an.\n", \
+"Kruuolq grinst Dich an.\nÂ§Kruuolq grinst %s an.\n", \
 "#Kruuolq sagt: Nun pass gut auf! Ich werde den Daemon laehmen und Du wirst auf\n"+ \
 "Kruuolq sagt: ihn draufhaun!\n", \
 "#Kruuolq huellt den Teufelsdaemon in einer Wolke der Finsternis ein.\n", \
@@ -337,7 +337,7 @@
 "Kruuolq sagt: einhuellen.\n", \
 "Kruuolq huellt Dich in eine Wolke der Finsternis ein.\n"+ \
 "Du spuerst wie seltsame, dunkle und daemonische Energien dich durchfluten, und\n"+ \
-"du neues Wissen erlangst.\n§Kruuolq huellt %s in eine Wolke der Finsternis ein.\n"})
+"du neues Wissen erlangst.\nÂ§Kruuolq huellt %s in eine Wolke der Finsternis ein.\n"})
 
 #define CHAOSRUESTUNG_ARRAY\
 ({\
@@ -388,7 +388,7 @@
 " es deinem Geiste moeglich sein, Dir selbst eine Chaosruestung zu beschwoeren!\"\n", \
 "Wie in Trance hebst Du die Arme ueber den Kopf und wirfst uebelste Worte gegen\n"+ \
 "Zurkur.\nZurkur wird aus dieser Dimension verbannt.\n"+ \
-"§%s hebt Die Arme ueber den Kopf und wirft uebelste Worte gegen Zurkur.\n"+ \
+"Â§%s hebt Die Arme ueber den Kopf und wirft uebelste Worte gegen Zurkur.\n"+ \
 "Zurkur wird aus dieser Dimension verbannt.\n", \
 "#Kruuolq sagt stolz: Nun, Du hast es geschafft. Zurkur ist verbannt, Du hast \n"+ \
 "Kruuolq sagt stolz: nun die Kraft und den Mut Dir selbst eine Chaosruestung \n"+ \

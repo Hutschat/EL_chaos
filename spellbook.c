@@ -24,7 +24,7 @@
                29.07.98   Feuerwehr: Schutz schwach, finsternis, verbanne
                           geaendert. Alle Kampfdaemonen mit SR_GOOD versehen.
                12.08.98   Chaosball testweise aufgewertet.
-                          nur f�r Mr. H.J. Sting.
+                          nur für Mr. H.J. Sting.
                20.08.98   Chaosball fuer alle aufwerten. YEAH!
                23.08.98   Feuerwehr Nachtsicht geaendert.
                01.09.98   Feuerwehr Neuer Ombatis --> Anpassungen
@@ -50,6 +50,8 @@
                20.12.99   Bierchen (dunkelheit gesperrt)
                20.12.99   Bierchen (aufgehoben, testweise)
                10.01.00   Feuerwehr debugging (SI_MAGIC_TYPE)
+               27.11.26   It@Efferdland UTF-8, Fehler für neuen Driver
+                          behoben, Ombatis entfernt
 Nachtsicht:
   Man kann im Dunklen sehen. Da die Krieger des Chaos sich gerne
   in dunklen Festungen verborgen halten, koennen sie diesen Spruch
@@ -131,11 +133,6 @@ Kruftur:
 Tyoorthok:
   Ein Daemon, der etwas ueber die eigene Konstitution erzaehlt.
   SP: 18, Level: 7  
-Ombatis:
-  Ein nervender Daemon wird beschworen, mit dem man andere Spieler 
-  ein klein wenig aergern kann. Er folgt dem Spieler und labert ihn
-  dumm an. Aehnlich dem Eusebius (c) Puma :-)
-  SP: 80, Level: 7
 Irkitis:
   Ein Daemon, der fuer A_INT + suc/1000 Runden mit WC 150 mitkaempft. 
   Er greift nur an, wird selbst nicht angegriffen, faengt also keine
@@ -176,18 +173,18 @@ suc : SpellSuccess
 #include <wizlevels.h>
 #include <moving.h>
 #include <new_skills.h>
-#include "/gilden/files.chaos/gilde.h"
+#include "def.h"
 
 mapping daemon;
 string ChaosDamageText( string dam_type, int plu);
-string ChaosDamage(object caster, int suc);
-int check_result( string daem, object caster, int pentaf, int kreisf, int abil);
+string *ChaosDamage(object caster, int suc);
+int check_result(mapping daem, object caster, int pentaf, int kreisf, int abil);
 int get_pf(object p);
 int get_kf(object p);
 
 inherit "/std/spellbook";
 
-create() {
+protected void create() {
   ::create();
   SetProp(P_GLOBAL_SKILLPROPS,
       ([SI_SPELLFATIGUE:2,    
@@ -316,15 +313,6 @@ create() {
        SI_SPELLFATIGUE:3,
        OFFSET(SI_SKILLLEARN):7
        ]));
-  AddSpell( "ombatis",80,
-       ([SI_SKILLRESTR_LEARN:([P_GUILD_LEVEL:6,
-       SR_GOOD:-100]),
-       SI_SKILLRESTR_USE:([SR_FREE_HANDS:2,
-       SR_GOOD:500, SR_FUN:"CheckKleinerDaemon",P_GUILD_LEVEL:6 ]),
-       SI_DIFFICULTY:10,
-       SI_SPELLFATIGUE:10,
-       OFFSET(SI_SKILLLEARN):6 
-       ]));
   AddSpell( "tyoorthok",20,
        ([SI_SKILLRESTR_LEARN:([P_GUILD_LEVEL:7,
        SR_GOOD:100]),
@@ -396,8 +384,6 @@ create() {
                   DAEM_FALSE:10, WRONG_DAEM:2]),
       "tyoorthok":([DAEM_AGGRESSIVE:1, DAEM_DISAPPEAR:4,
                   DAEM_FALSE:12, WRONG_DAEM:2]),
-      "ombatis":([DAEM_AGGRESSIVE:10, DAEM_DISAPPEAR:10,
-                  DAEM_FALSE:25, WRONG_DAEM:15 ]),
       "irkitis":([DAEM_AGGRESSIVE:5, DAEM_DISAPPEAR:15,
                   DAEM_FALSE:10, WRONG_DAEM:20 ]),
       "harkuhu":([DAEM_AGGRESSIVE:15, DAEM_DISAPPEAR:10,
@@ -452,7 +438,7 @@ string ChaosDamageText(string dam_type, int plu){
     case DT_SOUND:
       if(plu) return "schrille Kampfschreie";
       return "einen schrillen Kampfschrei"; 
-    case DT_UNHOLY:
+    case DT_DARKNESS:
       if(plu) return "satanische Flueche";
       return "einen satanischen Fluch";
     case DT_TERROR:
@@ -517,7 +503,7 @@ string ChaosDamageText2(string dam_type1,string dam_type2,int plu){
       if(plu) ret_string="schreiende";
       else ret_string="einen schreienden"; 
       break;
-    case DT_UNHOLY:
+    case DT_DARKNESS:
       if(plu) ret_string="satanische";
       else ret_string="einen satanischen";
       break;
@@ -756,7 +742,7 @@ int schutz(object caster, mapping sinfo){
   return ERFOLG;          
 }
 
-BeschaedigeWaffe(object waffe){
+void BeschaedigeWaffe(object waffe){
   printf(break_string("Du hast wohl die falsche Magie durch "+
     waffe->name(WEN,1)+" fliessen lassen! "+
     capitalize(waffe->QueryPronoun())+" wird etwas beschaedigt!",78));
@@ -826,8 +812,8 @@ int CheckDamTypes(mixed dt, string dam_type, object waffe){
         return - random(wc);
       }
       break;
-    case DT_UNHOLY:  
-      if(member(dt,DT_HOLY) != -1 || member(dt,DT_MAGIC) != -1){
+    case DT_DARKNESS:  
+      if(member(dt,DT_LIGHT) != -1 || member(dt,DT_MAGIC) != -1){
         if(!random(50)) BeschaedigeWaffe(waffe);
         return - random(wc);
       }
@@ -859,7 +845,7 @@ string *ChaosDamage(object caster, int suc){
     DT_MAGIC, 
     DT_POISON,
     DT_SOUND, 
-    DT_UNHOLY ,
+    DT_DARKNESS ,
     DT_TERROR,
     DT_WHIP,
     DT_EXPLOSION,
@@ -899,7 +885,7 @@ int chaosball(object caster, mapping sinfo){
   int dam, level, suc, anzahl,g_rate, wc;
   string vn, vnw, cn, dam_txt,check_old,dam1,dam2;
   string *chaos_dam_type;
-  string *dt;
+  mixed dt;
   mixed *dam_type;
   if (caster->QueryProp(CHAOSBALL_BLOCKADE) && 
       time() - caster->QueryProp(P_LAST_MOVE) < 3) {
@@ -955,7 +941,7 @@ int chaosball(object caster, mapping sinfo){
     dt=waffe->QueryProp(P_DAM_TYPE);
     if(stringp(dt)) dt=({dt});
     if(sizeof(dam_type)==2){
-      if(member(dt,dam_type[1]!=-1)&&member(dt,dam_type[0])!=-1){
+      if(member(dt,dam_type[1])!=-1 && member(dt,dam_type[0])!=-1){
         wc=waffe->QueryProp(P_WC);          
         if(!member(PHYSICAL_DAMAGE_TYPES,dam_type[0]))
           dam+=CheckDamTypes(dt,dam_type[0],waffe);  
@@ -1167,7 +1153,7 @@ static mixed check_chaosdamage(string *dam_type, int gruppe){
     "saeure":DT_ACID, 
     "gift":DT_POISON, 
     "krach":DT_SOUND, 
-    "boese":DT_UNHOLY,
+    "boese":DT_DARKNESS,
     "terror":DT_TERROR,
     ]);
   schaden_mech = ([ 
@@ -1400,7 +1386,7 @@ int chaosruestung( object caster, mapping sinfo){
     return MISSERFOLG;
   }
   if(suc<=0) return MISSERFOLG;
-  ruest=clone_object(CHAOS_GILDEN_OBJ("cruest"));
+  ruest=clone_object(CHAOS_CHAOSHAUT);
   alig=caster->QueryProp(P_ALIGN);
   if(alig>-2000)
     caster->SetProp(P_ALIGN,caster->QueryProp(P_ALIGN)-30*level);
@@ -1524,8 +1510,7 @@ object FindeEigenenDaemonen(string daemon, object caster){
   object *inv;
   int i;
   if(!daemon) return 0;
-  inv=filter_array(filter_array(all_inventory(environment(caster)),
-    #'living), #'objectp);
+  inv=filter(all_inventory(environment(caster)), (: living($1) :));
   inv=filter_objects(inv,"id",daemon);
   for(i=sizeof(inv)-1;i>=0;i--){
     if(inv[i]->QueryProp(CHAOS_DAEM_BESCHWOERER)==getuid(caster))
@@ -1852,49 +1837,6 @@ int kruftur(object caster, mapping sinfo){
   return ERFOLG;
 }
 
-int ombatis(object caster, mapping sinfo){
-  object daem, p;
-  int result, suc;
-  int pentaf, kreisf;
-  suc=SpellSuccess(caster, sinfo);
-  p=present("\nchaos_gilden_pentagramm_"+getuid(caster),environment(caster));
-  pentaf = get_pf(p);
-  kreisf = get_kf(p);
-  if(present("ombatis_"+getuid(caster),environment(caster))){
-    write("Ombatis ist doch schon da!\n");
-    return 0;
-  }
-  if(suc<=0) return MISSERFOLG;
-  result=check_result(daemon["ombatis"],caster,pentaf,kreisf,suc);
-  if(result==WD){
-    call_out("falscher_daemon",0,caster,daemon["ombatis"][WRONG_DAEM]);
-    if(p && !CHAOS_MAGIER(caster)) p->starte_entfernen(10);     
-    return ERFOLG;
-  }
-  daem=clone_object(CHAOS_GILDEN_MON("ombatis"));
-  daem->setDaemBeschwoerer(caster);
-  daem->AddId("ombatis_"+getuid(caster));
-  daem->SetProp(RUEST_CASTER_LEVEL,caster->QueryProp(P_GUILD_LEVEL));
-  daem->SetProp(CHAOS_PENTAGRAMM_FAKTOR,pentaf);
-  daem->SetProp(CHAOS_BANNKREIS_FAKTOR,kreisf);
-  
-  if(result==DD) daem->SetProp(DAEM_DISAPPEAR,1);
-  if(result==DA) daem->SetProp(DAEM_AGGRESSIVE,1);
-  if(result==DF) daem->SetProp(DAEM_FALSE,1);
-  daem->SetProp(DAEM_FAKTOR_MAPPING,daemon["ombatis"]); 
-  printf("Du beschwoerst unheimliche Kraefte und oeffnest so ein Tor in "
-  +"andere Welten.\n");
-  say(break_string(capitalize(caster->name())+" kichert wild und "
-  +"spricht seltsame Worte mit einer Stimme, die gar nicht zu "+
-  (caster->QueryProp( P_GENDER)==1?"ihm":"ihr")+" passt. Sofort "+
-  "bildet sich ein dunkles Portal mitten in der Luft.",78));
-  daem->move(environment(caster),M_TPORT);
-  daem->SetProp(CHAOS_DAEM_FOLLOW_TIME,time()+caster->QueryProp(P_LEVEL)*30);
-  daem->stats_setzen();
-  if(p && !CHAOS_MAGIER(caster)) p->starte_entfernen(10);     
-  return ERFOLG;
-}
-
 int irkitis(object caster, mapping sinfo){
   object daem, p;
   int result, suc;
@@ -2133,8 +2075,8 @@ int tutszt(object caster, mapping sinfo){
   daem=clone_object(CHAOS_GILDEN_MON("tutszt"));
   daem->setDaemBeschwoerer(caster);
   daem->SetProp(DAEM_DEFEND_FAKTOR,30);
-  if(CHAOS_GILDEN_MASTER->ist_erz( caster))
-  daem->Setprop(DAEM_DEFEND_FAKTOR,20);
+  if(CHAOS_GILDENMASTER->ist_erz( caster))
+  daem->SetProp(DAEM_DEFEND_FAKTOR,20);
   daem->AddId("tutszt_"+getuid(caster));
   if(result==DD) daem->SetProp(DAEM_DISAPPEAR,1);
   if(result==DA) daem->SetProp(DAEM_AGGRESSIVE,1);
@@ -2174,7 +2116,7 @@ int yrintri(object caster, mapping sinfo){
   int result, suc;
   int pentaf, kreisf;
   suc=SpellSuccess(caster, sinfo);
-  if(!CHAOS_GILDEN_MASTER->ist_erz(caster) && !CHAOS_MAGIER(caster)){
+  if(!CHAOS_GILDENMASTER->ist_erz(caster) && !CHAOS_MAGIER(caster)){
     if(caster->QueryProp(P_GUILD_LEVEL)==12)
       caster->SetProp(P_GUILD_LEVEL,11);
     tell_object(caster,"Du bist nicht der Erzmeister des Chaos!\n");
@@ -2256,6 +2198,7 @@ int check_result(mapping daem,object caster,int pentaf,int kreisf,int abil){
     return DD;
   if((kreisf+pentaf)/4+random(50+(pentaf+kreisf)*2+abil/100+align)<=
       daem[DAEM_FALSE]) return DF;
+  return 0;
 }
 
 int get_pf(object p) {
@@ -2280,7 +2223,7 @@ int get_kf(object p) {
   return kreisf;
 }
 
-falscher_daemon(object caster, int wd){
+void falscher_daemon(object caster, int wd){
   object daem, p, *zau, *u;
   int i;
   if(!caster) return;

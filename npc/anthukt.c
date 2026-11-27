@@ -5,6 +5,7 @@
 // xx.xx.xxxx Zardoz
 // 17.05.1998 Bierchen@MorgenGrauen    ueberarbeitet
 // 10.12.2018 It@Efferdland            ueberarbeitet
+// 27.11.2026 It@Efferdland            init() für neuen Driver
 
 #pragma no_inherit
 
@@ -48,10 +49,10 @@ protected void create()
   AddId(({"anthukt","spinnenmensch","spinne"}));
 }
 
-void init()
+public varargs void init(object origin)
 {
   if(PL->is_class_memer(CL_DWARF) && PL->QueryProp( P_LEVEL) > 5 && 
       !random(5) && PL->QueryProp( P_HP ) > 80 ) 
     Kill(PL);
-  ::init();
+  ::init(origin);
 }

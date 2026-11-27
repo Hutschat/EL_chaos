@@ -4,10 +4,11 @@
 //
 // xx.xx.xxxx Zardoz                   neu
 // 17.03.2019 It@Efferdland            ueberarbeitet
+// 27.11.2026 It@Efferdland            Kaputte Tabellenzeilen repariert
 
 #pragma no_inherit
 
-#include def.h
+#include "def.h"
 
 inherit "std/thing";
 
@@ -142,7 +143,7 @@ static int read(string str)
 
              +"|                                     || mimal Ymdel    Haendchen             |\n"
              +"| asutur        beschwoeren(d)        || Mimal Ymdelchen Fingerchen           |\n"
-                 Avis          Vogel
+             +"|                                     || avis          Vogel                 |\n"
              +"|                                     || chaola        schnell               |\n"
              +"|                                     || (C)chaoloe    (G)gut,gute,guten     |\n"
              +"| bimula        loeschen              || chaoputm      langsam               |\n"
@@ -150,7 +151,7 @@ static int read(string str)
              +"|                                     || (C)cutralk    betreten,Betretung    |\n"
              +"| Bruchasut     Pentagramm            || drukck        morgen                |\n"
              +"| Bruchk        Daemon(s/es)          || ek            auch,wie              |\n"
-                 Cruzio        Schmerz, Schmerzen
+             +"|                                     || cruzio        Schmerz, Schmerzen    |\n"
              +"| bruchtka      daemonisch            || enbkema       schliessen            |\n"
              +"| mimal         klein                 || erdasu        bekommen,bekommst     |\n"
              +"|                                     || exa           ende(n),Endes         |\n"
@@ -188,8 +189,8 @@ static int read(string str)
        case "zwoelfte seite":
        write ("\n");
        write ("/~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\/~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\\n"
-             +"| Kauz          Sau,Schwein           || krx           aus, heraus   
-                                                        Licht         Lumus        |\n"
+             +"| Kauz          Sau,Schwein           || krx           aus, heraus           |\n"
+             +"|                                     || lumus         Licht                 |\n"
              +"| kauz          schweinisch           || loemuq        oeffne,oeffnen,offen  |\n"
              +"| klumsl        untergeben            || Lumkroz       Anflehen,Anflehung    |\n"
              +"| Klumslrm      Untergebener          || lumkroz       anflehen,flehen       |\n"
@@ -231,7 +232,7 @@ static int read(string str)
              +"| namakri       farbig                ||               welche, welches,...   |\n"
              +"| natar         norden                || ohohpornsk    hier,hierher,hierhin  |\n"
              +"| nok           von,vom               || Onrurlas      Transport             |\n"
-                 Nox           Dunkelheit, Finsternis
+             +"|                                     || nox           Dunkelheit,Finsternis |\n"
              +"| nurms         die,dem,den,des,dessen|| oolms         feige                 |\n"
              +"| nyrks         etwas,kein*,wenig     || Oolms         Feigheit              |\n"
              +"\\_____________________________________/\\_____________________________________/\n");
@@ -320,7 +321,7 @@ static int read(string str)
        write ("\n");
        write ("/~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\/~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\\n"
              +"| Vacuhm        Kopf                  || weslmge       toedlich              |\n"
-                 Vipera        Schlange
+             +"|                                     || vipera        Schlange              |\n"
              +"| Vitar         Zeit                  || wesltam       gemein                |\n"
              +"| vitarl        zeitig,zeitlich       || Wirmk         Feind                 |\n"
              +"| vmoepouel     kaempf,kaempfen,      || wit           was                   |\n"
@@ -386,13 +387,12 @@ static int read(string str)
              +"|   z.B. Haende: Ymdelz.              ||        Groszca Werxxox.             |\n"
              +"|2) Ein angehaengtes 'y' bezeichnet   ||        Werxxox nok Itrar.           |\n"
              +"|   die weibliche Form. So heisst     ||                                     |\n"
-             +"|   Besitzerin: Armtury.
-             
-                3) angehaengtes x bezeichnet das Verb,
-                   oder ein Adjectiv
-                   Beschwoerung: Asutur
-                   beschwoeren Asuturx              ||                                     |\n"
-             +"|3) Ein Grossteil daemonischer Woer-  ||              Strunz!                |\n"
+             +"|   Besitzerin: Armtury.              ||                                     |\n"
+             +"|3) Ein angehaengtes x bezeichnet das ||                                     |\n"
+             +"|   Verb oder ein Adjektiv. So heisst ||                                     |\n"
+             +"|   Beschwoerung: Asutur,             ||                                     |\n"
+             +"|   beschwoeren: Asuturx.             ||                                     |\n"
+             +"|4) Ein Grossteil daemonischer Woer-  ||              Strunz!                |\n"
              +"|   ter werden teilweise aus Grund-   ||                                     |\n"
              +"|   Teilworten gebildet wie uiurks    ||                                     |\n"
              +"|   oder mimal. Die Bedeutung vieler  ||                                     |\n"

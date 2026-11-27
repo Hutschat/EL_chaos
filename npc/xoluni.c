@@ -3,6 +3,7 @@
 // Letzte Aenderung:
 //
 // 12.03.2019 It@Efferdland            ueberarbeitet
+// 27.11.2026 It@Efferdland            init() für neuen Driver
 
 #include "def.h"
 
@@ -43,9 +44,9 @@ protected void create()
   AddId(({"licht", "irrlicht", "\nchaos_irrlicht", "xoluni" }));
 }
 
-void init()
+public varargs void init(object origin)
 {
-  ::init();
+  ::init(origin);
   if(time() > QueryProp( CHAOS_DAEM_FOLLOW_TIME))
   {
     this_object()->die();

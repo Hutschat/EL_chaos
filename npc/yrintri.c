@@ -6,6 +6,7 @@
 // 07.06.1998 Bierchen                 (DT_UNHOLY und DT_TERROR eingefuegt)
 // 21.06.1998 Bierchen                 (Hands)
 // 12.03.2019 It@Efferdland            ueberarbeitet
+// 27.11.2026 It@Efferdland            DefendOther() für neuen Driver
 
 #include "def.h"
 
@@ -178,8 +179,9 @@ int befehle_wandel( string str)
   return 1;
 }
 
-varargs int|string*|mapping* DefendOther(int dam, mixed dam_type, 
-                                        mixed spell,object enemy)
+public <int|string*|mapping>* DefendOther(int dam,
+    string|string* dam_type, int|mapping spell, object enemy,
+    object friend)
 {     
   object caster;
 
