@@ -59,6 +59,7 @@
                           und Yrintri
                27.11.26   It@Efferdland GUILD_HELPER statt
                           VERBOTENE_RAEUME
+               27.11.26   It@Efferdland Bonus am Riss
 Nachtsicht:
   Man kann im Dunklen sehen. Da die Krieger des Chaos sich gerne
   in dunklen Festungen verborgen halten, koennen sie diesen Spruch
@@ -1689,6 +1690,12 @@ static int beschwoere_typ(object caster, mapping sinfo, string typ) {
               environment(caster));
   pentaf = get_pf(p);
   kreisf = get_kf(p);
+
+  // Am Riss in der Burg Zwielichtstein gelingt das Beschwören leichter
+  if(environment(caster)->QueryProp(P_CHAOS_RISS)) {
+    pentaf += CHAOS_RISS_BONUS;
+    kreisf += CHAOS_RISS_BONUS;
+  }
   result = check_result(daemon[typ],caster,pentaf,kreisf,suc);
 
   // Wer starke Dämonen mit schlechtem Pentagramm beschwört, bekommt

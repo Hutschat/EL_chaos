@@ -1,16 +1,168 @@
-// dets.c - Gemeinsame Details der Burg Zwielichtstein
+// dets.c - Gemeinsame Details und die Chaosmagie der Burg Zwielichtstein
 //
-// Erbt nichts. Die Std-Räume erben diese Datei zusätzlich und rufen
-// "*"::create() auf.
+// Erbt nichts. Die Std-Räume erben diese Datei zusätzlich, rufen
+// "*"::create() auf und in reset() bzw. init() chaos_reset() und
+// chaos_init().
+//
+// Chaosmagie (Häufigkeiten in sys/chaosburg.h):
+//   - Bei jedem Reset bekommt der Raum vielleicht eine wechselnde Zeile
+//     (eigene aus P_CHAOS_VARIANTEN oder allgemeine).
+//   - Wer den Raum betritt, dem passiert manchmal etwas Seltsames,
+//     Harmloses.
+//   - Selten schlägt ein Chaosblitz ein und hinterlässt einen
+//     Chaoswicht.
+//   - Versperrte Ausgänge: AddExit(richtung, ([EX_DEST: ...,
+//     EX_FUNC: "versperrt"])), Text in P_CHAOS_VERSPERRT.
 //
 // Letzte Aenderung:
 //
 // 27.11.2026 It@Efferdland            neu
+// 27.11.2026 It@Efferdland            Chaosmagie
 
 #pragma strong_types
 #pragma no_clone
 
 #include "def.h"
+
+// Der Langtext ohne wechselnde Zeile
+static string chaos_grundtext;
+
+// Wechselnde Zeilen, die in jeden Raum passen
+static string *chaos_allgemein = ({
+  "Die Wände flimmern unruhig, als könnten sie sich nicht entscheiden, "
+  "ob sie da sein wollen.",
+  "Ein feiner, violetter Staub schwebt in der Luft und sinkt nicht zu "
+  "Boden.",
+  "Für einen Augenblick wirft nichts hier einen Schatten.",
+  "Irgendwo tropft es, aber die Tropfen fallen nach oben.",
+  "Die Steine sind heute warm, als hätten sie Fieber.",
+  "Ein schwacher Geruch nach Gewitter liegt in der Luft.",
+});
+
+// Setzt den Langtext. Die wechselnde Zeile wird bei jedem Reset
+// angehängt.
+public void chaos_long(string txt) {
+  chaos_grundtext = txt;
+  ME->SetProp(P_INT_LONG,txt);
+}
+
+public void chaos_reset() {
+  string *v;
+
+  if(!stringp(chaos_grundtext)) {
+    return;
+  }
+  if(random(100) >= CHAOS_VARIANTE_CHANCE) {
+    ME->SetProp(P_INT_LONG,chaos_grundtext);
+    return;
+  }
+  v = ME->QueryProp(P_CHAOS_VARIANTEN);
+
+  if(!pointerp(v) || !sizeof(v) || !random(3)) {
+    v = chaos_allgemein;
+  }
+  ME->SetProp(P_INT_LONG,chaos_grundtext+" "+v[random(sizeof(v))]);
+}
+
+// EX_FUNC für eingestürzte und versperrte Ausgänge
+public int versperrt(string verb, object pl) {
+  mapping m = ME->QueryProp(P_CHAOS_VERSPERRT) || ([]);
+
+  tell_object(pl,break_string(m[verb] ||
+    "Dort ist alles eingestürzt. Da kommst du nicht weiter."));
+  return 0;
+}
+
+// Ein Chaosblitz, aus dem ein Chaoswicht entsteht
+static void chaos_ausbruch() {
+  object w;
+
+  if(present_clone(CHAOS_GILDEN_MON("chaoswicht"),ME)) {
+    return;
+  }
+  tell_room(ME,break_string("Ein violetter Blitz schlägt mit einem "
+    "trockenen Knall mitten im Raum ein! Als sich der Rauch verzieht, "
+    "hockt dort ein kleines, kicherndes Wesen."));
+  w = clone_object(CHAOS_GILDEN_MON("chaoswicht"));
+  w->move(ME,M_NOCHECK|M_SILENT);
+}
+
+// Etwas Seltsames, aber Harmloses passiert dem Spieler
+static void chaos_effekt(object pl) {
+  object *obs;
+  string n;
+
+  if(!objectp(pl) || environment(pl) != ME) {
+    return;
+  }
+  switch(random(7)) {
+    case 0:
+      tell_object(pl,break_string("Dein Schatten löst sich von dir, läuft "
+        "ein paar Schritte in die falsche Richtung und kehrt dann "
+        "verlegen zu dir zurück."));
+      tell_room(ME,break_string("Der Schatten von "+pl->name(WEM,1)+
+        " macht sich kurz selbstständig."),({pl}));
+      break;
+    case 1:
+      n = capitalize(lower_case(pl->name(RAW)||"Fremder"));
+      n = capitalize(lower_case(reverse(n)));
+      tell_object(pl,break_string("Ein Echo ruft deinen Namen, aber "
+        "rückwärts: »"+n+"«."));
+      break;
+    case 2:
+      tell_object(pl,break_string("Für einen Augenblick kippt die "
+        "Schwerkraft zur Seite. Du taumelst, dann ist alles wieder wie "
+        "vorher."));
+      tell_room(ME,break_string(pl->Name(WER,1)+" taumelt plötzlich, "
+        "als würde der Boden schief stehen."),({pl}));
+      break;
+    case 3:
+      tell_object(pl,break_string("Deine Haare stellen sich knisternd auf "
+        "und glimmen violett. Dann legen sie sich wieder."));
+      tell_room(ME,break_string("Die Haare von "+pl->name(WEM,1)+
+        " stehen plötzlich knisternd zu Berge und glimmen violett."),
+        ({pl}));
+      break;
+    case 4:
+      obs = filter(all_inventory(ME),(: !living($1) && $1->short() :));
+
+      if(sizeof(obs)) {
+        tell_room(ME,break_string(obs[0]->Name(WER,1)+" schwebt "
+          "plötzlich eine Handbreit in die Höhe und plumpst wieder "
+          "herunter."));
+        break;
+      }
+      // Kein Gegenstand da: dann eben die Farben
+    case 5:
+      tell_object(pl,break_string("Für einen Moment ist alles um dich "
+        "herum in seltsame, verkehrte Farben getaucht."));
+      break;
+    default:
+      tell_object(pl,break_string("Direkt neben deinem Ohr flüstert eine "
+        "Stimme: »Du bist nicht der Erste.« Als du dich umdrehst, ist "
+        "niemand da."));
+      break;
+  }
+}
+
+public void chaos_init() {
+  int effekt  = CHAOS_EFFEKT_CHANCE;
+  int ausbruch = CHAOS_AUSBRUCH_CHANCE;
+
+  if(!this_player() || !interactive(this_player())) {
+    return;
+  }
+  if(ME->QueryProp(P_CHAOS_RISS)) {
+    effekt   = CHAOS_RISS_EFFEKT;
+    ausbruch = CHAOS_RISS_AUSBRUCH;
+  }
+  if(random(100) < ausbruch) {
+    call_out("chaos_ausbruch",2);
+  }
+  else if(random(100) < effekt) {
+    call_out("chaos_effekt",1,this_player());
+  }
+}
 
 protected void create() {
   ME->SetProp(P_INT_SHORT,"In der Burg Zwielichtstein");
@@ -45,6 +197,18 @@ protected void create() {
   "Auf den ersten Blick ist hier alles nur alt und verfallen. Auf den "
   "zweiten auch, aber irgendwie anders.");
 
+  ME->AddDetail(({"staub","luft"}),
+  "Feiner Staub, der manchmal violett glitzert.");
+
+  ME->AddDetail(({"schatten"}),
+  "Die Schatten hier benehmen sich nicht immer so, wie sie sollten.");
+
+  ME->AddDetail(({"tropfen"}),
+  "Mal fallen sie, mal steigen sie. Sie können sich nicht entscheiden.");
+
+  ME->AddDetail(({"fieber","gewitter","augenblick"}),
+  "Die Chaosmagie macht hier, was sie will.");
+
   ME->AddSmell(({DEFAULT_SMELL,"luft"}),
   "Es riecht nach Staub und ein wenig nach Schwefel.");
 
@@ -65,5 +229,11 @@ protected void create() {
     "Ein kalter Hauch streicht an dir vorbei, obwohl kein Wind geht.\n",
     "Fuer einen Moment scheint ein Stein in der Mauer zu atmen.\n",
     "Irgendwo in der Burg lacht jemand, hoch und schrill.\n",
+    "Ein Stein loest sich aus der Mauer, schwebt kurz und faellt dann "
+    "polternd zu Boden.\n",
+    "Fuer einen Herzschlag laeuft die Zeit rueckwaerts. Dann wieder "
+    "vorwaerts.\n",
   }),90);
+
+  call_out("chaos_reset",0);
 }

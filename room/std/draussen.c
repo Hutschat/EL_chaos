@@ -4,6 +4,7 @@
 // Letzte Aenderung:
 //
 // 27.11.2026 It@Efferdland            neu
+// 27.11.2026 It@Efferdland            Chaosmagie
 
 #pragma strong_types
 
@@ -11,6 +12,16 @@
 
 inherit "/std/room";
 inherit CHAOS_BURG_STD("dets");
+
+void reset() {
+  room::reset();
+  chaos_reset();
+}
+
+varargs void init() {
+  room::init();
+  chaos_init();
+}
 
 protected void create() {
   if(!clonep()) {

@@ -3,6 +3,7 @@
 // Letzte Aenderung:
 //
 // 27.11.2026 It@Efferdland            neu
+// 27.11.2026 It@Efferdland            Chaosmagie
 
 #pragma strong_types
 
@@ -39,6 +40,16 @@ public void chaos_becher(object zahler, object empfaenger, string ident,
   if(objectp(empfaenger)) {
     empfaenger->restore_spell_points(-80);
   }
+}
+
+void reset() {
+  kneipe::reset();
+  chaos_reset();
+}
+
+varargs void init() {
+  kneipe::init();
+  chaos_init();
 }
 
 protected void create() {
