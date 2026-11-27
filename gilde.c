@@ -6,6 +6,7 @@
 // 17.05.1998 Bierchen@MorgenGrauen    ueberarbeitet
 // 10.12.2018 It@Efferdland             ueberarbeitet
 // 27.11.2026 It@Efferdland             wieder lauffähig, ohne Arena
+// 27.11.2026 It@Efferdland             keine Kampfprüfung bis Stufe 11
 
 #include "def.h"
 
@@ -14,8 +15,6 @@ inherit  "/std/gilden_ob";
 
 #define FROSCH_TEXT\
 "Igitt! Ein Frosch! Hau bloss ab!\n"
-#define KAMPF_TEXT\
-"Du musst erst noch einen Kampf in der Kampfarena gewinnen.\n"
 
 protected void create()
 {
@@ -470,20 +469,12 @@ int OwnLearnSpell(string str)
   return LearnSpell(str);
 }
 
-static mixed test_fight(object pl,int nr)
+// Frösche dürfen nicht aufsteigen. Kampfprüfungen gibt es nur noch
+// beim Erzmeisterkampf um Stufe 12.
+static mixed frosch_test(object pl)
 {
-  if(!CHAOS_ARENA_PRUEFUNG)
-    return 0;
-
   if(pl->QueryProp(P_FROG))
     return FROSCH_TEXT;
-
-  pl->SetProp(CHAOS_PRUEFUNG, 1);
-
-  if(!IS_LEARNER(PL) && !CHAOS_GILDENMASTER->QueryPruefung(getuid(PL),2))
-    return KAMPF_TEXT;
-
-  pl->SetProp(CHAOS_PRUEFUNG, 0);
 
   return 0;
 }
@@ -493,12 +484,6 @@ string LevelTestFun1( object pl)
   if(pl->QueryProp(P_FROG))
     return FROSCH_TEXT;
 
-  if(CHAOS_ARENA_PRUEFUNG && !pl->QueryProp(CHAOS_KAMPF_BESTANDEN))
-  {
-    pl->SetProp(CHAOS_PRUEFUNG, 1);
-    return KAMPF_TEXT;
-  }
-  pl->SetProp(CHAOS_PRUEFUNG, 0);
   return 0;
 }
 
@@ -511,7 +496,7 @@ string LevelTestFun2(object pl)
 
   if(bla) return bla;
 
-  test = test_fight(pl,2);
+  test = frosch_test(pl);
 
   if(stringp(test))
     return test;
@@ -528,7 +513,7 @@ string LevelTestFun3(object pl)
 
   if(bla) return bla;
 
-  test = test_fight(pl,3);
+  test = frosch_test(pl);
 
   if(stringp(test))
     return test;
@@ -545,7 +530,7 @@ string LevelTestFun4(object pl)
 
   if(bla) return bla;
 
-  test = test_fight(pl,4);
+  test = frosch_test(pl);
 
   if(stringp(test))
     return test;
@@ -563,7 +548,7 @@ string LevelTestFun5(object pl)
   if(bla)
     return bla;
 
-  test = test_fight(pl,5);
+  test = frosch_test(pl);
 
   if(stringp(test))
     return test;
@@ -580,7 +565,7 @@ string LevelTestFun6(object pl)
 
   if( bla) return bla;
 
-  test = test_fight(pl,6);
+  test = frosch_test(pl);
 
   if(stringp(test))
     return test;
@@ -597,7 +582,7 @@ string LevelTestFun7(object pl)
 
   if(bla) return bla;
 
-  test = test_fight(pl,7);
+  test = frosch_test(pl);
 
   if(stringp(test))
     return test;
@@ -614,7 +599,7 @@ string LevelTestFun8(object pl)
 
   if(bla) return bla;
 
-  test = test_fight(pl,8);
+  test = frosch_test(pl);
 
   if(stringp(test))
     return test;
@@ -641,7 +626,7 @@ string LevelTestFun9(object pl)
     return break_string("Du kannst erst deine Stufe erhoehen, wenn du "
           "Kruuolq ein Paar gute Chaoshandschuhe gebracht hast.");
 
-  test = test_fight(pl,9);
+  test = frosch_test(pl);
 
   if(stringp(test))
     return test;
@@ -666,7 +651,7 @@ string LevelTestFun10(object pl)
            "die Metzel-Master-Quest gemacht hast. Frage dazu einfach mal "
            "Kruuolq.");
 
-  test = test_fight(pl,10);
+  test = frosch_test(pl);
 
   if(stringp(test))
     return test;
@@ -686,15 +671,10 @@ string LevelTestFun11(object pl)
   if(pl->QueryProp(P_FROG))
     return FROSCH_TEXT;
 
-  test = test_fight(pl,11);
+  test = frosch_test(pl);
 
   if(stringp(test))
     return test;
-
-  pl->SetProp(CHAOS_PRUEFUNG,1);
-  if(CHAOS_ARENA_PRUEFUNG &&
-     !CHAOS_GILDENMASTER->QueryPruefung( getuid(PL), 11))
-  return "Du musst erst noch einen Kampf in der Kampfarena gewinnen.\n";
 
   return 0;
 }
