@@ -7,6 +7,10 @@
 
 #pragma no_inherit
 #pragma no_clone
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
 
 #include "def.h"
 
@@ -245,7 +249,7 @@ static string *finde_chaoten(object chaot)
 {
   object *objs,ob;
 
-  objs    = call_other("/std/user_filter","filter_users","gilde chaos");
+  objs    = "/std/user_filter"->filter_users("gilde chaos");
   magier  = sizeof(filter(objs,"is_wiz_level_ge",ME,LEARNER_LVL));
   seher   = sizeof(filter(objs,"is_wiz_level_ge",ME,SEER_LVL)) - magier;
   spieler = sizeof(objs) - magier - seher;

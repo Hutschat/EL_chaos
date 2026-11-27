@@ -160,6 +160,11 @@ mit dem Gegner verbuenden und gemeinsam alle Enemies angreifen...
 suc : SpellSuccess
 */
 
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
+
 #include <properties.h>
 #include <language.h>
 #include <attributes.h>
@@ -1413,13 +1418,12 @@ int bannzauber(object caster, mapping sinfo){
 
 object FindeEigenenDaemonen(string daemon, object caster){
   object *inv;
-  int i;
   if(!daemon) return 0;
   inv=filter(all_inventory(environment(caster)), (: living($1) :));
   inv=filter_objects(inv,"id",daemon);
-  for(i=sizeof(inv)-1;i>=0;i--){
-    if(inv[i]->QueryProp(CHAOS_DAEM_BESCHWOERER)==getuid(caster))
-      return inv[i];
+  foreach(object ob : inv){
+    if(ob->QueryProp(CHAOS_DAEM_BESCHWOERER)==getuid(caster))
+      return ob;
   }
   return 0;
 }

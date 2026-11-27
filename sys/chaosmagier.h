@@ -8,6 +8,6 @@
 
 #define CHAOS_GILDEN_MAGIER   ({"it"})
 #define CHAOS_GILDEN_EHRENMAGIER ({"zardoz"})
-#define CHAOS_MAGIER(x)       (member_array(getuid(x),CHAOS_GILDEN_MAGIER)>-1)
+#define CHAOS_MAGIER(x)       (member(CHAOS_GILDEN_MAGIER,getuid(x))>-1)
 
 #endif

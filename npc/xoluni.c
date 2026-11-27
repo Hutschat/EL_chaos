@@ -5,6 +5,11 @@
 // 12.03.2019 It@Efferdland            ueberarbeitet
 // 27.11.2026 It@Efferdland            init() für neuen Driver
 
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
+
 #include "def.h"
 
 inherit CHAOS_GILDEN_MON("std/std_daem");  
@@ -49,7 +54,7 @@ public varargs void init(object origin)
   ::init(origin);
   if(time() > QueryProp( CHAOS_DAEM_FOLLOW_TIME))
   {
-    this_object()->die();
+    ME->die();
     return;
   }
   if(query_once_interactive(this_player()))
@@ -62,7 +67,7 @@ public varargs void init(object origin)
 void irrlicht_attack( object mon)
 {	
   if(!mon) return;
-    this_object()->Kill(mon);
+    ME->Kill(mon);
 }
 
 

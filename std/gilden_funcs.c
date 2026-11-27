@@ -4,6 +4,11 @@
 //
 // 16.08.2021 It@Efferdland             neu
 
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
+
 #include "def.h"
 
 inherit  "/std/gilde";

@@ -8,6 +8,10 @@
 // 27.11.2026 It@Efferdland            Schänke der Burg
 
 #pragma no_clone
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
 
 #include "def.h"
 
@@ -220,7 +224,6 @@ void gemeiner_daemon(object caster)
 
 int submit_disease(int i)
 {
-  int y;
 
   object en = environment(); 
 
@@ -236,11 +239,10 @@ int submit_disease(int i)
   {
     object *inv = all_inventory(ME);
 
-    if(inv && sizeof(inv))
-      for(y=sizeof(inv)-1;y>=0;y--)
-        if(inv[y]->is_class_member(CL_DISEASE))
+    foreach(object ob : inv)
+        if(ob->is_class_member(CL_DISEASE))
         {
-          inv[y]->destruct();
+          ob->destruct();
         
           tell_room(en,Name(WER,1)+" ueberwindet eine Krankheit.\n");
         }
@@ -252,7 +254,6 @@ int submit_disease(int i)
                                   
 void team_is_doof(object caster)
 {
-    int i;
     object *inv;
 
     if (caster)
@@ -263,15 +264,15 @@ void team_is_doof(object caster)
      
     inv = all_inventory(environment(ME));
 
-    for(i=sizeof(inv)-1;i>=0;i--)
+    foreach(object ob : inv)
     {
-      if(IS_LEARNER(inv[i]))
+      if(IS_LEARNER(ob))
         continue;
     
-      if(!interactive(inv[i]))
+      if(!interactive(ob))
         continue;
       
-      Kill(inv[i]);
+      Kill(ob);
     }
     SetProp("kill_all",1);
 }
@@ -714,7 +715,7 @@ int Defend(int dam, mixed dam_type, int spell, object enemy)
   mapping daem_map;
   object *inv, pl, caster, *en;
 
-  int def, i, si;
+  int def;
 
   if(!environment())
     return 0;
@@ -763,15 +764,15 @@ int Defend(int dam, mixed dam_type, int spell, object enemy)
 
     inv = all_inventory(environment(ME));
 
-    for(i=sizeof(inv)-1;i>=0;i--)
+    foreach(object ob : inv)
     {
-      if(IS_LEARNER(inv[i]))
+      if(IS_LEARNER(ob))
         continue;
       
-      if(!interactive(inv[i]))
+      if(!interactive(ob))
         continue;
       
-      Kill(inv[i]);
+      Kill(ob);
     }
     SetProp("kill_all",1);
     return 0;
@@ -810,26 +811,25 @@ int Defend(int dam, mixed dam_type, int spell, object enemy)
     inv = enemy->QueryEnemies()[0];
     
     en = ({});
-    si = sizeof(inv);
     
-    for(i=0;i<si;i++)
+    foreach(object ob : inv)
     {
-      if(!objectp(inv[i]))
+      if(!objectp(ob))
         continue;
       
-      if(!living(inv[i]))
+      if(!living(ob))
         continue;
       
-      if(!interactive(inv[i]))
+      if(!interactive(ob))
         continue;
       
-      if(!present(inv[i],environment(ME)))
+      if(!present(ob,environment(ME)))
         continue;
       
-      if(IS_LEARNER(inv[i]))
+      if(IS_LEARNER(ob))
         continue;
       
-      en += ({inv[i]});
+      en += ({ob});
     }
     if(member(en,caster)==-1)
       en+=({caster});

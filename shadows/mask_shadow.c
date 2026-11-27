@@ -32,6 +32,9 @@
 
 #pragma strong_types
 #pragma no_inherit
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
 
 #include "def.h"
 
@@ -76,7 +79,7 @@ public void maske_an(object pl, mapping map, int dauer, int erfolg) {
     wc = daten[P_HANDS][1] * (50 + erfolg/200) / 100;
     haende = ({daten[P_HANDS][0],wc,daten[P_HANDS][2]});
   }
-  call_other(CHAOS_GILDEN_MASTER("shadow_master"),"RegisterShadow",ME);
+  (CHAOS_GILDEN_MASTER("shadow_master"))->RegisterShadow(ME);
   call_out("maske_aus",max(dauer,10));
 }
 

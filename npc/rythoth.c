@@ -5,6 +5,11 @@
 // xx.xx.xxxx Zardoz                   neu
 // 11.03.2019 It@Efferdland            ueberarbeitet
 
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
+
 #include "def.h"
 
 inherit CHAOS_GILDEN_MON("std/aggdaem");  

@@ -7,12 +7,15 @@
 // 27.11.2026 It@Efferdland            Fehler für neuen Driver behoben
 
 #pragma no_inherit
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
 
 #include "def.h"
 
 inherit "/std/armour";
 
-veraendere_stats(int flag);
 
 static int     clevel = 0;
 static string *chaos_erlaubt;
@@ -156,11 +159,11 @@ int WearFunc(object me, int silent)
 
 int ccommands(string str)
 {
-  call_other(CHAOS_HAUTMASTER,"chaos_input",query_verb(),str,PL);
+  (CHAOS_HAUTMASTER)->chaos_input(query_verb(),str,PL);
   return 1;
 }
 
-_query_curse()
+int _query_curse()
 {
   return 1;
 }                                                            
@@ -764,23 +767,23 @@ void random_effekt()
 
       inv = all_inventory(environment(pl));
 
-      for(i=0;i<sizeof(inv);i++)
+      foreach(object ob : inv)
       {
-        if(!living(inv[i])||query_once_interactive(inv[i]))
+        if(!living(ob)||query_once_interactive(ob))
           continue;
 
         tell_object(pl,"Der Daemon in Dir zwingt Dich zu: toete "+
-        inv[i]->name()+"\n");
-        if(inv[i]->id("kruuolq")||
-           inv[i]->id("wuqour")|| 
-           inv[i]->id("hutschat") || 
-          (inv[i]->id("\nchaos_gilden_daemon") && 
-           inv[i]->QueryProp(CHAOS_DAEM_BESCHWOERER)==getuid(pl)))
+        ob->name()+"\n");
+        if(ob->id("kruuolq")||
+           ob->id("wuqour")|| 
+           ob->id("hutschat") || 
+          (ob->id("\nchaos_gilden_daemon") && 
+           ob->QueryProp(CHAOS_DAEM_BESCHWOERER)==getuid(pl)))
         {
           tell_object(pl,"Du kannst Dich gerade noch beherrschen.\n");
           break;
         }
-        pl->Kill(inv[i]);
+        pl->Kill(ob);
         break;
       }
     break;
@@ -831,12 +834,12 @@ void random_effekt()
     
     inv = pl->QueryProp(P_ARMOURS);
     
-    for(i=0;i<sizeof(inv);i++)
+    foreach(object arm : inv)
     {
-      if(!objectp(inv[i])||inv[i]->QueryProp(P_CURSED))
+      if(!objectp(arm)||arm->QueryProp(P_CURSED))
         continue;
 
-      pl->command_me("ziehe "+inv[i]->QueryProp(P_IDS)[2]+" aus" );
+      pl->command_me("ziehe "+arm->QueryProp(P_IDS)[2]+" aus" );
     }
     break; 
 

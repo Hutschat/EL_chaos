@@ -10,6 +10,11 @@
 // 27.11.2026 It@Efferdland             Dämonentypen
 // 27.11.2026 It@Efferdland             Gildenhalle der Burg Zwielichtstein
 
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
+
 #include "def.h"
 
 inherit  "/std/gilde";

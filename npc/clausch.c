@@ -7,6 +7,11 @@
 // 10.12.2018 It@Efferdland            ueberarbeitet
 // 27.11.2026 It@Efferdland            Tippfehler P_NO_ATTACK
 
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
+
 #include "def.h"
 
 inherit CHAOS_GILDEN_MON("std/std_chaot");

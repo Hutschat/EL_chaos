@@ -7,6 +7,10 @@
 // 10.12.2018 It@Efferdland            ueberarbeitet
 
 #pragma no_inherit
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
 
 #include "def.h"
 #define DEFAULT_QUEST_FAIL "Frag Kruuolq."

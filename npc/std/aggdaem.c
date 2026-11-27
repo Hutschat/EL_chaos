@@ -8,6 +8,10 @@
 // 27.11.2026 It@Efferdland            GUILD_HELPER statt VERBOTENE_RAEUME
 
 #pragma no_clone
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
 
 #include "def.h"
 
@@ -101,7 +105,7 @@ void folge_caster(string agg)
 
   if(!pl || !objectp(pl))
   {
-    this_object()->SetProp( "kill_all", 1);
+    ME->SetProp( "kill_all", 1);
     z ++;
   }
   if( z > 20 )

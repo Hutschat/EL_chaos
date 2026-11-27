@@ -6,6 +6,10 @@
 // 27.11.2026 It@Efferdland            init() für neuen Driver
  
 #pragma no_inherit
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
 
 #include "def.h"
 
@@ -77,7 +81,7 @@ varargs void init() {
 
   SetProp(CHAOS_PENTAGRAMM_ZEICHNER,
 
-  erz = call_other(CHAOS_GILDENMASTER,"query_erzmeister",0));
+  erz = (CHAOS_GILDENMASTER)->query_erzmeister(0));
 
   if(!id("\nchaos_gilden_pentagramm_"+erz)) {
     AddId("\nchaos_gilden_pentagramm_"+erz);

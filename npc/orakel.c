@@ -19,6 +19,9 @@
 //                                     Tyoorthok
 
 #pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
 
 #include "def.h"
 
@@ -384,17 +387,17 @@ void schaetze_monster(object pl, object victim)
     {  
       dam_types = m_indices(res);
     
-      for(i=sizeof(dam_types)-1;i>=0;i--)
+      foreach(string dt : dam_types)
       {
-        if(to_float(resis_wert=to_float(res[dam_types[i]]))<to_float(0))
+        if(to_float(resis_wert=to_float(res[dt]))<to_float(0))
         { 
-          rwerte  += ({dam_types[i]});
+          rwerte  += ({dt});
           reinsch += ({schaetze_resistenzen(resis_wert)});
         }
-        if(to_float(resis_wert=to_float( res[dam_types[i]]))>to_float(0) &&
+        if(to_float(resis_wert=to_float( res[dt]))>to_float(0) &&
           pl->QueryProp(P_GUILD_LEVEL)>=11)
         {
-          vwerte  += ({dam_types[i]});
+          vwerte  += ({dt});
           veinsch += ({schaetze_resistenzen(resis_wert)});
         }
       }
@@ -668,9 +671,7 @@ string info_daemonen(object p)
   faktoren = (["schattendaemon":0.5, "lichtdaemon":0.6, "feuerdaemon":0.7,
                "saeuredaemon":0.8, "blutdaemon":0.9, "wandler":1.0]);
 
-  for (i=sizeof(welche)-1;i>=0;i--)
-    if (!PL->QuerySkill(welche[i]))
-      welche-=({welche[i]});
+  welche = filter(welche, (: PL->QuerySkill($1) :));
 
   if (!sizeof(welche))
     return "";

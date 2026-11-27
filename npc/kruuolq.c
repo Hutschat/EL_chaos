@@ -7,6 +7,10 @@
 // 27.11.2026 It@Efferdland            UTF-8, Fehler für neuen Driver behoben
 
 #pragma no_inherit
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
  
 #include "def.h"
 
@@ -749,7 +753,7 @@ static string gib_seherring()
            "noch toeten musst!";
   }
 /*
-  if( call_other(C_112_OBJ("c_smmq_master"),"sget_zeit",getuid(PL))>0)
+  if( (C_112_OBJ("c_smmq_master"))->sget_zeit(getuid(PL))>0)
     return "Du hast die Quest schon bestanden. Ich bin stolz auf Dich.";
   ob=clone_object(C_112_OBJ("c_seher_ring"));
   if (ob->move(PL,M_GET) != 1)
@@ -1009,7 +1013,7 @@ string metzel_quest_done()
   return str;
 }
 
-metzel_quest_check( object pl)
+int metzel_quest_check(object pl)
 {
   mixed ids;
   int stufe;
@@ -1045,7 +1049,7 @@ Damits auch alle mitkriegen:
 
     object ob;
 
-    if(ob = present_clone(GILDEN_CHAOS_OBJ("cring"), pl))
+    if(ob = present_clone(CHAOS_GILDEN_ARMOUR("chaosring"), pl))
     {
       tell_object(pl,Name(WER)+" sagt: Den Ring brauchst Du nicht mehr.\n"+
                      Name(WER)+" nimmt Dir den Chaos-Ring ab.\n");
@@ -1170,7 +1174,7 @@ void Attack(object enemy)
    SetProp(P_KILL_MSG,"Es war ein fairer Kampf, da gibts nichts! >:)");
 }
 
-enhance(int stufe,int rating,object ob)
+void enhance(int stufe,int rating,object ob)
 {
    if(stufe>50)
      stufe = 50;
@@ -1213,7 +1217,7 @@ void NotifyPlayerDeath(object player)
 
     ME->heal_self();
 
-    call_other(CHAOS_GILDEN_ROOM("duell"),"aufraeumen",0);
+    (CHAOS_GILDEN_ROOM("duell"))->aufraeumen(0);
 
     ME->move(CHAOS_GILDENROOM,M_GO);
   }
@@ -1436,10 +1440,10 @@ int learnSomeSpell(string wen)
   if (PL->QueryProp(P_GUILD) != "chaos")
     return 0;
 
-  if ((i = member_array(wen,SPELLS )) == -1)
+  if ((i = member(SPELLS,wen)) == -1)
      return 0;
-   if (!call_other("/gilden/chaos/gilde","MayLearnSpell",wen))
-    return call_other("/gilden/chaos/gilde","LearnSpell",wen);
+   if (!(CHAOS_GILDENROOM)->MayLearnSpell(wen))
+    return (CHAOS_GILDENROOM)->LearnSpell(wen);
 
   if (beschaeftigt())
     return write(Name(WER)+" sagt: Jetzt nicht.\n"),1;
@@ -1649,6 +1653,6 @@ void lernen(int spell, int index)
   if (index < lernen_max(spell))
      call_out("lernen",wait,spell,index+1);
   else 
-     call_other(CHAOS_GILDENROOM,"LearnSpell",SPELLS[spell]);
+     (CHAOS_GILDENROOM)->LearnSpell(SPELLS[spell]);
   return;
 }

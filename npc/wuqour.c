@@ -7,6 +7,11 @@
 // 10.12.2018 It@Efferdland            ueberarbeitet
 // 27.11.2026 It@Efferdland            UTF-8, init() für neuen Driver
 
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
+
 #include "def.h"
 #include "wuqour.h"
 
@@ -732,11 +737,11 @@ int learnSomeDaemon(string wen)
                        "wenn Du weisst, was Du lernen moechtest.",0,
                        Name(WER)+" sagt: ")),0;
 
-  if ((i = member_array(wen,DEAMONS )) == -1)
+  if ((i = member(DEAMONS,wen)) == -1)
      return notify_fail(Name(WER)+" sagt:Das bringe ich Dir nicht bei!\n"),0;
 
-  if (!call_other("/gilden/chaos","MayLearnSpell",wen))
-     return call_other("/gilden/chaos","LearnSpell",wen);
+  if (!(CHAOS_GILDENROOM)->MayLearnSpell(wen))
+     return (CHAOS_GILDENROOM)->LearnSpell(wen);
   
   if (beschaeftigt())
     return write(Name(WER)+" sagt: Jetzt nicht. Geh weg.\n"),1;
@@ -894,7 +899,7 @@ void lernen(int wen, int index)
     if ((index-8) < sizeof(BHUTURIH_ARRAY))
       call_out("lernen",10,wen,index+1);
     else
-      return call_other("/gilden/chaos","LearnSpell",DEAMONS[wen]);
+      return (CHAOS_GILDENROOM)->LearnSpell(DEAMONS[wen]);
   }
   /*-------------------------- FLAXTRI --------------------------------- */
   if (wen == 8)
@@ -945,7 +950,7 @@ void lernen(int wen, int index)
       call_out("lernen",10,wen,index+1);
     
     else
-      return call_other("/gilden/chaos","LearnSpell",DEAMONS[wen]);
+      return (CHAOS_GILDENROOM)->LearnSpell(DEAMONS[wen]);
   }
   /*-------------------------- GRAIOP --------------------------------- */
   if (wen == 7)
@@ -987,7 +992,7 @@ void lernen(int wen, int index)
     if ((index-8) < sizeof(GRAIOP_ARRAY))
       call_out("lernen",10,wen,index+1);
     else
-      return call_other("/gilden/chaos","LearnSpell",DEAMONS[wen]);
+      return (CHAOS_GILDENROOM)->LearnSpell(DEAMONS[wen]);
   }
   /*-------------------------- HARKUHU --------------------------------- */
   if (wen == 6)
@@ -1028,7 +1033,7 @@ void lernen(int wen, int index)
     if ((index-8) < sizeof(HARKUHU_ARRAY))
       call_out("lernen",10,wen,index+1);
     else
-      return call_other("/gilden/chaos","LearnSpell",DEAMONS[wen]);
+      return (CHAOS_GILDENROOM)->LearnSpell(DEAMONS[wen]);
   }
   /*-------------------------- INTARBIR --------------------------------- */
   if (wen == 0)
@@ -1065,7 +1070,7 @@ void lernen(int wen, int index)
     if ((index-8) < sizeof(INTARBIR_ARRAY))
       call_out("lernen",10,wen,index+1);
     else
-      return call_other("/gilden/chaos","LearnSpell",DEAMONS[wen]);
+      return (CHAOS_GILDENROOM)->LearnSpell(DEAMONS[wen]);
   }
   /*-------------------------- IRKITIS --------------------------------- */
   if (wen == 4) 
@@ -1118,7 +1123,7 @@ void lernen(int wen, int index)
     if ((index-8) < sizeof(IRKITIS_ARRAY))
       call_out("lernen",10,wen,index+1);
     else
-      return call_other("/gilden/chaos","LearnSpell",DEAMONS[wen]);
+      return (CHAOS_GILDENROOM)->LearnSpell(DEAMONS[wen]);
   }
   /*-------------------------- KRUFTUR --------------------------------- */
   if(wen == 1)
@@ -1163,7 +1168,7 @@ void lernen(int wen, int index)
     if ((index-8) < sizeof(KRUFTUR_ARRAY))
       call_out("lernen",10,wen,index+1);
     else
-      return call_other("/gilden/chaos","LearnSpell",DEAMONS[wen]);
+      return (CHAOS_GILDENROOM)->LearnSpell(DEAMONS[wen]);
   }
   /*-------------------------- OMBATIS --------------------------------- */
   if (wen == 2)
@@ -1188,7 +1193,7 @@ void lernen(int wen, int index)
     if ((index-8) < sizeof(OMBATIS_ARRAY))
       call_out("lernen",10,wen,index+1);
     else
-      return call_other("/gilden/chaos","LearnSpell",DEAMONS[wen]);
+      return (CHAOS_GILDENROOM)->LearnSpell(DEAMONS[wen]);
   }
   /*-------------------------- TUTSZT --------------------------------- */
   if (wen == 9) 
@@ -1218,7 +1223,7 @@ void lernen(int wen, int index)
     if ((index-8) < sizeof(TUTSZT_ARRAY))
       call_out("lernen",10,wen,index+1);
     else
-      return call_other("/gilden/chaos","LearnSpell",DEAMONS[wen]);
+      return (CHAOS_GILDENROOM)->LearnSpell(DEAMONS[wen]);
   }
   /*-------------------------- TYOORTHOK ----------------------------- */
   if (wen == 5)
@@ -1260,7 +1265,7 @@ void lernen(int wen, int index)
     if ((index-8) < sizeof(TYOORTHOK_ARRAY))
       call_out("lernen",10,wen,index+1);
     else
-      return call_other("/gilden/chaos","LearnSpell",DEAMONS[wen]);
+      return (CHAOS_GILDENROOM)->LearnSpell(DEAMONS[wen]);
   }
   /*-------------------------- YRINTRI --------------------------------- */
   if (wen == 10)
@@ -1318,7 +1323,7 @@ void lernen(int wen, int index)
     if ((index-8) < sizeof(YRINTRI_ARRAY))
       call_out("lernen",10,wen,index+1);
     else
-      return call_other("/gilden/chaos","LearnSpell",DEAMONS[wen]);
+      return (CHAOS_GILDENROOM)->LearnSpell(DEAMONS[wen]);
   }
   
   return;

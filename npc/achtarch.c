@@ -8,6 +8,11 @@
 // 27.11.2026 It@Efferdland            Schänke der Burg
 // 27.11.2026 It@Efferdland            Laden in der Burg Zwielichtstein
 
+#pragma strong_types
+#pragma save_types
+#pragma rtt_checks
+#pragma range_check
+
 #include "def.h"
 
 inherit CHAOS_GILDEN_MON("std/std_chaot");
@@ -128,8 +133,8 @@ static string sammelaktion_inf(){
                    "sammele. Es ist zu unser beider Vorteil.",
                    0,Name(WER)+" sagt: "));
     
-    if(call_other((SSQMASTER),"CheckSammler",getuid(PL))<=0)
-      call_other((SSQMASTER),"SetzeSammler",getuid(PL),1);
+    if((SSQMASTER)->CheckSammler(getuid(PL))<=0)
+      (SSQMASTER)->SetzeSammler(getuid(PL),1);
    }
   return 0;
 }
@@ -855,7 +860,7 @@ varargs void die()
   ::die();
 }
 
-give_notify(ob)
+void give_notify(object ob)
 {
   object env,sh;
   string wen;
@@ -882,12 +887,12 @@ give_notify(ob)
         if(sh->QueryProp(SAMMLER)==getuid(PL))
           sh->remove();
       }
-      if(call_other((SSQMASTER),"CheckAufgabe",getuid(PL)) < 1)
+      if((SSQMASTER)->CheckAufgabe(getuid(PL)) < 1)
       {
-        call_other((SSQMASTER),"SetzeAufgabe",getuid(PL),
+        (SSQMASTER)->SetzeAufgabe(getuid(PL),
            PL->name(),PL->QueryProp(P_GENDER));
         
-        call_other((SSQMASTER),"SetzeSpender",getuid(PL),i);
+        (SSQMASTER)->SetzeSpender(getuid(PL),i);
         
         write(break_string("Wow, "+PL->name(WER)+"! Ich bin "
               "restlos begeistert, Du hast es tatsaechlich geschafft, alle "
@@ -895,9 +900,9 @@ give_notify(ob)
               "Gratulation nochmal!!!",0,Name(WER)+" sagt: "));
       }
     }
-    if(call_other((SSQMASTER),"CheckSpender",getuid(PL)) < i)
+    if((SSQMASTER)->CheckSpender(getuid(PL)) < i)
     {
-      call_other((SSQMASTER),"SetzeSpender",getuid(PL),i);
+      (SSQMASTER)->SetzeSpender(getuid(PL),i);
     
       write(break_string("Respekt, Du hast Deine alte Bestmarke "
              "tataechlich noch uebertreffen koennen. Huih!",0,
@@ -911,7 +916,7 @@ give_notify(ob)
     
     LetsGoDrink();
     
-    if(call_other((SSQMASTER),"CheckAufgabe",getuid(PL)) >= 1)
+    if((SSQMASTER)->CheckAufgabe(getuid(PL)) >= 1)
     {
       if(!present("\ntilly:chaut_obj",PL))
       {
