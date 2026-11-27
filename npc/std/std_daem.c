@@ -188,10 +188,10 @@ mit 10 % in die Berechnung ein
   dmesg += "HP: "+QueryProp(P_MAX_HP)+", BODY: "+QueryProp(P_BODY)+
            ", Hands: "+hands[1]+".\n";
 /*  
-Speziell fuer Graiop: Staerke auf 18 fuer Level 11 -Chaoten mit 
+Speziell fuer Feuerdaemonen: Staerke auf 18 fuer Level 11 -Chaoten mit 
 60%-Pentagramm...
 */
-  if (QueryProp(P_NAME)=="Graiop" && objectp(c) && 
+  if (QueryProp(CHAOS_DAEMON_TYP)=="feuerdaemon" && objectp(c) && 
       c->QueryProp(P_GUILD_LEVEL) >= 11 && faktor >= 0.6)
     SetProp(P_ATTRIBUTES,(["int":12,"con":12,"str":18,"dex":12]));
 }
@@ -877,7 +877,7 @@ void give_notify(object ob)
   string comm;
   ::give_notify(ob);
 
-  if(id("kruftur"))
+  if(QueryProp(CHAOS_DAEMON_TYP)=="orakeldaemon")
     return;
   
   if(ob->id(CHAOS_TRANK)&&comm=ob->QueryProp(CHAOS_TRANK_TRINKEN))

@@ -52,6 +52,11 @@
                10.01.00   Feuerwehr debugging (SI_MAGIC_TYPE)
                27.11.26   It@Efferdland UTF-8, Fehler für neuen Driver
                           behoben, Ombatis entfernt
+               27.11.26   It@Efferdland Chaosmaske angeschlossen
+               27.11.26   It@Efferdland Dämonentypen mit Namen statt
+                          Intarbir, Kruftur, Tyoorthok, Bhuturih,
+                          Irkitis, Harkuhu, Graiop, Flaxtri, Tutszt
+                          und Yrintri
 Nachtsicht:
   Man kann im Dunklen sehen. Da die Krieger des Chaos sich gerne
   in dunklen Festungen verborgen halten, koennen sie diesen Spruch
@@ -121,40 +126,26 @@ Binde:
   Mit diesem Spruch kann man das magische Band zu einem beschworenen
   Daemonen erneuern. Er folgt einem dann laenger.
   SP: 50, Level: 9
-Intarbir:
-  Ein Daemon, der ein Monster einschaetzt.
-  SP: 5, Level: 4
-Bhuturih:
-  Ein Daemon, der Spieler findet.
-  SP: 15, Level: 6
-Kruftur:
-  Daemon, der Gegenstaende identifiziert.
-  SP: 10, Level: 6
-Tyoorthok:
-  Ein Daemon, der etwas ueber die eigene Konstitution erzaehlt.
-  SP: 18, Level: 7  
-Irkitis:
-  Ein Daemon, der fuer A_INT + suc/1000 Runden mit WC 150 mitkaempft. 
-  Er greift nur an, wird selbst nicht angegriffen, faengt also keine
-  Schlaege des Gegners ab.
-  SP:50, Level: 7
-Harkuhu:
-  Der Daemon kaempft mit WC 0 und faengt 25% aller Attacken
-  ab, der Rest wird auf die Enemies des Gegners umgelenkt. Er folgt
-  60 * suc/1000 Sekunden lang dem Caster.
-  SP:50, Level: 8
-Graiop:
-  Der Daemon kaempft A_INT +  3 * suc/1000 Kampfrunden mit
-  (WC 150). Er faengt 33% aller Attacken ab.
-  SP:90, Level: 9
-Flaxtri: 
-  Folgt 3 * suc/10 Sekunden und kaempft solange, bis er stirbt mit
-  WC 170 und faengt 50% aller Attacken ab.
-  SP:120, Level: 10
-Tutszt:
-  Der beste Daemon. Er folgt 5 * suc/10 Sekunden und kaempft mit WC 200 und
-  faengt 66% aller Attacken ab.
-  SP:140, level: 11
+Chaosmaske:
+  Wer eine Daemonenmaske traegt, verwandelt sich im Dunkeln in deren
+  Daemon (shadows/mask_shadow.c).
+  SP: 40, Level: 11
+Beschwoere:
+  beschwoere <typ> [leise]. Jeder Daemonentyp ist ein eigener Spruch,
+  der gelernt und geuebt wird, die Werte stehen in master/daemonen.c.
+  Der Daemon bekommt einen Namen aus master/namen.c.
+  Orakeldaemon (ab 4): schaetzt Monster ein, ab 5 identifiziert er
+    Gegenstaende und Pentagramme, ab 7 erzaehlt er ueber den eigenen
+    Koerper (frueher Intarbir, Kruftur und Tyoorthok).
+  Schattendaemon (ab 7, frueher Irkitis): kaempft einige Runden mit,
+    faengt keine Schlaege ab.
+  Lichtdaemon (ab 8, frueher Harkuhu): kaempft gegen NPCs nicht mit,
+    faengt aber Schlaege ab.
+  Feuerdaemon (ab 9, frueher Graiop): kaempft einige Runden.
+  Saeuredaemon (ab 10, frueher Flaxtri): folgt, bis er stirbt.
+  Blutdaemon (ab 11, frueher Tutszt): der staerkste fuer Meister.
+  Wandler (Erzmeister, frueher Yrintri): verwandelt seine Klauen und
+    rettet dem Beschwoerer das Leben.
 
 Fuer alle Daemonen gilt: Sie folgen nur solange sie leben :-), Es kann
 passieren, dass sie ploetzlich den Caster angreifen, dass sie dem Caster
@@ -285,117 +276,45 @@ protected void create() {
        SI_DIFFICULTY:30,
        SI_SPELLFATIGUE:20
        ]));
-  AddSpell( "intarbir",5,
-       ([SI_SKILLRESTR_LEARN:([P_GUILD_LEVEL:4,
-       SR_GOOD:200]),
-       SI_SKILLRESTR_USE:([
-       SR_FUN:"CheckKleinerDaemon",P_GUILD_LEVEL:4 ]),
-       SI_DIFFICULTY:-50,
-       SI_SPELLFATIGUE:3,
-       OFFSET(SI_SKILLLEARN):8      
-       ]));
-  AddSpell( "kruftur",10,
-       ([SI_SKILLRESTR_LEARN:([P_GUILD_LEVEL:5,
-       SR_GOOD:100]),
-       SI_SKILLRESTR_USE:([
-       SR_FUN:"CheckKleinerDaemon",P_GUILD_LEVEL:5 ]),
-       SI_DIFFICULTY:-20,
-       SI_SPELLFATIGUE:3,
-       OFFSET(SI_SKILLLEARN):6
-       ]));
-  AddSpell( "bhuturih",15,
-       ([SI_SKILLRESTR_LEARN:([P_GUILD_LEVEL:6,
-       SR_GOOD:150]),
-       SI_SKILLRESTR_USE:([
-       SR_FUN:"CheckKleinerDaemon",P_GUILD_LEVEL:6 ]),
-       SI_DIFFICULTY:-30,
-       SI_SPELLFATIGUE:3,
-       OFFSET(SI_SKILLLEARN):7
-       ]));
-  AddSpell( "tyoorthok",20,
-       ([SI_SKILLRESTR_LEARN:([P_GUILD_LEVEL:7,
-       SR_GOOD:100]),
-       SI_SKILLRESTR_USE:([SR_FREE_HANDS:1,P_GUILD_LEVEL:7,
-       SR_GOOD:200, SR_FUN:"CheckKleinerDaemon" ]),
-       SI_DIFFICULTY:20,
-       SI_SPELLFATIGUE:10,
-       OFFSET(SI_SKILLLEARN):10 
-       ]));
-  AddSpell( "irkitis",50,
-       ([SI_SKILLRESTR_LEARN:([P_GUILD_LEVEL:7,
-       SR_GOOD:300]),
-       SI_SKILLRESTR_USE:([SR_FREE_HANDS:2,P_GUILD_LEVEL:7,
-       SR_GOOD:-100, SR_FUN:"DaemonenTest" ]),
-       SI_DIFFICULTY:20,
-       SI_SPELLFATIGUE:6     
-       ]));
-  AddSpell( "harkuhu",50,
-       ([SI_SKILLRESTR_LEARN:([P_GUILD_LEVEL:8,
-       SR_GOOD:400]),
-       SI_SKILLRESTR_USE:([SR_FREE_HANDS:2,P_GUILD_LEVEL:8,
-       SR_GOOD:-200, SR_FUN:"DaemonenTest"]),
-       SI_DIFFICULTY:30,
-       SI_SPELLFATIGUE:10     
-       ]));
-  AddSpell( "graiop",90,
-       ([SI_SKILLRESTR_LEARN:([P_GUILD_LEVEL:9,
-       SR_GOOD:200]),                      
-       SI_SKILLRESTR_USE:([SR_FREE_HANDS:2,P_GUILD_LEVEL:9,
-       SR_GOOD:-250, SR_FUN:"DaemonenTest" ]),
-       SI_DIFFICULTY:50,
-       SI_SPELLFATIGUE:15     
-       ]));
-  AddSpell( "flaxtri",120,
-       ([SI_SKILLRESTR_LEARN:([P_GUILD_LEVEL:10,  
-       SR_GOOD:-100]),                      
-       SI_SKILLRESTR_USE:([SR_FREE_HANDS:2,P_GUILD_LEVEL:10,
-       SR_GOOD:-300, SR_FUN:"DaemonenTest" ]),
-       SI_DIFFICULTY:80,
-       SI_SPELLFATIGUE:20     
-       ]));
-  AddSpell( "tutszt",140,
-       ([SI_SKILLRESTR_LEARN:([P_GUILD_LEVEL:11,
-      SR_GOOD:-500 ]),                      
-       SI_SKILLRESTR_USE:([SR_FREE_HANDS:2,P_GUILD_LEVEL:11,
-       SR_GOOD:-300, SR_FUN:"DaemonenTest" ]),
-       SI_DIFFICULTY:100,
-       SI_SPELLFATIGUE:30     
-       ]));    
-  AddSpell( "yrintri", 180,
-      ([SI_SKILLRESTR_LEARN:([P_GUILD_LEVEL:12,
-      SR_GOOD:-700 ]),                      
-       SI_SKILLRESTR_USE:([SR_FREE_HANDS:2,
-       SR_GOOD:-300, SR_FUN:"DaemonenTest", 
-       P_GUILD_LEVEL:12 ]),
-       SI_DIFFICULTY:150,
-       SI_SPELLFATIGUE:60     
-       ]));    
+  // Die Dämonen. Jeder Typ ist ein eigener Spruch (Werte in
+  // master/daemonen.c), beschworen wird über 'beschwoere <typ>'.
+  daemon = ([]);
 
-/* Dieses mapping enthaelt die Eigenschaften der Daemonen. Es sind die
-   Wahrscheinlichkeiten mit denen der Daemon eine bestimmte Handlung 
-   ausfuehrt. */
-  daemon = ([   
-      "intarbir":([DAEM_AGGRESSIVE:1, DAEM_DISAPPEAR:3,
-                  DAEM_FALSE:7, WRONG_DAEM:1]),
-      "bhuturih":([DAEM_AGGRESSIVE:1, DAEM_DISAPPEAR:2,
-                  DAEM_FALSE:8, WRONG_DAEM:1]),
-      "kruftur":([DAEM_AGGRESSIVE:1, DAEM_DISAPPEAR:2,
-                  DAEM_FALSE:10, WRONG_DAEM:2]),
-      "tyoorthok":([DAEM_AGGRESSIVE:1, DAEM_DISAPPEAR:4,
-                  DAEM_FALSE:12, WRONG_DAEM:2]),
-      "irkitis":([DAEM_AGGRESSIVE:5, DAEM_DISAPPEAR:15,
-                  DAEM_FALSE:10, WRONG_DAEM:20 ]),
-      "harkuhu":([DAEM_AGGRESSIVE:15, DAEM_DISAPPEAR:10,
-                  DAEM_FALSE:15, WRONG_DAEM:30 ]),
-      "graiop":([DAEM_AGGRESSIVE:20, DAEM_DISAPPEAR:15,
-                  DAEM_FALSE:20, WRONG_DAEM:25 ]),
-      "flaxtri":([DAEM_AGGRESSIVE:30, DAEM_DISAPPEAR:20,
-                  DAEM_FALSE:25, WRONG_DAEM:35 ]),
-      "tutszt":([DAEM_AGGRESSIVE:35, DAEM_DISAPPEAR:25,
-                  DAEM_FALSE:30, WRONG_DAEM:45 ]),
-      "yrintri":([DAEM_AGGRESSIVE:45, DAEM_DISAPPEAR:35,
-                  DAEM_FALSE:35, WRONG_DAEM:55 ])
-            ]);
+  // Kosten 1, weil AddSpell() 0 nicht annimmt. beschwoere() liefert
+  // immer 0, damit kostet der Spruch selbst nichts.
+  AddSpell(CHAOS_SPRUCH_BESCHWOERE, 1,
+       ([SI_SKILLRESTR_LEARN:([P_GUILD_LEVEL:4]),
+       SI_SKILLLEARN:0,
+       OFFSET(SI_SKILLLEARN):0,
+       SI_SPELLFATIGUE:0,
+       ]));
+
+  foreach(string typ : CHAOS_DAEMONEN_MASTER->QueryTypen()) {
+    mapping d = CHAOS_DAEMONEN_MASTER->QueryTyp(typ);
+    mapping use = ([P_GUILD_LEVEL: d[CD_STUFE],
+                    SR_FUN: d[CD_KAMPF] ? "DaemonenTest"
+                                        : "CheckKleinerDaemon"]);
+
+    if(d[CD_KAMPF]) {
+      use[SR_FREE_HANDS] = 2;
+    }
+    if(member(d,CD_GUT_BENUTZEN)) {
+      use[SR_GOOD] = d[CD_GUT_BENUTZEN];
+    }
+    AddSpell(typ, d[CD_KOSTEN],
+       ([SI_SKILLRESTR_LEARN:([P_GUILD_LEVEL: d[CD_STUFE],
+                               SR_GOOD: d[CD_GUT_LERNEN]]),
+       SI_SKILLRESTR_USE: use,
+       SI_DIFFICULTY: d[CD_SCHWIERIGKEIT],
+       SI_SPELLFATIGUE: d[CD_PAUSE],
+       ]));
+
+    // Wahrscheinlichkeiten, mit denen der Dämon etwas Falsches tut
+    daemon[typ] = ([DAEM_AGGRESSIVE: d[CD_FAKTOREN][0],
+                    DAEM_DISAPPEAR:  d[CD_FAKTOREN][1],
+                    DAEM_FALSE:      d[CD_FAKTOREN][2],
+                    WRONG_DAEM:      d[CD_FAKTOREN][3]]);
+  }
 }  
 
 string ChaosDamageText(string dam_type, int plu){
@@ -1680,7 +1599,8 @@ int chaosmaske(object caster, mapping sinfo) {
   maske = (filter_objects(caster->QueryProp(P_ARMOURS)||({}),
                           "id",CHAOS_MASKE_ID)+({0}))[0];
   if(!maske) {
-    write("Also, eine Dämonenmaske solltest du dafür schon tragen.\n");
+    write(CTSA("Also, eine Dämonenmaske solltest du dafür schon "
+               "tragen.\n"));
     return 0;
   }
   if(environment(caster)->QueryProp(P_TOTAL_LIGHT) > 0 &&
@@ -1716,516 +1636,185 @@ int chaosmaske(object caster, mapping sinfo) {
                masken_dauer(caster,suc),suc);
 
   if(objectp(sh)) {
-    tell_room(environment(caster),"Vor dir steht jetzt "+
-      caster->name(WER)+".\n",({caster}));
+    tell_room(environment(caster),CTSA("Vor dir steht jetzt "+
+      caster->name(WER)+".\n"),({caster}));
   }
   return ERFOLG;
 }
-int intarbir(object caster, mapping sinfo){
-  object daem, p;
-  int result, suc;
-  int pentaf, kreisf;
-  if(present("intarbir_"+getuid(caster),environment(caster))){
-    printf("Was willst Du mit zwei Daemonen?\n");
-    return 0; 
-  }
-  suc=SpellSuccess(caster, sinfo);
-  if(suc<=0) return MISSERFOLG;
-  p=present("\nchaos_gilden_pentagramm_"+getuid(caster),environment(caster));
-  pentaf = get_pf(p);
-  kreisf = get_kf(p);
-  result=check_result(daemon["intarbir"], caster, pentaf, kreisf, suc);
-  if(result==WD){
-    call_out("falscher_daemon",0,caster,daemon["intarbir"][WRONG_DAEM] );
-    
-    if(p && !CHAOS_MAGIER(caster)) p->starte_entfernen(10);     
-    return ERFOLG;
-  }
-  daem=clone_object(CHAOS_GILDEN_MON("intarbir"));
-  daem->setDaemBeschwoerer(caster);
-  daem->AddId("intarbir_"+getuid(caster));
-  if(result==DD) daem->SetProp(DAEM_DISAPPEAR,1);
-  if(result==DA) daem->SetProp(DAEM_AGGRESSIVE,1);
-  if(result==DF) daem->SetProp(DAEM_FALSE,1);
-  daem->SetProp(DAEM_FAKTOR_MAPPING,daemon["intarbir"]);
-  printf("Du beschwoerst finstere Kraefte und oeffnest so ein Tor in "
-  +"andere Welten.\n");
-  say(break_string(capitalize(caster->name())+" murmelt leise Worte einer "+
-  "gutturalen Sprache und laesst eine rote, magische Wolke entstehen, "+
-  "aus der eine finstere Gestalt hervorkommt.",78));
-  daem->SetProp(CHAOS_DAEM_FOLLOW_TIME,time()+ 30 + suc/1000 * 30);
-  daem->move(environment(caster),M_GO);
-  if(result!=DF||random(100)>daemon["intarbir"][DAEM_FALSE]) {
-    caster->AddPursuer(daem);
-    if (sinfo[SI_SKILLARG] == "leise")
-       daem->SetProp(P_FOLLOW_SILENT,1);
-  }
-  return ERFOLG;
+// Die Dämonen ------------------------------------------------------------
+
+// Der eigene Dämon dieses Typs im Raum
+static object FindeTypDaemon(string typ, object caster) {
+  return present(typ+"_"+getuid(caster),environment(caster));
 }
 
-int bhuturih(object caster, mapping sinfo){
-  object daem, p;
-  int result, suc;
-  int pentaf, kreisf;
-  if(present("bhuturih_"+getuid(caster),environment(caster))){
-    printf("Was willst Du mit zwei Daemonen?\n");
-    return 0; 
-  }
-  suc=SpellSuccess(caster, sinfo);
-  if(suc<=0) return MISSERFOLG;
-  p=present("\nchaos_gilden_pentagramm_"+getuid(caster),environment(caster));
-  pentaf = get_pf(p);
-  kreisf = get_kf(p);
-  result=check_result(daemon["bhuturih"], caster, pentaf, kreisf, suc);
-  if(result==WD){
-    call_out("falscher_daemon",0,caster,daemon["bhuturih"][WRONG_DAEM] );
-    if(p && !CHAOS_MAGIER(caster)) p->starte_entfernen(10);     
-    return ERFOLG;
-  }
-  daem=clone_object(CHAOS_GILDEN_MON("bhuturih"));
-  daem->setDaemBeschwoerer(caster);
-  daem->AddId("bhuturih_"+getuid(caster));
-  if(result==DD) daem->SetProp(DAEM_DISAPPEAR,1);
-  if(result==DA) daem->SetProp(DAEM_AGGRESSIVE,1);
-  if(result==DF) daem->SetProp(DAEM_FALSE,1);
-  daem->SetProp(DAEM_FAKTOR_MAPPING,daemon["bhuturih"]);
-  printf("Du beschwoerst finstere Kraefte und oeffnest so ein Tor in "
-  +"andere Welten.\n");
-  say(break_string(capitalize(caster->name())+" murmelt leise Worte einer "+
-  "gutturalen Sprache und laesst eine rote, magische Wolke entstehen, "+
-  "aus der eine hintergruendig-grinsende Gestalt entschwebt.",78));
-  daem->SetProp(CHAOS_DAEM_FOLLOW_TIME,time()+ 30 + suc/1000 * 30);
-  daem->move(environment(caster),M_GO);
-  if(result!=DF||random(100)>daemon["bhuturih"][DAEM_FALSE]) {
-    caster->AddPursuer(daem);
-    if (sinfo[SI_SKILLARG] == "leise")
-       daem->SetProp(P_FOLLOW_SILENT,1);
-  }
-  return ERFOLG;
-}
+// beschwoere <typ> [leise]
+int beschwoere(object caster, mapping sinfo) {
+  string arg = sinfo[SI_SKILLARG], wort, rest, typ;
 
-int tyoorthok(object caster, mapping sinfo){
-  object daem, p;
-  int result, suc;
-  int pentaf, kreisf;
-  if(present("tyoorthok_"+getuid(caster),environment(caster))){
-    printf("Was willst Du mit zwei Daemonen?\n");
-    return 0; 
-  }
-  suc=SpellSuccess(caster, sinfo);
-  if(suc<=0) return MISSERFOLG;
-  p=present("\nchaos_gilden_pentagramm_"+getuid(caster),environment(caster));
-  pentaf = get_pf(p);
-  kreisf = get_kf(p);
-  result=check_result(daemon["tyoorthok"], caster, pentaf, kreisf, suc);
-  if(result==WD){
-    call_out("falscher_daemon",0,caster,daemon["tyoorthok"][WRONG_DAEM] );
-    if(p && !CHAOS_MAGIER(caster)) p->starte_entfernen(10);     
-    return ERFOLG;
-  }
-  daem=clone_object(CHAOS_GILDEN_MON("tyoorthok"));
-  daem->setDaemBeschwoerer(caster);
-  daem->AddId("tyoorthok_"+getuid(caster));
-  if(result==DD) daem->SetProp(DAEM_DISAPPEAR,1);
-  if(result==DA) daem->SetProp(DAEM_AGGRESSIVE,1);
-  if(result==DF) daem->SetProp(DAEM_FALSE,1);
-  daem->SetProp(DAEM_FAKTOR_MAPPING,daemon["tyoorthok"]);
-  printf("Du beschwoerst finstere Kraefte und oeffnest so ein Tor in "
-  +"andere Welten.\n");
-  say(break_string(capitalize(caster->name())+" murmelt sanfte Worte einer "+
-  "unbekannten Sprache und laesst eine aschgraue Saeule entstehen, "+
-  "aus der sich eine alte und gebeugte Gestalt entwindet.",78));
-  daem->SetProp(CHAOS_DAEM_FOLLOW_TIME,time()+ 30 + suc/1000 * 30);
-  daem->move(environment(caster),M_GO);
-  if(result!=DF||random(100)>daemon["tyoorthok"][DAEM_FALSE])
-    caster->AddPursuer(daem);
-  return ERFOLG;
-}
-
-int kruftur(object caster, mapping sinfo){
-  object daem, p;
-  int result, suc;
-  int pentaf, kreisf;
-  if(present("kruftur_"+getuid(caster),environment(caster))){
-    printf( "Was willst Du mit zwei Daemonen?\n");
-    return 0; 
-  }
-  suc=SpellSuccess(caster, sinfo);
-  if(suc<=0) return MISSERFOLG;
-  p=present("\nchaos_gilden_pentagramm_"+getuid(caster),environment(caster));
-  pentaf = get_pf(p);
-  kreisf = get_kf(p);
-  result=check_result(daemon["kruftur"],caster,pentaf,kreisf,suc);
-  if(result==WD){
-    call_out("falscher_daemon",0,caster,daemon["kruftur"][WRONG_DAEM]);
-    if(p && !CHAOS_MAGIER(caster)) p->starte_entfernen(10);     
-    return ERFOLG;
-  }
-  daem=clone_object(CHAOS_GILDEN_MON("kruftur"));
-  daem->setDaemBeschwoerer(caster);
-  daem->AddId("kruftur_"+getuid(caster));
-  if(result==DD) daem->SetProp(DAEM_DISAPPEAR,1);
-  if(result==DA) daem->SetProp(DAEM_AGGRESSIVE,1);
-  if(result==DF) daem->SetProp(DAEM_FALSE,1);
-  daem->SetProp(DAEM_FAKTOR_MAPPING,daemon["kruftur"]);
-  printf("Du beschwoerst finstere Kraefte und oeffnest so ein Tor in "
-  +"andere Welten.\n");
-  say(break_string(capitalize(caster->name())+" grummelt irgendetwas "+ 
-  "Unverstaendliches und macht dabei magische Zeichen. Ploetzlich bildet "+
-  "sich ein Riss in der Realitaet.",78));
-  daem->move(environment(caster),M_GO);
-  daem->SetProp(CHAOS_DAEM_FOLLOW_TIME, time()+ 30 + suc/1000 * 30);
-  if(result!=DF||random(100)>daemon["kruftur"][DAEM_FALSE]) {
-    caster->AddPursuer(daem);
-    if (sinfo[SI_SKILLARG] == "leise")
-       daem->SetProp(P_FOLLOW_SILENT,1);
-  }
-  return ERFOLG;
-}
-
-int irkitis(object caster, mapping sinfo){
-  object daem, p;
-  int result, suc;
-  int pentaf, kreisf;
-  suc=SpellSuccess(caster, sinfo);
-  p=present("\nchaos_gilden_pentagramm_"+getuid(caster),environment(caster));
-  pentaf = get_pf(p);
-  kreisf = get_kf(p);
-  if(present("irkitis_"+getuid(caster),environment(caster))){
-    write("Du beschwoerst magische Kraefte, doch da Irkitis schon da ist, "
-    +"passiert\nueberhaupt nichts.\n");
-    return ERFOLG;
-  }
-  if(suc<=0) return MISSERFOLG;
-  result=check_result(daemon["irkitis"],caster,pentaf,kreisf,suc);
-  if(result==WD){
-    call_out("falscher_daemon",0,caster,daemon["irkitis"][WRONG_DAEM]);
-    if(p && !CHAOS_MAGIER(caster)) p->starte_entfernen(10);     
-    return ERFOLG;
-  }
-  daem=clone_object(CHAOS_GILDEN_MON("irkitis"));
-  daem->setDaemBeschwoerer(caster);
-  daem->SetProp(DAEM_DEFEND_FAKTOR,100);
-  daem->AddId("irkitis_"+getuid(caster));
-  if(result==DD) daem->SetProp(DAEM_DISAPPEAR,1);
-  if(result==DA) daem->SetProp(DAEM_AGGRESSIVE,1);
-  if(result==DF) daem->SetProp(DAEM_FALSE,1);
-  daem->SetProp(DAEM_FAKTOR_MAPPING,daemon["irkitis"]);
-  daem->SetProp(DAEM_COUNT_DOWN,caster->QueryAttribute(A_INT)+suc/1000);  
-  printf("Du beschwoerst unheimliche Kraefte und oeffnest so ein Tor in "
-  +"andere Welten.\n");
-  say(capitalize(caster->name())+" beschwoert unheimliche Kraefte und "
-  +"oeffnet ein Tor in andere Welten.\n");
-  daem->move(environment(caster),M_TPORT);
-  if(result!=DF||random(100)>daemon["irkitis"][DAEM_FALSE]) {
-    caster->AddPursuer(daem);
-    if (sinfo[SI_SKILLARG] == "leise")
-       daem->SetProp(P_FOLLOW_SILENT,1);
-  }
-  if(result!=DF||random(100)>daemon["irkitis"][DAEM_FALSE]) 
-    caster->AddDefender(daem);
-  if(p && !CHAOS_MAGIER(caster)) p->starte_entfernen(10);     
-  return ERFOLG;
-}
-
-int harkuhu( object caster, mapping sinfo){
-  object daem, p;
-  int result, suc;
-  int pentaf, kreisf;
-  suc=SpellSuccess(caster, sinfo);
-  p=present("\nchaos_gilden_pentagramm_"+getuid(caster),environment(caster));
-  pentaf = get_pf(p);
-  kreisf = get_kf(p);
-  if(present("harkuhu_"+getuid(caster),environment(caster))){
-    write("Du beschwoerst magische Kraefte, doch da Harkuhu schon da ist, "
-    +"passiert\nueberhaupt nichts.\n");
-    return ERFOLG;
-  }
-  if(suc<=0) return MISSERFOLG;
-  result=check_result(daemon["harkuhu"],caster,pentaf,kreisf,suc);
-  if(result==WD){
-    call_out("falscher_daemon",0,caster,daemon["harkuhu"][WRONG_DAEM]);
-    return ERFOLG;
-    if(p && !CHAOS_MAGIER(caster)) p->starte_entfernen(10);     
-  }
-  daem=clone_object(CHAOS_GILDEN_MON("harkuhu"));
-  daem->setDaemBeschwoerer(caster);
-  daem->SetProp(DAEM_DEFEND_FAKTOR,50);
-  daem->AddId("harkuhu_"+getuid(caster));
-  if(result==DD) daem->SetProp(DAEM_DISAPPEAR,1);
-  if(result==DA) daem->SetProp(DAEM_AGGRESSIVE,1);
-  if(result==DF) daem->SetProp(DAEM_FALSE,1);
-  daem->SetProp(DAEM_FAKTOR_MAPPING,daemon["harkuhu"]);
-  printf("Du beschwoerst unheimliche Kraefte und oeffnest so ein Tor in "
-  +"andere Welten.\n");
-  say(capitalize(caster->name())+" beschwoert unheimliche Kraefte und "
-  +"oeffnet ein Tor in andere Welten.\n");
-  daem->move(environment(caster),M_TPORT);
-  daem->SetProp(CHAOS_DAEM_FOLLOW_TIME,time()+240+suc/1000*58);
-  if(result!=DF||random(100)>daemon["harkuhu"][DAEM_FALSE]) {
-    caster->AddPursuer(daem);
-    if (sinfo[SI_SKILLARG] == "leise")
-       daem->SetProp(P_FOLLOW_SILENT,1);
-  }
-  if(result!=DF||random(100)>daemon["harkuhu"][DAEM_FALSE]) 
-    caster->AddDefender(daem);
-  if(p && !CHAOS_MAGIER(caster)) p->starte_entfernen(6);
-  if ((kreisf + pentaf > 50) && (suc +20*kreisf+20*pentaf > 7300) && !result) {
-    write("Du hast Harkuhu ungewoehnlich gut beschworen. In seinen "+
-          "leuchtenden Augen\nerkennst Du ungewohnte Schaerfe.\n");
-    daem->SetProp(DAEM_CAN_SPEAK,1);
-  }
-  daem->setPower(p,caster,sinfo[SI_SKILLABILITY]);
-  return ERFOLG;
-}
-
-int graiop( object caster, mapping sinfo){
-  object daem, p;
-  int result, suc;
-  int pentaf, kreisf;
-  suc=SpellSuccess(caster,sinfo);
-  p=present("\nchaos_gilden_pentagramm_"+getuid(caster),environment(caster));
-  pentaf = get_pf(p);
-  kreisf = get_kf(p);
-  if(present("graiop_"+getuid(caster),environment(caster))){
-    write("Du beschwoerst magische Kraefte, doch da Graiop schon da ist, "
-    +"passiert\nueberhaupt nichts.\n");
-    return ERFOLG;
-  }
-  if(suc<=0) return MISSERFOLG;
-  result=check_result(daemon["graiop"],caster,pentaf,kreisf,suc);
-  if(result==WD){
-    call_out("falscher_daemon",0,caster,daemon["graiop"][WRONG_DAEM]);
-    if(p && !CHAOS_MAGIER(caster)) p->starte_entfernen(10);     
-    return ERFOLG;
-  }
-  daem=clone_object(CHAOS_GILDEN_MON("graiop"));
-  daem->setDaemBeschwoerer(caster);
-  daem->SetProp(DAEM_DEFEND_FAKTOR,60);
-  daem->AddId("graiop_"+getuid(caster));
-  if(result==DD) daem->SetProp(DAEM_DISAPPEAR,1);
-  if(result==DA) daem->SetProp(DAEM_AGGRESSIVE,1);
-  if(result==DF) daem->SetProp(DAEM_FALSE,1);
-  daem->SetProp(DAEM_FAKTOR_MAPPING,daemon["graiop"]);
-  printf("Du beschwoerst unheimliche Kraefte und oeffnest so ein Tor in "
-  +"andere Welten.\n");
-  say(break_string(capitalize(caster->name())+" spricht magische Worte, "+
-  "die, zusammen mit abartigen Gesten, einen wilden, gefaehrlichen "+
-  "Daemonen aus den Tiefen der niederen Dimensionen rufen.",78));
-  daem->move(environment(caster),M_TPORT);
-  daem->SetProp(DAEM_COUNT_DOWN,caster->QueryAttribute(A_INT)+4*suc/1000);
-  if(result!=DF||random(100)>daemon["graiop"][DAEM_FALSE]) {
-    caster->AddPursuer(daem);
-    if (sinfo[SI_SKILLARG] == "leise")
-       daem->SetProp(P_FOLLOW_SILENT,1);
-  }
-  if(result!=DF||random(100)>daemon["graiop"][DAEM_FALSE]) 
-    caster->AddDefender(daem);
-  if(p && !CHAOS_MAGIER(caster)) p->starte_entfernen(8);
-  if ((kreisf + pentaf > 50) && (suc +20*kreisf+20*pentaf > 7300) && !result) {
-    write("Du hast Graiop ungewoehnlich gut beschworen. In seinen "+
-          "feurigen Augen\nerkennst Du ungewohnte Tiefen.\n");
-    daem->SetProp(DAEM_CAN_SPEAK,1);
-  }
-  daem->setPower(p,caster,sinfo[SI_SKILLABILITY]);
-  return ERFOLG;
-}
-
-int flaxtri(object caster, mapping sinfo){
-  object daem, p;
-  int result, suc;
-  int pentaf, kreisf;
-  suc=SpellSuccess(caster, sinfo);
-  p=present("\nchaos_gilden_pentagramm_"+getuid(caster),environment(caster));
-  pentaf = get_pf(p);
-  kreisf = get_kf(p);
-  if(present("flaxtri_"+getuid(caster),environment(caster))){
-    write("Du beschwoerst magische Kraefte, doch da Flaxtri schon da ist, "
-    +"passiert\nueberhaupt nichts.\n");
-    return ERFOLG;
-  }
-  if(suc<=0) return MISSERFOLG;
-  result=check_result(daemon["flaxtri"],caster,pentaf,kreisf,suc );
-  if(result==WD){                               
-    call_out("falscher_daemon",0,caster,daemon["flaxtri"][WRONG_DAEM]);
-    if(p && !CHAOS_MAGIER(caster)) p->starte_entfernen(10);     
-    return ERFOLG;
-  }
-  daem=clone_object(CHAOS_GILDEN_MON("flaxtri"));
-  daem->setDaemBeschwoerer(caster);
-  daem->SetProp(DAEM_DEFEND_FAKTOR,50);
-  daem->AddId("flaxtri_"+getuid(caster));
-  if(result==DD) daem->SetProp(DAEM_DISAPPEAR,1);
-  if(result==DA) daem->SetProp(DAEM_AGGRESSIVE,1);
-  if(result==DF) daem->SetProp(DAEM_FALSE,1);
-  daem->SetProp(DAEM_FAKTOR_MAPPING,daemon["flaxtri"]);
-  printf("Du beschwoerst unheimliche Kraefte und oeffnest so ein Tor in "
-  +"andere Welten.\n");
-  say(break_string(capitalize(caster->name())+" murmelt ein unheimliches "+
-  "Wort und beginnt sofort mit einem abartigen Tanz, dessen wilde Gesten "+
-  "geradezu obszoen sind.",78));
-  daem->move(environment(caster),M_TPORT);
-  daem->SetProp(CHAOS_DAEM_FOLLOW_TIME,time()+300+300*suc/1000);
-  daem->SetProp(CHAOS_DAEM_NO_DISAPPEAR,1);
-  if(result!=DF||random(100)>daemon["flaxtri"][DAEM_FALSE]) {
-    caster->AddPursuer(daem);
-    if (sinfo[SI_SKILLARG] == "leise")
-       daem->SetProp(P_FOLLOW_SILENT,1);
-  }
-  if(result!=DF||random(100)>daemon["flaxtri"][DAEM_FALSE]) 
-    caster->AddDefender(daem);
-  if(p && !CHAOS_MAGIER(caster)) p->starte_entfernen(10);     
-  if ((kreisf + pentaf > 50) && (suc +20*kreisf+20*pentaf > 7300) && !result) {
-    write("Du hast Flaxtri ungewoehnlich gut beschworen. In seinen "+
-         "boesartigen\nAugen bemerkst Du erstaunliche Tiefen.\n");
-    daem->SetProp(DAEM_CAN_SPEAK,1);
-  }
- daem->setPower(p,caster,sinfo[SI_SKILLABILITY]);
- return ERFOLG;
-}
-
-int tutszt(object caster, mapping sinfo){
-  object daem, p;
-  int result, suc;
-  int pentaf, kreisf;
-  suc=SpellSuccess(caster, sinfo);
-  p=present("\nchaos_gilden_pentagramm_"+getuid(caster),environment(caster));
-  pentaf = get_pf(p);
-  kreisf = get_kf(p);
-  if(present("tutszt_"+getuid(caster),environment(caster))){
-    write("Du beschwoerst magische Kraefte, doch da Tutszt schon da ist, "
-    +"passiert\nueberhaupt nichts.\n");
-    return ERFOLG;
-  }
-  if(suc<=0) return MISSERFOLG;
-  result=check_result(daemon["tutszt"],caster,pentaf,kreisf,suc);
-  
-  /* Test fuer Mist-Chaoten, welche Tutszt zum Ueben schlecht beschwoeren. */
-  if (!result && !objectp(p))
-    result = DA;
-  else if (!result && (p->QueryProp(CHAOS_PENTAGRAMM_FAKTOR) < 21 || 
-                       p->QueryProp(CHAOS_BANNKREIS_FAKTOR) < 11))
-    result = DA;
-
-  if(result==WD){
-    call_out("falscher_daemon",0,caster,daemon["yrintri"][WRONG_DAEM]);
-    if(p && !CHAOS_MAGIER(caster)) p->starte_entfernen(10);
-    return ERFOLG;
-  }
-
-  if(result==WD){
-    call_out("falscher_daemon",0,caster,daemon["tutszt"][WRONG_DAEM]);
-    if(p && !CHAOS_MAGIER(caster)) p->starte_entfernen(10);     
-    return ERFOLG;
-  }
-  daem=clone_object(CHAOS_GILDEN_MON("tutszt"));
-  daem->setDaemBeschwoerer(caster);
-  daem->SetProp(DAEM_DEFEND_FAKTOR,30);
-  if(CHAOS_GILDENMASTER->ist_erz( caster))
-  daem->SetProp(DAEM_DEFEND_FAKTOR,20);
-  daem->AddId("tutszt_"+getuid(caster));
-  if(result==DD) daem->SetProp(DAEM_DISAPPEAR,1);
-  if(result==DA) daem->SetProp(DAEM_AGGRESSIVE,1);
-  if(result==DF) daem->SetProp(DAEM_FALSE,1);
-  daem->SetProp(DAEM_FAKTOR_MAPPING,daemon["tutszt"]);
-  printf("Du beschwoerst unheimliche Kraefte und oeffnest so ein Tor in "
-  +"andere Welten.\n");
-  say(break_string(capitalize(caster->name())+" fuchtelt wie wild mit den "+
-  "Armen herum, stoesst boesartige Worte einer magischen Sprache hervor "+
-  "und vollfuehrt mit "+
-  (caster->QueryProp( P_GENDER)==1?"seinen":"ihren")+" Fuessen einen "+
-  "seltsamen Tanz.",78));
-  daem->move(environment(caster),M_TPORT);
-  daem->SetProp(CHAOS_DAEM_FOLLOW_TIME,time()+1000+500*suc/1000);
-  daem->SetProp(CHAOS_DAEM_NO_DISAPPEAR,1);
-  if(result!=DF||random(100)>daemon["tutszt"][DAEM_FALSE]) {
-    caster->AddPursuer(daem);
-    if (sinfo[SI_SKILLARG] == "leise")
-       daem->SetProp(P_FOLLOW_SILENT,1);
-  }
-  if(result!=DF||random(100)>daemon["tutszt"][DAEM_FALSE]) 
-    caster->AddDefender(daem);
-  if(p && !CHAOS_MAGIER(caster)) p->starte_entfernen(10);     
-  // FEUERW
-  if ((kreisf + pentaf > 50) && (suc +20*kreisf+20*pentaf > 7300) && !result) {
-    write("Du hast Tutszt ungewoehnlich gut beschworen. In seinen "+
-          "dunklen Augen\nerkennst Du eine ungewohnte Schaerfe.\n");
-    daem->SetProp(DAEM_CAN_SPEAK,1);
-  }
-  if (result != DA)
-  daem->setPower(p,caster,sinfo[SI_SKILLABILITY]);
-  return ERFOLG;
-}                 
-
-int yrintri(object caster, mapping sinfo){
-  object daem, p;
-  int result, suc;
-  int pentaf, kreisf;
-  suc=SpellSuccess(caster, sinfo);
-  if(!CHAOS_GILDENMASTER->ist_erz(caster) && !CHAOS_MAGIER(caster)){
-    if(caster->QueryProp(P_GUILD_LEVEL)==12)
-      caster->SetProp(P_GUILD_LEVEL,11);
-    tell_object(caster,"Du bist nicht der Erzmeister des Chaos!\n");
+  if(!arg) {
+    write(CTSA("Welchen Dämon willst du beschwören?\n"));
     return 0;
-  }    
-  p=present("\nchaos_gilden_pentagramm_"+getuid(caster),environment(caster));
+  }
+  if(sscanf(arg,"%s %s",wort,rest) != 2) {
+    wort = arg;
+    rest = 0;
+  }
+  typ = CHAOS_DAEMONEN_MASTER->FindeTyp(wort);
+
+  if(!typ) {
+    write(CTSA("So einen Dämon kennst du nicht.\n"));
+    return 0;
+  }
+  if(!caster->QuerySkill(typ)) {
+    write(CTSA("Diesen Dämon hast du noch nicht beschwören gelernt.\n"));
+    return 0;
+  }
+  // Der Spruch des Typs kostet, ermüdet und wird geübt, nicht dieser
+  caster->UseSpell(rest,typ);
+  return 0;
+}
+
+static int beschwoere_typ(object caster, mapping sinfo, string typ) {
+  mapping d = CHAOS_DAEMONEN_MASTER->QueryTyp(typ);
+  object daem, p;
+  int result, suc, pentaf, kreisf;
+  mixed *n;
+
+  if(!mappingp(d)) {
+    return 0;
+  }
+  if(d[CD_ERZMEISTER] && !CHAOS_GILDENMASTER->ist_erz(caster) &&
+     !CHAOS_MAGIER(caster)) {
+    write("Du bist nicht der Erzmeister des Chaos!\n");
+    return 0;
+  }
+  if(daem = FindeTypDaemon(typ,caster)) {
+    write(break_string("Du beschwörst magische Kräfte, doch da "+
+      daem->name(WER,1)+" schon da ist, passiert überhaupt nichts."));
+    return 0;
+  }
+  suc = SpellSuccess(caster,sinfo);
+
+  if(suc <= 0) {
+    return MISSERFOLG;
+  }
+  p = present("\nchaos_gilden_pentagramm_"+getuid(caster),
+              environment(caster));
   pentaf = get_pf(p);
   kreisf = get_kf(p);
-  if(present("yrintri_"+getuid(caster),environment(caster))){
-    write("Du beschwoerst magische Kraefte, doch da Yrintri schon da "
-    +"ist, passiert\nueberhaupt nichts.\n");
+  result = check_result(daemon[typ],caster,pentaf,kreisf,suc);
+
+  // Wer starke Dämonen mit schlechtem Pentagramm beschwört, bekommt
+  // einen aggressiven Dämon
+  if(!result && pointerp(d[CD_MIN_PENTA]) &&
+     (!objectp(p) ||
+      p->QueryProp(CHAOS_PENTAGRAMM_FAKTOR) < d[CD_MIN_PENTA][0] ||
+      p->QueryProp(CHAOS_BANNKREIS_FAKTOR) < d[CD_MIN_PENTA][1])) {
+    result = DA;
+  }
+  if(result == WD) {
+    call_out("falscher_daemon",0,caster,daemon[typ][WRONG_DAEM]);
+
+    if(p && !CHAOS_MAGIER(caster)) {
+      p->starte_entfernen(10);
+    }
     return ERFOLG;
   }
-  if(suc<=0) return MISSERFOLG;
-  result=check_result(daemon["yrintri"],caster,pentaf,kreisf,suc );
-  
-  /* Test fuer Mist-Chaoten, welche Yrintri zum Ueben schlecht beschwoeren. */
-  if (!result && !objectp(p))
-    result = DA;
-  else if (!result && (p->QueryProp(CHAOS_PENTAGRAMM_FAKTOR) < 22 ||
-                       p->QueryProp(CHAOS_BANNKREIS_FAKTOR) < 12))
-    result = DA;
-    
-  if(result==WD){
-    call_out("falscher_daemon",0,caster,daemon["yrintri"][WRONG_DAEM]);
-    if(p && !CHAOS_MAGIER(caster)) p->starte_entfernen(10);     
-    return ERFOLG;
-  }
-  daem=clone_object(CHAOS_GILDEN_MON("yrintri"));
+  daem = clone_object(typ == "orakeldaemon" ? CHAOS_GILDEN_MON("orakel")
+                                            : CHAOS_GILDEN_MON("daemon"));
+  n = CHAOS_NAMEN_MASTER->get_name();
+  daem->konfiguriere(typ,n[0],n[1],d[CD_TITEL][random(sizeof(d[CD_TITEL]))]);
   daem->setDaemBeschwoerer(caster);
-  daem->SetProp(DAEM_DEFEND_FAKTOR,15);
-  daem->AddId("yrintri_"+getuid(caster));
-  if(result==DD) daem->SetProp(DAEM_DISAPPEAR,1);
-  if(result==DA) daem->SetProp(DAEM_AGGRESSIVE,1);
-  if(result==DF) daem->SetProp(DAEM_FALSE,1);
-  daem->SetProp(DAEM_FAKTOR_MAPPING,daemon["yrintri"]);     
-    printf("Du beschwoerst unheimliche Kraefte und oeffnest so ein Tor "
-    +"in andere Welten.\n");
-    say(break_string(capitalize(caster->name())+" fuchtelt wie wild mit den "+
-    "Armen herum, stoesst boesartige Worte einer magischen Sprache hervor "+
-    "und vollfuehrt mit "+
-    (caster->QueryProp( P_GENDER)==1?"seinen":"ihren")+" Fuessen einen "+
-    "seltsamen Tanz.", 78));
-  daem->move(environment(caster),M_TPORT);
-  daem->SetProp(CHAOS_DAEM_FOLLOW_TIME,time()+2000+500*suc/1000);
-  daem->SetProp(CHAOS_DAEM_NO_DISAPPEAR,1);
-  if(result!=DF||random(100)>daemon["yrintri"][DAEM_FALSE]) {
-    caster->AddPursuer(daem);
-    if (sinfo[SI_SKILLARG] == "leise")
-       daem->SetProp(P_FOLLOW_SILENT,1);
+  daem->AddId(typ+"_"+getuid(caster));
+
+  if(d[CD_ABFANGEN]) {
+    daem->SetProp(DAEM_DEFEND_FAKTOR,d[CD_ABFANGEN]);
   }
-  if(result!=DF||random(100)>daemon["yrintri"][DAEM_FALSE]) 
+  if(typ == "blutdaemon" && CHAOS_GILDENMASTER->ist_erz(caster)) {
+    daem->SetProp(DAEM_DEFEND_FAKTOR,20);
+  }
+  if(result == DD) {
+    daem->SetProp(DAEM_DISAPPEAR,1);
+  }
+  if(result == DA) {
+    daem->SetProp(DAEM_AGGRESSIVE,1);
+  }
+  if(result == DF) {
+    daem->SetProp(DAEM_FALSE,1);
+  }
+  daem->SetProp(DAEM_FAKTOR_MAPPING,daemon[typ]);
+
+  write(break_string("Du beschwörst unheimliche Kräfte und öffnest so "
+    "ein Tor in andere Welten."));
+  say(break_string(replace_personal(d[CD_SAY],({caster}),1)),caster);
+
+  daem->move(environment(caster),M_TPORT);
+
+  if(pointerp(d[CD_FOLGEZEIT])) {
+    daem->SetProp(CHAOS_DAEM_FOLLOW_TIME,time()+d[CD_FOLGEZEIT][0]+
+                  d[CD_FOLGEZEIT][1]*suc/1000);
+  }
+  if(d[CD_RUNDEN]) {
+    daem->SetProp(DAEM_COUNT_DOWN,caster->QueryAttribute(A_INT)+
+                  d[CD_RUNDEN]*suc/1000);
+  }
+  if(d[CD_BLEIBT]) {
+    daem->SetProp(CHAOS_DAEM_NO_DISAPPEAR,1);
+  }
+  if(result != DF || random(100) > daemon[typ][DAEM_FALSE]) {
+    caster->AddPursuer(daem);
+
+    if(sinfo[SI_SKILLARG] == "leise") {
+      daem->SetProp(P_FOLLOW_SILENT,1);
+    }
+  }
+  if(d[CD_KAMPF] &&
+     (result != DF || random(100) > daemon[typ][DAEM_FALSE])) {
     caster->AddDefender(daem);
-  if(p && !CHAOS_MAGIER(caster)) p->starte_entfernen(10);     
-   if ((kreisf + pentaf > 50) && (suc +20*kreisf+20*pentaf > 7300) && !result) {
-   write("Du hast Yrintri ungewoehnlich gut beschworen. In seinen "+
-         "boesen Augen\nerkennst Du eine ungewohnte Schaerfe.\n");
-   daem->SetProp(DAEM_CAN_SPEAK,1);
- }
-  if (result != DA) /* Aggressive Daemonen kriegen FULL POWER! */
+  }
+  if(p && !CHAOS_MAGIER(caster)) {
+    p->starte_entfernen(d[CD_KAMPF] ? 8 : 10);
+  }
+  if(d[CD_KAMPF] && kreisf+pentaf > 50 &&
+     suc+20*kreisf+20*pentaf > 7300 && !result) {
+    write(break_string("Du hast "+daem->name(WEN,1)+" ungewöhnlich gut "
+      "beschworen. In den Augen erkennst du eine ungewohnte Schärfe."));
+    daem->SetProp(DAEM_CAN_SPEAK,1);
+  }
+  if(d[CD_POWER] && result != DA) {
     daem->setPower(p,caster,sinfo[SI_SKILLABILITY]);
+  }
   return ERFOLG;
-}                 
+}
+
+int orakeldaemon(object caster, mapping sinfo) {
+  return beschwoere_typ(caster,sinfo,"orakeldaemon");
+}
+
+int schattendaemon(object caster, mapping sinfo) {
+  return beschwoere_typ(caster,sinfo,"schattendaemon");
+}
+
+int lichtdaemon(object caster, mapping sinfo) {
+  return beschwoere_typ(caster,sinfo,"lichtdaemon");
+}
+
+int feuerdaemon(object caster, mapping sinfo) {
+  return beschwoere_typ(caster,sinfo,"feuerdaemon");
+}
+
+int saeuredaemon(object caster, mapping sinfo) {
+  return beschwoere_typ(caster,sinfo,"saeuredaemon");
+}
+
+int blutdaemon(object caster, mapping sinfo) {
+  return beschwoere_typ(caster,sinfo,"blutdaemon");
+}
+
+int wandler(object caster, mapping sinfo) {
+  return beschwoere_typ(caster,sinfo,"wandler");
+}
 
 int check_result(mapping daem,object caster,int pentaf,int kreisf,int abil){
   int align;
