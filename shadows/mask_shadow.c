@@ -144,7 +144,8 @@ public string short() {
   if(!daten[P_SHORT]) {
     return player->short();
   }
-  return capitalize(replace_personal(daten[P_SHORT],({player})))+".\n";
+  return CTSA(capitalize(replace_personal(daten[P_SHORT],({player}))))+
+         ".\n";
 }
 
 public varargs string long() {

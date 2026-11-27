@@ -16,24 +16,29 @@ Arena. Der Befehl ist in gilde.c abgeschaltet, Ersatz offen.
 
 2. Dämonen
 ----------
-- Kampfdämonen bekommen Typen und Namen aus master/namen.c (Schritt 2):
-    Irkitis   -> Schattendämon
-    Harkuhu   -> Lichtdämon
-    Graiop    -> Feuerdämon
-    Flaxtri   -> Säuredämon
-    Tutszt    -> Blutdämon
-    Yrintri   -> Wandler
-- Intarbir, Kruftur und Tyoorthok werden zum Orakeldämon
-  ("beschwöre orakeldämon", Name aus der Namensliste). Lernbar ab
-  Gildenstufe 4, die Fähigkeiten werden nach und nach freigeschaltet:
-    ab Stufe 4: Monster einschätzen (Intarbir)
-    ab Stufe 5: Gegenstände identifizieren (Kruftur)
-    ab Stufe 7: über die eigene Konstitution erzählen (Tyoorthok)
-- Bhuturih (findet Spieler): noch nicht entschieden. Er hat keinen NPC
-  mehr (auch nicht in OLD/) und ist nicht lernbar.
+Erledigt: Die Dämonen haben Typen und bekommen ihre Namen aus
+master/namen.c. Beschworen wird mit 'beschwöre <typ>', jeder Typ ist ein
+eigener Spruch (Werte in master/daemonen.c):
+    Orakeldämon    ab 4   (früher Intarbir, Kruftur, Tyoorthok)
+    Schattendämon  ab 7   (früher Irkitis)
+    Lichtdämon     ab 8   (früher Harkuhu)
+    Feuerdämon     ab 9   (früher Graiop)
+    Säuredämon     ab 10  (früher Flaxtri)
+    Blutdämon      ab 11  (früher Tutszt)
+    Wandler        Erzmeister (früher Yrintri)
+Die alten NPCs liegen in OLD/npc/.
+
+Offen:
+- Bhuturih (findet Spieler): noch nicht entschieden, ob er wiederkommt.
+- Tyoorthok konnte gegen eine wertvolle Gabe Krankheiten heilen. Das
+  kann der Orakeldämon nicht, Gegenstände, die man ihm gibt,
+  identifiziert er nur.
+- Den Wandler kann niemand beschwören, solange es keinen Erzmeister gibt
+  (siehe 1.).
 - Chaoskontrolle steht im Spellbook, aber nicht in gilde.c (AddSpell)
   und ist damit nicht lernbar.
-- Ombatis ist entfernt.
+- Die Texte in texte/ (z.B. daemonen.txt für die alte Bibliothek)
+  nennen noch die alten Dämonen.
 
 
 3. Räume
@@ -53,5 +58,7 @@ Arena. Der Befehl ist in gilde.c abgeschaltet, Ersatz offen.
 - Chaosmaske (ab Stufe 11): Bisher gibt es nur die Feuermaske
   (armour/feuermaske.c), und sie ist nirgends erhältlich. Weitere Masken
   erben armour/std/maske.c und setzen P_CHAOS_MASKE_DATEN.
+- Mudlib: _set_mmsgin() in std/living/moving.c setzt P_MSGIN statt
+  P_MMSGIN. npc/daemon.c umgeht das mit Set().
 - Der Gildenmaster speichert nach master/save/. Das Verzeichnis muss es
   im MUD geben, die Gilde braucht dort Schreibrechte.

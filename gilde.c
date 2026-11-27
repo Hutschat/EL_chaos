@@ -7,6 +7,7 @@
 // 10.12.2018 It@Efferdland             ueberarbeitet
 // 27.11.2026 It@Efferdland             wieder lauffähig, ohne Arena
 // 27.11.2026 It@Efferdland             keine Kampfprüfung bis Stufe 11
+// 27.11.2026 It@Efferdland             Dämonentypen
 
 #include "def.h"
 
@@ -206,20 +207,17 @@ protected void create()
   AddSpell("kontrolle");
   AddSpell("bannzauber");
   AddSpell("schutz");
-  AddSpell( "intarbir" );
   AddSpell( "chaosball" );
   AddSpell( "chaosschaden" );
   AddSpell( "verbanne" );
   AddSpell( "binde" );
   AddSpell( "chaosmaske" );
-  AddSpell( "kruftur" );
-  AddSpell( "irkitis" );
   AddSpell( "finsternis" );
-  AddSpell( "harkuhu" );
-  AddSpell( "graiop" );
-  AddSpell( "flaxtri" );
-  AddSpell( "tutszt" );
-  AddSpell( "yrintri" );
+  // Die Dämonen, Typen in master/daemonen.c
+  AddSpell( CHAOS_SPRUCH_BESCHWOERE );
+  foreach(string typ : CHAOS_DAEMONEN_MASTER->QueryTypen()) {
+    AddSpell( typ );
+  }
   AddSkill( SK_NIGHTVISION, ([ SI_SKILLFUNC:"Nightvision" ]) );
   AddCmd(({"tritt","trete"}),"bei_oder_aus_treten");
   AddCmd(({"lerne", "lern" }), "OwnLearnSpell" );
@@ -455,18 +453,31 @@ int OwnLearnSpell(string str)
   }
   if(str == "daemon" || str == "daemonen" || str == "beschwoerung")
   {
-    write(" Du kannst folgende Daemonen beschwoeren:\n"+
-    "   Intarbir       : Ab Gildenstufe 4.\n"+
-    "   Kruftur        : Ab Gildenstufe 5.\n"+
-    "   Irkitis        : Ab Gildenstufe 7.\n"+
-    "   Harkuhu        : Ab Gildenstufe 8.\n"+
-    "   Graiop         : Ab Gildenstufe 9.\n"+
-    "   Flaxtri        : Ab Gildenstufe 10.\n"+
-    "   Tutszt         : Ab Gildenstufe 11.\n"+
-    "   Yrintri        : Nur fuer den Erzmeister.\n"+
-    "Du kannst ja mal Kruuolq nach den einzelnen Daemonen befragen.\n");
+    string txt = "Du kannst folgende Dämonen beschwören:\n";
 
+    foreach(string typ : CHAOS_DAEMONEN_MASTER->QueryTypen()) {
+      mapping d = CHAOS_DAEMONEN_MASTER->QueryTyp(typ);
+
+      // Erst in ASCII wandeln, sonst stimmt die Breite nicht
+      txt += sprintf("   %-15s: %s\n",CTSA(d[CD_NAME]),
+        d[CD_ERZMEISTER] ? "Nur fuer den Erzmeister."
+                         : "Ab Gildenstufe "+d[CD_STUFE]+".");
+    }
+    write(CTSA(txt)+break_string("Beschworen wird mit 'beschwöre "
+      "<dämon>'. Du kannst ja mal Kruuolq nach den einzelnen Dämonen "
+      "befragen."));
     return 1;
+  }
+  str = CHAOS_DAEMONEN_MASTER->FindeTyp(str) || str;
+
+  if(CHAOS_DAEMONEN_MASTER->QueryTyp(str)) {
+    int ret = LearnSpell(str);
+
+    // Mit dem ersten Dämon lernt man auch das Beschwören selbst
+    if(PL->QuerySkill(str) && !PL->QuerySkill(CHAOS_SPRUCH_BESCHWOERE)) {
+      PL->ModifySkill(CHAOS_SPRUCH_BESCHWOERE,1,0);
+    }
+    return ret;
   }
   return LearnSpell(str);
 }

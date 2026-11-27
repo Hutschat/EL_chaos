@@ -36,5 +36,6 @@
 #include "sys/chaosmagier.h"
 #include "sys/chaosspells.h"
 #include "sys/chaosids.h"
+#include "sys/chaosdaemonen.h"
 
 #endif
